@@ -71,6 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Catalogos\AdministrarTarea.aspx" />
+    <Content Include="Catalogos\EditarTarea.aspx" />
+    <Content Include="Catalogos\EliminarTarea.aspx" />
+    <Content Include="Catalogos\NuevaTarea.aspx" />
+    <Content Include="Catalogos\VerTarea.aspx" />
     <Content Include="Content\DataTables\datatables.min.css" />
     <Content Include="Content\DataTables\images\details_close.png" />
     <Content Include="Content\DataTables\images\details_open.png" />
@@ -134,6 +138,34 @@
     </Compile>
     <Compile Include="Catalogos\AdministrarTarea.aspx.designer.cs">
       <DependentUpon>AdministrarTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EditarTarea.aspx.cs">
+      <DependentUpon>EditarTarea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EditarTarea.aspx.designer.cs">
+      <DependentUpon>EditarTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EliminarTarea.aspx.cs">
+      <DependentUpon>EliminarTarea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EliminarTarea.aspx.designer.cs">
+      <DependentUpon>EliminarTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NuevaTarea.aspx.cs">
+      <DependentUpon>NuevaTarea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NuevaTarea.aspx.designer.cs">
+      <DependentUpon>NuevaTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\VerTarea.aspx.cs">
+      <DependentUpon>VerTarea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\VerTarea.aspx.designer.cs">
+      <DependentUpon>VerTarea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
