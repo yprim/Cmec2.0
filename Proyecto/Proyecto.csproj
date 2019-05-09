@@ -74,6 +74,11 @@
     <Content Include="Catalogos\EditarTarea.aspx" />
     <Content Include="Catalogos\EliminarTarea.aspx" />
     <Content Include="Catalogos\NuevaTarea.aspx" />
+    <Content Include="Catalogos\Ubicaciones\AdministrarUbicacion.aspx" />
+    <Content Include="Catalogos\Ubicaciones\EditarUbicacion.aspx" />
+    <Content Include="Catalogos\Ubicaciones\EliminarUbicacion.aspx" />
+    <Content Include="Catalogos\Ubicaciones\NuevaUbicacion.aspx" />
+    <Content Include="Catalogos\Ubicaciones\VerUbicacion.aspx" />
     <Content Include="Catalogos\VerTarea.aspx" />
     <Content Include="Content\DataTables\datatables.min.css" />
     <Content Include="Content\DataTables\images\details_close.png" />
@@ -159,6 +164,41 @@
     </Compile>
     <Compile Include="Catalogos\NuevaTarea.aspx.designer.cs">
       <DependentUpon>NuevaTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\AdministrarUbicacion.aspx.cs">
+      <DependentUpon>AdministrarUbicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\AdministrarUbicacion.aspx.designer.cs">
+      <DependentUpon>AdministrarUbicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\EditarUbicacion.aspx.cs">
+      <DependentUpon>EditarUbicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\EditarUbicacion.aspx.designer.cs">
+      <DependentUpon>EditarUbicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\EliminarUbicacion.aspx.cs">
+      <DependentUpon>EliminarUbicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\EliminarUbicacion.aspx.designer.cs">
+      <DependentUpon>EliminarUbicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\NuevaUbicacion.aspx.cs">
+      <DependentUpon>NuevaUbicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\NuevaUbicacion.aspx.designer.cs">
+      <DependentUpon>NuevaUbicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\VerUbicacion.aspx.cs">
+      <DependentUpon>VerUbicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Ubicaciones\VerUbicacion.aspx.designer.cs">
+      <DependentUpon>VerUbicacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\VerTarea.aspx.cs">
       <DependentUpon>VerTarea.aspx</DependentUpon>

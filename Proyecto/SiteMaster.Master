@@ -100,52 +100,17 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catálogos<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarTarea.aspx") %>'>Tareas</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catálogos/AdministrarUbicacion.aspx") %>'>Pendientes</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catálogos/AdministrarActivo.aspx") %>'>Activos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catálogos/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx") %>'>Ubicaciones</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catálogos/Activos/AdministrarActivo.aspx") %>'>Activos</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catálogos/Funcionarios/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catálogos/Tareas/AdministrarTarea.aspx") %>'>Tareas</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown" aria-expanded="true">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mantenimientos<span class="caret"></span></a>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href='<%=Page.ResolveUrl("~/Mantenimientos/AdministrarSolicitudes.aspx") %>'>ST's</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Mantenimientos/AdministrarCotizaciones.aspx") %>'>Cotización</a></li>
+                                            
                                         </ul>
-                                    </li>
-                                    <li>
-                                        <a href='<%=Page.ResolveUrl("~/Informes/AdministrarInformes.aspx") %>'>Informes</a>
-                                    </li>
-                                    <li class="dropdown" aria-expanded="true">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuración<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarAlimentaciones.aspx") %>'>Alimentación</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarAreas.aspx") %>'>Áreas</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarCantones.aspx") %>'>Cantones</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarClientes.aspx") %>'>Clientes</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarContactos.aspx") %>'>Contactos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarDatosFijosImprimibles.aspx") %>'>Datos fijos imprimibles</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarDistritos.aspx") %>'>Distritos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Ensayos/AdministrarEnsayos.aspx") %>'>Ensayos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarFirmasInformes.aspx") %>'>Firmas informes</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarHospedajes.aspx") %>'>Hospedajes</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarLaboratorios.aspx") %>'>Laboratorios</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarNotas.aspx") %>'>Notas</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarNotasFijas.aspx") %>'>Notas obligatorias</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarPaises.aspx") %>'>Países</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarProvincias.aspx") %>'>Provincias</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarRoles.aspx") %>'>Roles</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarTiposClientes.aspx") %>'>Tipos de clientes</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarTiposMuestras.aspx") %>'>Tipos de muestras</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarTransportes.aspx") %>'>Tipos de transportes</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarUsuarios.aspx") %>'>Usuarios</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarPermisos.aspx") %>'>Permisos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarVariableCostoTrasladoTecnico.aspx") %>'>Variable costo traslado de técnicos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Administracion/AdministrarVariableTamanoArchivo.aspx") %>'>Variable tamaño de archivos</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href='<%=Page.ResolveUrl("~/DesechoMuestras/DesechoFisicoMuestras.aspx") %>'>Desecho físico de muestras</a>
                                     </li>
                                     <li>
                                         <a href='<%=Page.ResolveUrl("~/Ayuda.aspx") %>'>Ayuda</a>

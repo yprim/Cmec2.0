@@ -1,1 +1,2 @@
-# Cmec2.0
+# CMEC 3.0
+## Se realiza el control de los activos de la unidad de tecnologías de información de los laboratorios del LanammeUCR incluyendo la trazabilidad de los mantenimientos correctivos y preventivos, administración de planes e informes
