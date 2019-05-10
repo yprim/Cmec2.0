@@ -22,6 +22,9 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (!IsPostBack)
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
+                txtEdificioUbicacion.Text = ubicacion.edificio;
+                txtEdificioUbicacion.Attributes.Add("oninput", "validarTexto(this)");
+
                 txtDescripcionUbicacion.Text = ubicacion.descripcion;
                 txtDescripcionUbicacion.Attributes.Add("oninput", "validarTexto(this)");
             }
@@ -62,6 +65,20 @@ namespace Proyecto.Catalogos.Ubicaciones
             }
             #endregion
 
+            #region validacion edificio ubicacion
+
+            String EdificioUbicacion = txtEdificioUbicacion.Text;
+
+            if (EdificioUbicacion.Trim() == "")
+            {
+                txtEdificioUbicacion.CssClass = "form-control alert-danger";
+                divEdificioUbicacionIncorrecto.Style.Add("display", "block");
+                lblEdificioUbicacionIncorrecto.Visible = true;
+
+                validados = false;
+            }
+            #endregion
+
             return validados;
         }
 
@@ -84,6 +101,12 @@ namespace Proyecto.Catalogos.Ubicaciones
             lblDescripcionUbicacion.Visible = false;
         }
 
+        protected void txtEdificioUbicacion_Changed(object sender, EventArgs e)
+        {
+            txtEdificioUbicacion.CssClass = "form-control";
+            lblEdificioUbicacion.Visible = false;
+        }
+
         /// <summary>
         /// Adrián Serrano
         /// 5/9/2019
@@ -102,6 +125,7 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (validarCampos())
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
+                ubicacion.edificio = txtEdificioUbicacion.Text;
                 ubicacion.descripcion = txtDescripcionUbicacion.Text;
 
                 ubicacionServicios.actualizarUbicacion(ubicacion);

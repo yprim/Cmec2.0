@@ -20,6 +20,7 @@ namespace Proyecto.Catalogos.Ubicaciones
         {
             if (!IsPostBack)
             {
+                txtEdificioUbicacion.Attributes.Add("oninput", "validarTexto(this)");
                 txtDescripcionUbicacion.Attributes.Add("oninput", "validarTexto(this)");
             }
 
@@ -46,6 +47,19 @@ namespace Proyecto.Catalogos.Ubicaciones
         public Boolean validarCampos()
         {
             Boolean validados = true;
+
+            #region validacion edificio ubicacion
+
+            String edificioUbicacion = txtEdificioUbicacion.Text;
+
+            if (edificioUbicacion.Trim() == "")
+            {
+                txtEdificioUbicacion.CssClass = "form-control alert-danger";
+                divEdificioUbicacionIncorrecto.Style.Add("display", "block");
+
+                validados = false;
+            }
+            #endregion
 
             #region validacion descripcion ubicacion
 
@@ -82,6 +96,12 @@ namespace Proyecto.Catalogos.Ubicaciones
             lblDescripcionUbicacionIncorrecto.Visible = false;
         }
 
+        protected void txtxEdificioUbicacion_TextChanged(object sender, EventArgs e)
+        {
+            txtEdificioUbicacion.CssClass = "form-control";
+            lblEdificioUbicacionIncorrecto.Visible = false;
+        }
+
 
         /// <summary>
         /// Priscilla Mena
@@ -102,6 +122,7 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (validarCampos())
             {
                 Ubicacion ubicacion = new Ubicacion();
+                ubicacion.edificio = txtEdificioUbicacion.Text;
                 ubicacion.descripcion = txtDescripcionUbicacion.Text;
 
                 ubicacionServicios.insertarUbicacion(ubicacion);

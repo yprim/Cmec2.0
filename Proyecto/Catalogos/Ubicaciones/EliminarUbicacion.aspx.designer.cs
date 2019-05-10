@@ -22,6 +22,24 @@ namespace Proyecto.Catalogos.Ubicaciones {
         protected global::System.Web.UI.WebControls.Label lblEliminarUbicacion;
         
         /// <summary>
+        /// lblEdificioUbicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEdificioUbicacion;
+        
+        /// <summary>
+        /// txtEdificioUbicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtEdificioUbicacion;
+        
+        /// <summary>
         /// lblDescripcionUbicacion control.
         /// </summary>
         /// <remarks>

@@ -21,6 +21,16 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtEdificioUbicacion" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12">
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblDescripcionUbicacion" runat="server" Text="Descripción: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">

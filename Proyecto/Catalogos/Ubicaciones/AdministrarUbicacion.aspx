@@ -25,6 +25,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th>Edificio</th>
                                     <th>Descripción</th>
                                 </tr>
                             </thead>
@@ -38,6 +39,9 @@
                                 <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idUbicacion") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
                             <td>
+                                <%# Eval("edificio") %>
+                            </td>
+                            <td>
                                 <%# Eval("descripcion") %>
                             </td>
                         </tr>
@@ -48,6 +52,7 @@
                         <thead>
                             <tr id="filterrow">
                                 <td></td>
+                                <th>Edificio</th>
                                 <th>Descripcion</th>
                             </tr>
                         </thead>
