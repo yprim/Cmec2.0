@@ -53,7 +53,7 @@ namespace Proyecto.Catalogos
             try
             {
                 tareaServicios.eliminarTarea(tarea);
-                String url = Page.ResolveUrl("~/Catalogos/AdministrarTarea.aspx");
+                String url = Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx");
                 Response.Redirect(url);
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx");
             Response.Redirect(url);
         }
 

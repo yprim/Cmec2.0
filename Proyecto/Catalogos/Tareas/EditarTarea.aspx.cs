@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto.Catalogos
 {
-    public partial class NuevaTarea : System.Web.UI.Page
+    public partial class EditarTarea : System.Web.UI.Page
     {
         #region variables globales
         TareaServicios tareaServicios = new TareaServicios();
@@ -18,24 +18,23 @@ namespace Proyecto.Catalogos
         #region page load
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+        
             if (!IsPostBack)
             {
+                Tarea tarea = (Tarea)Session["tareaEditar"];
+                txtDescripcionTarea.Text = tarea.descripcion;
                 txtDescripcionTarea.Attributes.Add("oninput", "validarTexto(this)");
             }
-
         }
 
         #endregion
-
 
         #region logica
 
 
         /// <summary>
         /// Priscilla Mena
-        /// 07/09/2018
+        /// 5/6/2019
         /// Efecto:Metodo que valida los campos que debe ingresar el usuario
         /// devuelve true si todos los campos esta con datos correctos
         /// sino devuelve false y marcar lo campos para que el usuario vea cuales son los campos que se encuntran mal
@@ -51,12 +50,13 @@ namespace Proyecto.Catalogos
 
             #region validacion descripcion tarea
 
-            String descripcionTarea = txtDescripcionTarea.Text;
+            String DescripcionTarea = txtDescripcionTarea.Text;
 
-            if (descripcionTarea.Trim() == "")
+            if (DescripcionTarea.Trim() == "")
             {
                 txtDescripcionTarea.CssClass = "form-control alert-danger";
                 divDescripcionTareaIncorrecto.Style.Add("display", "block");
+                lblDescripcionTareaIncorrecto.Visible = true;
 
                 validados = false;
             }
@@ -70,7 +70,7 @@ namespace Proyecto.Catalogos
         #region eventos
         /// <summary>
         /// Priscilla Mena
-        /// 07/09/2018
+        /// 5/6/2019
         /// Efecto:Metodo que se activa cuando se cambia el nombre
         /// Requiere: -
         /// Modifica: -
@@ -78,45 +78,44 @@ namespace Proyecto.Catalogos
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        protected void txtxDescripcionTarea_TextChanged(object sender, EventArgs e)
+        protected void txtDescripcionTarea_Changed(object sender, EventArgs e)
         {
             txtDescripcionTarea.CssClass = "form-control";
-            lblDescripcionTareaIncorrecto.Visible = false;
+            lblDescripcionTarea.Visible = false;
         }
-
 
         /// <summary>
         /// Priscilla Mena
-        /// 07/09/2018
-        /// Efecto:Metodo que se activa cuando se da click al boton de guardar
-        /// valida que todos los campos se hayan ingrsado correctamente 
-        /// y guarda los datos en la base de datos 
-        /// redirecciona a la pantalla de administacion de tareas
+        /// 5/6/2019
+        /// Efecto: Metodo que se activa cuando se le da click al boton de actualizar
+        ///valida que todos los campos se hayan ingresado correctamente y guarda los datos en la base de datos
+        ///redireccion a la pantalla de Administracion de tareas
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void btnActualiza_Click(object sender, EventArgs e)
         {
-            //se validan los campos antes de guardar los datos en la base de datos
+            //se validan los campos antes de actualizar los datos en la base de datos
             if (validarCampos())
             {
-                Tarea tarea = new Tarea();
+                Tarea tarea = (Tarea)Session["tareaEditar"];
                 tarea.descripcion = txtDescripcionTarea.Text;
 
-                tareaServicios.insertarTarea(tarea);
+                tareaServicios.actualizarTarea(tarea);
 
-                String url = Page.ResolveUrl("~/Catalogos/AdministrarTarea.aspx");
+                String url = Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx");
                 Response.Redirect(url);
             }
-        }
 
+
+        }
 
         /// <summary>
         /// Priscilla Mena
-        /// 07/09/2018
+        /// 5/6/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
         /// redirecciona a la pantalla de adminstracion de tareas
         /// Requiere: -
@@ -127,7 +126,7 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx");
             Response.Redirect(url);
         }
 

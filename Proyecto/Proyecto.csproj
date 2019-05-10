@@ -70,16 +70,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Catalogos\AdministrarTarea.aspx" />
-    <Content Include="Catalogos\EditarTarea.aspx" />
-    <Content Include="Catalogos\EliminarTarea.aspx" />
-    <Content Include="Catalogos\NuevaTarea.aspx" />
+    <Content Include="Catalogos\Tareas\AdministrarTarea.aspx" />
+    <Content Include="Catalogos\Tareas\EditarTarea.aspx" />
+    <Content Include="Catalogos\Tareas\EliminarTarea.aspx" />
+    <Content Include="Catalogos\Tareas\NuevaTarea.aspx" />
     <Content Include="Catalogos\Ubicaciones\AdministrarUbicacion.aspx" />
     <Content Include="Catalogos\Ubicaciones\EditarUbicacion.aspx" />
     <Content Include="Catalogos\Ubicaciones\EliminarUbicacion.aspx" />
     <Content Include="Catalogos\Ubicaciones\NuevaUbicacion.aspx" />
     <Content Include="Catalogos\Ubicaciones\VerUbicacion.aspx" />
-    <Content Include="Catalogos\VerTarea.aspx" />
+    <Content Include="Catalogos\Tareas\VerTarea.aspx" />
     <Content Include="Content\DataTables\datatables.min.css" />
     <Content Include="Content\DataTables\images\details_close.png" />
     <Content Include="Content\DataTables\images\details_open.png" />
@@ -137,32 +137,32 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalogos\AdministrarTarea.aspx.cs">
+    <Compile Include="Catalogos\Tareas\AdministrarTarea.aspx.cs">
       <DependentUpon>AdministrarTarea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\AdministrarTarea.aspx.designer.cs">
+    <Compile Include="Catalogos\Tareas\AdministrarTarea.aspx.designer.cs">
       <DependentUpon>AdministrarTarea.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\EditarTarea.aspx.cs">
+    <Compile Include="Catalogos\Tareas\EditarTarea.aspx.cs">
       <DependentUpon>EditarTarea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\EditarTarea.aspx.designer.cs">
+    <Compile Include="Catalogos\Tareas\EditarTarea.aspx.designer.cs">
       <DependentUpon>EditarTarea.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\EliminarTarea.aspx.cs">
+    <Compile Include="Catalogos\Tareas\EliminarTarea.aspx.cs">
       <DependentUpon>EliminarTarea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\EliminarTarea.aspx.designer.cs">
+    <Compile Include="Catalogos\Tareas\EliminarTarea.aspx.designer.cs">
       <DependentUpon>EliminarTarea.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\NuevaTarea.aspx.cs">
+    <Compile Include="Catalogos\Tareas\NuevaTarea.aspx.cs">
       <DependentUpon>NuevaTarea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\NuevaTarea.aspx.designer.cs">
+    <Compile Include="Catalogos\Tareas\NuevaTarea.aspx.designer.cs">
       <DependentUpon>NuevaTarea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Ubicaciones\AdministrarUbicacion.aspx.cs">
@@ -200,11 +200,11 @@
     <Compile Include="Catalogos\Ubicaciones\VerUbicacion.aspx.designer.cs">
       <DependentUpon>VerUbicacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\VerTarea.aspx.cs">
+    <Compile Include="Catalogos\Tareas\VerTarea.aspx.cs">
       <DependentUpon>VerTarea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\VerTarea.aspx.designer.cs">
+    <Compile Include="Catalogos\Tareas\VerTarea.aspx.designer.cs">
       <DependentUpon>VerTarea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">

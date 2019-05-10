@@ -68,7 +68,7 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/NuevaTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Tareas/NuevaTarea.aspx");
             Response.Redirect(url);
         }
 
@@ -102,7 +102,7 @@ namespace Proyecto.Catalogos
 
             Session["tareaEditar"] = tareaEditar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EditarTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Tareas/EditarTarea.aspx");
             Response.Redirect(url);
         }
 
@@ -136,7 +136,7 @@ namespace Proyecto.Catalogos
 
             Session["tareaEliminar"] = tareaEliminar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EliminarTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Tareas/EliminarTarea.aspx");
             Response.Redirect(url);
 
         }
@@ -172,7 +172,7 @@ namespace Proyecto.Catalogos
 
             Session["tareaVer"] = tareaVer;
 
-            String url = Page.ResolveUrl("~/Catalogos/VerTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Tareas/VerTarea.aspx");
             Response.Redirect(url);
 
         }
