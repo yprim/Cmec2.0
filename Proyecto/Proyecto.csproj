@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.designer.cs">
       <DependentUpon>VerFuncionario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\Activos\AdministrarActivo.aspx.cs">
       <DependentUpon>AdministrarActivo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
