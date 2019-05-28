@@ -31,9 +31,9 @@ namespace Servicios
         /// </summary>
         /// <param name="Ubicacion"></param>
         /// <returns></returns>
-        public List<Ubicacion> getUbicaciones()
+        public List<Ubicacion> getUbicacionesPorEdificio(int idEdificio)
         {
-            return ubicacionDatos.getUbicaciones();
+            return ubicacionDatos.getUbicacionesPorEdificio(idEdificio);
         }
 
         /// <summary>

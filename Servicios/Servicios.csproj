@@ -44,6 +44,7 @@
     <Compile Include="ActivoServicios.cs" />
     <Compile Include="ConexionServicios.cs" />
     <Compile Include="ContactoServicios.cs" />
+    <Compile Include="EdificioServicios.cs" />
     <Compile Include="FuncionarioServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TareaServicios.cs" />
