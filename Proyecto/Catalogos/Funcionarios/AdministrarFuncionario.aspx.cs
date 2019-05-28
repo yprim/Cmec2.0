@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto.Catalogos
+namespace Proyecto.Catalogos.Funcionarios
 {
     public partial class AdministrarFuncionario : System.Web.UI.Page
     {

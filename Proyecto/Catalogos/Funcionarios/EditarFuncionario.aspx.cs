@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto.Catalogos
+namespace Proyecto.Catalogos.Funcionarios
 {
     public partial class EditarFuncionario : System.Web.UI.Page
     {
@@ -44,7 +44,7 @@ namespace Proyecto.Catalogos
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        /*public Boolean validarCampos()
+        public Boolean validarCampos()
         {
             Boolean validados = true;
 
@@ -63,7 +63,7 @@ namespace Proyecto.Catalogos
             #endregion
 
             return validados;
-        }*/
+        }
 
         #endregion
 
@@ -78,12 +78,12 @@ namespace Proyecto.Catalogos
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        /*
+        
         protected void txtCedFuncionario_Changed(object sender, EventArgs e)
         {
             txtCedFuncionario.CssClass = "form-control";
             lblCedFuncionario.Visible = false;
-        }*/
+        }
 
         /// <summary>
         /// Leonardo Gomez
@@ -103,14 +103,14 @@ namespace Proyecto.Catalogos
             if (validarCampos())
             {
                 Funcionario funcionario = (Funcionario)Session["funcionarioEditar"];
-                funcionario.Ced = txtBox1.Text;
-                funcionario.Nombre = txtBox2.Text;
-                funcionario.Apellidos = txtBox3.Text;
-                funcionario.Fecha_Nacimiento= txtBox4.Text;
-                funcionario.Correo = txtBox5.Text;
-                funcionario.Numero_Telefono1 = txtBox6.Text;
-                funcionario.Numero_Telefono2 = txtBox6.Text;
-                uncionario.Ocupacion = txtBox7.Text;
+                funcionario.Ced = txtCedFuncionario.Text;
+                funcionario.Nombre = TextBox2.Text;
+                funcionario.Apellidos = TextBox3.Text;
+                funcionario.Fecha_Nacimiento= TextBox4.Text;
+                funcionario.Correo = TextBox5.Text;
+                funcionario.Numero_Telefono1 = TextBox6.Text;
+                funcionario.Numero_Telefono2 = TextBox7.Text;
+                funcionario.Ocupacion = TextBox8.Text;
 
                 funcionarioServicios.actualizarFuncionario(funcionario);
 
