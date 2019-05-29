@@ -7,37 +7,46 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Proyecto.Catalogos.Tareas {
+namespace Proyecto.Catalogos.pendienteMover {
     
     
-    public partial class VerTarea {
+    public partial class AprobarMantenimiento {
         
         /// <summary>
-        /// Control lblEliminarTarea.
+        /// Control lblRestaurarTarea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEliminarTarea;
+        protected global::System.Web.UI.WebControls.Label lblRestaurarTarea;
         
         /// <summary>
-        /// Control lblDescripcionTarea.
+        /// Control lblDescripcionMantenimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcionTarea;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionMantenimiento;
         
         /// <summary>
-        /// Control txtDescripcionTarea.
+        /// Control txtDescripcionMantenimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtDescripcionTarea;
+        protected global::System.Web.UI.WebControls.Label txtDescripcionMantenimiento;
+        
+        /// <summary>
+        /// Control btnAprobar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAprobar;
         
         /// <summary>
         /// Control btnCancelar.

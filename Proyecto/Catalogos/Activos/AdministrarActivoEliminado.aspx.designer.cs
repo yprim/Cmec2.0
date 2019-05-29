@@ -10,7 +10,7 @@
 namespace Proyecto.Catalogos.Activos {
     
     
-    public partial class AdministrarActivo {
+    public partial class AdministrarActivoEliminado {
         
         /// <summary>
         /// Control MainScriptManager.
@@ -38,15 +38,6 @@ namespace Proyecto.Catalogos.Activos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label;
-        
-        /// <summary>
-        /// Control ButtonEliminados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonEliminados;
         
         /// <summary>
         /// Control txtBuscarPlaca.
@@ -128,14 +119,5 @@ namespace Proyecto.Catalogos.Activos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblpagina;
-        
-        /// <summary>
-        /// Control btnNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
     }
 }

@@ -54,7 +54,43 @@ namespace AccesoDatos
                 activo.Placa = Int32.Parse(reader.GetValue(0).ToString());
                 activo.Serie = reader.GetValue(1).ToString();
                 activo.Modelo = reader.GetValue(2).ToString();
-                activo.FechaCompra = DateTime.Parse(reader.GetValue(3).ToString());
+                activo.FechaCompra = reader.GetValue(3).ToString();
+                activo.Descripcion = reader.GetValue(4).ToString();
+                activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
+                activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
+                activo.IsNotDeleted = Boolean.Parse(reader.GetValue(7).ToString());
+                listaActivos.Add(activo);
+            }
+            conexion.Close();
+            return listaActivos;
+        }
+
+        /// <summary>
+        /// Steven Camacho
+        /// 29/5/2019
+        /// Efecto: devuelve una lista con todos los activos inhabilitados
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: lista de activos inhabilitados
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public List<Activo> obtenerTodosEliminado()
+        {
+            //Recupera todos los activos que están habilitados
+            List<Activo> listaActivos = new List<Activo>();
+            SqlCommand sqlCommand = new SqlCommand("Select * from activo where habilitado= 0.", conexion);
+            SqlDataReader reader;
+            conexion.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Activo activo = new Activo();
+                activo.Placa = Int32.Parse(reader.GetValue(0).ToString());
+                activo.Serie = reader.GetValue(1).ToString();
+                activo.Modelo = reader.GetValue(2).ToString();
+                activo.FechaCompra = reader.GetValue(3).ToString();
                 activo.Descripcion = reader.GetValue(4).ToString();
                 activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
                 activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
@@ -99,7 +135,7 @@ namespace AccesoDatos
                 activo.Placa = Int32.Parse(reader.GetValue(0).ToString());
                 activo.Serie = reader.GetValue(1).ToString();
                 activo.Modelo = reader.GetValue(2).ToString();
-                activo.FechaCompra = DateTime.Parse(reader.GetValue(3).ToString());
+                activo.FechaCompra = reader.GetValue(3).ToString();
                 activo.Descripcion = reader.GetValue(4).ToString();
                 activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
                 activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
@@ -187,6 +223,33 @@ namespace AccesoDatos
                 , conexion);
             sqlCommand.Parameters.AddWithValue("@placa", placa);
             sqlCommand.Parameters.AddWithValue("@cambio", 0);
+
+            conexion.Open();
+            int respuesta = (int)sqlCommand.ExecuteScalar();
+            conexion.Close();
+
+            return respuesta;
+        }
+
+
+        /// <summary>
+        /// Steven Camacho
+        /// 29/5/2019
+        /// Efecto: restaura la habilitación del activo, lo que permite mostrarse a lista de activos.
+        /// Requiere: numero entero de la placa a habilitar
+        /// Modifica: El activo con el número de placa incicada por parametros.
+        /// Devuelve: un entero que es la placa insertada, esto es para probar solamente que se realizó la operación.
+        /// </summary>
+        /// <param name="placa" type="int"></param>
+        /// <returns></returns>
+        public int restaurarActivo(int placa)
+        {
+            //Permite no mostrar los activos que han sido inhabilitados como solución alternativa a no eliminarlos del todo.
+            SqlCommand sqlCommand = new SqlCommand("update Activo set habilitado=@cambio " +
+                "output Inserted.placa where placa=@placa"
+                , conexion);
+            sqlCommand.Parameters.AddWithValue("@placa", placa);
+            sqlCommand.Parameters.AddWithValue("@cambio", 1);
 
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
