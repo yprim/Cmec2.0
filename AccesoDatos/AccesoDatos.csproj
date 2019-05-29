@@ -46,6 +46,7 @@
     <Compile Include="ActivoDatos.cs" />
     <Compile Include="ConexionDatos.cs" />
     <Compile Include="ContactoDatos.cs" />
+    <Compile Include="EdificioDatos.cs" />
     <Compile Include="FuncionarioDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TareaDatos.cs" />

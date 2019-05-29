@@ -122,8 +122,8 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (validarCampos())
             {
                 Ubicacion ubicacion = new Ubicacion();
-                ubicacion.edificio = txtEdificioUbicacion.Text;
-                ubicacion.descripcion = txtDescripcionUbicacion.Text;
+                //ubicacion.edificio = txtEdificioUbicacion.Text;
+                //ubicacion.descripcion = txtDescripcionUbicacion.Text;
 
                 ubicacionServicios.insertarUbicacion(ubicacion);
 

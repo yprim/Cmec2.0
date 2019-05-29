@@ -71,6 +71,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Catalogos\Edificios\AdministrarEdificio.aspx" />
+    <Content Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\EditarFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\EliminarFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\NuevoFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\VerFuncionario.aspx" />
     <Content Include="Catalogos\Activos\AdministrarActivo.aspx" />
     <Content Include="Catalogos\Tareas\AdministrarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EditarTarea.aspx" />
@@ -139,6 +145,48 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogos\Edificios\AdministrarEdificio.aspx.cs">
+      <DependentUpon>AdministrarEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\AdministrarEdificio.aspx.designer.cs">
+      <DependentUpon>AdministrarEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.cs">
+      <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.designer.cs">
+      <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EditarFuncionario.aspx.cs">
+      <DependentUpon>EditarFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EditarFuncionario.aspx.designer.cs">
+      <DependentUpon>EditarFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.cs">
+      <DependentUpon>EliminarFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.designer.cs">
+      <DependentUpon>EliminarFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\NuevoFuncionario.aspx.cs">
+      <DependentUpon>NuevoFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\NuevoFuncionario.aspx.designer.cs">
+      <DependentUpon>NuevoFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.cs">
+      <DependentUpon>VerFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.designer.cs">
+      <DependentUpon>VerFuncionario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\Activos\AdministrarActivo.aspx.cs">
       <DependentUpon>AdministrarActivo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

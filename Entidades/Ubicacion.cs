@@ -14,7 +14,7 @@ namespace Entidades
     public class Ubicacion
     {
         public int idUbicacion { get; set; }
-        public String edificio { get; set; }
-        public String descripcion { get; set; }
+        public string numeroAula { get; set; }
+        public Edificio edificio { get; set; }
     }
 }

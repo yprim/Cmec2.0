@@ -22,8 +22,8 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (!IsPostBack)
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionVer"];
-                txtEdificioUbicacion.Text = ubicacion.edificio;
-                txtDescripcionUbicacion.Text = ubicacion.descripcion;
+                //txtEdificioUbicacion.Text = ubicacion.edificio;
+                //txtDescripcionUbicacion.Text = ubicacion.descripcion;
 
             }
 

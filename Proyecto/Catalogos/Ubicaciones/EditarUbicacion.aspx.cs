@@ -22,10 +22,10 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (!IsPostBack)
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
-                txtEdificioUbicacion.Text = ubicacion.edificio;
+                //txtEdificioUbicacion.Text = ubicacion.edificio;
                 txtEdificioUbicacion.Attributes.Add("oninput", "validarTexto(this)");
 
-                txtDescripcionUbicacion.Text = ubicacion.descripcion;
+                //txtDescripcionUbicacion.Text = ubicacion.descripcion;
                 txtDescripcionUbicacion.Attributes.Add("oninput", "validarTexto(this)");
             }
         }
@@ -125,8 +125,8 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (validarCampos())
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
-                ubicacion.edificio = txtEdificioUbicacion.Text;
-                ubicacion.descripcion = txtDescripcionUbicacion.Text;
+                //ubicacion.edificio = txtEdificioUbicacion.Text;
+                //ubicacion.descripcion = txtDescripcionUbicacion.Text;
 
                 ubicacionServicios.actualizarUbicacion(ubicacion);
 

@@ -25,8 +25,6 @@ namespace Proyecto.Catalogos.Ubicaciones
             Session["ubicacionEditar"] = null;
             Session["ubicacionEliminar"] = null;
             cargarDatosTblUbicaciones();
-
-
         }
         #endregion
 
@@ -44,7 +42,7 @@ namespace Proyecto.Catalogos.Ubicaciones
         private void cargarDatosTblUbicaciones()
         {
             List<Ubicacion> listaUbicaciones = new List<Ubicacion>();
-            listaUbicaciones = ubicacionServicios.getUbicaciones();
+            //listaUbicaciones = ubicacionServicios.getUbicaciones();
             rpUbicacion.DataSource = listaUbicaciones;
             rpUbicacion.DataBind();
 

@@ -31,14 +31,13 @@ namespace AccesoDatos
         /// </summary>
         /// <param></param>
         /// <returns><code>List<Ubicacion></code></returns>
-        public List<Ubicacion> getUbicaciones()
+        public List<Ubicacion> getUbicacionesPorEdificio(int idEdificio)
         {
-
             List<Ubicacion> listaUbicaciones = new List<Ubicacion>();
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("select id, edificio, descripcion from  Ubicacion;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select id_ubicacion, numero_aula, id_edificio from  Ubicacion;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -47,10 +46,10 @@ namespace AccesoDatos
             while (reader.Read())
             {
                 Ubicacion ubicacion = new Ubicacion();
-
-                ubicacion.idUbicacion = Convert.ToInt32(reader["id"].ToString());
-                ubicacion.edificio = reader["edificio"].ToString();
-                ubicacion.descripcion = reader["descripcion"].ToString();
+                ubicacion.idUbicacion = Convert.ToInt32(reader["id_ubicacion"].ToString());
+                ubicacion.numeroAula = reader["numero_aula"].ToString();
+                ubicacion.edificio = new Edificio();
+                ubicacion.edificio.idEdificio = Convert.ToInt32(reader["id_edificio"].ToString());
 
                 listaUbicaciones.Add(ubicacion);
             }
@@ -74,11 +73,11 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("insert into Ubicacion(edificio, descripcion) output Inserted.id " +
-                "values(@edificio, @descripcion);"
+            SqlCommand sqlCommand = new SqlCommand("insert into Ubicacion(numero_aula, id_edificio) output Inserted.id_ubicacion " +
+                "values(@numero_aula, @id_edificio);"
                 , sqlConnection);
-            sqlCommand.Parameters.AddWithValue("@edificio", ubicacion.edificio);
-            sqlCommand.Parameters.AddWithValue("@descripcion", ubicacion.descripcion);
+            sqlCommand.Parameters.AddWithValue("@numero_aula", ubicacion.numeroAula);
+            sqlCommand.Parameters.AddWithValue("@id_edificio", ubicacion.edificio.idEdificio);
 
             sqlConnection.Open();
             int id_ubicacion = Convert.ToInt32(sqlCommand.ExecuteScalar());
@@ -100,12 +99,12 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("update Ubicacion set edificio=@edificio, descripcion=@descripcion " +
-                "output Inserted.id where id=@id;"
+            SqlCommand sqlCommand = new SqlCommand("update Ubicacion set numero_aula=@numero_aula, id_edificio=@id_edificio " +
+                "output Inserted.id_ubicacion where id_ubicacion=@id_ubicacion;"
                 , sqlConnection);
-            sqlCommand.Parameters.AddWithValue("@edificio", ubicacion.edificio);
-            sqlCommand.Parameters.AddWithValue("@descripcion", ubicacion.descripcion);
-            sqlCommand.Parameters.AddWithValue("@id", ubicacion.idUbicacion);
+            sqlCommand.Parameters.AddWithValue("@numero_aula", ubicacion.numeroAula);
+            sqlCommand.Parameters.AddWithValue("@id_edificio", ubicacion.edificio.idEdificio);
+            sqlCommand.Parameters.AddWithValue("@id_ubicacion", ubicacion.idUbicacion);
 
             sqlConnection.Open();
             sqlCommand.ExecuteReader();
@@ -127,8 +126,8 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion output DELETED.id where id = @id;", sqlConnection);
-            sqlCommand.Parameters.AddWithValue("@id", ubicacion.idUbicacion);
+            SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion output DELETED.id_ubicacion where id_ubicacion = @id_ubicacion;", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@id_ubicacion", ubicacion.idUbicacion);
 
             sqlConnection.Open();
             sqlCommand.ExecuteReader();

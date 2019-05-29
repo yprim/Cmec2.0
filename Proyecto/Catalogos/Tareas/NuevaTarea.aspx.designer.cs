@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto.Catalogos {
+namespace Proyecto.Catalogos.Tareas {
     
     
     public partial class NuevaTarea {

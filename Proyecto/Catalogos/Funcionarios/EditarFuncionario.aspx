@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditarFuncionario.aspx.cs" Inherits="Proyecto.Catalogos.Funcionarisos.EditarFuncionario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditarFuncionario.aspx.cs" Inherits="Proyecto.Catalogos.Funcionarios.EditarFuncionario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -24,7 +24,7 @@
                     <asp:Label ID="lblCedFuncionario" runat="server" Text=Ced <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="txtCedFuncionario" runat="server"></asp:TextBox>
                 </div>
                 <div id="divCedFuncionarioIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblCedFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
