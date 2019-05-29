@@ -25,6 +25,7 @@
                         <table id="tblMantenimiento" class="row-border table-striped">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>ID</th>
                                     <th>ID Placa</th>
                                     <th>Responsable</th>
@@ -44,10 +45,20 @@
                             </td>
                             <td>
                                 <%# Eval("id") %>
+                            </td>
+                                <td>    
                                 <%# Eval("id_placa") %>
+                            </td>
+                                <td>    
                                 <%# Eval("responsable") %>
+                            </td>
+                                <td>    
                                 <%# Eval("fecha") %>
+                            </td>
+                                <td>    
                                 <%# Eval("ubicacion") %>
+                            </td>
+                                <td>    
                                 <%# Eval("descripcion") %>
                             </td>
                         </tr>
