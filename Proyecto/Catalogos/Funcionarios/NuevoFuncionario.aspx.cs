@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto.Catalogos.Funcionarios
 {
-    public partial class NuevaTarea : System.Web.UI.Page
+    public partial class NuevoFuncionario : System.Web.UI.Page
     {
         #region variables globales
         FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
@@ -101,15 +101,15 @@ namespace Proyecto.Catalogos.Funcionarios
         protected void btn_Guardar_Click(object sender, EventArgs e)
         {
             //se validan los campos antes de guardar los datos en la base de datos
-            if (validarCampos())
+            if (validarCamposFuncionario())
             {
                 Funcionario funcionario = new Funcionario();
                 funcionario.Ced = txtCedFuncionario.Text;
 
-                funcinarioServicios.insertarFuncionario(funcionario);
+                funcionarioServicios.insertarFuncionario(funcionario);
 
-                String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncinario.aspx");
-                Response.Redirect(url);
+                //String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncinario.aspx");
+                //Response.Redirect(url);
             }
         }
 
@@ -127,8 +127,8 @@ namespace Proyecto.Catalogos.Funcionarios
         /// <returns></returns>
         protected void btn_Cancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Funcionario/AdministrarFuncionario.aspx");
-            Response.Redirect(url);
+            //String url = Page.ResolveUrl("~/Catalogos/Funcionario/AdministrarFuncionario.aspx");
+            //Response.Redirect(url);
         }
 
         #endregion

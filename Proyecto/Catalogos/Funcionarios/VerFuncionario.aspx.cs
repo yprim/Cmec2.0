@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto.Catalogos.Funcionarios
 {
-    public partial class VerTarea : System.Web.UI.Page
+    public partial class VerFuncionario : System.Web.UI.Page
     {
         #region variables globales
         FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
@@ -45,8 +45,8 @@ namespace Proyecto.Catalogos.Funcionarios
         /// <returns></returns>
         protected void btn_Cancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
-            Response.Redirect(url);
+            //String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
+            //Response.Redirect(url);
         }
 
         #endregion
