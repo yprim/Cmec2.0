@@ -21,7 +21,7 @@ namespace Servicios
             datos = new ActivoDatos();
         }
 
-        public LinkedList<Activo> obtenerTodo()
+        public List<Activo> obtenerTodo()
         {
             return datos.obtenerTodos();
         }

@@ -39,10 +39,10 @@ namespace AccesoDatos
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        public LinkedList<Activo> obtenerTodos()
+        public List<Activo> obtenerTodos()
         {
             //Recupera todos los activos que están habilitados
-            LinkedList<Activo> listaActivos = new LinkedList<Activo>();
+            List<Activo> listaActivos = new List<Activo>();
             SqlCommand sqlCommand = new SqlCommand("Select * from activo where habilitado= 1.", conexion);
             SqlDataReader reader;
             conexion.Open();
@@ -58,7 +58,7 @@ namespace AccesoDatos
                 activo.Descripcion = reader.GetValue(4).ToString();
                 activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
                 activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
-                listaActivos.AddLast(activo);
+                listaActivos.Add(activo);
             }
             conexion.Close();
             return listaActivos;
