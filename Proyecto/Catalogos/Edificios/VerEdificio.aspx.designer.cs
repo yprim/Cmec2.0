@@ -7,55 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto.Catalogos.Ubicaciones {
+namespace Proyecto.Catalogos.Edificios {
     
     
-    public partial class VerUbicacion {
+    public partial class VerEdificio {
         
         /// <summary>
-        /// lblEliminarUbicacion control.
+        /// lblEliminarEdificio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEliminarUbicacion;
+        protected global::System.Web.UI.WebControls.Label lblEliminarEdificio;
         
         /// <summary>
-        /// lblNumeroUbicacion control.
+        /// lblNombreEdificio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumeroUbicacion;
+        protected global::System.Web.UI.WebControls.Label lblNombreEdificio;
         
         /// <summary>
-        /// txtNumeroUbicacion control.
+        /// txtNombreEdificio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtNumeroUbicacion;
-        
-        /// <summary>
-        /// lblEdificioUbicacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEdificioUbicacion;
-        
-        /// <summary>
-        /// txtEdificioUbicacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtEdificioUbicacion;
+        protected global::System.Web.UI.WebControls.Label txtNombreEdificio;
         
         /// <summary>
         /// btnCancelar control.

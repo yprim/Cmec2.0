@@ -7,55 +7,55 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto.Catalogos.Ubicaciones {
+namespace Proyecto.Catalogos.Edificios {
     
     
-    public partial class EditarUbicacion {
+    public partial class EditarEdificio {
         
         /// <summary>
-        /// lblEditarUbicacion control.
+        /// lblEditarEdificio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEditarUbicacion;
+        protected global::System.Web.UI.WebControls.Label lblEditarEdificio;
         
         /// <summary>
-        /// lblNumeroUbicacion control.
+        /// lblNombreEdificio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumeroUbicacion;
+        protected global::System.Web.UI.WebControls.Label lblNombreEdificio;
         
         /// <summary>
-        /// txtNumeroUbicacion control.
+        /// txtNombreEdificio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumeroUbicacion;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreEdificio;
         
         /// <summary>
-        /// divNumeroUbicacionIncorrecto control.
+        /// divNombreEdificioIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNumeroUbicacionIncorrecto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNombreEdificioIncorrecto;
         
         /// <summary>
-        /// lblNumeroUbicacionIncorrecto control.
+        /// lblNombreEdificioIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumeroUbicacionIncorrecto;
+        protected global::System.Web.UI.WebControls.Label lblNombreEdificioIncorrecto;
         
         /// <summary>
         /// btnActualizar control.

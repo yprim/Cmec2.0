@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditarUbicacion.aspx.cs" Inherits="Proyecto.Catalogos.Ubicaciones.EditarUbicacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EditarEdificio.aspx.cs" Inherits="Proyecto.Catalogos.Edificios.EditarEdificio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -8,7 +8,7 @@
             <%-- titulo accion--%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-                        <asp:Label ID="lblEditarUbicacion" runat="server" Text="Editar Ubicación" Font-Size="Large" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblEditarEdificio" runat="server" Text="Editar Edificio" Font-Size="Large" ForeColor="Black"></asp:Label>
                     </center>
             </div>
             <%-- fin titulo accion --%>
@@ -21,13 +21,13 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNombreEdificio" runat="server" Text="Nombre <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtNumeroUbicacion" runat="server"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="txtNombreEdificio" runat="server"></asp:TextBox>
                 </div>
-                <div id="divNumeroUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblNumeroUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divNombreEdificioIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblNombreEdificioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
 
             </div>
@@ -62,14 +62,15 @@
         function validarTexto(txtBox) {
             var id = txtBox.id.substring(12);
 
-            var numeroUbicacionIncorrecto = document.getElementById('<%= divNumeroUbicacionIncorrecto.ClientID %>');
+            var nombreEdificioIncorrecto = document.getElementById('<%= divNombreEdificioIncorrecto.ClientID %>');
 
             if (txtBox.value != "") {
                 txtBox.className = "form-control";
-                numeroUbicacionIncorrecto.style.display = 'none';
+
+                nombreEdificioIncorrecto.style.display = 'none';
             } else {
                 txtBox.className = "form-control alert-danger";
-                numeroUbicacionIncorrecto.style.display = 'block';
+                nombreEdificioIncorrecto.style.display = 'block';
             }
         }
     </script>

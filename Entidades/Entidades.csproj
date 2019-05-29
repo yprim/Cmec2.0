@@ -45,6 +45,7 @@
     <Compile Include="Contacto.cs" />
     <Compile Include="Edificio.cs" />
     <Compile Include="Funcionario.cs" />
+    <Compile Include="MantenimientoCorrectivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tarea.cs" />
     <Compile Include="Ubicacion.cs" />

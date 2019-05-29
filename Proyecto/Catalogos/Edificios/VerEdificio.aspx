@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="VerUbicacion.aspx.cs" Inherits="Proyecto.Catalogos.Ubicaciones.VerUbicacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="VerEdificio.aspx.cs" Inherits="Proyecto.Catalogos.Edificios.VerEdificio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -8,7 +8,7 @@
             <%-- titulo accion--%>
     <div class="col-md-12 col-xs-12 col-sm-12">
         <center>
-                        <asp:Label ID="lblEliminarUbicacion" runat="server" Text="Información de ubicación" Font-Size="Large" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblEliminarEdificio" runat="server" Text="Información de Edificio" Font-Size="Large" ForeColor="Black"></asp:Label>
                     </center>
     </div>
             <%-- fin titulo accion --%>
@@ -21,20 +21,10 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNombreEdificio" runat="server" Text="Nombre: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtNumeroUbicacion" runat="server" ReadOnly="true"></asp:Label>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtEdificioUbicacion" runat="server" ReadOnly="true"></asp:Label>
+                    <asp:Label  ID="txtNombreEdificio" runat="server" ReadOnly="true"></asp:Label>
                 </div>
             </div>
             <%-- fin campos a llenar --%>

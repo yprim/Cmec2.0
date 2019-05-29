@@ -22,6 +22,24 @@ namespace Proyecto.Catalogos.Ubicaciones {
         protected global::System.Web.UI.WebControls.Label lblEliminarUbicacion;
         
         /// <summary>
+        /// lblNumeroUbicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroUbicacion;
+        
+        /// <summary>
+        /// txtNumeroUbicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtNumeroUbicacion;
+        
+        /// <summary>
         /// lblEdificioUbicacion control.
         /// </summary>
         /// <remarks>
@@ -38,24 +56,6 @@ namespace Proyecto.Catalogos.Ubicaciones {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtEdificioUbicacion;
-        
-        /// <summary>
-        /// lblDescripcionUbicacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcionUbicacion;
-        
-        /// <summary>
-        /// txtDescripcionUbicacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtDescripcionUbicacion;
         
         /// <summary>
         /// btnEliminar control.
