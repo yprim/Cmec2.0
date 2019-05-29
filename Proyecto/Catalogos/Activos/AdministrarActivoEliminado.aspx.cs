@@ -11,8 +11,9 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto.Catalogos.Activos
 {
-    public partial class AdministrarActivo : System.Web.UI.Page
+    public partial class AdministrarActivoEliminado : System.Web.UI.Page
     {
+
         #region variables globales
         ActivoServicios activoServicios = new ActivoServicios();
         readonly PagedDataSource pgsource = new PagedDataSource();
@@ -21,7 +22,7 @@ namespace Proyecto.Catalogos.Activos
         #endregion
 
         #region page load
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
@@ -36,7 +37,7 @@ namespace Proyecto.Catalogos.Activos
                 ActivoServicios activoServicios = new ActivoServicios();
 
                 List<Activo> listaActivos = new List<Activo>();
-                listaActivos = activoServicios.obtenerTodo();
+                listaActivos = activoServicios.obtenerTodoEliminado();
 
                 Session["listaActivos"] = listaActivos;
                 Session["listaActivosFiltrada"] = listaActivos;
@@ -50,8 +51,8 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho
-        /// 27/abr/2019
-        /// Efecto: carga los datos filtrados en la tabla de activos y realiza la paginacion correspondiente
+        /// 29/abr/2019
+        /// Efecto: carga los datos filtrados en la tabla de activos eliminados y realiza la paginacion correspondiente
         /// Requiere: -
         /// Modifica: los datos mostrados en pantalla
         /// Devuelve: -
@@ -63,7 +64,7 @@ namespace Proyecto.Catalogos.Activos
             string placa = "";
             String serie = "";
             String modelo = "";
-            DateTime fechaCompra ;
+            DateTime fechaCompra;
             String descripcion = "";
             Ubicacion ubicacion;
 
@@ -74,11 +75,7 @@ namespace Proyecto.Catalogos.Activos
             if (ViewState["descripcion"] != null)
                 descripcion = (String)ViewState["descripcion"];
 
-            if (ViewState["fechaCompra"] != null) { 
-                fechaCompra = (DateTime)ViewState["fechaCompra"];
-             }
-
-            List<Activo> listaActivos = (List<Activo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa) ).ToList();
+            List<Activo> listaActivos = (List<Activo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa)).ToList();
             Session["listaActivosFiltrada"] = listaActivos;
 
             var dt = listaActivos;
@@ -105,8 +102,8 @@ namespace Proyecto.Catalogos.Activos
         }
 
         /// <summary>
-        /// Leonardo Carrion
-        /// 10/abr/2019
+        /// Steven Camacho
+        /// 29/05/2019
         /// Efecto: realiza la paginacion
         /// Requiere: -
         /// Modifica: paginacion mostrada en pantalla
@@ -166,7 +163,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 27/05/2019
+        /// 29/05/2019
         /// Efecto: se devuelve a la primera pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Primer pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -182,7 +179,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 27/05/2019
+        /// 29/05/2019
         /// Efecto: se devuelve a la ultima pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Ultima pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -214,7 +211,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 27/05/2019
+        /// 29/05/2019
         /// Efecto: se devuelve a la pagina siguiente y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Siguiente pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -230,7 +227,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 27/05/2019
+        /// 29/05/2019
         /// Efecto: actualiza la pagina actual y muestra los datos de la misma
         /// Requiere: -
         /// Modifica: elementos de la tabla
@@ -247,7 +244,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho
-        /// 27/05/2019
+        /// 29/05/2019
         /// Efecto: marca el boton de la pagina seleccionada
         /// Requiere: dar clic al boton de paginacion
         /// Modifica: color del boton seleccionado
@@ -268,78 +265,39 @@ namespace Proyecto.Catalogos.Activos
 
         #region eventos
 
+        
         /// <summary>
-        /// 27/5/2019
-        /// Metodo que redirecciona a la pantalla para registrar un nuevo activo
-        /// Este se activa al hacer click en la botón nuevo activo
+        /// Steven Camacho B
+        /// 29/05/2019
+        /// Metodo que redirecciona a la pantalla donde se restaura (habilita) un activo
+        /// se activa cuando se presiona el boton de restaurar
         /// </summary>
-        protected void btnNuevo_Click(object sender, EventArgs e)
-        {
-            String url = Page.ResolveUrl("~/Catalogos/Activos/NuevoActivo.aspx");
-            Response.Redirect(url);
-        }
-
-        /*
-         * Steven Camacho B
-         * 27/06/2019
-         * Metodo que redirecciona a la pantalla donde se edita un activo
-         * se activa cuando se presiona el boton de Editar
-         */
-        protected void btnEditar_Click(object sender, EventArgs e)
+        protected void btnRestaurar_Click(object sender, EventArgs e)
         {
             int idActivo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
             List<Activo> listaActivos = (List<Activo>)Session["listaActivosFiltrada"];
 
-            Activo activoEditar = new Activo();
+            Activo activoRestaurar = new Activo();
 
             foreach (Activo activo in listaActivos)
             {
                 if (activo.Placa == idActivo)
                 {
-                    activoEditar = activo;
+                    activoRestaurar = activo;
                     break;
                 }
             }
 
-            Session["activoEditar"] = activoEditar;
+            Session["activoRestaurar"] = activoRestaurar;
 
-            String url = Page.ResolveUrl("~/Catalogos/Activos/EditarActivo.aspx");
-            Response.Redirect(url);
-        }
-
-       /// <summary>
-       /// Steven Camacho B
-       /// 27/05/2019
-       /// Metodo que redirecciona a la pantalla donde se elimina (inhabilita) un activo
-       /// se activa cuando se presiona el boton de Eliminar
-        /// </summary>
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int idActivo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
-
-            List<Activo> listaActivos = (List<Activo>)Session["listaActivosFiltrada"];
-
-            Activo activoEliminar = new Activo();
-
-            foreach (Activo activo in listaActivos)
-            {
-                if (activo.Placa == idActivo)
-                {
-                    activoEliminar = activo;
-                    break;
-                }
-            }
-
-            Session["activoEliminar"] = activoEliminar;
-
-            String url = Page.ResolveUrl("~/Catalogos/Activos/EliminarActivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Activos/RestaurarActivo.aspx");
             Response.Redirect(url);
         }
 
         /// <summary>
         /// Steven Camacho Barboza
-        /// 27/05/2019
+        /// 29/05/2019
         /// Efecto: redirrecciona a la pantalla de Ver
         /// Requiere: dar clic al boton de "Ver"
         /// Modifica: -
@@ -370,22 +328,6 @@ namespace Proyecto.Catalogos.Activos
             Response.Redirect(url);
         }
 
-        /// <summary>
-        /// Steven Camacho Barboza
-        /// 27/05/2019
-        /// Efecto: redirrecciona a la pantalla de activos eliminados
-        /// Requiere: dar clic al boton de "Ver activos eliminados"
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btnVerEliminados_Click(object sender, EventArgs e)
-        {
-            String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivoEliminado.aspx");
-            Response.Redirect(url);
-        }
-
         protected void Button4_Click(object sender, EventArgs e)
         {
             paginaActual = 0;
@@ -394,5 +336,6 @@ namespace Proyecto.Catalogos.Activos
             mostrarDatosTabla();
         }
         #endregion
+
     }
 }

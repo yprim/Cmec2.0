@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="AdministrarActivo.aspx.cs" Inherits="Proyecto.Catalogos.Activos.AdministrarActivo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="AdministrarActivoEliminado.aspx.cs" Inherits="Proyecto.Catalogos.Activos.AdministrarActivoEliminado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ScriptManager ID="MainScriptManager" runat="server" EnableCdn="true"/>
+        <asp:ScriptManager ID="MainScriptManager" runat="server" EnableCdn="true"/>
         <asp:UpdatePanel ID="pnlUpdate" runat="server">
             <ContentTemplate>
 
@@ -11,7 +11,7 @@
         <%-- titulo pantalla --%>
         <div class="col-md-12 col-xs-12 col-sm-12">
             <center>
-            <asp:Label ID="label" runat="server" Text="Activos" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="label" runat="server" Text="Activos Eliminados" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
         </div>
         <%-- fin titulo pantalla --%>
@@ -25,7 +25,6 @@
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <table class="table">
                         <tr>
-                                <td><asp:Button ID="ButtonEliminados" runat="server" Text="Ver activos eliminados" OnClick="btnVerEliminados_Click" CssClass="btn btn-primary"/></td>
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -56,7 +55,7 @@
                                         <th>Modelo</th>
                                         <th>Fecha Compra</th>
                                         <th>Descripción</th>                                       
-                                        <th>Ubicación</th>
+                                        <th>Ubicación (último mantenimiento)</th>
                                     </tr>
                                 </thead>
                         </HeaderTemplate>
@@ -65,8 +64,7 @@
                             <tr style="text-align: center">
                                 <td>
                                     <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("placa") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
-                                    <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("placa") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
-                                    <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("placa") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btnRestaurar" runat="server" ToolTip="Restaurar" OnClick="btnRestaurar_Click" CommandArgument='<%# Eval("placa") %>'><span class="fas fa-trash-restore"></span></asp:LinkButton>
                                
                                 </td>
                                 <td>
@@ -140,7 +138,7 @@
 
         <%-- botones --%>
         <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-            <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Activo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+        
         </div>
         <%-- fin botones --%>
     </div>
@@ -153,6 +151,7 @@
     <script type="text/javascript">
 </script>
     <!-- fin script tabla jquery -->
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
 </asp:Content>

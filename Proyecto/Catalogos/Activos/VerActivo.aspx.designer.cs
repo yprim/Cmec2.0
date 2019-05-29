@@ -7,37 +7,37 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Proyecto.Catalogos.Tareas {
+namespace Proyecto.Catalogos.Activos {
     
     
-    public partial class VerTarea {
+    public partial class VerActivo {
         
         /// <summary>
-        /// Control lblEliminarTarea.
+        /// Control lblVerActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEliminarTarea;
+        protected global::System.Web.UI.WebControls.Label lblVerActivo;
         
         /// <summary>
-        /// Control lblDescripcionTarea.
+        /// Control lblDescripcionActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcionTarea;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionActivo;
         
         /// <summary>
-        /// Control txtDescripcionTarea.
+        /// Control txtDescripcionActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtDescripcionTarea;
+        protected global::System.Web.UI.WebControls.Label txtDescripcionActivo;
         
         /// <summary>
         /// Control btnCancelar.

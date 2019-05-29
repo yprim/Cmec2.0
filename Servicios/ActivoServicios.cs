@@ -26,6 +26,11 @@ namespace Servicios
             return datos.obtenerTodos();
         }
 
+        public List<Activo> obtenerTodoEliminado()
+        {
+            return datos.obtenerTodosEliminado();
+        }
+
         public int insertar(Activo activo)
         {
             return datos.insertar(activo);
@@ -39,6 +44,11 @@ namespace Servicios
         public int inhabilitar(int placa)
         {
             return datos.inhabilitar(placa);
+        }
+
+        public int restaurarActivo(int placa)
+        {
+            return datos.restaurarActivo(placa);
         }
 
         public LinkedList<Activo> search(string search)
