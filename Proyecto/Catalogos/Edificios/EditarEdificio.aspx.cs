@@ -7,12 +7,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto.Catalogos.Ubicaciones
+namespace Proyecto.Catalogos.Edificios
 {
-    public partial class EditarUbicacion : System.Web.UI.Page
+    public partial class EditarEdificio : System.Web.UI.Page
     {
         #region variables globales
-        UbicacionServicios ubicacionServicios = new UbicacionServicios();
+        EdificioServicios edificioServicios = new EdificioServicios();
         #endregion
 
         #region page load
@@ -21,10 +21,9 @@ namespace Proyecto.Catalogos.Ubicaciones
 
             if (!IsPostBack)
             {
-                Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
-
-                txtNumeroUbicacion.Text = ubicacion.numeroAula;
-                txtNumeroUbicacion.Attributes.Add("oninput", "validarTexto(this)");
+                Edificio edificio = (Edificio)Session["edificioEditar"];
+                txtNombreEdificio.Text = edificio.nombre;
+                txtNombreEdificio.Attributes.Add("oninput", "validarTexto(this)");
             }
         }
 
@@ -49,15 +48,15 @@ namespace Proyecto.Catalogos.Ubicaciones
         {
             Boolean validados = true;
 
-            #region validacion Numero ubicacion
+            #region validacion nombre Edificio
 
-            String NumeroUbicacion = txtNumeroUbicacion.Text;
+            String NombreEdificio = txtNombreEdificio.Text;
 
-            if (NumeroUbicacion.Trim() == "")
+            if (NombreEdificio.Trim() == "")
             {
-                txtNumeroUbicacion.CssClass = "form-control alert-danger";
-                divNumeroUbicacionIncorrecto.Style.Add("display", "block");
-                lblNumeroUbicacionIncorrecto.Visible = true;
+                txtNombreEdificio.CssClass = "form-control alert-danger";
+                divNombreEdificioIncorrecto.Style.Add("display", "block");
+                lblNombreEdificioIncorrecto.Visible = true;
 
                 validados = false;
             }
@@ -79,10 +78,10 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        protected void txtNumeroUbicacion_Changed(object sender, EventArgs e)
+        protected void txtNombreEdificio_Changed(object sender, EventArgs e)
         {
-            txtNumeroUbicacion.CssClass = "form-control";
-            lblNumeroUbicacion.Visible = false;
+            txtNombreEdificio.CssClass = "form-control";
+            lblNombreEdificio.Visible = false;
         }
 
         /// <summary>
@@ -90,7 +89,7 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// 5/9/2019
         /// Efecto: Metodo que se activa cuando se le da click al boton de actualizar
         ///valida que todos los campos se hayan ingresado correctamente y guarda los datos en la base de datos
-        ///redireccion a la pantalla de Administracion de Ubicaciones
+        ///redireccion a la pantalla de Administracion de Edificios
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -102,12 +101,12 @@ namespace Proyecto.Catalogos.Ubicaciones
             //se validan los campos antes de actualizar los datos en la base de datos
             if (validarCampos())
             {
-                Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
-                ubicacion.numeroAula = txtNumeroUbicacion.Text;
+                Edificio edificio = (Edificio)Session["edificioEditar"];
+                edificio.nombre = txtNombreEdificio.Text;
 
-                ubicacionServicios.actualizarUbicacion(ubicacion);
+                edificioServicios.actualizarEdificio(edificio);
 
-                String url = Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx");
+                String url = Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx");
                 Response.Redirect(url);
             }
 
@@ -118,7 +117,7 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// Adrián Serrano
         /// 5/9/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
-        /// redirecciona a la pantalla de adminstracion de Ubicaciones
+        /// redirecciona a la pantalla de adminstracion de Edificio
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -127,7 +126,7 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx");
             Response.Redirect(url);
         }
 

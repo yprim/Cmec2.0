@@ -7,12 +7,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto.Catalogos.Ubicaciones
+namespace Proyecto.Catalogos.Edificios
 {
-    public partial class EliminarUbicacion : System.Web.UI.Page
+    public partial class EliminarEdificio : System.Web.UI.Page
     {
         #region variables globales
-        UbicacionServicios ubicacionServicios = new UbicacionServicios();
+        EdificioServicios edificioServicios = new EdificioServicios();
         #endregion
 
         #region page load
@@ -20,9 +20,8 @@ namespace Proyecto.Catalogos.Ubicaciones
         {
             if (!IsPostBack)
             {
-                Ubicacion ubicacion = (Ubicacion)Session["ubicacionEliminar"];
-                txtNumeroUbicacion.Text = ubicacion.numeroAula;
-                txtEdificioUbicacion.Text = ubicacion.edificio.nombre;
+                Edificio edificio = (Edificio)Session["edificioEliminar"];
+                txtNombreEdificio.Text = edificio.nombre;
             }
         }
         #endregion
@@ -31,12 +30,12 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         /// <summary>
-        /// Adrian Serrano
-        /// 5/29/2019
+        /// Adrián Serrano
+        /// 5/9/2019
         /// Efecto: Metodo que se activa cuando se le da click al boton de eliminar
-        /// redirecciona a la pantalla de adminstracion de Ubicaciones
-        /// elimina la ubicacion de la base de datos
-        // redireccion a la pantalla de Administracion de Ubicaciones
+        /// redirecciona a la pantalla de adminstracion de Edificios
+        /// elimina el Edificio de la base de datos
+        // redireccion a la pantalla de Administracion de Edificios
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -45,12 +44,12 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// <returns></returns>
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            Ubicacion ubicacion = (Ubicacion)Session["ubicacionEliminar"];
+            Edificio edificio = (Edificio)Session["edificioEliminar"];
 
             try
             {
-                ubicacionServicios.eliminarUbicacion(ubicacion);
-                String url = Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx");
+                edificioServicios.eliminarEdificio(edificio);
+                String url = Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx");
                 Response.Redirect(url);
             }
             catch (Exception ex)
@@ -60,10 +59,10 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         /// <summary>
-        /// Adrian Serrano
-        /// 5/29/2019
+        /// Adrián Serrano
+        /// 5/9/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
-        /// redirecciona a la pantalla de adminstracion de Ubicaciones
+        /// redirecciona a la pantalla de adminstracion de edificios
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -72,7 +71,7 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx");
             Response.Redirect(url);
         }
 

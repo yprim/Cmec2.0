@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="NuevaUbicacion.aspx.cs" Inherits="Proyecto.Catalogos.Ubicaciones.NuevaUbicacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="NuevoEdificio.aspx.cs" Inherits="Proyecto.Catalogos.Edificios.NuevoEdificio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -8,7 +8,7 @@
             <%-- titulo accion--%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-                        <asp:Label ID="lblNuevoUbicacion" runat="server" Text="Nueva ubicación" Font-Size="Large" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblNuevoEdificio" runat="server" Text="Nuevo Edificio" Font-Size="Large" ForeColor="Black"></asp:Label>
                     </center>
             </div>
             <%-- fin titulo accion --%>
@@ -19,33 +19,16 @@
 
             <%-- campos a llenar --%>
             <div class="col-md-12 col-xs-12 col-sm-12">
-
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNombreEdificio" runat="server" Text="Nombre del edificio <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="EdificiosDDL" runat="server" CssClass="form-control">
-                        </asp:DropDownList>
+                    <asp:TextBox class="form-control" ID="txtNombreEdificio" runat="server"></asp:TextBox>
                 </div>
-                <div id="divEdificioUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblEdificioUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtNumeroUbicacion" runat="server"></asp:TextBox>
-                </div>
-                <div id="divNumeroUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblNumeroUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divNombreEdificioIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblNombreEdificioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
-
-            
 
             <div class="col-xs-12">
                 <br />
@@ -76,16 +59,14 @@
         */
         function validarTexto(txtBox) {
             var id = txtBox.id.substring(12);
-
-            var NumeroUbicacionIncorrecto = document.getElementById('<%= divNumeroUbicacionIncorrecto.ClientID %>');
+            var NombreEdificioIncorrecto = document.getElementById('<%= divNombreEdificioIncorrecto.ClientID %>');
 
             if (txtBox.value != "") {
                 txtBox.className = "form-control";
-
-                NumeroUbicacionIncorrecto.style.display = 'none';
+                NombreEdificioIncorrecto.style.display = 'none';
             } else {
                 txtBox.className = "form-control alert-danger";
-                NumeroUbicacionIncorrecto.style.display = 'block';
+                NombreEdificioIncorrecto.style.display = 'block';
             }
         }
     </script>

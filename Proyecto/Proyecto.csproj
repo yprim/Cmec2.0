@@ -72,6 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Catalogos\Edificios\AdministrarEdificio.aspx" />
+    <Content Include="Catalogos\Edificios\EditarEdificio.aspx" />
+    <Content Include="Catalogos\Edificios\EliminarEdificio.aspx" />
+    <Content Include="Catalogos\Edificios\NuevoEdificio.aspx" />
+    <Content Include="Catalogos\Edificios\VerEdificio.aspx" />
     <Content Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx" />
     <Content Include="Catalogos\Funcionarios\EditarFuncionario.aspx" />
     <Content Include="Catalogos\Funcionarios\EliminarFuncionario.aspx" />
@@ -156,6 +160,34 @@
     </Compile>
     <Compile Include="Catalogos\Edificios\AdministrarEdificio.aspx.designer.cs">
       <DependentUpon>AdministrarEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\EditarEdificio.aspx.cs">
+      <DependentUpon>EditarEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\EditarEdificio.aspx.designer.cs">
+      <DependentUpon>EditarEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\EliminarEdificio.aspx.cs">
+      <DependentUpon>EliminarEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\EliminarEdificio.aspx.designer.cs">
+      <DependentUpon>EliminarEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\NuevoEdificio.aspx.cs">
+      <DependentUpon>NuevoEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\NuevoEdificio.aspx.designer.cs">
+      <DependentUpon>NuevoEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\VerEdificio.aspx.cs">
+      <DependentUpon>VerEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Edificios\VerEdificio.aspx.designer.cs">
+      <DependentUpon>VerEdificio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.cs">
       <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
