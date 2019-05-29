@@ -31,13 +31,13 @@ namespace AccesoDatos
         /// </summary>
         /// <param></param>
         /// <returns><code>List<Ubicacion></code></returns>
-        public List<Ubicacion> getUbicacionesPorEdificio(int idEdificio)
+        public List<Ubicacion> getUbicaciones()
         {
             List<Ubicacion> listaUbicaciones = new List<Ubicacion>();
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("select id_ubicacion, numero_aula, id_edificio from  Ubicacion;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select id_ubicacion, numero_aula, id_edificio from Ubicacion;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();

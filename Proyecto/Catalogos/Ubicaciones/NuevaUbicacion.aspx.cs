@@ -13,6 +13,7 @@ namespace Proyecto.Catalogos.Ubicaciones
     {
         #region variables globales
         UbicacionServicios ubicacionServicios = new UbicacionServicios();
+        EdificioServicios edificioServicios = new EdificioServicios();
         #endregion
 
         #region page load
@@ -20,8 +21,9 @@ namespace Proyecto.Catalogos.Ubicaciones
         {
             if (!IsPostBack)
             {
-                txtEdificioUbicacion.Attributes.Add("oninput", "validarTexto(this)");
-                txtDescripcionUbicacion.Attributes.Add("oninput", "validarTexto(this)");
+                txtNumeroUbicacion.Attributes.Add("oninput", "validarTexto(this)");
+
+                CargarEdificios();
             }
 
         }
@@ -30,11 +32,25 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         #region logica
+        private void CargarEdificios()
+        {
+            List<Edificio> edificios = new List<Edificio>();
+            EdificiosDDL.Items.Clear();
+            edificios = this.edificioServicios.getEdificios();
 
+            if (edificios.Count > 0)
+            {
+                foreach (Edificio edificio in edificios)
+                {
+                    ListItem item = new ListItem(edificio.nombre, edificio.idEdificio.ToString());
+                    EdificiosDDL.Items.Add(item);
+                }
+            }
+        }
 
         /// <summary>
-        /// Priscilla Mena
-        /// 07/09/2018
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto:Metodo que valida los campos que debe ingresar el usuario
         /// devuelve true si todos los campos esta con datos correctos
         /// sino devuelve false y marcar lo campos para que el usuario vea cuales son los campos que se encuntran mal
@@ -50,11 +66,8 @@ namespace Proyecto.Catalogos.Ubicaciones
 
             #region validacion edificio ubicacion
 
-            String edificioUbicacion = txtEdificioUbicacion.Text;
-
-            if (edificioUbicacion.Trim() == "")
+            if (EdificiosDDL.Items.Count == 0)
             {
-                txtEdificioUbicacion.CssClass = "form-control alert-danger";
                 divEdificioUbicacionIncorrecto.Style.Add("display", "block");
 
                 validados = false;
@@ -63,12 +76,12 @@ namespace Proyecto.Catalogos.Ubicaciones
 
             #region validacion descripcion ubicacion
 
-            String descripcionUbicacion = txtDescripcionUbicacion.Text;
+            String descripcionUbicacion = txtNumeroUbicacion.Text;
 
             if (descripcionUbicacion.Trim() == "")
             {
-                txtDescripcionUbicacion.CssClass = "form-control alert-danger";
-                divDescripcionUbicacionIncorrecto.Style.Add("display", "block");
+                txtNumeroUbicacion.CssClass = "form-control alert-danger";
+                divNumeroUbicacionIncorrecto.Style.Add("display", "block");
 
                 validados = false;
             }
@@ -81,8 +94,8 @@ namespace Proyecto.Catalogos.Ubicaciones
 
         #region eventos
         /// <summary>
-        /// Priscilla Mena
-        /// 07/09/2018
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto:Metodo que se activa cuando se cambia el nombre
         /// Requiere: -
         /// Modifica: -
@@ -92,20 +105,14 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// <returns></returns>
         protected void txtxDescripcionUbicacion_TextChanged(object sender, EventArgs e)
         {
-            txtDescripcionUbicacion.CssClass = "form-control";
-            lblDescripcionUbicacionIncorrecto.Visible = false;
-        }
-
-        protected void txtxEdificioUbicacion_TextChanged(object sender, EventArgs e)
-        {
-            txtEdificioUbicacion.CssClass = "form-control";
-            lblEdificioUbicacionIncorrecto.Visible = false;
+            txtNumeroUbicacion.CssClass = "form-control";
+            lblNumeroUbicacionIncorrecto.Visible = false;
         }
 
 
         /// <summary>
-        /// Priscilla Mena
-        /// 07/09/2018
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto:Metodo que se activa cuando se da click al boton de guardar
         /// valida que todos los campos se hayan ingrsado correctamente 
         /// y guarda los datos en la base de datos 
@@ -122,8 +129,10 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (validarCampos())
             {
                 Ubicacion ubicacion = new Ubicacion();
-                //ubicacion.edificio = txtEdificioUbicacion.Text;
-                //ubicacion.descripcion = txtDescripcionUbicacion.Text;
+                ubicacion.numeroAula = txtNumeroUbicacion.Text;
+
+                ubicacion.edificio = new Edificio();
+                ubicacion.edificio.idEdificio = Convert.ToInt32(EdificiosDDL.SelectedValue);
 
                 ubicacionServicios.insertarUbicacion(ubicacion);
 
@@ -134,8 +143,8 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         /// <summary>
-        /// Priscilla Mena
-        /// 07/09/2018
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
         /// redirecciona a la pantalla de adminstracion de Ubicaciones
         /// Requiere: -

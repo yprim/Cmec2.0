@@ -22,11 +22,9 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (!IsPostBack)
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
-                //txtEdificioUbicacion.Text = ubicacion.edificio;
-                txtEdificioUbicacion.Attributes.Add("oninput", "validarTexto(this)");
 
-                //txtDescripcionUbicacion.Text = ubicacion.descripcion;
-                txtDescripcionUbicacion.Attributes.Add("oninput", "validarTexto(this)");
+                txtNumeroUbicacion.Text = ubicacion.numeroAula;
+                txtNumeroUbicacion.Attributes.Add("oninput", "validarTexto(this)");
             }
         }
 
@@ -51,29 +49,15 @@ namespace Proyecto.Catalogos.Ubicaciones
         {
             Boolean validados = true;
 
-            #region validacion descripcion ubicacion
+            #region validacion Numero ubicacion
 
-            String DescripcionUbicacion = txtDescripcionUbicacion.Text;
+            String NumeroUbicacion = txtNumeroUbicacion.Text;
 
-            if (DescripcionUbicacion.Trim() == "")
+            if (NumeroUbicacion.Trim() == "")
             {
-                txtDescripcionUbicacion.CssClass = "form-control alert-danger";
-                divDescripcionUbicacionIncorrecto.Style.Add("display", "block");
-                lblDescripcionUbicacionIncorrecto.Visible = true;
-
-                validados = false;
-            }
-            #endregion
-
-            #region validacion edificio ubicacion
-
-            String EdificioUbicacion = txtEdificioUbicacion.Text;
-
-            if (EdificioUbicacion.Trim() == "")
-            {
-                txtEdificioUbicacion.CssClass = "form-control alert-danger";
-                divEdificioUbicacionIncorrecto.Style.Add("display", "block");
-                lblEdificioUbicacionIncorrecto.Visible = true;
+                txtNumeroUbicacion.CssClass = "form-control alert-danger";
+                divNumeroUbicacionIncorrecto.Style.Add("display", "block");
+                lblNumeroUbicacionIncorrecto.Visible = true;
 
                 validados = false;
             }
@@ -95,16 +79,10 @@ namespace Proyecto.Catalogos.Ubicaciones
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        protected void txtDescripcionUbicacion_Changed(object sender, EventArgs e)
+        protected void txtNumeroUbicacion_Changed(object sender, EventArgs e)
         {
-            txtDescripcionUbicacion.CssClass = "form-control";
-            lblDescripcionUbicacion.Visible = false;
-        }
-
-        protected void txtEdificioUbicacion_Changed(object sender, EventArgs e)
-        {
-            txtEdificioUbicacion.CssClass = "form-control";
-            lblEdificioUbicacion.Visible = false;
+            txtNumeroUbicacion.CssClass = "form-control";
+            lblNumeroUbicacion.Visible = false;
         }
 
         /// <summary>
@@ -125,8 +103,7 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (validarCampos())
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEditar"];
-                //ubicacion.edificio = txtEdificioUbicacion.Text;
-                //ubicacion.descripcion = txtDescripcionUbicacion.Text;
+                ubicacion.numeroAula = txtNumeroUbicacion.Text;
 
                 ubicacionServicios.actualizarUbicacion(ubicacion);
 

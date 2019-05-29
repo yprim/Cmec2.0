@@ -24,7 +24,8 @@
                     <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtEdificioUbicacion" runat="server"></asp:TextBox>
+                    <asp:DropDownList AutoPostBack="true" ID="EdificiosDDL" runat="server" CssClass="form-control">
+                        </asp:DropDownList>
                 </div>
                 <div id="divEdificioUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblEdificioUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
@@ -34,15 +35,17 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblDescripcionUbicacion" runat="server" Text="Descripción <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtDescripcionUbicacion" runat="server"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="txtNumeroUbicacion" runat="server"></asp:TextBox>
                 </div>
-                <div id="divDescripcionUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblDescripcionUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divNumeroUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblNumeroUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
+
+            
 
             <div class="col-xs-12">
                 <br />
@@ -74,18 +77,15 @@
         function validarTexto(txtBox) {
             var id = txtBox.id.substring(12);
 
-            var EdificioUbicacionIncorrecto = document.getElementById('<%= divEdificioUbicacionIncorrecto.ClientID %>');
-            var DescripcionUbicacionIncorrecto = document.getElementById('<%= divDescripcionUbicacionIncorrecto.ClientID %>');
+            var NumeroUbicacionIncorrecto = document.getElementById('<%= divNumeroUbicacionIncorrecto.ClientID %>');
 
             if (txtBox.value != "") {
                 txtBox.className = "form-control";
 
-                EdificioUbicacionIncorrecto.style.display = 'none';
-                DescripcionUbicacionIncorrecto.style.display = 'none';
+                NumeroUbicacionIncorrecto.style.display = 'none';
             } else {
                 txtBox.className = "form-control alert-danger";
-                EdificioUbicacionIncorrecto.style.display = 'block';
-                DescripcionUbicacionIncorrecto.style.display = 'block';
+                NumeroUbicacionIncorrecto.style.display = 'block';
             }
         }
     </script>

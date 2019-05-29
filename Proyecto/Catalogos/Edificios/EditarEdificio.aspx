@@ -18,7 +18,6 @@
             </div>
 
             <%-- campos a llenar --%>
-            
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">

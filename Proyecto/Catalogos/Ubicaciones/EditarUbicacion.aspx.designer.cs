@@ -22,76 +22,40 @@ namespace Proyecto.Catalogos.Ubicaciones {
         protected global::System.Web.UI.WebControls.Label lblEditarUbicacion;
         
         /// <summary>
-        /// lblEdificioUbicacion control.
+        /// lblNumeroUbicacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEdificioUbicacion;
+        protected global::System.Web.UI.WebControls.Label lblNumeroUbicacion;
         
         /// <summary>
-        /// txtEdificioUbicacion control.
+        /// txtNumeroUbicacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEdificioUbicacion;
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroUbicacion;
         
         /// <summary>
-        /// divEdificioUbicacionIncorrecto control.
+        /// divNumeroUbicacionIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEdificioUbicacionIncorrecto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNumeroUbicacionIncorrecto;
         
         /// <summary>
-        /// lblEdificioUbicacionIncorrecto control.
+        /// lblNumeroUbicacionIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEdificioUbicacionIncorrecto;
-        
-        /// <summary>
-        /// lblDescripcionUbicacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcionUbicacion;
-        
-        /// <summary>
-        /// txtDescripcionUbicacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcionUbicacion;
-        
-        /// <summary>
-        /// divDescripcionUbicacionIncorrecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDescripcionUbicacionIncorrecto;
-        
-        /// <summary>
-        /// lblDescripcionUbicacionIncorrecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcionUbicacionIncorrecto;
+        protected global::System.Web.UI.WebControls.Label lblNumeroUbicacionIncorrecto;
         
         /// <summary>
         /// btnActualizar control.

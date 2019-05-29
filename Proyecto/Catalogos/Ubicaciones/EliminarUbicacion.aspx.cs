@@ -21,8 +21,8 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (!IsPostBack)
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionEliminar"];
-                //txtEdificioUbicacion.Text = ubicacion.edificio;
-                //txtDescripcionUbicacion.Text = ubicacion.descripcion;
+                txtNumeroUbicacion.Text = ubicacion.numeroAula;
+                txtEdificioUbicacion.Text = ubicacion.edificio.nombre;
             }
         }
         #endregion
@@ -31,8 +31,8 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         /// <summary>
-        /// Priscilla Mena
-        /// 5/6/2019
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto: Metodo que se activa cuando se le da click al boton de eliminar
         /// redirecciona a la pantalla de adminstracion de Ubicaciones
         /// elimina la ubicacion de la base de datos
@@ -60,8 +60,8 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         /// <summary>
-        /// Priscilla Mena
-        /// 5/6/2019
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
         /// redirecciona a la pantalla de adminstracion de Ubicaciones
         /// Requiere: -

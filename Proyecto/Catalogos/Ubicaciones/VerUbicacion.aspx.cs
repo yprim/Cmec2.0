@@ -22,9 +22,8 @@ namespace Proyecto.Catalogos.Ubicaciones
             if (!IsPostBack)
             {
                 Ubicacion ubicacion = (Ubicacion)Session["ubicacionVer"];
-                //txtEdificioUbicacion.Text = ubicacion.edificio;
-                //txtDescripcionUbicacion.Text = ubicacion.descripcion;
-
+                txtEdificioUbicacion.Text = ubicacion.edificio.nombre;
+                txtNumeroUbicacion.Text = ubicacion.numeroAula;
             }
 
         }
@@ -34,8 +33,8 @@ namespace Proyecto.Catalogos.Ubicaciones
 
 
         /// <summary>
-        /// Priscilla Mena
-        /// 5/6/2019
+        /// Adrian Serrano
+        /// 5/29/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
         /// redirecciona a la pantalla de adminstracion de Ubicaciones
         /// Requiere: -
