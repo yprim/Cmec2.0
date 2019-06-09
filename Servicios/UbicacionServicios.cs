@@ -74,10 +74,9 @@ namespace Servicios
         /// Devuelve: -
         /// </summary>
         /// <param name="Ubicacion"></param>
-        public void eliminarUbicacion(Ubicacion ubicacion)
+        public int eliminarUbicacion(Ubicacion ubicacion)
         {
-            ubicacionDatos.eliminarUbicacion(ubicacion);
-
+            return ubicacionDatos.eliminarUbicacion(ubicacion);
         }
         #endregion
     }

@@ -49,7 +49,7 @@ namespace Proyecto.Catalogos.Ubicaciones
 
             try
             {
-                ubicacionServicios.eliminarUbicacion(ubicacion);
+                int idUbicacion = ubicacionServicios.eliminarUbicacion(ubicacion);
                 String url = Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx");
                 Response.Redirect(url);
             }

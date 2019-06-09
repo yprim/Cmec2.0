@@ -38,6 +38,21 @@ namespace Servicios
 
         /// <summary>
         /// Adrián Serrano
+        /// 6/08/2019
+        /// Efecto: devuelve un edificio
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: un edificio
+        /// </summary>
+        /// <param></param>
+        /// <returns><code>Edificio</code></returns>
+        public Edificio getEdificioPorId(int idEdificio)
+        {
+            return edificioDatos.getEdificioPorId(idEdificio);
+        }
+
+        /// <summary>
+        /// Adrián Serrano
         /// 5/9/2019
         /// Efecto: inserta en la base de datos un Edificio
         /// Requiere: Edificio
