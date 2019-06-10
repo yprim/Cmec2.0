@@ -15,6 +15,7 @@ namespace Proyecto.Catalogos.Ubicaciones
     {
         #region variables globales
         UbicacionServicios ubicacionServicios = new UbicacionServicios();
+        EdificioServicios edificioServicios = new EdificioServicios();
         #endregion
 
         readonly PagedDataSource pgsource = new PagedDataSource();
@@ -77,20 +78,16 @@ namespace Proyecto.Catalogos.Ubicaciones
         {
 
             List<Ubicacion> listaSession = (List<Ubicacion>)Session["listaUbicaciones"];
-            String idUbicacion = "";
-            String numero = "";
-            String edificio = "";
+            //List<Ubicacion> listaUbicaciones = (List<Ubicacion>)listaSession.ToList();
+            List<Ubicacion> listaUbicaciones = new List<Ubicacion>();
 
-            if (ViewState["idUbicacion"] != null)
-                idUbicacion = (String)ViewState["idUbicacion"];
-
-            if (ViewState["numero"] != null)
-                numero = (String)ViewState["numero"];
-
-            if (ViewState["edificio"] != null)
-                edificio = (String)ViewState["edificio"];
-
-            List<Ubicacion> listaUbicaciones = (List<Ubicacion>)listaSession.Where(x => x.numeroAula.ToUpper().Contains(numero.ToUpper()) && x.idUbicacion.ToString().Contains(idUbicacion) && x.edificio.nombre.ToString().Contains(edificio)).ToList();
+            foreach (Ubicacion ubicacion in (List<Ubicacion>)listaSession.ToList())
+            {
+                Edificio edificio = this.edificioServicios.getEdificioPorId(ubicacion.edificio.idEdificio);
+                ubicacion.edificio = edificio;
+                listaUbicaciones.Add(ubicacion);
+            }
+            
             Session["listaUbicacionesFiltrada"] = listaUbicaciones;
 
             var dt = listaUbicaciones;

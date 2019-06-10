@@ -60,6 +60,39 @@ namespace AccesoDatos
 
         /// <summary>
         /// Adrián Serrano
+        /// 6/08/2019
+        /// Efecto: devuelve un edificio
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: un edificio
+        /// </summary>
+        /// <param></param>
+        /// <returns><code>Edificio</code></returns>
+        public Edificio getEdificioPorId(int idEdificio)
+        {
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand("select id_edificio, nombre from Edificio where id_edificio=@id_edificio_;", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@id_edificio_", idEdificio);
+
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+            Edificio edificio = new Edificio();
+
+            if (reader.Read())
+            {
+                edificio.idEdificio = Convert.ToInt32(reader["id_edificio"].ToString());
+                edificio.nombre = reader["nombre"].ToString();
+            }
+
+            sqlConnection.Close();
+
+            return edificio;
+        }
+
+        /// <summary>
+        /// Adrián Serrano
         /// 5/28/2019
         /// Efecto: inserta en la base de datos un Edificio
         /// Requiere: Edificio

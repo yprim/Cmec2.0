@@ -122,18 +122,26 @@ namespace AccesoDatos
         /// Devuelve: -
         /// </summary>
         /// <param name="Ubicacion"></param>
-        public void eliminarUbicacion(Ubicacion ubicacion)
+        public int eliminarUbicacion(Ubicacion ubicacion)
         {
-            SqlConnection sqlConnection = conexion.conexionCMEC();
+            try
+            {
+                SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion output DELETED.id_ubicacion where id_ubicacion = @id_ubicacion;", sqlConnection);
-            sqlCommand.Parameters.AddWithValue("@id_ubicacion", ubicacion.idUbicacion);
+                SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion output DELETED.id_ubicacion where id_ubicacion = @id_ubicacion;", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@id_ubicacion", ubicacion.idUbicacion);
 
-            sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+                sqlConnection.Open();
+                int idUbicacion = Convert.ToInt32(sqlCommand.ExecuteScalar());
 
-            sqlConnection.Close();
+                sqlConnection.Close();
 
+                return idUbicacion;
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
         }
         #endregion
     }
