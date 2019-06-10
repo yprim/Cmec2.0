@@ -166,8 +166,8 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@modelo", activo.Modelo);
             sqlCommand.Parameters.AddWithValue("@fecha_compra", activo.FechaCompra);
             sqlCommand.Parameters.AddWithValue("@descripcion", activo.Descripcion);
-            sqlCommand.Parameters.AddWithValue("@responsable", activo.Responsable);
-            sqlCommand.Parameters.AddWithValue("@ubicacion", activo.Ubicacion);
+            sqlCommand.Parameters.AddWithValue("@responsable", "2323");
+            sqlCommand.Parameters.AddWithValue("@ubicacion", "1111");
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
             conexion.Close();
@@ -196,8 +196,8 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@modelo", activo.Modelo);
             sqlCommand.Parameters.AddWithValue("@fecha_compra", activo.FechaCompra);
             sqlCommand.Parameters.AddWithValue("@descripcion", activo.Descripcion);
-            sqlCommand.Parameters.AddWithValue("@responsable", activo.Responsable);
-            sqlCommand.Parameters.AddWithValue("@ubicacion", activo.Ubicacion);
+            sqlCommand.Parameters.AddWithValue("@responsable", 777);
+            sqlCommand.Parameters.AddWithValue("@ubicacion", 999);
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
             conexion.Close();
@@ -244,7 +244,7 @@ namespace AccesoDatos
         /// <returns></returns>
         public int restaurarActivo(int placa)
         {
-            //Permite no mostrar los activos que han sido inhabilitados como solución alternativa a no eliminarlos del todo.
+            //Permite  mostrar los activos que han sido inhabilitados como solución alternativa a restaurarlos y usarlos del todo en mantenimeintos.
             SqlCommand sqlCommand = new SqlCommand("update Activo set habilitado=@cambio " +
                 "output Inserted.placa where placa=@placa"
                 , conexion);

@@ -49,6 +49,24 @@ namespace Proyecto.Catalogos.Activos {
         protected global::System.Web.UI.WebControls.TextBox txtBuscarPlaca;
         
         /// <summary>
+        /// Control txtBuscarSerie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarSerie;
+        
+        /// <summary>
+        /// Control txtBuscarModelo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarModelo;
+        
+        /// <summary>
         /// Control txtBuscarDescripcion.
         /// </summary>
         /// <remarks>
@@ -56,6 +74,15 @@ namespace Proyecto.Catalogos.Activos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
+        
+        /// <summary>
+        /// Control txtBuscarFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarFecha;
         
         /// <summary>
         /// Control rpActivo.

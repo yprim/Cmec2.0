@@ -38,17 +38,22 @@ namespace Servicios
 
         }
 
-        /// <summary>
-        /// Leonado Gomez
-        /// 29/May/2019
-        /// Efecto: inserta en la base de datos un MantenimientoCorrectivo
-        /// Requiere: MantenimientoCorrectivo
-        /// Modifica: -
-        /// Devuelve: id del Mantenimiento insertado
-        /// </summary>
-        /// <param name="MantenimientoCorrectivo"></param>
-        /// <returns></returns>
-        public int insertarMantenimiento(MantenimientoCorrectivo Mantenimiento)
+        public List<MantenimientoCorrectivo> getMantenimientosNoAprobados()
+        {
+            return mantenimientoDatos.getMantenimientosNoAprobados();
+        }
+
+            /// <summary>
+            /// Leonado Gomez
+            /// 29/May/2019
+            /// Efecto: inserta en la base de datos un MantenimientoCorrectivo
+            /// Requiere: MantenimientoCorrectivo
+            /// Modifica: -
+            /// Devuelve: id del Mantenimiento insertado
+            /// </summary>
+            /// <param name="MantenimientoCorrectivo"></param>
+            /// <returns></returns>
+            public int insertarMantenimiento(MantenimientoCorrectivo Mantenimiento)
         {
 
             return mantenimientoDatos.insertarMantenimientoCorrectivo(Mantenimiento);
@@ -82,6 +87,21 @@ namespace Servicios
         public void eliminarMantenimiento(MantenimientoCorrectivo Mantenimiento)
         {
             mantenimientoDatos.eliminarMantenimientoCorrectivo(Mantenimiento);
+
+        }
+        /// <summary>
+        /// Steven Camacho
+        /// 29/05/2019
+        /// Efecto: Cambia el estado del mantenimiento a aprobado
+        /// Requiere: Mantenimiento
+        /// Modifica: -
+        /// Devuelve: Un valor entero de la id del mantenimiento en confirmación de éxito de la aprobación.
+        /// </summary>
+        /// <param name="MantenimientoCorrectivo"></param>
+        public int aprobarMantenimiento(int id)
+        {
+            return mantenimientoDatos.aprobarMantenimiento(id); //TODO metodo acceso datos.
+            
 
         }
         #endregion

@@ -104,8 +104,11 @@
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx") %>'>Edificios</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx") %>'>Ubicaciones</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivo.aspx") %>'>Activos</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivoEliminado.aspx") %>'>Activos Eliminados</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx") %>'>Tareas</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx") %>'>Mantenimientos</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx") %>'>Aprobación mantenimientos</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">

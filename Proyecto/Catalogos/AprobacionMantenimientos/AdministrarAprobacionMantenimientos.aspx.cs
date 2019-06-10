@@ -1,28 +1,27 @@
-﻿using Entidades;
+﻿using System;
 using Servicios;
-using System;
+using Entidades;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
+using System.Data;
 
 namespace Proyecto.Catalogos.Activos
 {
-    public partial class AdministrarActivoEliminado : System.Web.UI.Page
+    public partial class AdministrarAprobacionMantenimientos : System.Web.UI.Page
     {
 
         #region variables globales
-        ActivoServicios activoServicios = new ActivoServicios();
+        MantenimientoCorrectivoServicio mantenimientoServicios;
         readonly PagedDataSource pgsource = new PagedDataSource();
         int primerIndex, ultimoIndex;
         private int elmentosMostrar = 10;
         #endregion
 
-        #region page load
-
+        #region pageload
         protected void Page_Load(object sender, EventArgs e)
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
@@ -32,41 +31,41 @@ namespace Proyecto.Catalogos.Activos
 
             if (!Page.IsPostBack)
             {
-                Session["listaActivos"] = null;
+                Session["listaAprobarMantenimientos"] = null;
 
-                ActivoServicios activoServicios = new ActivoServicios();
+                mantenimientoServicios = new MantenimientoCorrectivoServicio();
 
-                List<Activo> listaActivos = new List<Activo>();
-                listaActivos = activoServicios.obtenerTodoEliminado();
+                List<MantenimientoCorrectivo> listaMantenimientos = new List<MantenimientoCorrectivo>();
+                listaMantenimientos = mantenimientoServicios.getMantenimientosNoAprobados();
 
-                Session["listaActivos"] = listaActivos;
-                Session["listaActivosFiltrada"] = listaActivos;
+                Session["listaAprobarMantenimientos"] = listaMantenimientos;
+                Session["listaAprobarMantenimientosFiltrada"] = listaMantenimientos;
 
                 mostrarDatosTabla();
             }
+
         }
         #endregion
 
         #region logica
-
         /// <summary>
         /// Steven Camacho
-        /// 29/abr/2019
-        /// Efecto: carga los datos filtrados en la tabla de activos eliminados y realiza la paginacion correspondiente
+        /// 29/05/2019
+        /// Efecto: Metodo para llenar los datos de la tabla con los Mantenimientos que se encuentran en la base de datos
         /// Requiere: -
-        /// Modifica: los datos mostrados en pantalla
+        /// Modifica: -
         /// Devuelve: -
         /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         private void mostrarDatosTabla()
         {
-
-            List<Activo> listaSession = (List<Activo>)Session["listaActivos"];
-            string placa = "";
-            String serie = "";
-            String modelo = "";
-            String fechaCompra="";
+            List<MantenimientoCorrectivo> listaSession = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
+            String placa = "";
+            String responsable = "";
+            String ubicacion = "";
+            String fecha = "";
             String descripcion = "";
-
 
             if (ViewState["placa"] != null)
                 placa = ViewState["placa"].ToString();
@@ -74,21 +73,23 @@ namespace Proyecto.Catalogos.Activos
             if (ViewState["descripcion"] != null)
                 descripcion = (String)ViewState["descripcion"];
 
-            if (ViewState["fechaCompra"] != null)
-            {
-                fechaCompra = (String)ViewState["fechaCompra"];
-            }
-            if (ViewState["serie"] != null)
-                serie = (String)ViewState["serie"];
+            if (ViewState["fecha"] != null)
+                fecha = (String)ViewState["fecha"];
 
-            if (ViewState["modelo"] != null)
-                modelo = (String)ViewState["modelo"];
+            if (ViewState["ubicacion"] != null)
+                ubicacion = (String)ViewState["ubicacion"];
 
-            List<Activo> listaActivos = (List<Activo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa)
-                                            && x.Serie.ToUpper().Contains(serie.ToUpper()) && x.Modelo.ToUpper().Contains(modelo.ToUpper()) && x.FechaCompra.Contains(fechaCompra)).ToList();
-            Session["listaActivosFiltrada"] = listaActivos;
+            if (ViewState["responsable"] != null)
+                responsable = (String)ViewState["responsable"];
 
-            var dt = listaActivos;
+            // List<MantenimientoCorrectivo> listaAprobarMantenimientos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Id_placa.ToString().Contains(placa)
+            //                                 && x.UbicacionString.ToUpper().Contains(ubicacion.ToUpper()) && x.ResponsableString.ToUpper().Contains(responsable.ToUpper()) && x.Fecha.ToShortDateString().Contains(fecha)).ToList();
+
+            // Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
+
+            // var dt = listaAprobarMantenimientos;
+            var dt= (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientosFiltrada"];
+
             pgsource.DataSource = dt;
             pgsource.AllowPaging = true;
             //numero de items que se muestran en el Repeater
@@ -104,16 +105,17 @@ namespace Proyecto.Catalogos.Activos
             lbPrimero.Enabled = !pgsource.IsFirstPage;
             lbUltimo.Enabled = !pgsource.IsLastPage;
 
-            rpActivo.DataSource = pgsource;
-            rpActivo.DataBind();
+            rpMantenimiento.DataSource = pgsource;
+            rpMantenimiento.DataBind();
 
             //metodo que realiza la paginacion
             Paginacion();
+
         }
 
         /// <summary>
-        /// Steven Camacho
-        /// 29/05/2019
+        /// Leonardo Carrion
+        /// 10/abr/2019
         /// Efecto: realiza la paginacion
         /// Requiere: -
         /// Modifica: paginacion mostrada en pantalla
@@ -154,7 +156,6 @@ namespace Proyecto.Catalogos.Activos
             rptPaginacion.DataBind();
         }
 
-
         private int paginaActual
         {
             get
@@ -173,7 +174,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 29/05/2019
+        /// 27/05/2019
         /// Efecto: se devuelve a la primera pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Primer pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -189,7 +190,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 29/05/2019
+        /// 27/05/2019
         /// Efecto: se devuelve a la ultima pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Ultima pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -221,7 +222,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 29/05/2019
+        /// 27/05/2019
         /// Efecto: se devuelve a la pagina siguiente y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Siguiente pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -237,7 +238,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho B
-        /// 29/05/2019
+        /// 27/05/2019
         /// Efecto: actualiza la pagina actual y muestra los datos de la misma
         /// Requiere: -
         /// Modifica: elementos de la tabla
@@ -254,7 +255,7 @@ namespace Proyecto.Catalogos.Activos
 
         /// <summary>
         /// Steven Camacho
-        /// 29/05/2019
+        /// 27/05/2019
         /// Efecto: marca el boton de la pagina seleccionada
         /// Requiere: dar clic al boton de paginacion
         /// Modifica: color del boton seleccionado
@@ -275,67 +276,74 @@ namespace Proyecto.Catalogos.Activos
 
         #region eventos
 
-        
+
         /// <summary>
-        /// Steven Camacho B
-        /// 29/05/2019
-        /// Metodo que redirecciona a la pantalla donde se restaura (habilita) un activo
-        /// se activa cuando se presiona el boton de restaurar
+        /// Steven Camacho
+        ///29/5/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se aprueba un mantenimiento,
+        /// se activa cuando se presiona el boton de aprobar
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
         /// </summary>
-        protected void btnRestaurar_Click(object sender, EventArgs e)
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnAprobar_Click(object sender, EventArgs e)
         {
-            int idActivo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Activo> listaActivos = (List<Activo>)Session["listaActivosFiltrada"];
+            List<MantenimientoCorrectivo> listaMantenimiento = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
 
-            Activo activoRestaurar = new Activo();
+            MantenimientoCorrectivo mantenimientoAprobar = new MantenimientoCorrectivo();
 
-            foreach (Activo activo in listaActivos)
+            foreach (MantenimientoCorrectivo mantenimiento in listaMantenimiento)
             {
-                if (activo.Placa == idActivo)
+                if (mantenimiento.Id == id)
                 {
-                    activoRestaurar = activo;
+                    mantenimientoAprobar = mantenimiento;
                     break;
                 }
             }
 
-            Session["activoRestaurar"] = activoRestaurar;
+            Session["mantenimientoAprobar"] = mantenimientoAprobar;
 
-            String url = Page.ResolveUrl("~/Catalogos/Activos/RestaurarActivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AprobarMantenimiento.aspx");
             Response.Redirect(url);
         }
 
         /// <summary>
-        /// Steven Camacho Barboza
-        /// 29/05/2019
-        /// Efecto: redirrecciona a la pantalla de Ver
-        /// Requiere: dar clic al boton de "Ver"
+        /// Steven Camacho
+        /// 29/5/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un mantenimiento,
+        /// se activa cuando se presiona el boton de ver
+        /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnVer_Click(object sender, EventArgs e)
         {
-            int idActivo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Activo> listaActivos = (List<Activo>)Session["listaActivosFiltrada"];
+            List<MantenimientoCorrectivo> listaMantenimiento = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
 
-            Activo activoVer = new Activo();
+            MantenimientoCorrectivo mantenimientoVer = new MantenimientoCorrectivo();
 
-            foreach (Activo activo in listaActivos)
+            foreach (MantenimientoCorrectivo mantenimiento in listaMantenimiento)
             {
-                if (activo.Placa == idActivo)
+                if (mantenimientoVer.Id == id)
                 {
-                    activoVer = activo;
+                    mantenimientoVer = mantenimiento;
                     break;
                 }
             }
 
-            Session["activoVer"] = activoVer;
+            Session["mantenimientoVer"] = mantenimientoVer;
 
-            String url = Page.ResolveUrl("~/Catalogos/Activos/VerActivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/VerMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
+
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -343,12 +351,12 @@ namespace Proyecto.Catalogos.Activos
             paginaActual = 0;
             ViewState["placa"] = txtBuscarPlaca.Text;
             ViewState["descripcion"] = txtBuscarDescripcion.Text;
-            ViewState["serie"] = txtBuscarSerie.Text;
-            ViewState["modelo"] = txtBuscarModelo.Text;
-            ViewState["fechaCompra"] = txtBuscarFecha.Text;
+            ViewState["responsable"] = txtBuscarResponsable.Text;
+            ViewState["ubicacion"] = txtBuscarUbicacion.Text;
+            ViewState["fecha"] = txtBuscarFecha.Text;
+
             mostrarDatosTabla();
         }
         #endregion
-
     }
 }

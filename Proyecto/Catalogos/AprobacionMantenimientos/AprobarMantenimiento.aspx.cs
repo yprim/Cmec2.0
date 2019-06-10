@@ -10,11 +10,11 @@ using System.Web.UI.WebControls;
 namespace Proyecto.Catalogos.pendienteMover
 {
     public partial class AprobarMantenimiento : System.Web.UI.Page
-    {/*
+    {
 
 
         #region variables globales
-        MantenimientoServicio mantenimientoServicio = new MantenimientoServicio();
+        MantenimientoCorrectivoServicio mantenimientoServicio = new MantenimientoCorrectivoServicio();
         #endregion
 
         #region page load
@@ -24,9 +24,9 @@ namespace Proyecto.Catalogos.pendienteMover
 
             if (!IsPostBack)
             {
-                Mantenimiento mantenimiento = (Mantenimiento)Session["mantenimientoAprobar"];
+                MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoAprobar"];
 
-                txtDescripcionMantenimiento.Text = mantenimiento.Descripcion+ "\n"+ mantenimiento.tareas.toString();
+                txtDescripcionMantenimiento.Text = mantenimiento.Descripcion+ "\n"+ mantenimiento.TareasObjetoQuemado;//TODO cambiar por nombre corregido.
 
             }
 
@@ -50,18 +50,17 @@ namespace Proyecto.Catalogos.pendienteMover
         /// <returns></returns>
         protected void btnAprobar_Click(object sender, EventArgs e)
         {
-            Mantenimiento mantenimiento = (Mantenimiento)Session["mantenimientoAprobar"];
+            MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoAprobar"];
 
             try
             {
-                mantenimientoServicio.aprobarMantenimiento(mantenimiento.id);
-                String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarAprobacionMantenimientos.aspx");
+                mantenimientoServicio.aprobarMantenimiento(mantenimiento.Id);
+                String url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
                 Response.Redirect(url);
             }
             catch (Exception ex)
             {
-
-                //  (this.Master as Site).Mensaje("El tarea no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
+                String url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
             }
         }
 
@@ -79,13 +78,13 @@ namespace Proyecto.Catalogos.pendienteMover
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarAprobacionMantenimientos.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
             Response.Redirect(url);
         }
 
         #endregion
 
-*/
+
     }
     
 }

@@ -72,7 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Catalogos\Activos\AdministrarActivoEliminado.aspx" />
-    <Content Include="Catalogos\pendienteMover\AdministrarAprobacionMantenimientos.aspx" />
+    <Content Include="Catalogos\Activos\EditarActivo.aspx" />
+    <Content Include="Catalogos\Activos\EliminarActivo.aspx" />
+    <Content Include="Catalogos\Activos\NuevoActivo.aspx" />
+    <Content Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx" />
+    <Content Include="Catalogos\AprobacionMantenimientos\AdministrarAprobacionMantenimientos.aspx" />
     <Content Include="Catalogos\Activos\RestaurarActivo.aspx" />
     <Content Include="Catalogos\Activos\VerActivo.aspx" />
     <Content Include="Catalogos\Edificios\AdministrarEdificio.aspx" />
@@ -86,12 +90,11 @@
     <Content Include="Catalogos\Funcionarios\NuevoFuncionario.aspx" />
     <Content Include="Catalogos\Funcionarios\VerFuncionario.aspx" />
     <Content Include="Catalogos\Activos\AdministrarActivo.aspx" />
+    <Content Include="Catalogos\AprobacionMantenimientos\AprobarMantenimiento.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\AdministrarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\EditarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\EliminarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx" />
-    <Content Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx" />
-    <Content Include="Catalogos\pendienteMover\AprobarMantenimiento.aspx" />
     <Content Include="Catalogos\Tareas\AdministrarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EditarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EliminarTarea.aspx" />
@@ -166,11 +169,39 @@
     <Compile Include="Catalogos\Activos\AdministrarActivoEliminado.aspx.designer.cs">
       <DependentUpon>AdministrarActivoEliminado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\pendienteMover\AdministrarAprobacionMantenimientos.aspx.cs">
+    <Compile Include="Catalogos\Activos\EditarActivo.aspx.cs">
+      <DependentUpon>EditarActivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Activos\EditarActivo.aspx.designer.cs">
+      <DependentUpon>EditarActivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Activos\EliminarActivo.aspx.cs">
+      <DependentUpon>EliminarActivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Activos\EliminarActivo.aspx.designer.cs">
+      <DependentUpon>EliminarActivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Activos\NuevoActivo.aspx.cs">
+      <DependentUpon>NuevoActivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Activos\NuevoActivo.aspx.designer.cs">
+      <DependentUpon>NuevoActivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx.cs">
+      <DependentUpon>VerMantenimientoCorrectivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx.designer.cs">
+      <DependentUpon>VerMantenimientoCorrectivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AprobacionMantenimientos\AdministrarAprobacionMantenimientos.aspx.cs">
       <DependentUpon>AdministrarAprobacionMantenimientos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\pendienteMover\AdministrarAprobacionMantenimientos.aspx.designer.cs">
+    <Compile Include="Catalogos\AprobacionMantenimientos\AdministrarAprobacionMantenimientos.aspx.designer.cs">
       <DependentUpon>AdministrarAprobacionMantenimientos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Activos\RestaurarActivo.aspx.cs">
@@ -264,6 +295,13 @@
     <Compile Include="Catalogos\Activos\AdministrarActivo.aspx.designer.cs">
       <DependentUpon>AdministrarActivo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\AprobacionMantenimientos\AprobarMantenimiento.aspx.cs">
+      <DependentUpon>AprobarMantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AprobacionMantenimientos\AprobarMantenimiento.aspx.designer.cs">
+      <DependentUpon>AprobarMantenimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\MantenimientosCorrectivos\AdministrarMantenimientoCorrectivo.aspx.cs">
       <DependentUpon>AdministrarMantenimientoCorrectivo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,20 +329,6 @@
     </Compile>
     <Compile Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx.designer.cs">
       <DependentUpon>NuevoMantenimientoCorrectivo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx.cs">
-      <DependentUpon>VerMantenimientoCorrectivo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx.designer.cs">
-      <DependentUpon>VerMantenimientoCorrectivo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\pendienteMover\AprobarMantenimiento.aspx.cs">
-      <DependentUpon>AprobarMantenimiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\pendienteMover\AprobarMantenimiento.aspx.designer.cs">
-      <DependentUpon>AprobarMantenimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Tareas\AdministrarTarea.aspx.cs">
       <DependentUpon>AdministrarTarea.aspx</DependentUpon>

@@ -60,12 +60,11 @@ namespace Proyecto.Catalogos.Activos
         {
 
             List<Activo> listaSession = (List<Activo>)Session["listaActivos"];
-            string placa = "";
+            String placa = "";
             String serie = "";
             String modelo = "";
-            DateTime fechaCompra ;
+            String fechaCompra =""; 
             String descripcion = "";
-            Ubicacion ubicacion;
 
 
             if (ViewState["placa"] != null)
@@ -75,10 +74,16 @@ namespace Proyecto.Catalogos.Activos
                 descripcion = (String)ViewState["descripcion"];
 
             if (ViewState["fechaCompra"] != null) { 
-                fechaCompra = (DateTime)ViewState["fechaCompra"];
+                fechaCompra = (String)ViewState["fechaCompra"];
              }
+            if (ViewState["serie"] != null)
+                serie = (String)ViewState["serie"];
 
-            List<Activo> listaActivos = (List<Activo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa) ).ToList();
+            if (ViewState["modelo"] != null)
+                modelo = (String)ViewState["modelo"];
+
+            List<Activo> listaActivos = (List<Activo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa) 
+                                            &&  x.Serie.ToUpper().Contains(serie.ToUpper()) && x.Modelo.ToUpper().Contains(modelo.ToUpper()) && x.FechaCompra.Contains(fechaCompra)).ToList();
             Session["listaActivosFiltrada"] = listaActivos;
 
             var dt = listaActivos;
@@ -301,7 +306,7 @@ namespace Proyecto.Catalogos.Activos
                     break;
                 }
             }
-
+            
             Session["activoEditar"] = activoEditar;
 
             String url = Page.ResolveUrl("~/Catalogos/Activos/EditarActivo.aspx");
@@ -391,6 +396,10 @@ namespace Proyecto.Catalogos.Activos
             paginaActual = 0;
             ViewState["placa"] = txtBuscarPlaca.Text;
             ViewState["descripcion"] = txtBuscarDescripcion.Text;
+            ViewState["serie"] = txtBuscarSerie.Text;
+            ViewState["modelo"] = txtBuscarModelo.Text;
+            ViewState["fechaCompra"] = txtBuscarFecha.Text;
+
             mostrarDatosTabla();
         }
         #endregion

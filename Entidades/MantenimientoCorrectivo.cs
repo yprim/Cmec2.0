@@ -20,6 +20,7 @@ namespace Entidades
         int ubicacion;
         String descripcion;
         bool estado;
+        String tareasObjetoQuemado;
 
         public MantenimientoCorrectivo(){ }
 
@@ -34,5 +35,7 @@ namespace Entidades
             get { return estado; }
             set { estado = value; }
         }
+
+        public string TareasObjetoQuemado { get => "Limpiar, Soplar, Limpiar carpetas temporales, Actualizar antivirus"; set => tareasObjetoQuemado = value; }
     }  
 }

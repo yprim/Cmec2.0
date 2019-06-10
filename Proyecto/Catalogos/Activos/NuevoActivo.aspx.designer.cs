@@ -10,159 +10,213 @@
 namespace Proyecto.Catalogos.Activos {
     
     
-    public partial class AdministrarActivo {
+    public partial class NuevoActivo {
         
         /// <summary>
-        /// Control MainScriptManager.
+        /// Control lblNuevoActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager MainScriptManager;
+        protected global::System.Web.UI.WebControls.Label lblNuevoActivo;
         
         /// <summary>
-        /// Control pnlUpdate.
+        /// Control lblPlacaActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel pnlUpdate;
+        protected global::System.Web.UI.WebControls.Label lblPlacaActivo;
         
         /// <summary>
-        /// Control label.
+        /// Control txtPlacaActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label;
+        protected global::System.Web.UI.WebControls.TextBox txtPlacaActivo;
         
         /// <summary>
-        /// Control ButtonEliminados.
+        /// Control divPlacaActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonEliminados;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPlacaActivoIncorrecto;
         
         /// <summary>
-        /// Control txtBuscarPlaca.
+        /// Control lblPlacaActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarPlaca;
+        protected global::System.Web.UI.WebControls.Label lblPlacaActivoIncorrecto;
         
         /// <summary>
-        /// Control txtBuscarSerie.
+        /// Control lblSerieActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarSerie;
+        protected global::System.Web.UI.WebControls.Label lblSerieActivo;
         
         /// <summary>
-        /// Control txtBuscarModelo.
+        /// Control txtSerieActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarModelo;
+        protected global::System.Web.UI.WebControls.TextBox txtSerieActivo;
         
         /// <summary>
-        /// Control txtBuscarDescripcion.
+        /// Control divSerieActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSerieActivoIncorrecto;
         
         /// <summary>
-        /// Control txtBuscarFecha.
+        /// Control lblSerieActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarFecha;
+        protected global::System.Web.UI.WebControls.Label lblSerieActivoIncorrecto;
         
         /// <summary>
-        /// Control rpActivo.
+        /// Control lblModeloActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpActivo;
+        protected global::System.Web.UI.WebControls.Label lblModeloActivo;
         
         /// <summary>
-        /// Control lbPrimero.
+        /// Control txtModeloActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbPrimero;
+        protected global::System.Web.UI.WebControls.TextBox txtModeloActivo;
         
         /// <summary>
-        /// Control lbAnterior.
+        /// Control divModeloActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbAnterior;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divModeloActivoIncorrecto;
         
         /// <summary>
-        /// Control rptPaginacion.
+        /// Control lblModeloActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList rptPaginacion;
+        protected global::System.Web.UI.WebControls.Label lblModeloActivoIncorrecto;
         
         /// <summary>
-        /// Control lbSiguiente.
+        /// Control lblDescripcionActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbSiguiente;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionActivo;
         
         /// <summary>
-        /// Control lbUltimo.
+        /// Control txtDescripcionActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbUltimo;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcionActivo;
         
         /// <summary>
-        /// Control lblpagina.
+        /// Control divDescripcionActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpagina;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDescripcionActivoIncorrecto;
         
         /// <summary>
-        /// Control btnNuevo.
+        /// Control lblDescripcionActivoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionActivoIncorrecto;
+        
+        /// <summary>
+        /// Control lblFechaCompra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaCompra;
+        
+        /// <summary>
+        /// Control txtFechaActivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaActivo;
+        
+        /// <summary>
+        /// Control divFechaCompraActivoIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaCompraActivoIncorrecto;
+        
+        /// <summary>
+        /// Control lblFechaCompraActivoIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaCompraActivoIncorrecto;
+        
+        /// <summary>
+        /// Control btnGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

@@ -10,7 +10,7 @@
 namespace Proyecto.Catalogos.Activos {
     
     
-    public partial class AdministrarActivo {
+    public partial class AdministrarAprobacionMantenimientos {
         
         /// <summary>
         /// Control MainScriptManager.
@@ -31,22 +31,13 @@ namespace Proyecto.Catalogos.Activos {
         protected global::System.Web.UI.UpdatePanel pnlUpdate;
         
         /// <summary>
-        /// Control label.
+        /// Control lblAdministrarMantenimientos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label;
-        
-        /// <summary>
-        /// Control ButtonEliminados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonEliminados;
+        protected global::System.Web.UI.WebControls.Label lblAdministrarMantenimientos;
         
         /// <summary>
         /// Control txtBuscarPlaca.
@@ -58,31 +49,13 @@ namespace Proyecto.Catalogos.Activos {
         protected global::System.Web.UI.WebControls.TextBox txtBuscarPlaca;
         
         /// <summary>
-        /// Control txtBuscarSerie.
+        /// Control txtBuscarUbicacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarSerie;
-        
-        /// <summary>
-        /// Control txtBuscarModelo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarModelo;
-        
-        /// <summary>
-        /// Control txtBuscarDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarUbicacion;
         
         /// <summary>
         /// Control txtBuscarFecha.
@@ -94,13 +67,31 @@ namespace Proyecto.Catalogos.Activos {
         protected global::System.Web.UI.WebControls.TextBox txtBuscarFecha;
         
         /// <summary>
-        /// Control rpActivo.
+        /// Control txtBuscarDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpActivo;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
+        
+        /// <summary>
+        /// Control txtBuscarResponsable.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarResponsable;
+        
+        /// <summary>
+        /// Control rpMantenimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rpMantenimiento;
         
         /// <summary>
         /// Control lbPrimero.
@@ -155,14 +146,5 @@ namespace Proyecto.Catalogos.Activos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblpagina;
-        
-        /// <summary>
-        /// Control btnNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
     }
 }

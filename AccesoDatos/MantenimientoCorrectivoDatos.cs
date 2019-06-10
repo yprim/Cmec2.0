@@ -63,6 +63,48 @@ namespace AccesoDatos
 
             return listaMantenimientos;
         }
+
+        /// <summary>
+        /// Steven Camacho B
+        /// 29/May/2019
+        /// Efecto: devuelve una lista con todos los mantenimientos no aprobados, precisamente esto se determina con el atributo estado cuando es 0;
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: lista de mantenimientos no aprobados
+        /// </summary>
+        /// <param name="MantenimientoCorrectivo"></param>
+        /// <returns></returns>
+        public List<MantenimientoCorrectivo> getMantenimientosNoAprobados()
+        {
+            List<MantenimientoCorrectivo> listaMantenimientos = new List<MantenimientoCorrectivo>();
+
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand("Select * from Mantenimiento_Correctivo where estado=0;", sqlConnection);
+
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                MantenimientoCorrectivo Mantenimiento = new MantenimientoCorrectivo();
+
+                Mantenimiento.Id = Convert.ToInt32(reader["id"].ToString());
+                Mantenimiento.Id_placa = Convert.ToInt32(reader["id_placa"].ToString());
+                Mantenimiento.Responsable = Convert.ToInt32(reader["responsable"].ToString());
+                Mantenimiento.Fecha = Convert.ToDateTime(reader["fecha"].ToString());
+                Mantenimiento.Ubicacion = Convert.ToInt32(reader["ubicacion"].ToString());
+                Mantenimiento.Descripcion = reader["descripcion"].ToString();
+                Mantenimiento.Estado = false;
+
+                listaMantenimientos.Add(Mantenimiento);
+            }
+
+            sqlConnection.Close();
+
+            return listaMantenimientos;
+        }
         /// <summary>
         /// Leonardo Gomez
         /// 29/May/2019
@@ -131,7 +173,21 @@ namespace AccesoDatos
 
             sqlConnection.Close();
         }
+        public int aprobarMantenimiento(int id) {
 
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand("Update Mantenimiento_Correctivo " +
+                                                    "set estado = 1 where id = @id", sqlConnection);
+
+            sqlCommand.Parameters.AddWithValue("@id", id);
+            sqlConnection.Open();
+            sqlCommand.ExecuteReader();
+
+            sqlConnection.Close();
+
+            return 1;
+        }
         /// <summary>
         /// Leonardo Gomez
         /// 19/May/2019
