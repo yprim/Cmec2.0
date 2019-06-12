@@ -9,7 +9,7 @@ namespace Entidades
     public class Funcionario
     {
         int id;
-        string ced;
+        string usuario;
         string nombre;
         string apellidos;
         DateTime fecha_nacimiento;
@@ -25,7 +25,7 @@ namespace Entidades
         }
 
         public int Id { get => id; set => id = value; }
-        public string Ced { get => ced; set => ced = value; }
+        public string Usuario { get => usuario; set => usuario = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellidos { get => apellidos; set => apellidos = value; }
         public DateTime Fecha_Nacimiento { get => fecha_nacimiento; set => fecha_nacimiento = value; }

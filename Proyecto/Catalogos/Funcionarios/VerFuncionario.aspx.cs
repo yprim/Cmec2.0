@@ -22,7 +22,7 @@ namespace Proyecto.Catalogos.Funcionarios
             if (!IsPostBack)
             {
                 Funcionario funcionario = (Funcionario)Session["funcionarioVer"];
-                txtCedFuncionario.Text = funcionario.Ced;
+                txtCedFuncionario.Text = funcionario.Usuario;
 
             }
 

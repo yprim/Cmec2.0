@@ -39,7 +39,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("Select id,ced,nombre,apellidos,fecha_nacimiento," +
+            SqlCommand sqlCommand = new SqlCommand("Select id,usuario,nombre,apellidos,fecha_nacimiento," +
             "correo, numero_telefono1, numero_telefono2, ocupacion, habilitado from " +
             " Funcionario where habilitado = 1 ", sqlConnection);
 
@@ -52,7 +52,7 @@ namespace AccesoDatos
                 Funcionario funcionario = new Funcionario();
 
                 funcionario.Id = Int32.Parse(reader.GetValue(0).ToString());
-                funcionario.Ced = reader.GetValue(1).ToString();
+                funcionario.Usuario = reader.GetValue(1).ToString();
                 funcionario.Nombre = reader.GetValue(2).ToString();
                 funcionario.Apellidos = reader.GetValue(3).ToString();
                 funcionario.Fecha_Nacimiento = DateTime.Parse(reader.GetValue(4).ToString());
@@ -83,11 +83,11 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("insert into Funcionario output Inserted.ced " +
-                "values(@ced,@nombre,@apellidos,@fecha_nacimiento,@correo,@numero_telefono1,@numero_telefono2,@ocupacion,1) "
+            SqlCommand sqlCommand = new SqlCommand("insert into Funcionario output Inserted.usuario " +
+                "values(@usuario,@nombre,@apellidos,@fecha_nacimiento,@correo,@numero_telefono1,@numero_telefono2,@ocupacion,1) "
                 , sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@ced", funcionario.Ced);
+            sqlCommand.Parameters.AddWithValue("@usuario", funcionario.Usuario);
             sqlCommand.Parameters.AddWithValue("@nombre", funcionario.Nombre);
             sqlCommand.Parameters.AddWithValue("@apellidos", funcionario.Apellidos);
             sqlCommand.Parameters.AddWithValue("@fecha_nacimiento", funcionario.Fecha_Nacimiento);
@@ -98,10 +98,10 @@ namespace AccesoDatos
 
 
             sqlConnection.Open();
-            int ced_funcionario = Convert.ToInt32(sqlCommand.ExecuteScalar());
+            int usuario_funcionario = Convert.ToInt32(sqlCommand.ExecuteScalar());
             sqlConnection.Close();
 
-            return ced_funcionario;
+            return usuario_funcionario;
         }
 
         /// <summary>
@@ -117,12 +117,12 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("update Funcionario set ced=@ced, nombre=@nombre, " +
+            SqlCommand sqlCommand = new SqlCommand("update Funcionario set usuario=@usuario, nombre=@nombre, " +
                 "apellidos=@apellidos, fecha_nacimiento=@fecha_nacimiento, correo=@correo, " + "" +
                 "numero_telefono1=@numero_telefono1, numero_telefono2=@numero_telefono2, ocupacion=@ocupacion " +
-                "output Inserted.ced where ced=@ced", sqlConnection);
+                "output Inserted.usuario where usuario=@usuario", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@ced", funcionario.Ced);
+            sqlCommand.Parameters.AddWithValue("@usuario", funcionario.Usuario);
             sqlCommand.Parameters.AddWithValue("@nombre", funcionario.Nombre);
             sqlCommand.Parameters.AddWithValue("@apellidos", funcionario.Apellidos);
             sqlCommand.Parameters.AddWithValue("@fecha_nacimiento", funcionario.Fecha_Nacimiento);
@@ -152,9 +152,9 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Update Funcionario set habilitado = 0 " +
-                "output Inserted.ced where ced=@ced", sqlConnection);
+                "output Inserted.usuario where usuario=@usuario", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@ced", funcionario.Ced);
+            sqlCommand.Parameters.AddWithValue("@usuario", funcionario.Usuario);
 
             sqlConnection.Open();
             sqlCommand.ExecuteReader();

@@ -18,8 +18,6 @@ namespace Entidades
         string modelo;
         DateTime fechaCompraDT;
         string descripcion;
-        int responsable;
-        int ubicacion;
         bool isNotDeleted;
 
         public Activo() { }
@@ -29,8 +27,6 @@ namespace Entidades
         public string Modelo { get => modelo; set => modelo = value; }
         public String FechaCompra { get => FechaCompraDT.ToShortDateString(); set => FechaCompraDT = DateTime.Parse(value); }
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        public int Responsable { get => responsable; set => responsable = value; }
-        public int Ubicacion { get => ubicacion; set => ubicacion = value; }
         public bool IsNotDeleted { get => isNotDeleted; set => isNotDeleted = value; }
         public DateTime FechaCompraDT { get => fechaCompraDT; set => fechaCompraDT = value; }
     }

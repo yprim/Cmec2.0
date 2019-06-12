@@ -56,9 +56,7 @@ namespace AccesoDatos
                 activo.Modelo = reader.GetValue(2).ToString();
                 activo.FechaCompra = reader.GetValue(3).ToString();
                 activo.Descripcion = reader.GetValue(4).ToString();
-                activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
-                activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
-                activo.IsNotDeleted = Boolean.Parse(reader.GetValue(7).ToString());
+                activo.IsNotDeleted = Boolean.Parse(reader.GetValue(5).ToString());
                 listaActivos.Add(activo);
             }
             conexion.Close();
@@ -92,59 +90,12 @@ namespace AccesoDatos
                 activo.Modelo = reader.GetValue(2).ToString();
                 activo.FechaCompra = reader.GetValue(3).ToString();
                 activo.Descripcion = reader.GetValue(4).ToString();
-                activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
-                activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
                 listaActivos.Add(activo);
             }
             conexion.Close();
             return listaActivos;
         }
-
-        /// <summary>
-        /// Steven Camacho
-        /// 10/5/2019
-        /// Efecto: devuelve una lista con los resultados de la consulta
-        /// Requiere: cadena de texto a buscar
-        /// Modifica: -
-        /// Devuelve: lista de activos habilitados
-        /// </summary>
-        /// <param name="search" type="string"></param>
-        /// <returns></returns>
-        public LinkedList<Activo> search(string search)
-        {
-            //Recupera los activos que están habilitados y que co
-            LinkedList<Activo> listaActivos = new LinkedList<Activo>();
-            SqlCommand sqlCommand = new SqlCommand("Select * from activo where habilitado= 1 and " +
-                "placa like '%' + @search + '%' or " +
-                "serie like '%' + @search + '%' or " +
-                "modelo like '%' + @search + '%' or " +
-                "fecha_compra like '%' + @search + '%' or " +
-                "descripcion like '%' + @search + '%' or " +
-                "responsable like '%' + @search + '%' or " +
-                "ubicacion like '%' + @search + '%'"
-                , conexion);
-            SqlDataReader reader;
-            sqlCommand.Parameters.AddWithValue("@search", search);
-
-            conexion.Open();
-            reader = sqlCommand.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Activo activo = new Activo();
-                activo.Placa = Int32.Parse(reader.GetValue(0).ToString());
-                activo.Serie = reader.GetValue(1).ToString();
-                activo.Modelo = reader.GetValue(2).ToString();
-                activo.FechaCompra = reader.GetValue(3).ToString();
-                activo.Descripcion = reader.GetValue(4).ToString();
-                activo.Responsable = Int32.Parse(reader.GetValue(5).ToString());
-                activo.Ubicacion = Int32.Parse(reader.GetValue(6).ToString());
-                listaActivos.AddLast(activo);
-            }
-            conexion.Close();
-            return listaActivos;
-        }
-
+    
 
         /// <summary>
         /// Steven Camacho
@@ -159,15 +110,13 @@ namespace AccesoDatos
         public int insertar(Activo activo)
         {
             SqlCommand sqlCommand = new SqlCommand("insert into Activo output Inserted.placa " +
-                "values(@placa,@serie,@modelo,@fecha_compra,@descripcion,@responsable,@ubicacion,1) "
+                "values(@placa,@serie,@modelo,@fecha_compra,@descripcion,1) "
                 , conexion);
             sqlCommand.Parameters.AddWithValue("@placa", activo.Placa);
             sqlCommand.Parameters.AddWithValue("@serie", activo.Serie);
             sqlCommand.Parameters.AddWithValue("@modelo", activo.Modelo);
             sqlCommand.Parameters.AddWithValue("@fecha_compra", activo.FechaCompra);
             sqlCommand.Parameters.AddWithValue("@descripcion", activo.Descripcion);
-            sqlCommand.Parameters.AddWithValue("@responsable", "2323");
-            sqlCommand.Parameters.AddWithValue("@ubicacion", "1111");
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
             conexion.Close();
@@ -188,7 +137,7 @@ namespace AccesoDatos
         public int actualizar(Activo activo)
         {
             SqlCommand sqlCommand = new SqlCommand("update Activo set serie=@serie, modelo=@modelo, " +
-                "fecha_compra=@fecha_compra, descripcion=@descripcion, responsable=@responsable, ubicacion=@ubicacion " +
+                "fecha_compra=@fecha_compra, descripcion=@descripcion " +
                 "output Inserted.placa where placa=@placa"
                 , conexion);
             sqlCommand.Parameters.AddWithValue("@placa", activo.Placa);
@@ -196,8 +145,6 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@modelo", activo.Modelo);
             sqlCommand.Parameters.AddWithValue("@fecha_compra", activo.FechaCompra);
             sqlCommand.Parameters.AddWithValue("@descripcion", activo.Descripcion);
-            sqlCommand.Parameters.AddWithValue("@responsable", 777);
-            sqlCommand.Parameters.AddWithValue("@ubicacion", 999);
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
             conexion.Close();

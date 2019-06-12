@@ -93,7 +93,7 @@ namespace Proyecto.Catalogos.Funcionarios
 
             foreach (Funcionario funcionario in listaFuncionarios)
             {
-                if (Convert.ToInt32(funcionario.Ced) == ced)
+                if (Convert.ToInt32(funcionario.Usuario) == ced)
                 {
                     funcionarioEditar = funcionario;
                     break;
@@ -127,7 +127,7 @@ namespace Proyecto.Catalogos.Funcionarios
 
             foreach (Funcionario funcionario in listaFuncionarios)
             {
-                if (Convert.ToInt32(funcionario.Ced) == ced)
+                if (Convert.ToInt32(funcionario.Usuario) == ced)
                 {
                     funcionarioEliminar = funcionario;
                     break;
@@ -163,7 +163,7 @@ namespace Proyecto.Catalogos.Funcionarios
 
             foreach (Funcionario funcionario in listaFuncionarios)
             {
-                if (Convert.ToInt32(funcionario.Ced) == ced)
+                if (Convert.ToInt32(funcionario.Usuario) == ced)
                 {
                     funcionarioVer = funcionario;
                     break;

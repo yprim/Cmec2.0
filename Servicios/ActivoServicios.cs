@@ -51,9 +51,5 @@ namespace Servicios
             return datos.restaurarActivo(placa);
         }
 
-        public LinkedList<Activo> search(string search)
-        {
-            return datos.search(search);
-        }
     }
 }

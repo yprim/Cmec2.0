@@ -104,7 +104,7 @@ namespace Proyecto.Catalogos.Funcionarios
             if (validarCamposFuncionario())
             {
                 Funcionario funcionario = new Funcionario();
-                funcionario.Ced = txtCedFuncionario.Text;
+                funcionario.Usuario = txtCedFuncionario.Text;
 
                 funcionarioServicios.insertarFuncionario(funcionario);
 

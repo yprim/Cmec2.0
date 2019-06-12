@@ -22,7 +22,7 @@ namespace Proyecto.Catalogos.Funcionarios
             if (!IsPostBack)
             {
                 Funcionario funcionario = (Funcionario)Session["funcionarioEditar"];
-                txtCedFuncionario.Text = funcionario.Ced;
+                txtCedFuncionario.Text = funcionario.Usuario;
                 txtCedFuncionario.Attributes.Add("oninput", "validarTexto(this)");
             }*/
         }
@@ -103,7 +103,7 @@ namespace Proyecto.Catalogos.Funcionarios
             if (validarCampos())
             {
                 Funcionario funcionario = (Funcionario)Session["funcionarioEditar"];
-                funcionario.Ced = txtCedFuncionario.Text;
+                funcionario.Usuario = txtCedFuncionario.Text;
                 funcionario.Nombre = TextBox2.Text;
                 funcionario.Apellidos = TextBox3.Text;
                 funcionario.Fecha_Nacimiento = Convert.ToDateTime(TextBox4.Text);

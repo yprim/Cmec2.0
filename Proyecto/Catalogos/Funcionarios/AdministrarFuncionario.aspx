@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Cedula</th>
+                                    <th>Usuario</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Fecha Nacimiento</th>
@@ -57,7 +57,7 @@
                         <thead>
                             <tr id="filterrow">
                                 <td></td>
-                                <th>Cedula</th>
+                                <th>Usuario</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Correo</th>
