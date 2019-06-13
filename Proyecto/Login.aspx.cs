@@ -95,7 +95,8 @@ namespace Proyecto
 
                             Session["rol"] = rol;
                             Session["nombreCompleto"] = nombreCompleto;
-                            String url = Page.ResolveUrl("~/Default.aspx");
+                           // String url = Page.ResolveUrl("~/Default.aspx");
+                            String url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
                             Response.Redirect(url);
             //            }
             //            else

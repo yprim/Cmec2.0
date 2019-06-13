@@ -95,6 +95,7 @@
     <Content Include="Catalogos\MantenimientosCorrectivos\EditarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\EliminarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx" />
+    <Content Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx" />
     <Content Include="Catalogos\Tareas\AdministrarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EditarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EliminarTarea.aspx" />
@@ -329,6 +330,13 @@
     </Compile>
     <Compile Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx.designer.cs">
       <DependentUpon>NuevoMantenimientoCorrectivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx.cs">
+      <DependentUpon>PlanMantenimientoPreventivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx.designer.cs">
+      <DependentUpon>PlanMantenimientoPreventivo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Tareas\AdministrarTarea.aspx.cs">
       <DependentUpon>AdministrarTarea.aspx</DependentUpon>

@@ -101,14 +101,20 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catálogos<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx") %>'>Edificios</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx") %>'>Ubicaciones</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivo.aspx") %>'>Activos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivoEliminado.aspx") %>'>Activos Eliminados</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx") %>'>Edificios</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx") %>'>Ubicaciones</a></li>                                                                      
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx") %>'>Tareas de mantenimiento</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx") %>'>Plan de mantenimientos preventivos</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx") %>'>Mantenimientos realizados</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx") %>'>Tareas</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx") %>'>Mantenimientos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx") %>'>Aprobación mantenimientos</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Control<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivoEliminado.aspx") %>'>Activos Eliminados</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx") %>'>Aprobación de mantenimientos</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
