@@ -34,8 +34,6 @@ namespace Servicios
         /// <returns></returns>
         public List<Funcionario> getFuncionarios()
         {
-
-
             return funcionarioDatos.getFuncionarios();
         }
 
@@ -51,8 +49,6 @@ namespace Servicios
         /// <returns></returns>
         public int insertarFuncionario(Funcionario funcionario)
         {
-
-
             return funcionarioDatos.insertarFuncionario(funcionario);
         }
 

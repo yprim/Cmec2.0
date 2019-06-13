@@ -54,7 +54,7 @@ namespace Proyecto.Catalogos.pendienteMover
 
             try
             {
-                mantenimientoServicio.aprobarMantenimiento(mantenimiento.Id);
+                mantenimientoServicio.aprobarMantenimiento(mantenimiento.Id_mantenimiento);
                 String url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
                 Response.Redirect(url);
             }

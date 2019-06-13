@@ -22,11 +22,11 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoVer"];
 
-                txtId.Text = mantenimiento.Id.ToString();
-                txtId_placa.Text = mantenimiento.Id_placa.ToString();
-                txtResponsable.Text = mantenimiento.Responsable.ToString();
+                txtId.Text = mantenimiento.Id_mantenimiento.ToString();
+                txtId_placa.Text = mantenimiento.Placa_activo.ToString();
+                txtResponsable.Text = mantenimiento.Id_responsable.ToString();
                 txtFecha.Text = mantenimiento.Fecha.ToString();
-                txtUbicacion.Text = mantenimiento.Ubicacion.ToString();
+                txtUbicacion.Text = mantenimiento.Id_ubicacion.ToString();
                 txtDescripcionMantenimiento.Text = mantenimiento.Descripcion;
 
             }

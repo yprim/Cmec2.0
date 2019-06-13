@@ -106,7 +106,7 @@ namespace Proyecto.Catalogos.Funcionarios
                 funcionario.Usuario = txtCedFuncionario.Text;
                 funcionario.Nombre = TextBox2.Text;
                 funcionario.Apellidos = TextBox3.Text;
-                funcionario.Fecha_Nacimiento = Convert.ToDateTime(TextBox4.Text);
+                funcionario.Fecha_Nacimiento = TextBox4.Text;
                 funcionario.Correo = TextBox5.Text;
                 funcionario.Numero_Telefono1 = TextBox6.Text;
                 funcionario.Numero_Telefono2 = TextBox7.Text;

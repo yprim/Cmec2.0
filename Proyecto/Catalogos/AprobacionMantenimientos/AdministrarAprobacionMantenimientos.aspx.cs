@@ -298,7 +298,7 @@ namespace Proyecto.Catalogos.Activos
 
             foreach (MantenimientoCorrectivo mantenimiento in listaMantenimiento)
             {
-                if (mantenimiento.Id == id)
+                if (mantenimiento.Id_mantenimiento == id)
                 {
                     mantenimientoAprobar = mantenimiento;
                     break;
@@ -332,7 +332,7 @@ namespace Proyecto.Catalogos.Activos
 
             foreach (MantenimientoCorrectivo mantenimiento in listaMantenimiento)
             {
-                if (mantenimientoVer.Id == id)
+                if (mantenimientoVer.Id_mantenimiento == id)
                 {
                     mantenimientoVer = mantenimiento;
                     break;

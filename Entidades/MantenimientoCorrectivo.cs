@@ -13,29 +13,28 @@ namespace Entidades
     /// </summary>
     public class MantenimientoCorrectivo
     {
-        int id;
-        int id_placa;
-        int responsable;
+        int id_mantenimiento;
         DateTime fecha;
-        int ubicacion;
         String descripcion;
         bool estado;
+        bool es_correctivo;
+        int id_responsable;
+        int placa_activo;
+        int id_ubicacion;
+
         String tareasObjetoQuemado;
 
-        public MantenimientoCorrectivo(){ }
+        public MantenimientoCorrectivo() { }
 
-            public int Id { get => id; set => id = value; }
-        public int Id_placa { get => id_placa; set => id_placa = value; }
-        public int Responsable { get => responsable; set => responsable = value; }
+        public int Id_mantenimiento { get => id_mantenimiento; set => id_mantenimiento = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
-        public int Ubicacion { get => ubicacion; set => ubicacion = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        public bool Estado
-        {
-            get { return estado; }
-            set { estado = value; }
-        }
+        public bool Estado { get { return estado; } set { estado = value; }         }
+        public bool Es_correctivo { get { return es_correctivo; } set { es_correctivo = value; } }
+        public int Id_responsable { get => id_responsable; set => id_responsable = value; }
+        public int Placa_activo { get => placa_activo; set => placa_activo = value; }
+        public int Id_ubicacion { get => id_ubicacion; set => id_ubicacion = value; }
 
         public string TareasObjetoQuemado { get => "Limpiar, Soplar, Limpiar carpetas temporales, Actualizar antivirus"; set => tareasObjetoQuemado = value; }
-    }  
+    }
 }

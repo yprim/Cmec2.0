@@ -2,6 +2,8 @@
 using Servicios;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +15,9 @@ namespace Proyecto.Catalogos.Funcionarios
     {
         #region variables globales
         FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
+        readonly PagedDataSource pgsource = new PagedDataSource();
+        int primerIndex, ultimoIndex;
+        private int elmentosMostrar = 10;
 
         #endregion
 
@@ -21,11 +26,25 @@ namespace Proyecto.Catalogos.Funcionarios
         {
 
 
-            Session["listaFuncionarios"] = null;
-            Session["funcionarioEditar"] = null;
-            Session["funcionarioEliminar"] = null;
-            cargarDatosTblFuncionario();
+            //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
+            //si no tiene permiso de ver la pagina se redirecciona a login
+            int[] rolesPermitidos = { 2 };
+            Utilidades.escogerMenu(Page, rolesPermitidos);
 
+            if (!Page.IsPostBack)
+            {
+                Session["listaFuncionarios"] = null;
+
+                FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
+
+                List<Funcionario> listaFuncionarios = new List<Funcionario>();
+                listaFuncionarios = funcionarioServicios.getFuncionarios();
+
+                Session["listaFuncionarios"] = listaFuncionarios;
+                Session["listaFuncionariosFiltrada"] = listaFuncionarios;
+
+                mostrarDatosTabla();
+            }
 
         }
         #endregion
@@ -39,61 +58,262 @@ namespace Proyecto.Catalogos.Funcionarios
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        private void cargarDatosTblFuncionario()
+  
+        private void mostrarDatosTabla()
         {
-            List<Funcionario> listaFuncionarios = new List<Funcionario>();
-            listaFuncionarios = funcionarioServicios.getFuncionarios();
-            rpFuncionario.DataSource = listaFuncionarios;
+            List<Funcionario> listaSession = (List<Funcionario>)Session["listaFuncionarios"];
+            String usuario = "";
+            String nombre = "";
+            String apellidos = "";
+            String fechaNacimiento = "";
+            String correo = "";
+            String numeroTelefono1 = "";
+            String numeroTelefono2 = "";
+            String ocupacion = "";
+            String habilitado = "";
+
+            if (ViewState["usuario"] != null)
+                usuario = ViewState["usuario"].ToString();
+
+            if (ViewState["nombre"] != null)
+                nombre = (String)ViewState["nombre"];
+
+            if (ViewState["apellidos"] != null)
+            {
+                apellidos = (String)ViewState["apellidos"];
+            }
+            if (ViewState["fechaNacimiento"] != null)
+                fechaNacimiento = (String)ViewState["fechaNacimiento"];
+
+            if (ViewState["correo"] != null)
+                correo = (String)ViewState["correo"];
+
+            if (ViewState["numeroTelefono1"] != null)
+                numeroTelefono1 = (String)ViewState["numeroTelefono1"];
+
+            if (ViewState["numeroTelefono2"] != null)
+                numeroTelefono2 = (String)ViewState["numeroTelefono2"];
+
+            if (ViewState["ocupacion"] != null)
+                ocupacion = (String)ViewState["ocupacion"];
+
+            if (ViewState["habilitado"] != null)
+                habilitado = (String)ViewState["habilitado"];
+
+            List<Funcionario> listaFuncionarios = (List<Funcionario>)listaSession.Where(x => x.Usuario.ToUpper().Contains(usuario.ToUpper()) && x.Nombre.ToString().Contains(nombre)
+                                            && x.Apellidos.ToUpper().Contains(apellidos.ToUpper()) && x.Fecha_Nacimiento.Contains(fechaNacimiento.ToUpper()) && x.Correo.Contains(correo)
+                                            && x.Numero_Telefono1.Contains(numeroTelefono1.ToUpper()) && x.Numero_Telefono2.Contains(numeroTelefono2.ToUpper())
+                                            && x.Ocupacion.Contains(ocupacion.ToUpper()) && x.Habilitado.ToString().Contains(habilitado.ToUpper())).ToList();
+            Session["listaFuncionariosFiltrada"] = listaFuncionarios;
+
+            var dt = listaFuncionarios;
+            pgsource.DataSource = dt;
+            pgsource.AllowPaging = true;
+            //numero de items que se muestran en el Repeater
+            pgsource.PageSize = elmentosMostrar;
+            pgsource.CurrentPageIndex = paginaActual;
+            //mantiene el total de paginas en View State
+            ViewState["TotalPaginas"] = pgsource.PageCount;
+            //Ejemplo: "Página 1 al 10"
+            lblpagina.Text = "Página " + (paginaActual + 1) + " de " + pgsource.PageCount + " (" + dt.Count + " - elementos)";
+            //Habilitar los botones primero, último, anterior y siguiente
+            lbAnterior.Enabled = !pgsource.IsFirstPage;
+            lbSiguiente.Enabled = !pgsource.IsLastPage;
+            lbPrimero.Enabled = !pgsource.IsFirstPage;
+            lbUltimo.Enabled = !pgsource.IsLastPage;
+
+            rpFuncionario.DataSource = pgsource;
             rpFuncionario.DataBind();
 
-            Session["listaFuncionarios"] = listaFuncionarios;
-
+            //metodo que realiza la paginacion
+            Paginacion();
         }
         #endregion
+
+        /// <summary>
+        /// Leonardo Carrion
+        /// 10/abr/2019
+        /// Efecto: realiza la paginacion
+        /// Requiere: -
+        /// Modifica: paginacion mostrada en pantalla
+        /// Devuelve: -
+        /// </summary>
+        private void Paginacion()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("IndexPagina"); //Inicia en 0
+            dt.Columns.Add("PaginaText"); //Inicia en 1
+
+            primerIndex = paginaActual - 2;
+            if (paginaActual > 2)
+                ultimoIndex = paginaActual + 2;
+            else
+                ultimoIndex = 4;
+
+            //se revisa que la ultima pagina sea menor que el total de paginas a mostrar, sino se resta para que muestre bien la paginacion
+            if (ultimoIndex > Convert.ToInt32(ViewState["TotalPaginas"]))
+            {
+                ultimoIndex = Convert.ToInt32(ViewState["TotalPaginas"]);
+                primerIndex = ultimoIndex - 4;
+            }
+
+            if (primerIndex < 0)
+                primerIndex = 0;
+
+            //se crea el numero de paginas basado en la primera y ultima pagina
+            for (var i = primerIndex; i < ultimoIndex; i++)
+            {
+                var dr = dt.NewRow();
+                dr[0] = i;
+                dr[1] = i + 1;
+                dt.Rows.Add(dr);
+            }
+
+            rptPaginacion.DataSource = dt;
+            rptPaginacion.DataBind();
+        }
+
+
+        private int paginaActual
+        {
+            get
+            {
+                if (ViewState["paginaActual"] == null)
+                {
+                    return 0;
+                }
+                return ((int)ViewState["paginaActual"]);
+            }
+            set
+            {
+                ViewState["paginaActual"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Leonardo Gomez
+        /// 12/06/2019
+        /// Efecto: se devuelve a la primera pagina y muestra los datos de la misma
+        /// Requiere: dar clic al boton de "Primer pagina"
+        /// Modifica: elementos mostrados en la tabla de contactos
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 0;
+            mostrarDatosTabla();
+        }
+
+        /// <summary>
+        /// Steven Camacho B
+        /// 27/05/2019
+        /// Efecto: se devuelve a la ultima pagina y muestra los datos de la misma
+        /// Requiere: dar clic al boton de "Ultima pagina"
+        /// Modifica: elementos mostrados en la tabla de contactos
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbUltimo_Click(object sender, EventArgs e)
+        {
+            paginaActual = (Convert.ToInt32(ViewState["TotalPaginas"]) - 1);
+            mostrarDatosTabla();
+        }
+
+        /// <summary>
+        /// Steven Camacho B
+        /// 27/05/2019
+        /// Efecto: se devuelve a la pagina anterior y muestra los datos de la misma
+        /// Requiere: dar clic al boton de "Anterior pagina"
+        /// Modifica: elementos mostrados en la tabla de contactos
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbAnterior_Click(object sender, EventArgs e)
+        {
+            paginaActual -= 1;
+            mostrarDatosTabla();
+        }
+
+        /// <summary>
+        /// Leonardo Gomez
+        /// 12/06/2019
+        /// Efecto: se devuelve a la pagina siguiente y muestra los datos de la misma
+        /// Requiere: dar clic al boton de "Siguiente pagina"
+        /// Modifica: elementos mostrados en la tabla de contactos
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbSiguiente_Click(object sender, EventArgs e)
+        {
+            paginaActual += 1;
+            mostrarDatosTabla();
+        }
+
+        /// <summary>
+        /// Leonardo Gomez
+        /// 12/06/2019
+        /// Efecto: actualiza la pagina actual y muestra los datos de la misma
+        /// Requiere: -
+        /// Modifica: elementos de la tabla
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
+        protected void rptPaginacion_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (!e.CommandName.Equals("nuevaPagina")) return;
+            paginaActual = Convert.ToInt32(e.CommandArgument.ToString());
+            mostrarDatosTabla();
+        }
+
+        /// <summary>
+        /// Leonardo Gomez
+        /// 12/06/2019
+        /// Efecto: marca el boton de la pagina seleccionada
+        /// Requiere: dar clic al boton de paginacion
+        /// Modifica: color del boton seleccionado
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void rptPaginacion_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            var lnkPagina = (LinkButton)e.Item.FindControl("lbPaginacion");
+            if (lnkPagina.CommandArgument != paginaActual.ToString()) return;
+            lnkPagina.Enabled = false;
+            lnkPagina.BackColor = Color.FromName("#005da4");
+            lnkPagina.ForeColor = Color.FromName("#FFFFFF");
+        }
 
         #region eventos
 
         /// <summary>
-        /// Leonardo Gomez
-        ///5/10/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa un nuevo funcionario,
-        /// se activa cuando se presiona el boton de nuevo
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
+        /// 12/06/2019
+        /// Metodo que redirecciona a la pantalla para registrar un nuevo funcionario
+        /// Este se activa al hacer click en la botón nuevo activo
         /// </summary>
-        /// <param></param>
-        /// <returns></returns>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             String url = Page.ResolveUrl("~/Catalogos/Funcionarios/NuevoFuncionario.aspx");
             Response.Redirect(url);
         }
 
-        /// <summary>
-        /// Leonardo Gomez
-        ///5/10/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se edita un funcionario,
-        /// se activa cuando se presiona el boton de editar
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            int ced = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaFuncionarios"];
+            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaFuncionariosFiltrada"];
 
             Funcionario funcionarioEditar = new Funcionario();
 
             foreach (Funcionario funcionario in listaFuncionarios)
             {
-                if (Convert.ToInt32(funcionario.Usuario) == ced)
+                if (funcionario.Id == id)
                 {
                     funcionarioEditar = funcionario;
                     break;
@@ -107,27 +327,22 @@ namespace Proyecto.Catalogos.Funcionarios
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        ///5/10/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se elimina un funcionario,
-        /// se activa cuando se presiona el boton de eliminar
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
+        /// Leonardo Gomgez
+        /// 12/06/2019
+        /// Metodo que redirecciona a la pantalla donde se elimina (inhabilita) un funcionario
+        /// se activa cuando se presiona el boton de Eliminar
         /// </summary>
-        /// <param></param>
-        /// <returns></returns>
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            int ced = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaFuncionarios"];
+            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaFuncionariosFiltrada"];
 
             Funcionario funcionarioEliminar = new Funcionario();
 
             foreach (Funcionario funcionario in listaFuncionarios)
             {
-                if (Convert.ToInt32(funcionario.Usuario) == ced)
+                if (funcionario.Id == id)
                 {
                     funcionarioEliminar = funcionario;
                     break;
@@ -138,32 +353,29 @@ namespace Proyecto.Catalogos.Funcionarios
 
             String url = Page.ResolveUrl("~/Catalogos/Funcionarios/EliminarFuncionario.aspx");
             Response.Redirect(url);
-
         }
-
 
         /// <summary>
         /// Leonardo Gomez
-        /// 5/10/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se ve un Funcionario,
-        /// se activa cuando se presiona el boton de ver
-        /// Requiere: -
+        /// 12/06/2019
+        /// Efecto: redirrecciona a la pantalla de Ver
+        /// Requiere: dar clic al boton de "Ver"
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param></param>
-        /// <returns></returns>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnVer_Click(object sender, EventArgs e)
         {
-            int ced = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaFuncionarios"];
+            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaActivosFiltrada"];
 
             Funcionario funcionarioVer = new Funcionario();
 
             foreach (Funcionario funcionario in listaFuncionarios)
             {
-                if (Convert.ToInt32(funcionario.Usuario) == ced)
+                if (funcionario.Id == id)
                 {
                     funcionarioVer = funcionario;
                     break;
@@ -172,31 +384,32 @@ namespace Proyecto.Catalogos.Funcionarios
 
             Session["funcionarioVer"] = funcionarioVer;
 
-            String url = Page.ResolveUrl("~/Catalogos/Funcionaios/VerFuncionario.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Funcionarios/VerFuncionario.aspx");
             Response.Redirect(url);
-
         }
 
         /// <summary>
-        /// Leonardo Gomez 
-        /// 5/10/2019
-        /// Efecto: habilita o desabilita los botones de editar y elminar segun el rol
-        /// Requiere: -
-        /// Modifica: visibilidad de botones
+        /// Leonardo Gomez
+        /// 12/06/2019
+        /// Efecto: realiza el filtrado
+        /// Requiere: 
+        /// Modifica: -
         /// Devuelve: -
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void rpFuncionario_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        
+        protected void Button4_Click(object sender, EventArgs e)
         {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            {
-                LinkButton btnEditar = e.Item.FindControl("btnEditar") as LinkButton;
-                LinkButton btnEliminar = e.Item.FindControl("btnEliminar") as LinkButton;
+            paginaActual = 0;
+            ViewState["usuario"] = txtBuscarUsuario.Text;
+            ViewState["nombre"] = txtBuscarNombre.Text;
+            ViewState["apellidos"] = txtBuscarApellidos.Text;
+            ViewState["correo"] = txtBuscarCorreo.Text;
 
-            }
+            mostrarDatosTabla();
         }
-
         #endregion
     }
+
 }

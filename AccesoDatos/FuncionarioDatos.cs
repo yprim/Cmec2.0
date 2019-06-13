@@ -55,7 +55,7 @@ namespace AccesoDatos
                 funcionario.Usuario = reader.GetValue(1).ToString();
                 funcionario.Nombre = reader.GetValue(2).ToString();
                 funcionario.Apellidos = reader.GetValue(3).ToString();
-                funcionario.Fecha_Nacimiento = DateTime.Parse(reader.GetValue(4).ToString());
+                funcionario.Fecha_Nacimiento = reader.GetValue(4).ToString();
                 funcionario.Correo = reader.GetValue(5).ToString();
                 funcionario.Numero_Telefono1 = reader.GetValue(6).ToString();
                 funcionario.Numero_Telefono2 = reader.GetValue(7).ToString();

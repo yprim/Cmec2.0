@@ -28,7 +28,7 @@ namespace Entidades
         public string Usuario { get => usuario; set => usuario = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellidos { get => apellidos; set => apellidos = value; }
-        public DateTime Fecha_Nacimiento { get => fecha_nacimiento; set => fecha_nacimiento = value; }
+        public String Fecha_Nacimiento { get => fecha_nacimiento.ToShortDateString(); set => fecha_nacimiento = DateTime.Parse(value); }
         public string Correo { get => correo; set => correo = value; }
         public string Numero_Telefono1 { get => numero_telefono1; set => numero_telefono1 = value; }
         public string Numero_Telefono2 { get => numero_telefono2; set => numero_telefono2 = value; }

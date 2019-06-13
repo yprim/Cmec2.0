@@ -7,10 +7,8 @@
         <div class="row">
 
             <%-- titulo accion--%>
-    <div class="col-md-12 col-xs-12 col-sm-12">
-        <center>
-                        <asp:Label ID="lblEliminarFuncionario" runat="server" Text="Información de Funcionario" Font-Size="Large" ForeColor="Black"></asp:Label>
-                    </center>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <hr />
     </div>
             <%-- fin titulo accion --%>
 
