@@ -500,6 +500,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Catalogos\Responsables\" />
     <Folder Include="Informes\" />
     <Folder Include="Mantenimientos\" />
   </ItemGroup>
