@@ -96,6 +96,11 @@
     <Content Include="Catalogos\MantenimientosCorrectivos\EliminarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx" />
+    <Content Include="Catalogos\Responsables\AdministrarResponsable.aspx" />
+    <Content Include="Catalogos\Responsables\EditarResponsable.aspx" />
+    <Content Include="Catalogos\Responsables\EliminarResponsable.aspx" />
+    <Content Include="Catalogos\Responsables\NuevoResponsable.aspx" />
+    <Content Include="Catalogos\Responsables\VerResponsable.aspx" />
     <Content Include="Catalogos\Tareas\AdministrarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EditarTarea.aspx" />
     <Content Include="Catalogos\Tareas\EliminarTarea.aspx" />
@@ -338,6 +343,41 @@
     <Compile Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx.designer.cs">
       <DependentUpon>PlanMantenimientoPreventivo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\Responsables\AdministrarResponsable.aspx.cs">
+      <DependentUpon>AdministrarResponsable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\AdministrarResponsable.aspx.designer.cs">
+      <DependentUpon>AdministrarResponsable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\EditarResponsable.aspx.cs">
+      <DependentUpon>EditarResponsable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\EditarResponsable.aspx.designer.cs">
+      <DependentUpon>EditarResponsable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\EliminarResponsable.aspx.cs">
+      <DependentUpon>EliminarResponsable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\EliminarResponsable.aspx.designer.cs">
+      <DependentUpon>EliminarResponsable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\NuevoResponsable.aspx.cs">
+      <DependentUpon>NuevoResponsable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\NuevoResponsable.aspx.designer.cs">
+      <DependentUpon>NuevoResponsable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\VerResponsable.aspx.cs">
+      <DependentUpon>VerResponsable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Responsables\VerResponsable.aspx.designer.cs">
+      <DependentUpon>VerResponsable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\Tareas\AdministrarTarea.aspx.cs">
       <DependentUpon>AdministrarTarea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -500,7 +540,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Catalogos\Responsables\" />
     <Folder Include="Informes\" />
     <Folder Include="Mantenimientos\" />
   </ItemGroup>

@@ -50,6 +50,8 @@
     <Compile Include="FuncionarioDatos.cs" />
     <Compile Include="MantenimientoCorrectivoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponsableDatos.cs" />
+    <Compile Include="ResponsableDatos2.cs" />
     <Compile Include="TareaDatos.cs" />
     <Compile Include="UbicacionDatos.cs" />
   </ItemGroup>
