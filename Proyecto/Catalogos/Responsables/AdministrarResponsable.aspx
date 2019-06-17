@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="AdministrarTarea.aspx.cs" Inherits="Proyecto.Catalogos.AdministrarTarea" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="AdministrarResponsable.aspx.cs" Inherits="Proyecto.Catalogos.Responsables.AdministrarResponsable" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="MainScriptManager" runat="server" EnableCdn="true"/>
         <asp:UpdatePanel ID="pnlUpdate" runat="server">
@@ -12,7 +11,7 @@
         <%-- titulo pantalla --%>
         <div class="col-md-12 col-xs-12 col-sm-12">
             <center>
-            <asp:Label ID="label" runat="server" Text="Tareas" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="label" runat="server" Text="Responsables" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
         </div>
         <%-- fin titulo pantalla --%>
@@ -43,13 +42,14 @@
 
                 <div class="table-responsive col-md-12 col-xs-12 col-sm-12" style="text-align: center; overflow-y: auto;">
 
-                    <asp:Repeater ID="rpTarea" runat="server" >
+                    <asp:Repeater ID="rpResponsable" runat="server" >
                         <HeaderTemplate>
                             <table class="table table-bordered">
                                 <thead style="text-align: center">
                                     <tr style="text-align: center" class="btn-primary">
                                         <th></th>
-                                        <th>Descripción</th>
+                                        <th>Nombre</th>
+                                         <th>Usuario</th>
                                     </tr>
                                 </thead>
                         </HeaderTemplate>
@@ -57,12 +57,15 @@
                         <ItemTemplate>
                             <tr style="text-align: center">
                                 <td>
-                                    <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("idTarea") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
-                                    <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idTarea") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
-                                    <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idTarea") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("idResponsable") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idResponsable") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idResponsable") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                                 </td>
                                 <td>
-                                    <%# Eval("descripcion") %>
+                                    <%# Eval("nombre") %>
+                                </td>
+                                  <td>
+                                    <%# Eval("usuario") %>
                                 </td>
                             </tr>
 
@@ -117,7 +120,7 @@
 
         <%-- botones --%>
         <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-            <asp:Button ID="btnNuevo" runat="server" Text="Nueva Tarea" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+            <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Responsable" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
         </div>
         <%-- fin botones --%>
     </div>
