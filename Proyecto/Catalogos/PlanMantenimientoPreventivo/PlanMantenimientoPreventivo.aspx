@@ -28,7 +28,7 @@
 
         <%-- tabla--%>
         
-                <div class="col-md-12 col-xs-12 col-sm-12">
+                <div class="col-md-12 col-xs-12 col-sm-12" >
                     <table class="table">
                         <tr>
                                 <td><asp:Button ID="ButtonGenerarPlan" runat="server" Text="Generar plan" OnClick="btnGenerarPlan_Click" CssClass="btn btn-primary"/></td>

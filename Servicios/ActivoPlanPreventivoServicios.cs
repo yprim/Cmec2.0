@@ -60,7 +60,11 @@ namespace Servicios
 
         public List<ActivoPlanPreventivo> obtenerTodo()
         {
-            return planPreventivoDatos.obtenerTodo();
+            if (existePlanVigente())
+                return planPreventivoDatos.obtenerTodo();
+            else
+                return new List<ActivoPlanPreventivo>();
+
         }
     }
 }

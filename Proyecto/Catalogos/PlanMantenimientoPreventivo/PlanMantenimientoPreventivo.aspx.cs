@@ -40,20 +40,11 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
                 List<ActivoPlanPreventivo> listaPlan;
                 listaPlan = planServicios.obtenerTodo();
 
-                //Objeto de pruebas
-                ActivoPlanPreventivo elementoPrueba = new ActivoPlanPreventivo();
-                elementoPrueba.Placa = 43568756;
-                elementoPrueba.Equipo = "Esto es una prueba ";
-                elementoPrueba.Responsable = "Steven Camacho";
-                elementoPrueba.Edificio = "Z17";
-                elementoPrueba.Ubicacion = "Sala 78";
-                elementoPrueba.MesPropuesto = 8;
-                elementoPrueba.UltimoMantenimiento = "26/08/1988";
-                listaPlan.Add(elementoPrueba);
 
                 Session["listaPlan"] = listaPlan;
                 Session["listaPlanFiltrada"] = listaPlan;
 
+                comprobarEstadoPlanMantenimiento();
                 mostrarDatosTabla();
             }
         }
@@ -71,7 +62,7 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
         /// </summary>
         private void mostrarDatosTabla()
         {
-            comprobarEstadoPlanMantenimiento(); 
+           
 
             List<ActivoPlanPreventivo> listaSession = (List<ActivoPlanPreventivo>)Session["listaPlan"];
             String placa = "";
@@ -86,11 +77,8 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
             if (ViewState["placa"] != null)
                 placa = ViewState["placa"].ToString();
 
-            if (ViewState["descripcion"] != null)
-                descripcion = (String)ViewState["descripcion"];
-
-            if (ViewState["serie"] != null)
-                serie = (String)ViewState["serie"];
+            if (ViewState["equipo"] != null)
+                descripcion = (String)ViewState["equipo"];
 
             if (ViewState["mesPropuesto"] != null)
             {
@@ -148,10 +136,12 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
         private void comprobarEstadoPlanMantenimiento() {
             
             if (!planServicios.existePlanVigente()) { 
-            divMensajeSinPlan.Style.Add("display", "block");
-             }
+                divMensajeSinPlan.Style.Add("display", "block");
+                ButtonGenerarPlan.Style.Add("display", "block");
+            }
             else{
                 divMensajeSinPlan.Style.Add("display", "none");
+                ButtonGenerarPlan.Style.Add("display", "none");
             }
         }
 
@@ -355,8 +345,10 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
          */
         protected void btnGenerarPlan_Click(object sender, EventArgs e)
         {
+            planServicios= new ActivoPlanPreventivoServicios();
             planServicios.generarPlanPreventivo();
             mostrarDatosTabla();
+            Response.Redirect("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
         }
 
 
@@ -364,7 +356,7 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
         {
             paginaActual = 0;
             ViewState["placa"] = txtBuscarPlaca.Text;
-            ViewState["descripcion"] = txtBuscarDescripcion.Text;
+            ViewState["equipo"] = txtBuscarDescripcion.Text;
             ViewState["mesPropuesto"] = txtBuscarFecha.Text;
             ViewState["responsable"] = txtBuscarResponsable.Text;
             ViewState["edificio"] = txtBuscarEdificio.Text;
