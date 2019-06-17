@@ -15,14 +15,21 @@ namespace Proyecto.Catalogos.Funcionarios
         FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
         #endregion
 
-        #region page
-        protected void Page(object sender, EventArgs e)
+        #region page load
+        protected void Page_Load(object sender, EventArgs e)
         {
 
             if (!IsPostBack)
             {
                 Funcionario funcionario = (Funcionario)Session["funcionarioVer"];
                 txtCedFuncionario.Text = funcionario.Usuario;
+                txtNombreFuncionario.Text = funcionario.Nombre;
+                txtApellidos.Text = funcionario.Apellidos;
+                txtCorreo.Text = funcionario.Correo;
+                txtFechaNacimiento.Text = funcionario.Fecha_Nacimiento;
+                txtNumeroTelefonoUno.Text = funcionario.Numero_Telefono1;
+                txtNumeroTelefonoDos.Text = funcionario.Numero_Telefono2;
+                txtOcupacion.Text = funcionario.Ocupacion;
 
             }
 
@@ -43,10 +50,19 @@ namespace Proyecto.Catalogos.Funcionarios
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        protected void btn_Cancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            //String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
-            //Response.Redirect(url);
+            Funcionario funcionario = (Funcionario)Session["funcionarioVer"];
+            String url;
+            if (funcionario.Habilitado == 1)
+            {
+                url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
+            }
+            else
+            {
+                url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarActivoFuncionario.aspx");
+            }
+            Response.Redirect(url);
         }
 
         #endregion

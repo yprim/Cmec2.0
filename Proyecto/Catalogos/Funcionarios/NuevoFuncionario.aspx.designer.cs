@@ -22,220 +22,292 @@ namespace Proyecto.Catalogos.Funcionarios {
         protected global::System.Web.UI.WebControls.Label lblNuevoFuncionario;
         
         /// <summary>
-        /// Control txtCedFuncionario.
+        /// Control lblNombreFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCedFuncionario;
+        protected global::System.Web.UI.WebControls.Label lblNombreFuncionario;
         
         /// <summary>
-        /// Control divCedFuncionarioIncorrecto.
+        /// Control txtNombreFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCedFuncionarioIncorrecto;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreFuncionario;
         
         /// <summary>
-        /// Control lblCedFuncionarioIncorrecto.
+        /// Control divNombreIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCedFuncionarioIncorrecto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNombreIncorrecto;
         
         /// <summary>
-        /// Control TextBox2.
+        /// Control lblNombreFuncionarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.Label lblNombreFuncionarioIncorrecto;
         
         /// <summary>
-        /// Control div1.
+        /// Control lblApellidosFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        protected global::System.Web.UI.WebControls.Label lblApellidosFuncionario;
         
         /// <summary>
-        /// Control Label2.
+        /// Control txtApellidosFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox txtApellidosFuncionario;
         
         /// <summary>
-        /// Control TextBox3.
+        /// Control divApellidosIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divApellidosIncorrecto;
         
         /// <summary>
-        /// Control div2.
+        /// Control lblApellidosFuncionarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
+        protected global::System.Web.UI.WebControls.Label lblApellidosFuncionarioIncorrecto;
         
         /// <summary>
-        /// Control Label3.
+        /// Control lblUsuarioFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblUsuarioFuncionario;
         
         /// <summary>
-        /// Control TextBox4.
+        /// Control txtUsuarioFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuarioFuncionario;
         
         /// <summary>
-        /// Control div3.
+        /// Control divUsuarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUsuarioIncorrecto;
         
         /// <summary>
-        /// Control Label4.
+        /// Control lblUsuarioFuncionarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblUsuarioFuncionarioIncorrecto;
         
         /// <summary>
-        /// Control TextBox5.
+        /// Control lblFechaNacimientoFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.Label lblFechaNacimientoFuncionario;
         
         /// <summary>
-        /// Control div4.
+        /// Control txtFechaNacimientoFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div4;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaNacimientoFuncionario;
         
         /// <summary>
-        /// Control Label5.
+        /// Control divFechaNacimientoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaNacimientoIncorrecto;
         
         /// <summary>
-        /// Control TextBox6.
+        /// Control lblFechaNacimientoFuncionarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.Label lblFechaNacimientoFuncionarioIncorrecto;
         
         /// <summary>
-        /// Control div5.
+        /// Control lblCorreoFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div5;
+        protected global::System.Web.UI.WebControls.Label lblCorreoFuncionario;
         
         /// <summary>
-        /// Control Label6.
+        /// Control txtCorreoFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.TextBox txtCorreoFuncionario;
         
         /// <summary>
-        /// Control TextBox7.
+        /// Control divCorreoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCorreoIncorrecto;
         
         /// <summary>
-        /// Control div6.
+        /// Control lblCorreoFuncionarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div6;
+        protected global::System.Web.UI.WebControls.Label lblCorreoFuncionarioIncorrecto;
         
         /// <summary>
-        /// Control Label7.
+        /// Control lblNumeroTelefonoUnoFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Label lblNumeroTelefonoUnoFuncionario;
         
         /// <summary>
-        /// Control TextBox8.
+        /// Control txtNumeroTelefonoUnoFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroTelefonoUnoFuncionario;
         
         /// <summary>
-        /// Control div7.
+        /// Control divNumeroTelefonoUnoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div7;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNumeroTelefonoUnoIncorrecto;
         
         /// <summary>
-        /// Control Label8.
+        /// Control lblNumeroTelefonoUnoFuncionarioIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label lblNumeroTelefonoUnoFuncionarioIncorrecto;
+        
+        /// <summary>
+        /// Control lblNumeroTelefonoDosFuncionario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroTelefonoDosFuncionario;
+        
+        /// <summary>
+        /// Control txtNumeroTelefonoDosFuncionario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroTelefonoDosFuncionario;
+        
+        /// <summary>
+        /// Control divNumeroTelefonoDosIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNumeroTelefonoDosIncorrecto;
+        
+        /// <summary>
+        /// Control lblNumeroTelefonoDosFuncionarioIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroTelefonoDosFuncionarioIncorrecto;
+        
+        /// <summary>
+        /// Control lblOcupacionFuncionario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOcupacionFuncionario;
+        
+        /// <summary>
+        /// Control txtOcupacionFuncionario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOcupacionFuncionario;
+        
+        /// <summary>
+        /// Control divOcupacionIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOcupacionIncorrecto;
+        
+        /// <summary>
+        /// Control lblOcupacionIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOcupacionIncorrecto;
         
         /// <summary>
         /// Control btnGuardar.

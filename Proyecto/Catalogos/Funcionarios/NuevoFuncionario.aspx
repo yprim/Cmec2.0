@@ -18,109 +18,110 @@
             </div>
 
             <%-- campos a llenar --%>
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo Nombre --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblCedFuncionario" runat="server" Text=Usuario <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNombreFuncionario" runat="server" Text="Nombre <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtCedFuncionario" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtNombreFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="divCedFuncionarioIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblCedFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divNombreIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblNombreFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo Apellidos --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label2" runat="server" Text=Nombre <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblApellidosFuncionario" runat="server" Text="Apellidos <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtApellidosFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div1" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label2" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divApellidosIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblApellidosFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo Usuario --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label3" runat="server" Text=Apellidos <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblUsuarioFuncionario" runat="server" Text="Usuario <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox3" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtUsuarioFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div2" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label3" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divUsuarioIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblUsuarioFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo Fecha Nacimiento --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label4" runat="server" Text=Fecha_Nacimiento <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblFechaNacimientoFuncionario" runat="server" Text="Fecha Nacimiento <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox4" runat="server"></asp:TextBox>
+                    <asp:TextBox TextMode="Date" class="form-control" ID="txtFechaNacimientoFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div3" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label4" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divFechaNacimientoIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblFechaNacimientoFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo Correo --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label5" runat="server" Text=Correo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblCorreoFuncionario" runat="server" Text="Correo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox5" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtCorreoFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div4" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label5" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divCorreoIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblCorreoFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo num tel uno --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label6" runat="server" Text=Telefono <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNumeroTelefonoUnoFuncionario" runat="server" Text="Numero Telefono Uno <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox6" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtNumeroTelefonoUnoFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div5" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label6" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divNumeroTelefonoUnoIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblNumeroTelefonoUnoFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo num tel dos --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label7" runat="server" Text=Segundo_Telefono <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNumeroTelefonoDosFuncionario" runat="server" Text="Numero Telefono Dos <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox7" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtNumeroTelefonoDosFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div6" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label7" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divNumeroTelefonoDosIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblNumeroTelefonoDosFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <div class="col-md-12 col-xs-12 col-sm-12">
-
+            <%-- campo ocupacion --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="Label8" runat="server" Text=Ocupacion <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblOcupacionFuncionario" runat="server" Text="Ocupacion <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="TextBox8" runat="server"></asp:TextBox>
+                    <asp:TextBox  class="form-control" ID="txtOcupacionFuncionario" runat="server" ></asp:TextBox>                              
                 </div>
-                <div id="div7" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="Label8" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divOcupacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblOcupacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
+
 
             <div class="col-xs-12">
                 <br />
@@ -150,18 +151,58 @@
         /*
         Evalúa de manera inmediata los campos de texto que va ingresando el usuario.
         */
-        function validarTexto(txtBox) {
-            var id = txtBox.id.substring(12);
 
-            var CedFuncionarioIncorrecto = document.getElementById('<%= divCedFuncionarioIncorrecto.ClientID %>');
+         function validarTexto(txtBox,id) {
+        var lblNombreFuncionarioIncorrecto = document.getElementById('<%= divNombreIncorrecto.ClientID %>');
+        var lblApellidosFuncionarioIncorrecto = document.getElementById('<%= divApellidosIncorrecto.ClientID %>');
+        var lblFechaNacimientoIncorrecto = document.getElementById('<%= divFechaNacimientoIncorrecto.ClientID %>');
+        var lblCorreoFuncionarioIncorrecto = document.getElementById('<%= divCorreoIncorrecto.ClientID %>');
+        var Incorrecto = document.getElementById('<%= divUsuarioIncorrecto.ClientID %>');
+        var lblNumeroTelefonoUnoIncorrecto = document.getElementById('<%= divNumeroTelefonoUnoIncorrecto.ClientID %>');
+        var lblNumeroTelefonoDosIncorrecto = document.getElementById('<%= divNumeroTelefonoDosIncorrecto.ClientID %>');
+        var lblOcupacionFuncionarioIncorrecto = document.getElementById('<%= divOcupacionIncorrecto.ClientID %>');
+
 
             if (txtBox.value != "") {
+                
                 txtBox.className = "form-control";
 
-                CedFuncionarioIncorrecto.style.display = 'none';
+                if (id == 'nombre')
+                    lblNombreFuncionarioIncorrecto.style.display = 'none';
+                if (id == 'apellidos')
+                    lblApellidosFuncionarioIncorrecto.style.display = 'none';
+                if (id == 'usuario')
+                    lblUsuarioFuncionarioIncorrecto.style.display = 'none';
+                if (id == 'correo')
+                    lblCorreoFuncionarioIncorrecto.style.display = 'none';
+                if (id == 'fecha_nacimiento')
+                    lblFechaNacimientoIncorrecto.style.display = 'none';
+                if (id == 'numero_telefono_uno')
+                    lblNumeroTelefonoUnoIncorrecto.style.display = 'none';
+                if (id == 'numero_telefono_dos')
+                    lblNumeroTelefonoDosIncorrecto.style.display = 'none';
+                if (id == 'ocupacion')
+                    lblOcupacionFuncionarioIncorrecto.style.display = 'none';
+                
             } else {
                 txtBox.className = "form-control alert-danger";
-                CedFuncionarioIncorrecto.style.display = 'block';
+
+                if (id == 'nombre')
+                    lblNombreFuncionarioIncorrecto.style.display = 'block';
+                if (id == 'apellidos')
+                    lblApellidosFuncionarioIncorrecto.style.display = 'block';
+                if (id == 'usuario')
+                    lblUsuarioFuncionarioIncorrecto.style.display = 'block';
+                if (id == 'correo')
+                    lblCorreoFuncionarioIncorrecto.style.display = 'none';
+                if (id == 'fecha_nacimiento')
+                    lblFechaNacimientoIncorrecto.style.display = 'block';
+                if (id == 'numero_telefono_uno')
+                    lblNumeroTelefonoUnoIncorrecto.style.display = 'block';
+                if (id == 'numero_telefono_dos')
+                    lblNumeroTelefonoDosIncorrecto.style.display = 'block';
+                if (id == 'ocupacion')
+                    lblOcupacionFuncionarioIncorrecto.style.display = 'block';
             }
         }
     </script>
