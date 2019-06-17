@@ -9,16 +9,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Proyecto.Catalogos
+namespace Proyecto.Catalogos.Responsables
 {
-    public partial class AdministrarTarea : System.Web.UI.Page
+    public partial class AdministrarResponsable : System.Web.UI.Page
     {
         #region variables globales
-        TareaServicios tareaServicios = new TareaServicios();
+        ResponsableServicios responsableServicios = new ResponsableServicios();
 
         #endregion
-
-
         readonly PagedDataSource pgsource = new PagedDataSource();
         int primerIndex, ultimoIndex;
         private int elmentosMostrar = 10;
@@ -49,28 +47,32 @@ namespace Proyecto.Catalogos
 
             if (!Page.IsPostBack)
             {
-                Session["listaTareas"] = null;
+                Session["listaResponsables"] = null;
 
-                TareaServicios edificioServicios = new TareaServicios();
+                ResponsableServicios responsableServicios = new ResponsableServicios();
 
-                List<Tarea> listaTareas = new List<Tarea>();
-                listaTareas = edificioServicios.getTareas();
+                List<Responsable> listaResponsables = new List<Responsable>();
+                listaResponsables = responsableServicios.getResponsables();
 
-                Session["listaTareas"] = listaTareas;
-                Session["listaTareasFiltrada"] = listaTareas;
+                Session["listaResponsables"] = listaResponsables;
+                Session["listaResponsablesFiltrada"] = listaResponsables;
 
                 mostrarDatosTabla();
             }
 
         }
-        #endregion
 
+        #endregion
         #region logica
+    
+
+
+        #region prueba
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
-        /// Efecto: carga los datos filtrados en la tabla de Tareas y realiza la paginacion correspondiente
+        /// Efecto: carga los datos filtrados en la tabla de Responsables y realiza la paginacion correspondiente
         /// Requiere: -
         /// Modifica: los datos mostrados en pantalla
         /// Devuelve: -
@@ -78,19 +80,23 @@ namespace Proyecto.Catalogos
         private void mostrarDatosTabla()
         {
 
-            List<Tarea> listaSession = (List<Tarea>)Session["listaTareas"];
-            String idTarea = "";
-            String descripcion = "";
-            if (ViewState["idTarea"] != null)
-                idTarea = (String)ViewState["idTarea"];
+            List<Responsable> listaSession = (List<Responsable>)Session["listaResponsables"];
+            String idResponsable = "";
+            String nombre = "";
+            String usuario = "";
+            if (ViewState["idResponsable"] != null)
+                idResponsable = (String)ViewState["idResponsable"];
 
-            if (ViewState["descripcion"] != null)
-                descripcion = (String)ViewState["descripcion"];
+            if (ViewState["nombre"] != null)
+                nombre = (String)ViewState["nombre"];
 
-            List<Tarea> listaTareas = (List<Tarea>)listaSession.Where(x => x.descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.idTarea.ToString().Contains(idTarea)).ToList();
-            Session["listaTareasFiltrada"] = listaTareas;
+            if (ViewState["usuario"] != null)
+                usuario = (String)ViewState["usuario"];
 
-            var dt = listaTareas;
+            List<Responsable> listaResponsables = (List<Responsable>)listaSession.Where(x => x.nombre.ToUpper().Contains(nombre.ToUpper()) && x.usuario.ToUpper().Contains(usuario.ToUpper()) && x.idResponsable.ToString().Contains(idResponsable)).ToList();
+            Session["listaResponsablesFiltrada"] = listaResponsables;
+
+            var dt = listaResponsables;
             pgsource.DataSource = dt;
             pgsource.AllowPaging = true;
             //numero de items que se muestran en el Repeater
@@ -106,15 +112,15 @@ namespace Proyecto.Catalogos
             lbPrimero.Enabled = !pgsource.IsFirstPage;
             lbUltimo.Enabled = !pgsource.IsLastPage;
 
-            rpTarea.DataSource = pgsource;
-            rpTarea.DataBind();
+            rpResponsable.DataSource = pgsource;
+            rpResponsable.DataBind();
 
             //metodo que realiza la paginacion
             Paginacion();
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: realiza la paginacion
         /// Requiere: -
@@ -157,11 +163,11 @@ namespace Proyecto.Catalogos
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: se devuelve a la primera pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Primer pagina"
-        /// Modifica: elementos mostrados en la tabla de edificios
+        /// Modifica: elementos mostrados en la tabla de responsables
         /// Devuelve: -
         /// </summary>
         /// <param name="sender"></param>
@@ -173,11 +179,11 @@ namespace Proyecto.Catalogos
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: se devuelve a la ultima pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Ultima pagina"
-        /// Modifica: elementos mostrados en la tabla de edificios
+        /// Modifica: elementos mostrados en la tabla de responsables
         /// Devuelve: -
         /// </summary>
         /// <param name="sender"></param>
@@ -189,11 +195,11 @@ namespace Proyecto.Catalogos
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: se devuelve a la pagina anterior y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Anterior pagina"
-        /// Modifica: elementos mostrados en la tabla de edificios
+        /// Modifica: elementos mostrados en la tabla de responsables
         /// Devuelve: -
         /// </summary>
         /// <param name="sender"></param>
@@ -205,11 +211,11 @@ namespace Proyecto.Catalogos
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: se devuelve a la pagina siguiente y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Siguiente pagina"
-        /// Modifica: elementos mostrados en la tabla de edificios
+        /// Modifica: elementos mostrados en la tabla de responsables
         /// Devuelve: -
         /// </summary>
         /// <param name="sender"></param>
@@ -221,7 +227,7 @@ namespace Proyecto.Catalogos
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: actualiza la la pagina actual y muestra los datos de la misma
         /// Requiere: -
@@ -238,7 +244,7 @@ namespace Proyecto.Catalogos
         }
 
         /// <summary>
-        /// Adrian Serrano
+        /// Priscilla Mena
         /// 29/5/2019
         /// Efecto: marca el boton de la pagina seleccionada
         /// Requiere: dar clic al boton de paginacion
@@ -256,35 +262,16 @@ namespace Proyecto.Catalogos
             lnkPagina.ForeColor = Color.FromName("#FFFFFF");
         }
 
+        #endregion
 
-        /// <summary>
-        /// Priscilla Mena
-        /// 5/06/2019
-        /// Efecto: Metodo para llenar los datos de la tabla con los tareas que se encuentran en la base de datos
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        private void cargarDatosTblTareas()
-        {
-            List<Tarea> listaTareas = new List<Tarea>();
-            listaTareas = tareaServicios.getTareas();
-            rpTarea.DataSource = listaTareas;
-            rpTarea.DataBind();
-
-            Session["listaTareas"] = listaTareas;
-
-        }
         #endregion
 
         #region eventos
 
         /// <summary>
         /// Priscilla Mena
-        ///5/06/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa un nuevo tarea,
+        ///5/29/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa un nuevo responsable,
         /// se activa cuando se presiona el boton de nuevo
         /// Requiere: -
         /// Modifica: -
@@ -294,14 +281,14 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Tareas/NuevaTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Responsables/NuevoResponsable.aspx");
             Response.Redirect(url);
         }
 
         /// <summary>
         /// Priscilla Mena
-        ///5/06/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se edita un tarea,
+        ///5/29/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se edita un responsable,
         /// se activa cuando se presiona el boton de editar
         /// Requiere: -
         /// Modifica: -
@@ -311,31 +298,31 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            int idTarea = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int idResponsable = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Tarea> listaTareas = (List<Tarea>)Session["listaTareas"];
+            List<Entidades.Responsable> listaResponsables = (List<Entidades.Responsable>)Session["listaResponsables"];
 
-            Tarea tareaEditar = new Tarea();
+            Entidades.Responsable responsableEditar = new Entidades.Responsable();
 
-            foreach (Tarea tarea in listaTareas)
+            foreach (Entidades.Responsable responsable in listaResponsables)
             {
-                if (tarea.idTarea == idTarea)
+                if (responsable.idResponsable == idResponsable)
                 {
-                    tareaEditar = tarea;
+                    responsableEditar = responsable;
                     break;
                 }
             }
 
-            Session["tareaEditar"] = tareaEditar;
+            Session["responsableEditar"] = responsableEditar;
 
-            String url = Page.ResolveUrl("~/Catalogos/Tareas/EditarTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Responsables/EditarResponsable.aspx");
             Response.Redirect(url);
         }
 
         /// <summary>
         /// Priscilla Mena
-        ///5/06/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se elimina un tarea,
+        ///5/29/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se elimina un responsable,
         /// se activa cuando se presiona el boton de eliminar
         /// Requiere: -
         /// Modifica: -
@@ -345,24 +332,24 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            int idTarea = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int idResponsable = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Tarea> listaTareas = (List<Tarea>)Session["listaTareas"];
+            List<Entidades.Responsable> listaResponsables = (List<Entidades.Responsable>)Session["listaResponsables"];
 
-            Tarea tareaEliminar = new Tarea();
+            Entidades.Responsable responsableEliminar = new Entidades.Responsable();
 
-            foreach (Tarea tarea in listaTareas)
+            foreach (Entidades.Responsable responsable in listaResponsables)
             {
-                if (tarea.idTarea == idTarea)
+                if (responsable.idResponsable == idResponsable)
                 {
-                    tareaEliminar = tarea;
+                    responsableEliminar = responsable;
                     break;
                 }
             }
 
-            Session["tareaEliminar"] = tareaEliminar;
+            Session["responsableEliminar"] = responsableEliminar;
 
-            String url = Page.ResolveUrl("~/Catalogos/Tareas/EliminarTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Responsables/EliminarResponsable.aspx");
             Response.Redirect(url);
 
         }
@@ -370,8 +357,8 @@ namespace Proyecto.Catalogos
 
         /// <summary>
         /// Priscilla Mena
-        /// 5/06/2019
-        /// Efecto: Metodo que redirecciona a la pagina donde se ve un tarea,
+        /// 5/29/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un responsable,
         /// se activa cuando se presiona el boton de ver
         /// Requiere: -
         /// Modifica: -
@@ -381,59 +368,38 @@ namespace Proyecto.Catalogos
         /// <returns></returns>
         protected void btnVer_Click(object sender, EventArgs e)
         {
-            int idTarea = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int idResponsable = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Tarea> listaTareas = (List<Tarea>)Session["listaTareas"];
+            List<Entidades.Responsable> listaResponsables = (List<Entidades.Responsable>)Session["listaResponsables"];
 
-            Tarea tareaVer = new Tarea();
+            Entidades.Responsable responsableVer = new Entidades.Responsable();
 
-            foreach (Tarea tarea in listaTareas)
+            foreach (Entidades.Responsable responsable in listaResponsables)
             {
-                if (tarea.idTarea == idTarea)
+                if (responsable.idResponsable == idResponsable)
                 {
-                    tareaVer = tarea;
+                    responsableVer = responsable;
                     break;
                 }
             }
 
-            Session["tareaVer"] = tareaVer;
+            Session["responsableVer"] = responsableVer;
 
-            String url = Page.ResolveUrl("~/Catalogos/Tareas/VerTarea.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Responsables/VerResponsable.aspx");
             Response.Redirect(url);
 
         }
 
+   
+
+
         protected void Button4_Click(object sender, EventArgs e)
         {
             paginaActual = 0;
-            ViewState["descripcion"] = txtBuscarNombre.Text;
+            ViewState["nombre"] = txtBuscarNombre.Text;
             mostrarDatosTabla();
         }
-        /// <summary>
-        /// Priscilla Mena    
-        /// 5/06/2019
-        /// Efecto: habilita o desabilita los botones de editar y elminar segun el rol
-        /// Requiere: -
-        /// Modifica: visibilidad de botones
-        /// Devuelve: -
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void rpTarea_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            {
-                LinkButton btnEditar = e.Item.FindControl("btnEditar") as LinkButton;
-                LinkButton btnEliminar = e.Item.FindControl("btnEliminar") as LinkButton;
-
-
-            }
-        }
-
-
-
 
         #endregion
-
     }
 }

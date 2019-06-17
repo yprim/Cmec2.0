@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EliminarFuncionario.aspx.cs" Inherits="Proyecto.Catalogos.Funcionarios.EliminarFuncionario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="EliminarResponsable.aspx.cs" Inherits="Proyecto.Catalogos.Responsables.EliminarResponsable" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
      <div class="divRedondo">
@@ -9,7 +10,7 @@
             <%-- titulo accion--%>
     <div class="col-md-12 col-xs-12 col-sm-12">
         <center>
-                        <asp:Label ID="lblEliminarFuncionario" runat="server" Text="Eliminar Funcionario" Font-Size="Large" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblEliminarResponsable" runat="server" Text="Eliminar Responsable" Font-Size="Large" ForeColor="Black"></asp:Label>
                     </center>
     </div>
             <%-- fin titulo accion --%>
@@ -18,14 +19,24 @@
                 <hr />
             </div>
 
-            <%-- campos a llenar --%>
-            <div class="col-md-12 col-xs-12 col-sm-12">
+                <%-- campos a llenar --%>
+               <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblCedFuncionario" runat="server" Text="Usuario: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNombreResponsable" runat="server" Text="Nombre: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtCedFuncionario" runat="server" ReadOnly="true"></asp:Label>
+                    <asp:Label  ID="txtNombreResponsable" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+            </div>
+            <br />
+                <div class="col-md-12 col-xs-12 col-sm-12">
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblUsuario" runat="server" Text="Usuario: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtUsuario" runat="server" ReadOnly="true"></asp:Label>
                 </div>
             </div>
             <%-- fin campos a llenar --%>

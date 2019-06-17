@@ -108,6 +108,8 @@
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx") %>'>Plan de mantenimientos preventivos</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx") %>'>Mantenimientos realizados</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Responsables/AdministrarResponsable.aspx") %>'>Responsables</a></li>
+
                                         </ul>
                                     </li>
                                     <li class="dropdown">

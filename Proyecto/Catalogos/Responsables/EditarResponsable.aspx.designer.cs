@@ -7,126 +7,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto.Catalogos {
+namespace Proyecto.Catalogos.Responsables {
     
     
-    public partial class AdministrarTarea {
+    public partial class EditarResponsable {
         
         /// <summary>
-        /// MainScriptManager control.
+        /// lblEditarResponsable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager MainScriptManager;
+        protected global::System.Web.UI.WebControls.Label lblEditarResponsable;
         
         /// <summary>
-        /// pnlUpdate control.
+        /// lblNombreResponsable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel pnlUpdate;
+        protected global::System.Web.UI.WebControls.Label lblNombreResponsable;
         
         /// <summary>
-        /// label control.
+        /// txtNombreResponsable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreResponsable;
         
         /// <summary>
-        /// Button2 control.
+        /// divNombreResponsableIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNombreResponsableIncorrecto;
         
         /// <summary>
-        /// txtBuscarNombre control.
+        /// lblNombreResponsableIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarNombre;
+        protected global::System.Web.UI.WebControls.Label lblNombreResponsableIncorrecto;
         
         /// <summary>
-        /// rpTarea control.
+        /// lblUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpTarea;
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
         
         /// <summary>
-        /// lbPrimero control.
+        /// txtUsuarioResponsable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbPrimero;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuarioResponsable;
         
         /// <summary>
-        /// lbAnterior control.
+        /// divUsuarioResponsableIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbAnterior;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUsuarioResponsableIncorrecto;
         
         /// <summary>
-        /// rptPaginacion control.
+        /// lblUsuarioResponsableIncorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList rptPaginacion;
+        protected global::System.Web.UI.WebControls.Label lblUsuarioResponsableIncorrecto;
         
         /// <summary>
-        /// lbSiguiente control.
+        /// btnActualizar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbSiguiente;
+        protected global::System.Web.UI.WebControls.Button btnActualizar;
         
         /// <summary>
-        /// lbUltimo control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbUltimo;
-        
-        /// <summary>
-        /// lblpagina control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpagina;
-        
-        /// <summary>
-        /// btnNuevo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

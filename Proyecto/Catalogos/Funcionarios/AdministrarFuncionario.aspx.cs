@@ -369,7 +369,7 @@ namespace Proyecto.Catalogos.Funcionarios
         {
             int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaActivosFiltrada"];
+            List<Funcionario> listaFuncionarios = (List<Funcionario>)Session["listaFuncionariosFiltrada"];
 
             Funcionario funcionarioVer = new Funcionario();
 

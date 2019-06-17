@@ -25,6 +25,56 @@
                 <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:Label  ID="txtCedFuncionario" runat="server" ReadOnly="true"></asp:Label>
                 </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblNombreFuncionario" runat="server" Text="Nombre: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtNombreFuncionario" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblApellidos" runat="server" Text="Apellidos: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtApellidos" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblCorreo" runat="server" Text="Correo: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtCorreo" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblFechaNacimiento" runat="server" Text="Fecha Nacimiento: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtFechaNacimiento" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblNumeroTelefonoUno" runat="server" Text="Numero Telefono : " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtNumeroTelefonoUno" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblNumeroTelefonoDos" runat="server" Text="Numero Telefono Dos: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtNumeroTelefonoDos" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblOcupacion" runat="server" Text="Ocupacion: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtOcupacion" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
             </div>
             <%-- fin campos a llenar --%>
 
