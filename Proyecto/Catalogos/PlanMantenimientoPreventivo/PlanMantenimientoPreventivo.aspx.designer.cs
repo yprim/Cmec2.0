@@ -76,22 +76,13 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo {
         protected global::System.Web.UI.WebControls.TextBox txtBuscarPlaca;
         
         /// <summary>
-        /// Control txtBuscarSerie.
+        /// Control txtBuscarFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarSerie;
-        
-        /// <summary>
-        /// Control txtBuscarDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarFecha;
         
         /// <summary>
         /// Control txtBuscarResponsable.
@@ -121,13 +112,13 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo {
         protected global::System.Web.UI.WebControls.TextBox txtBuscarUbicacion;
         
         /// <summary>
-        /// Control txtBuscarFecha.
+        /// Control txtBuscarDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarFecha;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
         
         /// <summary>
         /// Control rpActivo.

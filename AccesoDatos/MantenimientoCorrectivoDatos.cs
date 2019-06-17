@@ -82,7 +82,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("Select * from Propuesta_Mantenimiento_Preventivo where estado=0;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("Select * from Mantenimiento where estado=0;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();

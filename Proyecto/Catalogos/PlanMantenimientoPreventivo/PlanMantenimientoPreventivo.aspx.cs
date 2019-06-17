@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,7 +16,7 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
     {
 
         #region variables globales
-       // ActivoPlanPreventivoServicios planServicios ;
+        ActivoPlanPreventivoServicios planServicios;
         readonly PagedDataSource pgsource = new PagedDataSource();
         int primerIndex, ultimoIndex;
         private int elmentosMostrar = 10;
@@ -34,25 +35,25 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
             {
                 Session["listaPlan"] = null;
 
-                //planServicios = new ActivoPlanPreventivoServicios();
+                planServicios = new ActivoPlanPreventivoServicios();
 
-                List<ActivoPlanPreventivo> listaPlan = new List<ActivoPlanPreventivo>();
-                //listaPlan = planServicios.obtenerTodo();
+                List<ActivoPlanPreventivo> listaPlan;
+                listaPlan = planServicios.obtenerTodo();
 
                 //Objeto de pruebas
                 ActivoPlanPreventivo elementoPrueba = new ActivoPlanPreventivo();
                 elementoPrueba.Placa = 43568756;
-                elementoPrueba.Serie = "BV4342";
-                elementoPrueba.Descripcion = "Esto es una prueba ";
+                elementoPrueba.Equipo = "Esto es una prueba ";
                 elementoPrueba.Responsable = "Steven Camacho";
                 elementoPrueba.Edificio = "Z17";
                 elementoPrueba.Ubicacion = "Sala 78";
-                elementoPrueba.FechaPropuesta = "11/11/2021";
+                elementoPrueba.MesPropuesto = 8;
+                elementoPrueba.UltimoMantenimiento = "26/08/1988";
                 listaPlan.Add(elementoPrueba);
 
                 Session["listaPlan"] = listaPlan;
                 Session["listaPlanFiltrada"] = listaPlan;
-                comprobarEstadoPlanMantenimiento();
+
                 mostrarDatosTabla();
             }
         }
@@ -70,15 +71,16 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
         /// </summary>
         private void mostrarDatosTabla()
         {
+            comprobarEstadoPlanMantenimiento(); 
 
             List<ActivoPlanPreventivo> listaSession = (List<ActivoPlanPreventivo>)Session["listaPlan"];
             String placa = "";
-            String serie = "";            
+            String serie = "";
             String descripcion = "";
             String responsable = "";
             String edificio = "";
             String ubicacion = "";
-            String fechaPropuesta = "";
+            String mesPropuesto = "";
 
 
             if (ViewState["placa"] != null)
@@ -90,9 +92,9 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
             if (ViewState["serie"] != null)
                 serie = (String)ViewState["serie"];
 
-            if (ViewState["fechaPropuesta"] != null)
+            if (ViewState["mesPropuesto"] != null)
             {
-                fechaPropuesta = (String)ViewState["fechaPropuesta"];
+                mesPropuesto = (String)ViewState["mesPropuesto"];
             }
             if (ViewState["responsable"] != null)
                 responsable = (String)ViewState["responsable"];
@@ -102,9 +104,10 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
 
             if (ViewState["ubicacion"] != null)
                 ubicacion = (String)ViewState["ubicacion"];
-            
-            List<ActivoPlanPreventivo> listaPlan = (List<ActivoPlanPreventivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa)
-                                            && x.Serie.ToUpper().Contains(serie.ToUpper()) && x.Responsable.ToUpper().Contains(responsable.ToUpper()) && x.FechaPropuesta.Contains(fechaPropuesta) 
+
+            DateTimeFormatInfo formatoFecha = CultureInfo.CurrentCulture.DateTimeFormat;
+            List<ActivoPlanPreventivo> listaPlan = (List<ActivoPlanPreventivo>)listaSession.Where(x => x.Equipo.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa)
+                                            && x.Responsable.ToUpper().Contains(responsable.ToUpper()) && formatoFecha.GetMonthName(x.MesPropuesto).Contains(mesPropuesto)
                                             && x.Edificio.Contains(edificio) && x.Ubicacion.Contains(ubicacion)).ToList();
             Session["listaPlanFiltrada"] = listaPlan;
 
@@ -129,7 +132,8 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
 
             //metodo que realiza la paginacion
             Paginacion();
-        }
+            
+        }//mostrarDatosTabla
 
 
 
@@ -142,8 +146,13 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
         /// Devuelve: -
         /// </summary>
         private void comprobarEstadoPlanMantenimiento() {
-            if(true)//TODO validar con consulta de estado del último plan de mantenimiento
+            
+            if (!planServicios.existePlanVigente()) { 
             divMensajeSinPlan.Style.Add("display", "block");
+             }
+            else{
+                divMensajeSinPlan.Style.Add("display", "none");
+            }
         }
 
         /// <summary>
@@ -346,7 +355,8 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
          */
         protected void btnGenerarPlan_Click(object sender, EventArgs e)
         {
-            //TODO GENERAR PLAN...
+            planServicios.generarPlanPreventivo();
+            mostrarDatosTabla();
         }
 
 
@@ -355,8 +365,7 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
             paginaActual = 0;
             ViewState["placa"] = txtBuscarPlaca.Text;
             ViewState["descripcion"] = txtBuscarDescripcion.Text;
-            ViewState["serie"] = txtBuscarSerie.Text;
-            ViewState["fechaPropuesta"] = txtBuscarFecha.Text;
+            ViewState["mesPropuesto"] = txtBuscarFecha.Text;
             ViewState["responsable"] = txtBuscarResponsable.Text;
             ViewState["edificio"] = txtBuscarEdificio.Text;
             ViewState["ubicacion"] = txtBuscarUbicacion.Text;

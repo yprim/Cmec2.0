@@ -26,8 +26,8 @@ namespace AccesoDatos
             this.conexionDatos = new ConexionDatos();
             this.conexion = this.conexionDatos.conexionCMEC();
         }
-        #endregion 
-
+        #endregion
+     
         #region consultas
         /// <summary>
         /// Steven Camacho

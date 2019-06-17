@@ -41,15 +41,9 @@
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                        <asp:TextBox ID="txtBuscarSerie" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro serie"></asp:TextBox>
+                                        <asp:TextBox ID="txtBuscarFecha" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro mes propuesto"></asp:TextBox>
                                     </div>
-                                </td>
-                                <td>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                        <asp:TextBox ID="txtBuscarDescripcion" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro descripción"></asp:TextBox>
-                                    </div>
-                                </td>
+                                </td>                                
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -71,7 +65,7 @@
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                        <asp:TextBox ID="txtBuscarFecha" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro fecha propuesta"></asp:TextBox>
+                                        <asp:TextBox ID="txtBuscarDescripcion" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro equipo"></asp:TextBox>
                                     </div>
                                 </td>
                             </tr>
@@ -88,12 +82,12 @@
                                     <tr style="text-align: center" class="btn-primary">
                                         <th></th>
                                         <th>Placa</th>
-                                        <th>Serie</th>                                        
-                                        <th>Descripción</th>
+                                        <th>Mes propuesto</th>
                                         <th>Responsable</th>
                                         <th>Edificio</th>
                                         <th>Ubicacion</th>
-                                        <th>Fecha propuesta</th>
+                                        <th>Ult. mantenimiento</th>
+                                        <th>Equipo</th>
                                     </tr>
                                 </thead>
                         </HeaderTemplate>
@@ -107,10 +101,7 @@
                                     <%# Eval("placa") %>
                                 </td>
                                 <td>
-                                    <%# Eval("serie") %>
-                                </td>
-                                <td>
-                                     <%# Eval("descripcion") %>
+                                     <%# Eval("nombreMesPropuesto") %>
                                 </td>
                                 <td>
                                      <%# Eval("responsable") %>
@@ -122,7 +113,10 @@
                                      <%# Eval("ubicacion") %>
                                 </td>
                                 <td>
-                                     <%# Eval("fechaPropuesta") %>
+                                     <%# Eval("ultimoMantenimiento") %>
+                                </td>
+                                <td>
+                                     <%# Eval("equipo") %>
                                 </td>
 
                             </tr>
