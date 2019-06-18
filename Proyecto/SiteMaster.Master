@@ -14,6 +14,9 @@
     <%-- Estilos con formato UCR  --%>
     <link href="css/Lanamme.css" rel="stylesheet" />
 
+    <!--Estilos modal cargando... plan preventivo-->
+    <link href="css/Modal.css" rel="stylesheet" />
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" />
 
@@ -98,6 +101,23 @@
                               <span class="glyphicon glyphicon-info-sign"></span>                
                                         </asp:LinkButton>
                                     </li>
+                                    <li>
+                                        <a href='<%=Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx") %>'>Plan de mantenimientos preventivos</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Control<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx") %>'>Gestión de mantenimientos</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx") %>'>Aprobación de mantenimientos</a></li>
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivoEliminado.aspx") %>'>Recuperar activos Eliminados</a></li>
+                                        </ul>
+                                    </li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catálogos<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
@@ -105,24 +125,8 @@
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx") %>'>Edificios</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx") %>'>Ubicaciones</a></li>                                                                      
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Tareas/AdministrarTarea.aspx") %>'>Tareas de mantenimiento</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx") %>'>Plan de mantenimientos preventivos</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx") %>'>Mantenimientos realizados</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/Responsables/AdministrarResponsable.aspx") %>'>Responsables</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Control<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivoEliminado.aspx") %>'>Activos Eliminados</a></li>
-                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx") %>'>Aprobación de mantenimientos</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            
+                                            <li><a href='<%=Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx") %>'>Funcionarios</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -170,7 +174,7 @@
 
                                 <div class="col-md-12">
                                     <asp:Label ID="lblInformacion" runat="server" Text="Información de la Aplicación:" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                                    Se realiza el control de los activos de la unidad de tecnologías de información de los laboratorios del LanammeUCR incluyendo la trazabilidad de los mantenimientos correctivos y preventivos, administración de planes e informes.
+                                    Se realiza el control de los activos de la unidad de tecnologías de información de los laboratorios del LanammeUCR incluyendo la trazabilidad de los mantenimientos correctivos y preventivos, administración de planes preventivos e informes.
                                 </div>
                                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                                     <br />
@@ -193,7 +197,7 @@
                                 <div class="col-md-12">
                                     <asp:Label ID="lblEquipo" runat="server" Text="Equipo desarrollo: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                                     
-                                        Adrián Serrano Brenes, Leonardo Gómez Rodríguez, Priscilla Mena Monge, Steven Camacho Barboza.
+                                        Steven Camacho Barboza, Adrián Serrano Brenes, Leonardo Gómez Rodríguez, Priscilla Mena Monge.
                                 </div>
                                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                                     <br />

@@ -69,6 +69,7 @@
                                 <thead style="text-align: center">
                                     <tr style="text-align: center" class="btn-primary">
                                         <th></th>
+                                        <th style="width: 10%;">Mantenimiento Correctivo</th>
                                         <th>Placa</th>
                                         <th>Serie</th>
                                         <th>Modelo</th>                                        
@@ -85,6 +86,9 @@
                                     <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("placa") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                     <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("placa") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                                
+                                </td>
+                                <td style="width: 10%;">
+                                    <asp:LinkButton ID="btnMantenimiento" runat="server" ToolTip="Realizar mantenimiento correctivo de este activo" OnClick="btnEliminar_Click" class="glyphicon glyphicon-wrench" CommandArgument='<%# Eval("placa") %>'></asp:LinkButton>
                                 </td>
                                 <td>
                                     <%# Eval("placa") %>

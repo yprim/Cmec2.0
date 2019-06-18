@@ -124,6 +124,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\Calendario.css" />
     <Content Include="css\Lanamme.css" />
+    <Content Include="css\Modal.css" />
     <Content Include="css\wow-alert.css" />
     <Content Include="Default.aspx" />
     <Content Include="Error\Error.aspx" />
@@ -141,6 +142,9 @@
     <Content Include="Imagenes\ERROR.jpg" />
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\Lanamme Informe.png" />
+    <Content Include="Imagenes\loading.gif" />
+    <Content Include="Imagenes\loading2.gif" />
+    <Content Include="Imagenes\loading3.gif" />
     <Content Include="Imagenes\logoLanamme.png" />
     <Content Include="Imagenes\logoUCR.png" />
     <Content Include="Imagenes\logo_LANAMME-140x140.png" />

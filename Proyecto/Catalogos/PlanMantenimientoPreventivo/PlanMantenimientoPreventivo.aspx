@@ -179,6 +179,15 @@
 
                 </ContentTemplate>
         </asp:UpdatePanel>
+        <!-- update progress-->
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="pnlUpdate">
+        <ProgressTemplate>
+            <div id="Background"></div>
+            <div id="Progress" class="img-fluid rounded d-block m-l-none">
+                <h6> <p style="text-align:center"> <b>Procesando Datos, Espere por favor... <br /></b> </p> </h6>
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
 
     <!-- script tabla jquery -->
     <script type="text/javascript">

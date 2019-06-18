@@ -79,14 +79,14 @@
                     <ItemTemplate>
                         <tr style="text-align: center">
                             <td>
-                                <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("id") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
-                                 <asp:LinkButton ID="btnAprobar" runat="server" ToolTip="Aprobar" OnClick="btnAprobar_Click" CommandArgument='<%# Eval("id") %>'><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("id_mantenimiento") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
+                                 <asp:LinkButton ID="btnAprobar" runat="server" ToolTip="Aprobar" OnClick="btnAprobar_Click" CommandArgument='<%# Eval("id_mantenimiento") %>'><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
                             </td>
                             <td>
-                                <%# Eval("id_placa") %>
+                                <%# Eval("placa_activo") %>
                             </td>
                             <td>
-                                <%# Eval("ubicacion") %>
+                                <%# Eval("id_ubicacion") %>
                             </td>
                             <td>
                                 <%# Eval("fecha") %>
@@ -95,7 +95,7 @@
                                 <%# Eval("descripcion") %>
                             </td>
                             <td>
-                                <%# Eval("responsable") %>
+                                <%# Eval("id_responsable") %>
                             </td>
                         </tr>
 

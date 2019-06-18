@@ -54,7 +54,11 @@ namespace AccesoDatos
                 activo.Placa = Int32.Parse(reader.GetValue(0).ToString());
                 activo.Serie = reader.GetValue(1).ToString();
                 activo.Modelo = reader.GetValue(2).ToString();
-                activo.FechaCompra = reader.GetValue(3).ToString();
+                string fecha = reader.GetValue(3).ToString();
+                if (fecha == "")
+                    activo.FechaCompra = "01/01/0001";
+                else
+                    activo.FechaCompra = fecha;
                 activo.Descripcion = reader.GetValue(4).ToString();
                 activo.IsNotDeleted = Boolean.Parse(reader.GetValue(5).ToString());
                 listaActivos.Add(activo);

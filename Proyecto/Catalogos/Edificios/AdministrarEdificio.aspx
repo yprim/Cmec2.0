@@ -23,7 +23,7 @@
         <%-- tabla--%>
         
                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <table class="table">
+                    <table class="table" style="margin: 0 auto; width: 60%;">
                         <tr>
                                 <td><asp:Button ID="Button2" runat="server" Text="Filtrar" CssClass="btn btn-primary"/></td>
                                 <td>
@@ -44,10 +44,10 @@
 
                     <asp:Repeater ID="rpEdificio" runat="server" >
                         <HeaderTemplate>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="margin: 0 auto; width: 60%;">
                                 <thead style="text-align: center">
                                     <tr style="text-align: center" class="btn-primary">
-                                        <th></th>
+                                        <th ></th>
                                         <th>Nombre</th>
                                     </tr>
                                 </thead>
