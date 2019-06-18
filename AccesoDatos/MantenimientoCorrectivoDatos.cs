@@ -39,7 +39,7 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Select id_mantenimiento,fecha,descripcion,estado,es_correctivo,"+
-             "id_responsable, placa_activo, id_ubicacion From Mantenimiento", sqlConnection);
+             "id_responsable, placa_activo, id_ubicacion From Mantenimiento where estado = 0", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -52,11 +52,21 @@ namespace AccesoDatos
                 Mantenimiento.Id_mantenimiento = Convert.ToInt32(reader["id_mantenimiento"].ToString());
                 Mantenimiento.Fecha = Convert.ToDateTime(reader["fecha"].ToString());
                 Mantenimiento.Descripcion = reader["descripcion"].ToString();
-                Mantenimiento.Descripcion = reader["estado"].ToString();
-                Mantenimiento.Descripcion = reader["es_correctivo"].ToString();
+                Mantenimiento.Estado = reader["estado"].ToString();
+                Mantenimiento.Es_correctivo = true;
                 Mantenimiento.Id_responsable = Convert.ToInt32(reader["id_responsable"].ToString());
                 Mantenimiento.Placa_activo = Convert.ToInt32(reader["placa_activo"].ToString());
                 Mantenimiento.Id_ubicacion = Convert.ToInt32(reader["id_ubicacion"].ToString());
+
+                
+                if (Mantenimiento.Estado.Equals("False"))
+                {
+                    Mantenimiento.Estado = "En Proceso";
+                }
+                else
+                {
+                    Mantenimiento.Estado = "Aprobado";
+                }
 
                 listaMantenimientos.Add(Mantenimiento);
             }
@@ -98,7 +108,7 @@ namespace AccesoDatos
                 Mantenimiento.Fecha = Convert.ToDateTime(reader["fecha"].ToString());
                 Mantenimiento.Id_ubicacion = Convert.ToInt32(reader["id_ubicacion"].ToString());
                 Mantenimiento.Descripcion = reader["descripcion"].ToString();
-                Mantenimiento.Estado = false;
+                Mantenimiento.Estado = reader["estado"].ToString(); ;
 
                 listaMantenimientos.Add(Mantenimiento);
             }
@@ -117,24 +127,40 @@ namespace AccesoDatos
         /// </summary>
         /// <param name="MantenimientoCorrectivo"></param>
         /// <returns></returns>
-        public int insertarMantenimientoCorrectivo(MantenimientoCorrectivo Mantenimiento)
+        public int insertarMantenimientoCorrectivo(MantenimientoCorrectivo Mantenimiento, List<Tarea> Tareas)
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand(@"insert into Mantenimiento(id_placa,responsable,fecha,ubicacion,
-                                                     descripcion,estado)
-                                                    values(@id_placa,@responsable,@fecha,@ubicacion,@descripcion,@estado);
+            SqlCommand sqlCommand = new SqlCommand(@"insert into Mantenimiento(fecha,descripcion,estado,es_correctivo,
+                                                     id_responsable,placa_activo,id_ubicacion)
+                                                    values(@fecha,@descripcion,@estado,@es_correctivo,@responsable,@ubicacion);
                                                     SELECT SCOPE_IDENTITY();", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@id_placa", Mantenimiento.Placa_activo);
-            sqlCommand.Parameters.AddWithValue("@responsable", Mantenimiento.Id_responsable);
             sqlCommand.Parameters.AddWithValue("@fecha", Mantenimiento.Fecha);
-            sqlCommand.Parameters.AddWithValue("@ubicacion", Mantenimiento.Id_ubicacion);
             sqlCommand.Parameters.AddWithValue("@descripcion", Mantenimiento.Descripcion);
             sqlCommand.Parameters.AddWithValue("@estado", Mantenimiento.Estado);
+            sqlCommand.Parameters.AddWithValue("@es_correctivo", 1);
+            sqlCommand.Parameters.AddWithValue("@responsable", Mantenimiento.Id_responsable);
+            sqlCommand.Parameters.AddWithValue("@id_placa", Mantenimiento.Placa_activo);
+            sqlCommand.Parameters.AddWithValue("@ubicacion", Mantenimiento.Id_ubicacion);
 
             sqlConnection.Open();
             int id_mantenimiento = Convert.ToInt32(sqlCommand.ExecuteScalar());
+
+            foreach (Tarea tarea in Tareas)
+            {
+
+                SqlCommand sqlCommandInsertTareas = new SqlCommand("insert into Tarea_Mantenimiento(id_tarea,id_mantenimiento) " +
+                "values(@id_tarea,@id_mantenimiento); ", sqlConnection);
+
+                sqlCommandInsertTareas.Parameters.AddWithValue("@id_mantenimiento", id_mantenimiento);
+                
+                int idTarea = tarea.idTarea;
+
+                sqlCommandInsertTareas.Parameters.AddWithValue("@id_tarea", idTarea);
+
+            }
+
             sqlConnection.Close();
 
             return id_mantenimiento;
@@ -161,7 +187,7 @@ namespace AccesoDatos
                                                     " descripcion = @descripcion, " +
                                                     " estado = @estado, " +
                                                     " es_correctivo = @correctivo, " +
-                                                    "where id = @id;", sqlConnection);
+                                                    "where id_mantenimiento = @id;", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id_placa", Mantenimiento.Placa_activo);
             sqlCommand.Parameters.AddWithValue("@responsable", Mantenimiento.Id_responsable);
@@ -181,8 +207,8 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("Update Propuesta_Mantenimiento_Preventivo " +
-                                                    "set estado = 1 where id = @id", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("Update Mantenimiento " +
+                                                    "set estado = 1 where id_mantenimiento = @id", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id", id);
             sqlConnection.Open();

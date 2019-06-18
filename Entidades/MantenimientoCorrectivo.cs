@@ -15,8 +15,8 @@ namespace Entidades
     {
         int id_mantenimiento;
         DateTime fecha;
-        String descripcion;
-        bool estado;
+        string descripcion;
+        string estado;
         bool es_correctivo;
         int id_responsable;
         int placa_activo;
@@ -24,12 +24,14 @@ namespace Entidades
 
         String tareasObjetoQuemado;
 
-        public MantenimientoCorrectivo() { }
-
+        public MantenimientoCorrectivo() {
+            
+        }
+       
         public int Id_mantenimiento { get => id_mantenimiento; set => id_mantenimiento = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        public bool Estado { get { return estado; } set { estado = value; }         }
+        public string Estado { get => estado;  set => estado = value; }         
         public bool Es_correctivo { get { return es_correctivo; } set { es_correctivo = value; } }
         public int Id_responsable { get => id_responsable; set => id_responsable = value; }
         public int Placa_activo { get => placa_activo; set => placa_activo = value; }

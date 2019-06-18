@@ -53,10 +53,10 @@ namespace Servicios
             /// </summary>
             /// <param name="MantenimientoCorrectivo"></param>
             /// <returns></returns>
-            public int insertarMantenimiento(MantenimientoCorrectivo Mantenimiento)
+            public int insertarMantenimiento(MantenimientoCorrectivo Mantenimiento, List<Tarea> Tareas)
         {
 
-            return mantenimientoDatos.insertarMantenimientoCorrectivo(Mantenimiento);
+            return mantenimientoDatos.insertarMantenimientoCorrectivo(Mantenimiento, Tareas);
 
         }
 

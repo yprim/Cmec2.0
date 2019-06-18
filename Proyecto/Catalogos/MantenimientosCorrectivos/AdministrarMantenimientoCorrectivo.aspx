@@ -15,7 +15,7 @@
             <asp:Label ID="label" runat="server" Text="Mantenimientos Correctivos" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
                 </div>
-            </div>
+            
             <%-- fin titulo pantalla --%>
 
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
@@ -90,7 +90,6 @@
                                 <td>
                                     <%# Eval("estado") %>
                                 </td>
-                                </td>
                                 <td>
                                     <%# Eval("id_ubicacion") %>
                                 </td>
@@ -149,11 +148,12 @@
 
                 <%-- botones --%>
                 <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-                    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Mantenimiento Correctivo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+                    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Mantenimiento" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
                 </div>
                 <%-- fin botones --%>
             </div>
-
+            
+            </div>
 
         </ContentTemplate>
     </asp:UpdatePanel>

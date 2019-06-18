@@ -67,7 +67,7 @@
                     <asp:Label ID="LabelEstado" runat="server" Text="Estado: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtEstado" runat="server" Text="Pendiente "ReadOnly="true"></asp:Label>
+                    <asp:Label  ID="txtEstadoMantenimiento" runat="server" ReadOnly="true"></asp:Label>
                 </div>
 
             </div>

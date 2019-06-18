@@ -28,6 +28,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 txtFecha.Text = mantenimiento.Fecha.ToString();
                 txtUbicacion.Text = mantenimiento.Id_ubicacion.ToString();
                 txtDescripcionMantenimiento.Text = mantenimiento.Descripcion;
+                txtEstadoMantenimiento.Text = mantenimiento.Estado;
 
             }
 

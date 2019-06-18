@@ -22,7 +22,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             if (!IsPostBack)
             {
-                MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoEliminar"];
+                MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoCorrectivoEliminar"];
                 txtIdMantenimiento.Text = mantenimiento.Id_mantenimiento.ToString();
                 txtIdPlaca.Text = mantenimiento.Placa_activo.ToString();
                 txtDescripcion.Text = mantenimiento.Descripcion.ToString();

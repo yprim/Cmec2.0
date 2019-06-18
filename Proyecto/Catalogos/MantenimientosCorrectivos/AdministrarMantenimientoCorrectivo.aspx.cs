@@ -77,27 +77,32 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 fecha = (String)ViewState["fecha"];
 
             if (ViewState["descripcion"] != null)
-                descripcion = (String)ViewState["descripcion"];
-            
+                descripcion = (String)ViewState["descripcion"].ToString();
+
             if (ViewState["estado"] != null)
-                estado = (String)ViewState["estado"];
+                 estado = (String)ViewState["estado"];
+           
             
+
             if (ViewState["id_responsable"] != null)
                 id_responsable = (String)ViewState["id_responsable"];
 
             if (ViewState["es_correctivo"] != null)
-                es_correctivo = (String)ViewState["es_correctivo"];
-
+            
             if (ViewState["placa_activo"] != null)
                 placa_activo = (String)ViewState["placa_activo"];
 
             if (ViewState["id_ubicacion"] != null)
                 id_ubicacion = (String)ViewState["id_ubicacion"];
-
            
-            List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Id_mantenimiento.ToString().Contains(id_mantenimiento.ToUpper()) 
-            && x.Fecha.ToString().Contains(fecha) && x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Estado.ToString().Contains(estado.ToUpper()) 
-            && x.Id_responsable.ToString().Contains(id_responsable) && x.Es_correctivo.ToString().Contains(es_correctivo) && x.Placa_activo.ToString().Contains(placa_activo)
+            List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)listaSession.Where( 
+               x => x.Id_mantenimiento.ToString().Contains(id_mantenimiento) 
+            && x.Fecha.ToString().Contains(fecha) 
+            && x.Descripcion.ToString().Contains(descripcion) 
+            && x.Estado.ToString().Contains(estado) 
+            && x.Id_responsable.ToString().Contains(id_responsable) 
+            && x.Es_correctivo.ToString().Contains(es_correctivo) 
+            && x.Placa_activo.ToString().Contains(placa_activo)
             && x.Id_ubicacion.ToString().Contains(id_ubicacion)).ToList();
 
             Session["listaMantenimientosCorrectivosFiltrada"] = listaMantenimientosCorrectivos;
@@ -365,7 +370,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         protected void btnVer_Click(object sender, EventArgs e)
         {
             int idMantenimiento = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
-
+            
             List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)Session["listaMantenimientosCorrectivosFiltrada"];
 
             MantenimientoCorrectivo mantenimientoVer = new MantenimientoCorrectivo();
