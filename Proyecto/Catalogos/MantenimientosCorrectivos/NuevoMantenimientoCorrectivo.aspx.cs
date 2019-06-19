@@ -17,6 +17,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         ActivoServicios activoServicios = new ActivoServicios();
         ResponsableServicios responsableServicios = new ResponsableServicios();
         UbicacionServicios ubicacionServicios = new UbicacionServicios();
+        EdificioServicios edificioServicios = new EdificioServicios();
         #endregion
 
         #region page load
@@ -29,6 +30,10 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                
                 CargarUbicacion();
+                CargarActivo();
+                CargarResponsable();
+                CargarTarea();
+                CargarEdificios();
             }
 
         }
@@ -47,10 +52,76 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 foreach (Ubicacion ubicacion in ubicaciones)
                 {
-                    ListItem item = new ListItem(ubicacion.idUbicacion.ToString(), ubicacion.edificio.nombre+" "+ubicacion.numeroAula.ToString());
+                    ListItem item = new ListItem(ubicacion.edificio.nombre + " " + ubicacion.numeroAula.ToString(),ubicacion.idUbicacion.ToString());
                     UbicacionDDL.Items.Add(item);
                 }
             }
+        }
+
+        private void CargarEdificios()
+        {
+            List<Edificio> edificios = new List<Edificio>();
+            EdificiosDDL.Items.Clear();
+            edificios = edificioServicios.getEdificios();
+
+            if (edificios.Count > 0)
+            {
+                foreach (Edificio edificio in edificios)
+                {
+                    ListItem item = new ListItem(edificio.nombre, edificio.idEdificio.ToString());
+                    EdificiosDDL.Items.Add(item);
+                }
+            }
+        }
+
+        private void CargarActivo()
+        {
+            List<Activo> activos = new List<Activo>();
+            PlacaActivoDDL.Items.Clear();
+            activos = this.activoServicios.obtenerTodo();
+
+            if(activos.Count > 0)
+            {
+                foreach(Activo activo in activos)
+                {
+                    ListItem item = new ListItem(activo.Placa.ToString() +" "+ activo.Modelo +" "+ activo.Serie,activo.Placa.ToString());
+                    PlacaActivoDDL.Items.Add(item);
+                }
+            }
+        }
+
+        private void CargarResponsable()
+        {
+            List<Responsable> responsables = new List<Responsable>();
+            ResponsableDDL.Items.Clear();
+            responsables = this.responsableServicios.getResponsables();
+
+            if (responsables.Count > 0)
+            {
+                foreach (Responsable responsable in responsables)
+                {
+                    ListItem item = new ListItem(responsable.idResponsable.ToString()+" "+ responsable.nombre, responsable.idResponsable.ToString() );
+                    ResponsableDDL.Items.Add(item);
+                }
+            }
+
+        }
+
+        private void CargarTarea()
+        {
+            List<Tarea> tareas = new List<Tarea>();
+            TareasDDL.Items.Clear();
+            tareas = this.tareaServicios.getTareas();
+
+            if (tareas.Count > 0)
+            {
+                foreach (Tarea tarea in tareas)
+                {
+                    ListItem item = new ListItem(tarea.idTarea.ToString()+" "+ tarea.descripcion, tarea.idTarea.ToString() );
+                    TareasDDL.Items.Add(item);
+                }
+            }
+
         }
 
         /// <summary>
@@ -69,26 +140,39 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         {
             Boolean validados = true;
 
-            #region validacion edificio ubicacion
+            #region validacion ubicacion
 
             if (UbicacionDDL.Items.Count == 0)
             {
-                divFechaIncorrecto.Style.Add("display", "block");
+                divUbicacionIncorrecto.Style.Add("display", "block");
                 
                 validados = false;
             }
+            #endregion
+
+            #region validacion Responsables
+
             if (ResponsableDDL.Items.Count == 0)
             {
                 divResponsableIncorrecto.Style.Add("display", "block");
 
                 validados = false;
             }
+
+            #endregion
+
+            #region validacion activo
+
             if (PlacaActivoDDL.Items.Count == 0)
             {
                 divPlacaIncorrecto.Style.Add("display", "block");
 
                 validados = false;
             }
+            #endregion
+
+            #region validacion fecha
+
             String fechaMantenimiento = txtFechaMantenimiento.Text;
             if (fechaMantenimiento.Trim() == "")
             {
@@ -98,29 +182,25 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             }
 
             #endregion
-                        
+
+            #region
+
+            String descripcion = txtDescripcionMantenimiento.Text;
+            if (descripcion.Trim() == "")
+            {
+                divDescripcionMantenimientoIncorrecto.Style.Add("display", "block");
+
+                validados = false;
+            }
+
+            #endregion
+            
             return validados;
         }
 
         #endregion
 
         #region eventos
-        /// <summary>
-        /// Leonardo Gomez
-        /// 18/06/2019
-        /// Efecto:Metodo que se activa cuando se cambia el nombre
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        protected void txtxDescripcionUbicacion_TextChanged(object sender, EventArgs e)
-        {
-            txtFechaMantenimiento.CssClass = "form-control";
-            lblFechaMantenimientoIncorrecto.Visible = false;
-        }
-
 
         /// <summary>
         /// Leonardo Gomez
@@ -140,14 +220,29 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             //se validan los campos antes de guardar los datos en la base de datos
             if (validarCampos())
             {
-                Responsable responsable = new Responsable();
-                /*responsable.numeroAula = txtNumeroUbicacion.Text;
+                MantenimientoCorrectivo mantenimiento = new MantenimientoCorrectivo();
 
-                responsable.edificio = new Edificio();
-                responsable.edificio.idEdificio = Convert.ToInt32(EdificiosDDL.SelectedValue);
+                mantenimiento.Fecha = txtFechaMantenimiento.Text;
+                mantenimiento.Descripcion = txtDescripcionMantenimiento.Text;
+                mantenimiento.Id_responsable = Convert.ToInt32(ResponsableDDL.SelectedValue);
+                mantenimiento.Placa_activo = Convert.ToInt32(PlacaActivoDDL.SelectedValue);
+                mantenimiento.Id_ubicacion = Convert.ToInt32(UbicacionDDL.SelectedValue);
+
+                List<String> listaTareas = new List<String>();
+
+                string selectedItems = String.Join(",",
+                 TareasDDL.Items.OfType<ListItem>().Where(r => r.Selected)
+                .Select(r => r.Value));
+
+                String[] lista = selectedItems.Split(',');
+
+                for (int c = 0; c <= lista.Length - 1; ++c)
+                {
+                    listaTareas.Add(lista[c]);
+                }
                 
-                ResponsableServicios.(responsable);
-                */
+                mantenimientoServicios.insertarMantenimiento(mantenimiento, listaTareas);
+                
                 String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
                 Response.Redirect(url);
             }
@@ -170,6 +265,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
+        
+       
 
         #endregion
     }
