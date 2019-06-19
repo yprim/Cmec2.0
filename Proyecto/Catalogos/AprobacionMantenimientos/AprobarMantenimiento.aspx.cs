@@ -24,9 +24,16 @@ namespace Proyecto.Catalogos.pendienteMover
 
             if (!IsPostBack)
             {
+                String tareasRealizadas = "";
                 MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoAprobar"];
+                List<Tarea> tareas = mantenimientoServicio.getTareasMantenimientos(mantenimiento.Id_mantenimiento);
+                foreach (var item in tareas)
+                {
+                    tareasRealizadas +="            -> "+ item.descripcion + "\n";
+                }
 
-                txtDescripcionMantenimiento.Text = mantenimiento.Descripcion+ "\n"+ mantenimiento.TareasObjetoQuemado;//TODO cambiar por nombre corregido.
+
+                txtDescripcionMantenimiento.Text = mantenimiento.Descripcion+ "\n"+ "Tareas realizadas:\n" + tareasRealizadas;
 
             }
 

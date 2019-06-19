@@ -25,6 +25,9 @@
                 </div>
             </center>
         </div>
+        <div>
+            <hr />
+        </div>
 
         <%-- tabla--%>
         

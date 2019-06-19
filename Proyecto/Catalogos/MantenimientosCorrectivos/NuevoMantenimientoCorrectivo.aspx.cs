@@ -28,7 +28,9 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 //txtNumeroUbicacion.Attributes.Add("oninput", "validarTexto(this)");
                 txtFechaMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
-               
+                Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
+                textPlacaActivo.Text = activoMantenimiento.Placa.ToString();
+                accionesMantenimientoPreventivo();
                 CargarUbicacion();
                 CargarActivo();
                 CargarResponsable();
@@ -122,6 +124,22 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 }
             }
 
+        }
+
+        /// <summary>
+        /// Steven Camacho Barboza
+        /// 19/6/2019
+        /// Metodo que verifica si se desea realizar un mantenimiento preventido o correctivo
+        /// Recibe: Por medio de variable de session una cadena de texto que permite comprobar la procedencia de la solicitud.
+        /// </summary>
+        private void accionesMantenimientoPreventivo() {
+            String procedencia = (String) Session["procedencia"];
+            if (procedencia == "mantenimientoPreventivo")
+            {
+                divMensaje.Style.Add("display", "block");
+            }
+            else
+                divMensaje.Style.Add("display", "none");
         }
 
         /// <summary>
@@ -244,6 +262,24 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 mantenimientoServicios.insertarMantenimiento(mantenimiento, listaTareas);
                 
                 String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+                ResponsableServicios.(responsable);
+                */
+
+                
+                //Verificación que se hace para determinar si es preventivo o correctivo, así mismo determinar el valor y redirección
+                //según corresponda.
+                String procedencia = (String)Session["procedencia"];
+                String url = "";
+                if (procedencia == "mantenimientoPreventivo")
+                {
+                    //VERIFICAR QUE SE GUARDE EL ATRIBUTO ES_CORRECTIVO=0 AL SE DE TIPO PREVENTIVO
+                    url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
+                }
+                else
+                {
+                    url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+                }
+                
                 Response.Redirect(url);
             }
         }
@@ -262,7 +298,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+            String procedencia = (String)Session["procedencia"];
+            String url = "";
+            if (procedencia == "mantenimientoPreventivo")
+                url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
+            else
+                url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
         

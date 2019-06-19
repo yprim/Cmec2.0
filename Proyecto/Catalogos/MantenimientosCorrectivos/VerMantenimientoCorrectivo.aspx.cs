@@ -20,15 +20,20 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         {
             if (!IsPostBack)
             {
+                String tareasRealizadas = "";
                 MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoVer"];
-
+                List<Tarea> tareas = mantenimientoServicios.getTareasMantenimientos(mantenimiento.Id_mantenimiento);
+                foreach (var item in tareas)
+                {
+                    tareasRealizadas += "            -> " + item.descripcion + "\n";
+                }
+                
                 txtId.Text = mantenimiento.Id_mantenimiento.ToString();
                 txtId_placa.Text = mantenimiento.Placa_activo.ToString();
                 txtResponsable.Text = mantenimiento.Id_responsable.ToString();
                 txtFecha.Text = mantenimiento.Fecha.ToString();
                 txtUbicacion.Text = mantenimiento.Id_ubicacion.ToString();
-                txtDescripcionMantenimiento.Text = mantenimiento.Descripcion;
-                txtEstadoMantenimiento.Text = mantenimiento.Estado;
+                txtDescripcionMantenimiento.Text = mantenimiento.Descripcion + "\n" + "Tareas realizadas:\n" + tareasRealizadas;
 
             }
 
@@ -51,7 +56,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+            String procedencia = (String)Session["procedencia"] ;
+            String url = "";
+            if(procedencia!="aprobaciones")
+            url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+            else
+            url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
             Response.Redirect(url);
         }
 

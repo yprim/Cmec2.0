@@ -88,7 +88,7 @@
                                
                                 </td>
                                 <td style="width: 10%;">
-                                    <asp:LinkButton ID="btnMantenimiento" runat="server" ToolTip="Realizar mantenimiento correctivo de este activo" OnClick="btnEliminar_Click" class="glyphicon glyphicon-wrench" CommandArgument='<%# Eval("placa") %>'></asp:LinkButton>
+                                    <asp:LinkButton ID="btnMantenimiento" runat="server" ToolTip="Realizar mantenimiento correctivo de este activo" OnClick="btnMantenimiento_Click" class="glyphicon glyphicon-wrench" CommandArgument='<%# Eval("placa") %>'></asp:LinkButton>
                                 </td>
                                 <td>
                                     <%# Eval("placa") %>
