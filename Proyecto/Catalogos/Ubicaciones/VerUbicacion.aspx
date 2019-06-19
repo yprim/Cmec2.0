@@ -21,7 +21,7 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Oficina: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:Label  ID="txtNumeroUbicacion" runat="server" ReadOnly="true"></asp:Label>
