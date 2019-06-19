@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="MainScriptManager" runat="server" EnableCdn="true"/>
 
     <div class="divRedondo">
         <div class="row">
@@ -88,8 +89,14 @@
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblUbicacion" runat="server" Text="Ubicacion <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
-                <div class="col-md-3 col-xs-3 col-sm-3 col-md-offset-9 col-xs-offset-9 col-sm-offset-9 form-group">
+                <div class="col-md-4 col-xs-4 col-sm-4">
                     <button type="button" id="buttonAbrirUbicaciones" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirUbicaciones">Buscar Ubicaciones</button>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="TxtUbicacion" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div id="divUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
@@ -251,13 +258,6 @@
 
 
 
-
-
-
-
-
-
-
     <%-- Buscar ubicacion --%>
     <div class="modal" id="abrirUbicaciones" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
@@ -267,14 +267,20 @@
                     <h4 class="modal-title">Ubicaciones</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList ID="UbicacionDDL" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
-                </div>
-                <div id="divUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
-                </div>
-
+                    <asp:UpdatePanel ID="pnlUpdate" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <asp:TextBox ID="txtBuscarUbicacion" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="BuscarUbicacion_OnChanged" placeholder="Filtro de Ubicaciones"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                                <asp:DropDownList ID="UbicacionDDL" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="ButtonSeleccionarUbicacion" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="SeleccionarUbicacion_Click" />

@@ -30,6 +30,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
 
+                Session["nombreUbicacion"] = null;
+
                 accionesMantenimientoPreventivo();
                 CargarUbicacion();
                 CargarActivo();
@@ -46,6 +48,13 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         #region logica
         private void CargarUbicacion()
         {
+            string nombreUbicacion = "";
+
+            if (Session["nombreUbicacion"] != null)
+            {
+                nombreUbicacion = Session["nombreUbicacion"].ToString();
+            }
+
             List<Ubicacion> ubicaciones = new List<Ubicacion>();
             UbicacionDDL.Items.Clear();
             ubicaciones = this.ubicacionServicios.getUbicaciones();
@@ -54,8 +63,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 foreach (Ubicacion ubicacion in ubicaciones)
                 {
-                    ListItem item = new ListItem(ubicacion.edificio.nombre + " " + ubicacion.numeroAula.ToString(),ubicacion.idUbicacion.ToString());
-                    UbicacionDDL.Items.Add(item);
+                    if ((ubicacion.edificio.nombre != null && ubicacion.edificio.nombre.ToUpper().Contains(nombreUbicacion.ToUpper()))
+                        || (ubicacion.numeroAula != null && ubicacion.numeroAula.ToString().ToUpper().Contains(nombreUbicacion.ToUpper())))
+                    {
+                        ListItem item = new ListItem(ubicacion.edificio.nombre + " " + ubicacion.numeroAula.ToString(), ubicacion.idUbicacion.ToString());
+                        UbicacionDDL.Items.Add(item);
+                    }
                 }
             }
         }
@@ -158,15 +171,17 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         {
             Boolean validados = true;
 
-            #region validacion ubicacion
+            #region validacion Ubicacion
 
-            if (UbicacionDDL.Items.Count == 0)
+            if (TxtUbicacion.Text.Equals(""))
             {
                 divUbicacionIncorrecto.Style.Add("display", "block");
-                
+
                 validados = false;
             }
+
             #endregion
+
 
             #region validacion Responsables
 
@@ -308,7 +323,21 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
         protected void SeleccionarUbicacion_Click(object sender, EventArgs e)
         {
+            if (!UbicacionDDL.SelectedValue.Equals(""))
+            {
+                TxtUbicacion.Text = UbicacionDDL.SelectedItem.Text;
+            }
+            else
+            {
+                TxtUbicacion.Text = "";
+            }
+        }
 
+        protected void BuscarUbicacion_OnChanged(object sender, EventArgs e)
+        {
+            Session["nombreUbicacion"] = txtBuscarUbicacion.Text;
+
+            CargarUbicacion();
         }
 
         #endregion

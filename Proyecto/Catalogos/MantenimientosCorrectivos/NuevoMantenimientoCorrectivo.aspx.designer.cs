@@ -13,6 +13,15 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
     public partial class NuevoMantenimientoCorrectivo {
         
         /// <summary>
+        /// MainScriptManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager MainScriptManager;
+        
+        /// <summary>
         /// lblNuevoMantenimiento control.
         /// </summary>
         /// <remarks>
@@ -200,6 +209,33 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUbicacion;
+        
+        /// <summary>
+        /// TxtUbicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TxtUbicacion;
+        
+        /// <summary>
+        /// divUbicacionIncorrecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUbicacionIncorrecto;
+        
+        /// <summary>
+        /// lblUbicacionIncorrecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUbicacionIncorrecto;
         
         /// <summary>
         /// lblTareas control.
@@ -418,6 +454,24 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         protected global::System.Web.UI.WebControls.Label lblDescripcionTareaIncorrecto;
         
         /// <summary>
+        /// pnlUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel pnlUpdate;
+        
+        /// <summary>
+        /// txtBuscarUbicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarUbicacion;
+        
+        /// <summary>
         /// UbicacionDDL control.
         /// </summary>
         /// <remarks>
@@ -425,24 +479,6 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList UbicacionDDL;
-        
-        /// <summary>
-        /// divUbicacionIncorrecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUbicacionIncorrecto;
-        
-        /// <summary>
-        /// lblUbicacionIncorrecto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUbicacionIncorrecto;
         
         /// <summary>
         /// ButtonSeleccionarUbicacion control.
