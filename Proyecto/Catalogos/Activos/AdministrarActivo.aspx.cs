@@ -342,6 +342,27 @@ namespace Proyecto.Catalogos.Activos
             Response.Redirect(url);
         }
 
+        protected void btnMantenimiento_Click(object sender, EventArgs e) {
+            int idActivo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Activo> listaActivos = (List<Activo>)Session["listaActivosFiltrada"];
+
+            Activo activoMantenimiento = new Activo();
+
+            foreach (Activo activo in listaActivos)
+            {
+                if (activo.Placa == idActivo)
+                {
+                    activoMantenimiento = activo;
+                    break;
+                }
+            }
+
+            Session["activoMantenimiento"] = activoMantenimiento;
+
+            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/NuevoMantenimientoCorrectivo.aspx");
+            Response.Redirect(url);
+        }
         /// <summary>
         /// Steven Camacho Barboza
         /// 27/05/2019

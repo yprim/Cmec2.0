@@ -22,7 +22,6 @@ namespace Entidades
         int placa_activo;
         int id_ubicacion;
 
-        String tareasObjetoQuemado;
 
         public MantenimientoCorrectivo() {
             
@@ -36,7 +35,5 @@ namespace Entidades
         public int Id_responsable { get => id_responsable; set => id_responsable = value; }
         public int Placa_activo { get => placa_activo; set => placa_activo = value; }
         public int Id_ubicacion { get => id_ubicacion; set => id_ubicacion = value; }
-
-        public string TareasObjetoQuemado { get => "Limpiar, Soplar, Limpiar carpetas temporales, Actualizar antivirus"; set => tareasObjetoQuemado = value; }
     }
 }

@@ -118,6 +118,44 @@ namespace AccesoDatos
             return listaMantenimientos;
         }
         /// <summary>
+        /// Steven Camacho
+        /// 19/Junio/2019
+        /// Efecto: devuelve una lista con todos las tareas de un mantenimiento en específico. 
+        /// Requiere: id_mantenimiento
+        /// Modifica: -
+        /// Devuelve: lista de tareas
+        /// </summary>
+        /// <param name="id_Mantenimiento"></param>
+        /// <returns></returns>
+        public List<Tarea> getTareasMantenimientos(int id_mantenimiento)
+        {
+            List<Tarea> listaTareas = new List<Tarea>();
+
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand("select * from tarea where id_tarea in (" +
+                                                    "select id_tarea from Tarea_mantenimiento where id_mantenimiento=@id_mantenimiento)", sqlConnection);
+
+            sqlCommand.Parameters.AddWithValue("@id_mantenimiento",id_mantenimiento );
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Tarea tarea = new Tarea();
+
+                tarea.idTarea= Convert.ToInt32(reader["id_tarea"].ToString());
+                tarea.descripcion = reader["descripcion"].ToString();
+
+                listaTareas.Add(tarea);
+            }
+
+            sqlConnection.Close();
+
+            return listaTareas;
+        }
+        /// <summary>
         /// Leonardo Gomez
         /// 29/May/2019
         /// Efecto: inserta en la base de datos un MantenimientoCorrectivo

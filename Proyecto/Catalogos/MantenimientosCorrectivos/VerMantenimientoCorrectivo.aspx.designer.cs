@@ -127,25 +127,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtDescripcionMantenimiento;
-        
-        /// <summary>
-        /// Control LabelEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelEstado;
-        
-        /// <summary>
-        /// Control txtEstadoMantenimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtEstadoMantenimiento;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcionMantenimiento;
         
         /// <summary>
         /// Control btnCancelar.

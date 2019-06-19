@@ -74,8 +74,8 @@ namespace AccesoDatos
         public List<ActivoPlanPreventivo> obtenerListaActivoPorPrioridad()
         {
             conexion.Close();
-            List<ActivoPlanPreventivo> listaActivos = new List<ActivoPlanPreventivo>();
-            SqlCommand sqlCommand = new SqlCommand("select  a.placa,m.fecha,e.id_edificio,u.numero_aula  from activo a " +
+            List<ActivoPlanPreventivo> listaActivos = new List<ActivoPlanPreventivo>();//IMPORTANTE , QUITAR LA PALABRA TOP 100, USADO SOLO PARA EJEMPLO
+            SqlCommand sqlCommand = new SqlCommand("select Top 100 a.placa,m.fecha,e.id_edificio,u.numero_aula  from activo a " +
                                                     "left join mantenimiento m " +
                                                     "on a.placa = m.placa_activo and year(m.fecha)>= year(getdate())-2 and m.es_correctivo=0 " +
                                                     "left join  ubicacion u " +

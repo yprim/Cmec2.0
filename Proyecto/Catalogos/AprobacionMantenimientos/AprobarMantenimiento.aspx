@@ -25,7 +25,7 @@
                     <asp:Label ID="lblDescripcionMantenimiento" runat="server" Text="Detalle de mantenimiento: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtDescripcionMantenimiento" runat="server" ReadOnly="true"></asp:Label>
+                    <asp:TextBox  ID="txtDescripcionMantenimiento" TextMode="multiline" Columns="50" Rows="10" runat="server" ReadOnly="true"></asp:TextBox>
                 </div>
             </div>
             <%-- fin campos a llenar --%>

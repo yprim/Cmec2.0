@@ -37,7 +37,7 @@ namespace Proyecto.Catalogos.pendienteMover {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtDescripcionMantenimiento;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcionMantenimiento;
         
         /// <summary>
         /// Control btnAprobar.

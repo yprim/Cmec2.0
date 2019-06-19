@@ -13,12 +13,30 @@
                     </center>
             </div>
             <%-- fin titulo accion --%>
-
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <hr />
+                <center>
+                    <div id="divMensaje" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                        <asp:Label ID="lblMensaje" runat="server" Font-Size="Medium" class="label alert-danger" Text="*** Mantenimiento de tipo Preventivo ***" ForeColor="Black"></asp:Label>
+                        <hr />
+                        <asp:Label ID="lblMensaje2" runat="server" Font-Size="Small" class="label alert-danger" Text="*** Se agregan las tareas predefinidas de mantenimiento preventivo ***" ForeColor="Red"></asp:Label>
+                    </div>
+                </center>
+            </div>
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                 <hr />
             </div>
 
              <%-- campos a llenar --%>
+             <%-- campo Placa Activo --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  class="form-control " ID="textPlacaActivo"  runat="server"></asp:Label>                              
+                </div>
+            </div>
             <%-- campo Fecha --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
@@ -58,21 +76,6 @@
                     <asp:Label ID="lblResponsableIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
-
-            <%-- campo Placa Activo --%>
-            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa Activo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="PlacaActivoDDL" runat="server" CssClass="form-control">
-                        </asp:DropDownList>
-                </div>
-                <div id="divPlacaIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblPlacaIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
-                </div>
-            </div>
-
             <%-- campo Ubicacion --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">

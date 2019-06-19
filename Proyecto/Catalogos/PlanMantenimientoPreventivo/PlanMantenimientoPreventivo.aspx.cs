@@ -331,10 +331,12 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
                     break;
                 }
             }
+            Activo enviarActivo = new Activo();
+            enviarActivo.Placa = activoPlan.Placa;
+            Session["activoMantenimiento"] = enviarActivo;
+            Session["procedencia"] = "mantenimientoPreventivo";
 
-            Session["activoMantenimiento"] = activoPlan;
-
-            String url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/MantenimientoPreventivoActivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/NuevoMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
         /*

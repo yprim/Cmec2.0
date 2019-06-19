@@ -55,24 +55,18 @@
                 <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:Label  ID="txtUbicacion" runat="server" ReadOnly="true"></asp:Label>
                 </div>
-
+  
+            </div>
+   
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblDescripcionMantenimiento" runat="server" Text="Descripción: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtDescripcionMantenimiento" runat="server" ReadOnly="true"></asp:Label>
+                <div class="col-md-10 col-xs-10 col-sm-10">
+                    <asp:TextBox  ID="txtDescripcionMantenimiento" TextMode="multiline" Columns="50" Rows="10" runat="server" ReadOnly="true"></asp:TextBox>
                 </div>
-
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="LabelEstado" runat="server" Text="Estado: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtEstadoMantenimiento" runat="server" ReadOnly="true"></asp:Label>
-                </div>
-
             </div>
             <%-- fin campos a llenar --%>
-
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                 <hr />
             </div>

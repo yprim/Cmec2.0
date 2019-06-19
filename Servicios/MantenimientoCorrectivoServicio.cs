@@ -104,8 +104,23 @@ namespace Servicios
             
 
         }
-        #endregion
-    }
+
+        /// <summary>
+        /// Steven Camacho
+        /// 19/Junio/2019
+        /// Efecto: devuelve una lista con todos las tareas de un mantenimiento en específico. 
+        /// Requiere: id_mantenimiento
+        /// Modifica: -
+        /// Devuelve: lista de tareas
+        /// </summary>
+        /// <param name="id_Mantenimiento"></param>
+        /// <returns></returns>
+        public List<Tarea> getTareasMantenimientos(int id_mantenimiento)
+        {
+            return mantenimientoDatos.getTareasMantenimientos(id_mantenimiento); 
+        }
+            #endregion
+        }
 }
 
 

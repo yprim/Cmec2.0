@@ -12,7 +12,7 @@
                 <%-- titulo pantalla --%>
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <center>
-            <asp:Label ID="label" runat="server" Text="Mantenimientos Correctivos" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="label" runat="server" Text="Gestión de mantenimientos" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
                 </div>
             

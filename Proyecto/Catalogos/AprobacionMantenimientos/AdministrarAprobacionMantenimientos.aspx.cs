@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Entidades;
 using Servicios;
-using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data;
+using System.Drawing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Drawing;
-using System.Data;
 
 namespace Proyecto.Catalogos.Activos
 {
@@ -88,7 +86,7 @@ namespace Proyecto.Catalogos.Activos
             // Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
 
             // var dt = listaAprobarMantenimientos;
-            var dt= (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientosFiltrada"];
+            var dt = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientosFiltrada"];
 
             pgsource.DataSource = dt;
             pgsource.AllowPaging = true;
@@ -332,7 +330,7 @@ namespace Proyecto.Catalogos.Activos
 
             foreach (MantenimientoCorrectivo mantenimiento in listaMantenimiento)
             {
-                if (mantenimientoVer.Id_mantenimiento == id)
+                if (mantenimiento.Id_mantenimiento == id)
                 {
                     mantenimientoVer = mantenimiento;
                     break;
@@ -340,6 +338,7 @@ namespace Proyecto.Catalogos.Activos
             }
 
             Session["mantenimientoVer"] = mantenimientoVer;
+            Session["procedencia"] = "aprobaciones";
 
             String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/VerMantenimientoCorrectivo.aspx");
             Response.Redirect(url);

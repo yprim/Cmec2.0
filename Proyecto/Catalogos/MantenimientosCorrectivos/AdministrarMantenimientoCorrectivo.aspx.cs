@@ -301,7 +301,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// </summary>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/NuevoMantenimientoCorrectivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivo.aspx");
             Response.Redirect(url);
         }
 
