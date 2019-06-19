@@ -28,7 +28,7 @@ namespace Entidades
         }
        
         public int Id_mantenimiento { get => id_mantenimiento; set => id_mantenimiento = value; }
-        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public String Fecha { get => fecha.ToShortDateString(); set => fecha = DateTime.Parse(value); }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Estado { get => estado;  set => estado = value; }         
         public bool Es_correctivo { get { return es_correctivo; } set { es_correctivo = value; } }

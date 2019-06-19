@@ -73,7 +73,7 @@
                     <asp:Label ID="lblFechaCompra" runat="server" Text="Fecha de Compra <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">                    
-                    <asp:Textbox class="form-control" id="txtFechaActivo" TextMode="Date"  placeholder="dd/mm/aaaa" runat="server"></asp:Textbox>
+                    <asp:Textbox class="form-control" id="txtFechaActivo" TextMode="Date" placeholder="dd/mm/aaaa" runat="server"></asp:Textbox>
                 </div>
                 <div id="divFechaCompraActivoIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblFechaCompraActivoIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
