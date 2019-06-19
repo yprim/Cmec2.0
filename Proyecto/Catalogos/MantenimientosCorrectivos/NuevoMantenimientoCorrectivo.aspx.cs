@@ -29,7 +29,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 txtFechaMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
-                textPlacaActivo.Text = activoMantenimiento.Placa.ToString();
+
                 accionesMantenimientoPreventivo();
                 CargarUbicacion();
                 CargarActivo();
@@ -262,14 +262,13 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 mantenimientoServicios.insertarMantenimiento(mantenimiento, listaTareas);
                 
                 String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
-                ResponsableServicios.(responsable);
-                */
 
-                
+               // ResponsableServicios.(responsable);
+                               
                 //Verificación que se hace para determinar si es preventivo o correctivo, así mismo determinar el valor y redirección
                 //según corresponda.
                 String procedencia = (String)Session["procedencia"];
-                String url = "";
+                
                 if (procedencia == "mantenimientoPreventivo")
                 {
                     //VERIFICAR QUE SE GUARDE EL ATRIBUTO ES_CORRECTIVO=0 AL SE DE TIPO PREVENTIVO
