@@ -29,7 +29,7 @@
                             <td>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                    <asp:TextBox ID="txtBuscarNumero" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="Button4_Click" placeholder="Filtro número de aula"></asp:TextBox>
+                                    <asp:TextBox ID="txtBuscarNumero" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="Button4_Click" placeholder="Filtro oficina"></asp:TextBox>
                                 </div>
                             </td>
                             <td>
@@ -51,7 +51,7 @@
                                 <thead style="text-align: center">
                                     <tr style="text-align: center" class="btn-primary">
                                         <th></th>
-                                        <th>Número de aula</th>
+                                        <th>Oficina</th>
                                         <th>Edificio</th>
                                     </tr>
                                 </thead>
