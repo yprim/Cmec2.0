@@ -29,13 +29,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 txtFechaMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
-
-                accionesMantenimientoPreventivo();
+                textPlacaActivo.Text = activoMantenimiento.Placa.ToString();
                 CargarUbicacion();
-                CargarActivo();
                 CargarResponsable();
                 CargarTarea();
                 CargarEdificios();
+                accionesMantenimientoPreventivo();
             }
 
         }
@@ -76,21 +75,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             }
         }
 
-        private void CargarActivo()
-        {
-            List<Activo> activos = new List<Activo>();
-            PlacaActivoDDL.Items.Clear();
-            activos = this.activoServicios.obtenerTodo();
 
-            if(activos.Count > 0)
-            {
-                foreach(Activo activo in activos)
-                {
-                    ListItem item = new ListItem(activo.Placa.ToString() +" "+ activo.Modelo +" "+ activo.Serie,activo.Placa.ToString());
-                    PlacaActivoDDL.Items.Add(item);
-                }
-            }
-        }
 
         private void CargarResponsable()
         {
@@ -137,9 +122,18 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             if (procedencia == "mantenimientoPreventivo")
             {
                 divMensaje.Style.Add("display", "block");
+                ListItem item;
+                
+                for (int i = 1; i < 7; i++)
+                {
+                    item = TareasDDL.Items.FindByValue(i+"");
+                    item.Selected = true;
+                }
             }
             else
                 divMensaje.Style.Add("display", "none");
+
+            Session["procedencia"] = "";
         }
 
         /// <summary>
@@ -179,15 +173,6 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             #endregion
 
-            #region validacion activo
-
-            if (PlacaActivoDDL.Items.Count == 0)
-            {
-                divPlacaIncorrecto.Style.Add("display", "block");
-
-                validados = false;
-            }
-            #endregion
 
             #region validacion fecha
 
@@ -201,7 +186,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             #endregion
 
-            #region
+            #region validacion descripcion
 
             String descripcion = txtDescripcionMantenimiento.Text;
             if (descripcion.Trim() == "")
@@ -243,8 +228,9 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 mantenimiento.Fecha = txtFechaMantenimiento.Text;
                 mantenimiento.Descripcion = txtDescripcionMantenimiento.Text;
                 mantenimiento.Id_responsable = Convert.ToInt32(ResponsableDDL.SelectedValue);
-                mantenimiento.Placa_activo = Convert.ToInt32(PlacaActivoDDL.SelectedValue);
+                mantenimiento.Placa_activo = Convert.ToInt32(textPlacaActivo.Text);
                 mantenimiento.Id_ubicacion = Convert.ToInt32(UbicacionDDL.SelectedValue);
+                
 
                 List<String> listaTareas = new List<String>();
 
@@ -259,11 +245,9 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                     listaTareas.Add(lista[c]);
                 }
                 
-                mantenimientoServicios.insertarMantenimiento(mantenimiento, listaTareas);
                 
-                String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+                String url = "";
 
-               // ResponsableServicios.(responsable);
                                
                 //Verificación que se hace para determinar si es preventivo o correctivo, así mismo determinar el valor y redirección
                 //según corresponda.
@@ -273,12 +257,15 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 {
                     //VERIFICAR QUE SE GUARDE EL ATRIBUTO ES_CORRECTIVO=0 AL SE DE TIPO PREVENTIVO
                     url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
+                    mantenimiento.Es_correctivo = false;
                 }
                 else
                 {
                     url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+                    mantenimiento.Es_correctivo = true;
                 }
-                
+                mantenimientoServicios.insertarMantenimiento(mantenimiento, listaTareas);
+
                 Response.Redirect(url);
             }
         }

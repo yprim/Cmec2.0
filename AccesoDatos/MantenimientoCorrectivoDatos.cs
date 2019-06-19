@@ -179,7 +179,7 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@fecha", Mantenimiento.Fecha);
             sqlCommand.Parameters.AddWithValue("@descripcion", Mantenimiento.Descripcion);
             sqlCommand.Parameters.AddWithValue("@estado", 0);
-            sqlCommand.Parameters.AddWithValue("@es_correctivo", 1);
+            sqlCommand.Parameters.AddWithValue("@es_correctivo",Mantenimiento.Es_correctivo);
             sqlCommand.Parameters.AddWithValue("@responsable", Mantenimiento.Id_responsable);
             sqlCommand.Parameters.AddWithValue("@id_placa", Mantenimiento.Placa_activo);
             sqlCommand.Parameters.AddWithValue("@ubicacion", Mantenimiento.Id_ubicacion);

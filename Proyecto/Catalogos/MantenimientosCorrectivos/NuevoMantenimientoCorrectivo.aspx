@@ -29,6 +29,15 @@
             </div>
 
             <%-- campos a llenar --%>
+            <%-- campo placa --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  class="form-control " ID="textPlacaActivo"  runat="server"></asp:Label>                              
+                </div>
+            </div>
             <%-- campo Fecha --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
@@ -69,19 +78,6 @@
                 </div>
             </div>
 
-            <%-- campo Placa Activo --%>
-            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa Activo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="PlacaActivoDDL" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
-                </div>
-                <div id="divPlacaIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblPlacaIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
-                </div>
-            </div>
 
             <%-- campo Ubicacion --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
