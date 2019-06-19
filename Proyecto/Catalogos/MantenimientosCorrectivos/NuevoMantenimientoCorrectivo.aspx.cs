@@ -305,8 +305,11 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
-        
-       
+
+        protected void SeleccionarUbicacion_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
     }
