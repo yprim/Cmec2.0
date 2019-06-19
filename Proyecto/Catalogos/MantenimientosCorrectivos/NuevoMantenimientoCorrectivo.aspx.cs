@@ -285,10 +285,10 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
 
         /// <summary>
-        /// Adrian Serrano
-        /// 5/29/2019
+        /// Leonardo Gomez
+        /// 19/06/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
-        /// redirecciona a la pantalla de adminstracion de Ubicaciones
+        /// redirecciona a la pantalla de adminstracion de Mantenimientos
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -300,7 +300,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             String procedencia = (String)Session["procedencia"];
             String url = "";
             if (procedencia == "mantenimientoPreventivo")
-                url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
+                url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             else
                 url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);

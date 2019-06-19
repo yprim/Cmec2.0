@@ -61,7 +61,7 @@
                     <asp:Label ID="lblResponsableMantenimiento" runat="server" Text="Responsable <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="ResponsableDDL" runat="server" CssClass="form-control">
+                    <asp:DropDownList ID="ResponsableDDL" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
                 <div id="divResponsableIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
@@ -75,7 +75,7 @@
                     <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa Activo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="PlacaActivoDDL" runat="server" CssClass="form-control">
+                    <asp:DropDownList ID="PlacaActivoDDL" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
                 <div id="divPlacaIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
@@ -89,7 +89,7 @@
                     <asp:Label ID="lblUbicacion" runat="server" Text="Ubicacion <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="UbicacionDDL" runat="server" CssClass="form-control">
+                    <asp:DropDownList ID="UbicacionDDL" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
                 <div id="divUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
@@ -104,7 +104,7 @@
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
 
-                    <asp:CheckBoxList ID="TareasDDL" AutoPostBack="true" RepeatColumns="2" CellSpacing="20" runat="server">
+                    <asp:CheckBoxList ID="TareasDDL" RepeatColumns="2" CellSpacing="20" runat="server">
                     </asp:CheckBoxList>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                     
                     <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblNombreResponsable" runat="server" Text="Nombre <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -154,7 +154,7 @@
            
                 <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblUsuario" runat="server" Text="Usuario <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -186,7 +186,7 @@
                     
                 <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -200,8 +200,8 @@
 
             <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                <div class="col-md-3 col-xs-3 col-sm-3">
+                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Oficina <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:TextBox class="form-control" ID="txtNumeroUbicacion" runat="server"></asp:TextBox>
@@ -232,7 +232,7 @@
                     
                     <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblDescripcionTarea" runat="server" Text="Descripción <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
