@@ -69,9 +69,9 @@ namespace Servicios
         /// Devuelve: -
         /// </summary>
         /// <param name="MantenimientoCorrectivo"></param>
-        public void actualizarMantenimiento(MantenimientoCorrectivo Mantenimiento)
+        public void actualizarMantenimiento(MantenimientoCorrectivo Mantenimiento,List<String> listaTareas)
         {
-            mantenimientoDatos.actualizarMantenimientoCorrectivo(Mantenimiento);
+            mantenimientoDatos.actualizarMantenimientoCorrectivo(Mantenimiento,listaTareas);
 
         }
 

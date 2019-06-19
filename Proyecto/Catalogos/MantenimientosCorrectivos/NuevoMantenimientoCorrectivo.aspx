@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="MainScriptManager" runat="server" EnableCdn="true"/>
 
     <div class="divRedondo">
         <div class="row">
@@ -70,7 +71,7 @@
                     <asp:Label ID="lblResponsableMantenimiento" runat="server" Text="Responsable <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="ResponsableDDL" runat="server" CssClass="form-control">
+                    <asp:DropDownList ID="ResponsableDDL" runat="server" CssClass="form-control">
                     </asp:DropDownList>
                 </div>
                 <div id="divResponsableIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
@@ -80,13 +81,15 @@
 
 
             <%-- campo Ubicacion --%>
-            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
+            <div class="col-md-12 col-xs-12 col-sm-12 form-group" style="margin-bottom: 4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblUbicacion" runat="server" Text="Ubicacion <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList AutoPostBack="true" ID="UbicacionDDL" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
+                    <button type="button" id="buttonAbrirUbicaciones" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirUbicaciones">Buscar Ubicaciones</button>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="TxtUbicacion" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div id="divUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
@@ -100,7 +103,7 @@
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
 
-                    <asp:CheckBoxList ID="TareasDDL" AutoPostBack="true" RepeatColumns="2" CellSpacing="20" runat="server">
+                    <asp:CheckBoxList ID="TareasDDL" RepeatColumns="2" CellSpacing="20" runat="server">
                     </asp:CheckBoxList>
                 </div>
             </div>
@@ -136,7 +139,7 @@
                     
                     <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblNombreResponsable" runat="server" Text="Nombre <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -150,7 +153,7 @@
            
                 <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblUsuario" runat="server" Text="Usuario <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -182,7 +185,7 @@
                     
                 <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -196,8 +199,8 @@
 
             <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Número de aula <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                <div class="col-md-3 col-xs-3 col-sm-3">
+                    <asp:Label ID="lblNumeroUbicacion" runat="server" Text="Oficina <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:TextBox class="form-control" ID="txtNumeroUbicacion" runat="server"></asp:TextBox>
@@ -228,7 +231,7 @@
                     
                     <div class="col-md-12 col-xs-12 col-sm-12">
 
-                <div class="col-md-2 col-xs-2 col-sm-2">
+                <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblDescripcionTarea" runat="server" Text="Descripción <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -247,6 +250,46 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <%-- Buscar ubicacion --%>
+    <div class="modal" id="abrirUbicaciones" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Ubicaciones</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="pnlUpdate" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <asp:TextBox ID="txtBuscarUbicacion" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="BuscarUbicacion_OnChanged" placeholder="Filtro de Ubicaciones"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                                <asp:DropDownList ID="UbicacionDDL" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="ButtonSeleccionarUbicacion" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="SeleccionarUbicacion_Click" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 
 </asp:Content>
