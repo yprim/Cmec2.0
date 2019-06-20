@@ -18,6 +18,7 @@ namespace Entidades
         DateTime ultimoMantenimiento;
         String nombreMesPropuesto;
         DateTimeFormatInfo formatoFecha = CultureInfo.CurrentCulture.DateTimeFormat;
+        String es_correctivo;
            
         public ActivoPlanPreventivo() {}
 
@@ -29,5 +30,6 @@ namespace Entidades
         public int MesPropuesto { get => mesPropuesto; set => mesPropuesto = value; }
         public string NombreMesPropuesto { get => formatoFecha.GetMonthName(this.mesPropuesto); }
         public String UltimoMantenimiento { get => ultimoMantenimiento.ToShortDateString(); set => ultimoMantenimiento = DateTime.Parse(value); }
+        public string Es_correctivo { get => es_correctivo; set => es_correctivo = value; }
     }
 }

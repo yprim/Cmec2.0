@@ -83,13 +83,14 @@
                             <table class="table table-bordered">
                                 <thead style="text-align: center">
                                     <tr style="text-align: center" class="btn-primary">
-                                        <th></th>
+                                        <th>Mantenimiento</th>
                                         <th>Placa</th>
                                         <th>Mes propuesto</th>
                                         <th>Responsable</th>
                                         <th>Edificio</th>
                                         <th>Ubicacion</th>
                                         <th>Ult. mantenimiento</th>
+                                        <th>Tipo Ult. mantenimiento</th>
                                         <th>Equipo</th>
                                     </tr>
                                 </thead>
@@ -117,6 +118,9 @@
                                 </td>
                                 <td>
                                      <%# Eval("ultimoMantenimiento") %>
+                                </td>
+                                <td>
+                                     <%# Eval("es_correctivo") %>
                                 </td>
                                 <td>
                                      <%# Eval("equipo") %>

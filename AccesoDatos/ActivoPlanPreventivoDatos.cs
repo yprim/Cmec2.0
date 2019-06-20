@@ -114,7 +114,7 @@ namespace AccesoDatos
         {
             List<ActivoPlanPreventivo> listaActivos = new List<ActivoPlanPreventivo>();
             SqlCommand sqlCommand = new SqlCommand("" +
-                "select p.placa_activo,a.descripcion,r.nombre,e.nombre,u.numero_aula,p.mes,m.fecha " +
+                "select p.placa_activo,a.descripcion,r.nombre,e.nombre,u.numero_aula,p.mes,m.fecha,m.es_correctivo " +
                 "from Propuesta_Mantenimiento_Preventivo p " +
                 "join Activo a on a.placa=p.placa_activo and p.esta_aprovado=0 " +
                 "left join Mantenimiento m on m.placa_activo=p.placa_activo and m.id_mantenimiento= " +
@@ -143,7 +143,14 @@ namespace AccesoDatos
                     activoNuevo.UltimoMantenimiento = "01/01/0001";
                 else
                     activoNuevo.UltimoMantenimiento = fechaMantenimiento;
-
+                String es_correctivo = reader.GetValue(7).ToString();
+                if (es_correctivo == "True")
+                    es_correctivo = "Correctivo";
+                else if (es_correctivo == "False")
+                    es_correctivo = "Preventivo";
+                else
+                    es_correctivo = "Sin Mantenimiento";
+                activoNuevo.Es_correctivo = es_correctivo;
                 listaActivos.Add(activoNuevo);
             }
             conexion.Close();
