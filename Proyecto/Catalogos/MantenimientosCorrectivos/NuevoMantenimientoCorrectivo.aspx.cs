@@ -28,8 +28,13 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 //txtNumeroUbicacion.Attributes.Add("oninput", "validarTexto(this)");
                 txtFechaMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
-                Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
-                textPlacaActivo.Text = activoMantenimiento.Placa.ToString();
+
+                if (Session["activoMantenimiento"] != null)
+                {
+                    Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
+                    textPlacaActivo.Text = activoMantenimiento.Placa.ToString();
+                }
+                
                 CargarUbicacion();
                 CargarResponsable();
                 CargarTarea();
