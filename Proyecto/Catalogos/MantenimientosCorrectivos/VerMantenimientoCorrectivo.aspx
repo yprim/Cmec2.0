@@ -22,13 +22,6 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="LabelId" runat="server" Text="ID: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:Label  ID="txtId" runat="server" ReadOnly="true"></asp:Label>
-                </div>
-
-                <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="LabelId_placa" runat="server" Text="ID Placa: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -54,6 +47,13 @@
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:Label  ID="txtUbicacion" runat="server" ReadOnly="true"></asp:Label>
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="LabelFuncionario" runat="server" Text="Funcionario: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label  ID="txtFuncionario" runat="server" ReadOnly="true"></asp:Label>
                 </div>
   
             </div>

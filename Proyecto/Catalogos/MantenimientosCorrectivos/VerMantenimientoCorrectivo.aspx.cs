@@ -22,13 +22,13 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 String tareasRealizadas = "";
                 MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoVer"];
-                List<Tarea> tareas = mantenimientoServicios.getTareasMantenimientos(mantenimiento.Id_mantenimiento);
+                List<Tarea> tareas = mantenimientoServicios.getTareasMantenimientos(Convert.ToInt32(mantenimiento.Id_mantenimiento));
                 foreach (var item in tareas)
                 {
                     tareasRealizadas += "            -> " + item.descripcion + "\n";
                 }
                 
-                txtId.Text = mantenimiento.Id_mantenimiento.ToString();
+                txtFuncionario.Text = mantenimiento.Id_funcionario.ToString();
                 txtId_placa.Text = mantenimiento.Placa_activo.ToString();
                 txtResponsable.Text = mantenimiento.Id_responsable.ToString();
                 txtFecha.Text = mantenimiento.Fecha.ToString();

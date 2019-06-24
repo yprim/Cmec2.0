@@ -17,6 +17,9 @@ namespace Servicios
     {
         #region variables
         MantenimientoCorrectivoDatos mantenimientoDatos = new MantenimientoCorrectivoDatos();
+        ResponsableServicios responsableServicios = new ResponsableServicios();
+        FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
+        UbicacionServicios ubicacionServicios = new UbicacionServicios();
         #endregion
 
         #region servicios
@@ -37,6 +40,82 @@ namespace Servicios
             return mantenimientoDatos.getMantenimientosCorrectivos();
 
         }
+
+        public List<MantenimientoCorrectivo> nombreResponsable(List<MantenimientoCorrectivo> mantenimientos)
+        {
+
+            List<Responsable> responsables = responsableServicios.getResponsables();
+
+            foreach (MantenimientoCorrectivo mantenimiento in mantenimientos)
+            {
+                int id_responsable = Convert.ToInt32(mantenimiento.Id_responsable);
+
+                foreach (Responsable responsable in responsables)
+                {
+                    if (responsable.idResponsable == id_responsable)
+                    {
+                        mantenimiento.Id_responsable = responsable.nombre;
+
+                    }
+                }
+
+            }
+            return mantenimientos;
+        }
+
+        public List<MantenimientoCorrectivo> nombreUbicacion(List<MantenimientoCorrectivo> mantenimientos)
+        {
+            string nombreUbicacion = "";
+
+            List<Ubicacion> ubicaciones = ubicacionServicios.getUbicaciones();
+
+            foreach (MantenimientoCorrectivo mantenimiento in mantenimientos)
+            {
+                int id_ubicacion = Convert.ToInt32(mantenimiento.Id_ubicacion);
+
+                foreach (Ubicacion ubicacion in ubicaciones)
+                {
+                    if (id_ubicacion == ubicacion.idUbicacion)
+                    {
+                        mantenimiento.Id_ubicacion = "Edificio "+ ubicacion.edificio + ",oficina " + ubicacion.numeroAula;
+                    }
+                }
+
+            }
+
+            return mantenimientos;
+        }
+
+            public List<MantenimientoCorrectivo> nombreFuncionario(List<MantenimientoCorrectivo> mantenimientos)
+            {
+
+                List<Funcionario> funcionarios = funcionarioServicios.getFuncionarios();
+
+                foreach (MantenimientoCorrectivo mantenimiento in mantenimientos)
+                {
+                    int id_funcionario = Convert.ToInt32(mantenimiento.Id_funcionario);
+
+                    foreach (Funcionario funcionario in funcionarios)
+                    {
+                        if (funcionario.Id == id_funcionario)
+                        {
+                            mantenimiento.Id_funcionario = funcionario.Nombre+" "+funcionario.Apellidos;
+
+                        }
+                    }
+
+                }
+
+                return mantenimientos;
+        }
+
+        public MantenimientoCorrectivo cambiarPorNombres(MantenimientoCorrectivo mantenimiento)
+        {
+
+            
+            return mantenimiento;
+        }
+
 
         //Devuelve mantenimientos que no se han aprobados.
         public List<MantenimientoCorrectivo> getMantenimientosNoAprobados()

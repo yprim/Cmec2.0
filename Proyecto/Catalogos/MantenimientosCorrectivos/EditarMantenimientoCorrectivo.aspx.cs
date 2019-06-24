@@ -18,30 +18,42 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         ResponsableServicios responsableServicios = new ResponsableServicios();
         UbicacionServicios ubicacionServicios = new UbicacionServicios();
         EdificioServicios edificioServicios = new EdificioServicios();
+        FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
         #endregion
 
         #region
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //cargar Campos
-            MantenimientoCorrectivo mantenimientoCorrectivo = (MantenimientoCorrectivo)Session["mantenimientoEditar"];
-            txtFechaMantenimiento.Text = mantenimientoCorrectivo.Fecha.ToString();
-            txtDescripcionMantenimiento.Text = mantenimientoCorrectivo.Descripcion;
+            if (!IsPostBack)
+            {
+                //cargar Campos DateTime.Parse(activo.FechaCompra).ToString("yyyy-MM-dd");
+                MantenimientoCorrectivo mantenimientoCorrectivo = (MantenimientoCorrectivo)Session["mantenimientoEditar"];
+                txtIDMantenimiento.Text = mantenimientoCorrectivo.Id_mantenimiento.ToString();
+                txtFechaMantenimiento.Text = DateTime.Parse(mantenimientoCorrectivo.Fecha).ToString("yyyy-MM-dd");
+                txtDescripcionMantenimiento.Text = mantenimientoCorrectivo.Descripcion;
 
-            accionesMantenimientoPreventivo();
-            CargarUbicacion();
-            CargarActivo();
-            CargarResponsable();
-            CargarTarea();
-            CargarEdificios();
-
+                CargarUbicacion();
+                CargarPlacas();
+                CargarResponsable();
+                CargarTarea();
+                CargarEdificios();
+                CargarFuncionario();
+                accionesMantenimientoPreventivo();
+            }
         }
         #endregion
 
         #region logica
         private void CargarUbicacion()
         {
+            string nombreUbicacion = "";
+
+            if (Session["nombreUbicacion"] != null)
+            {
+                nombreUbicacion = Session["nombreUbicacion"].ToString();
+            }
+
             List<Ubicacion> ubicaciones = new List<Ubicacion>();
             UbicacionDDL.Items.Clear();
             ubicaciones = this.ubicacionServicios.getUbicaciones();
@@ -50,8 +62,56 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 foreach (Ubicacion ubicacion in ubicaciones)
                 {
-                    ListItem item = new ListItem(ubicacion.edificio.nombre + " " + ubicacion.numeroAula.ToString(), ubicacion.idUbicacion.ToString());
-                    UbicacionDDL.Items.Add(item);
+                    if ((ubicacion.edificio.nombre != null && ubicacion.edificio.nombre.ToUpper().Contains(nombreUbicacion.ToUpper()))
+                        || (ubicacion.numeroAula != null && ubicacion.numeroAula.ToString().ToUpper().Contains(nombreUbicacion.ToUpper())))
+                    {
+                        ListItem item = new ListItem(ubicacion.edificio.nombre + " " + ubicacion.numeroAula.ToString(), ubicacion.idUbicacion.ToString());
+                        UbicacionDDL.Items.Add(item);
+                    }
+                }
+            }
+        }
+
+        private void CargarPlacas()
+        {
+            string nombrePlaca = "";
+
+            if (Session["nombrePlaca"] != null)
+            {
+                nombrePlaca = Session["nombrePlaca"].ToString();
+            }
+
+            List<Activo> activos = new List<Activo>();
+            PlacasDDL.Items.Clear();
+            activos = this.activoServicios.obtenerTodo();
+
+            if (activos.Count > 0)
+            {
+                foreach (Activo activo in activos)
+                {
+                    if (activo.Placa.ToString() != null && activo.Placa.ToString().ToUpper().Contains(activo.Placa.ToString().ToUpper())
+                        || activo.Modelo != null && activo.Modelo.ToUpper().Contains(activo.Modelo.ToUpper()))
+                    {
+                        ListItem item = new ListItem(activo.Placa + " " + activo.Modelo.ToString(), activo.Placa.ToString());
+                        PlacasDDL.Items.Add(item);
+                    }
+
+                }
+            }
+        }
+
+        private void CargarFuncionario()
+        {
+            List<Funcionario> funcionarios = new List<Funcionario>();
+            FuncionarioDDL.Items.Clear();
+            funcionarios = this.funcionarioServicios.getFuncionarios();
+
+            if (funcionarios.Count > 0)
+            {
+                foreach (Funcionario funcionario in funcionarios)
+                {
+                    ListItem item = new ListItem(funcionario.Nombre + " " + funcionario.Apellidos, funcionario.Id.ToString());
+                    FuncionarioDDL.Items.Add(item);
                 }
             }
         }
@@ -75,7 +135,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         private void CargarActivo()
         {
             List<Activo> activos = new List<Activo>();
-            PlacaActivoDDL.Items.Clear();
+            PlacasDDL.Items.Clear();
             activos = this.activoServicios.obtenerTodo();
 
             if (activos.Count > 0)
@@ -83,7 +143,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 foreach (Activo activo in activos)
                 {
                     ListItem item = new ListItem(activo.Placa.ToString() + " " + activo.Modelo + " " + activo.Serie, activo.Placa.ToString());
-                    PlacaActivoDDL.Items.Add(item);
+                    PlacasDDL.Items.Add(item);
                 }
             }
         }
@@ -91,15 +151,15 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         private void CargarResponsable()
         {
             List<Responsable> responsables = new List<Responsable>();
-            ResponsableDDL.Items.Clear();
+            ResponsableDDLSelect.Items.Clear();
             responsables = this.responsableServicios.getResponsables();
 
             if (responsables.Count > 0)
             {
                 foreach (Responsable responsable in responsables)
                 {
-                    ListItem item = new ListItem(responsable.idResponsable.ToString() + " " + responsable.nombre, responsable.idResponsable.ToString());
-                    ResponsableDDL.Items.Add(item);
+                    ListItem item = new ListItem(responsable.nombre, responsable.idResponsable.ToString());
+                    ResponsableDDLSelect.Items.Add(item);
                 }
             }
 
@@ -155,7 +215,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             #region validacion Responsables
 
-            if (ResponsableDDL.Items.Count == 0)
+            if (ResponsableDDLSelect.Items.Count == 0)
             {
                 divResponsableIncorrecto.Style.Add("display", "block");
 
@@ -166,9 +226,9 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             #region validacion activo
 
-            if (PlacaActivoDDL.Items.Count == 0)
+            if (PlacasDDL.Items.Count == 0)
             {
-                divPlacaIncorrecto.Style.Add("display", "block");
+                lblPlacaIncorrecto.Style.Add("display", "block");
 
                 validados = false;
             }
@@ -221,16 +281,18 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             //se validan los campos antes de guardar los datos en la base de datos
-           
-                MantenimientoCorrectivo mantenimiento = new MantenimientoCorrectivo();
+            
+            MantenimientoCorrectivo mantenimiento = new MantenimientoCorrectivo();
 
-                mantenimiento.Fecha = txtFechaMantenimiento.Text;
-                mantenimiento.Descripcion = txtDescripcionMantenimiento.Text;
-                mantenimiento.Id_responsable = Convert.ToInt32(ResponsableDDL.SelectedValue);
-                mantenimiento.Placa_activo = Convert.ToInt32(PlacaActivoDDL.SelectedValue);
-                mantenimiento.Id_ubicacion = Convert.ToInt32(UbicacionDDL.SelectedValue);
+            mantenimiento.Id_mantenimiento = Convert.ToInt32(txtIDMantenimiento.Text);
+            mantenimiento.Fecha = txtFechaMantenimiento.Text;
+            mantenimiento.Descripcion = txtDescripcionMantenimiento.Text;
+            mantenimiento.Id_responsable = txtBuscarResponsable.Text;
+            mantenimiento.Placa_activo = Convert.ToInt32(txtBuscarPlacas.Text.ToString());
+            mantenimiento.Id_ubicacion = txtBuscarUbicacion.Text.ToString();
+            mantenimiento.Id_funcionario = TxtBuscarFuncionario.Text;
 
-                List<String> listaTareas = new List<String>();
+            List<String> listaTareas = new List<String>();
 
                 string selectedItems = String.Join(",",
                  TareasDDL.Items.OfType<ListItem>().Where(r => r.Selected)
@@ -242,8 +304,6 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 {
                     listaTareas.Add(lista[c]);
                 }
-
-                mantenimientoServicios.actualizarMantenimiento(mantenimiento, listaTareas);
 
                 String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
 
@@ -257,13 +317,16 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 {
                     //VERIFICAR QUE SE GUARDE EL ATRIBUTO ES_CORRECTIVO=0 AL SE DE TIPO PREVENTIVO
                     url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
-                }
+                mantenimiento.Es_correctivo = false;
+            }
                 else
                 {
                     url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
-                }
+                mantenimiento.Es_correctivo = true;
+            }
+            mantenimientoServicios.actualizarMantenimiento(mantenimiento, listaTareas);
 
-                Response.Redirect(url);
+            Response.Redirect(url);
             
         }
 
@@ -287,6 +350,86 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             else
                 url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
+        }
+
+        protected void SeleccionarUbicacion_Click(object sender, EventArgs e)
+        {
+            if (!UbicacionDDL.SelectedValue.Equals(""))
+            {
+                TxtUbicacion.Text = UbicacionDDL.SelectedItem.Text;
+                txtBuscarUbicacion.Text = UbicacionDDL.SelectedItem.Value;
+            }
+            else
+            {
+                TxtUbicacion.Text = "";
+            }
+        }
+
+        protected void BuscarUbicacion_OnChanged(object sender, EventArgs e)
+        {
+            Session["nombreUbicacion"] = txtBuscarUbicacion.Text;
+
+            CargarUbicacion();
+        }
+
+        protected void SeleccionarPlaca_Click(object sender, EventArgs e)
+        {
+            if (!PlacasDDL.SelectedValue.Equals(""))
+            {
+                txtPlacaActivo.Text = PlacasDDL.SelectedItem.Text;
+                txtBuscarPlacas.Text = PlacasDDL.SelectedItem.Value;
+            }
+            else
+            {
+                txtPlacaActivo.Text = "";
+            }
+        }
+
+        protected void BuscarPlaca_OnChanged(object sender, EventArgs e)
+        {
+            Session["nombrePlaca"] = txtBuscarPlacas.Text;
+
+            CargarPlacas();
+        }
+
+        protected void SeleccionarResponsable_Click(object sender, EventArgs e)
+        {
+            if (!ResponsableDDLSelect.SelectedValue.Equals(""))
+            {
+                TxtResponsable.Text = ResponsableDDLSelect.SelectedItem.Text;
+                txtBuscarResponsable.Text = ResponsableDDLSelect.SelectedItem.Value;
+            }
+            else
+            {
+                TxtResponsable.Text = "";
+            }
+        }
+
+        protected void BuscarResponsable_OnChanged(object sender, EventArgs e)
+        {
+            Session["nombreResponsable"] = txtBuscarResponsable.Text;
+
+            CargarResponsable();
+        }
+
+        protected void SeleccionarFuncionario_Click(object sender, EventArgs e)
+        {
+            if (!FuncionarioDDL.SelectedValue.Equals(""))
+            {
+                TxtFuncionario.Text = FuncionarioDDL.SelectedItem.Text;
+                TxtBuscarFuncionario.Text = FuncionarioDDL.SelectedItem.Value;
+            }
+            else
+            {
+                TxtFuncionario.Text = "";
+            }
+        }
+
+        protected void BuscarFuncionario_OnChanged(object sender, EventArgs e)
+        {
+            Session["nombreFuncionario"] = TxtBuscarFuncionario.Text;
+
+            CargarFuncionario();
         }
 
 
