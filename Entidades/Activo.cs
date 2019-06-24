@@ -17,6 +17,7 @@ namespace Entidades
         string serie;
         string modelo;
         DateTime fechaCompraDT;
+        String fechaCompra;
         string descripcion;
         bool isNotDeleted;
 
@@ -25,7 +26,7 @@ namespace Entidades
         public int Placa { get => placa; set => placa = value; }
         public string Serie { get => serie; set => serie = value; }
         public string Modelo { get => modelo; set => modelo = value; }
-        public String FechaCompra { get => FechaCompraDT.ToShortDateString(); set => FechaCompraDT = DateTime.Parse(value); }
+        public String FechaCompra { get => fechaCompra; set =>fechaCompra= value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public bool IsNotDeleted { get => isNotDeleted; set => isNotDeleted = value; }
         public DateTime FechaCompraDT { get => fechaCompraDT; set => fechaCompraDT = value; }

@@ -59,7 +59,7 @@ namespace Proyecto.Catalogos
             catch (Exception ex)
             {
 
-            //  (this.Master as Site).Mensaje("El tarea no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Está siendo referenciado esta tarea con alguna mantenimiento. PROCEDA A CANCELAR!');", true);
             }
         }
 

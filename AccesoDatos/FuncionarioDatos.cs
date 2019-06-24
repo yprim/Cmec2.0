@@ -152,12 +152,12 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Update Funcionario set habilitado = 0 " +
-                "output Inserted.usuario where usuario=@usuario", sqlConnection);
+                "output Deleted.usuario where usuario=@usuario", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@usuario", funcionario.Usuario);
 
             sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+            int resultado=(int)sqlCommand.ExecuteScalar();
 
             sqlConnection.Close();
 

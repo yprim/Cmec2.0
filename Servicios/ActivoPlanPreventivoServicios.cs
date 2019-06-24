@@ -54,6 +54,15 @@ namespace Servicios
             return false;
         }//Metodo Generar Plan
 
+
+        /// <summary>
+        /// metodo para permitir comprobar si hay que cerrar el plan automaticamente o de manera directa.
+        /// </summary>
+        /// <param name="esAutomatico"></param>
+        /// <returns></returns>
+        public int cierrePlan(bool esAutomatico) {
+            return planPreventivoDatos.cierrePlan(esAutomatico);
+        }
         public bool existePlanVigente() {
             return planPreventivoDatos.existePlanVigente();
         }

@@ -158,9 +158,10 @@ namespace AccesoDatos
 
             SqlCommand sqlCommand = new SqlCommand("delete from Edificio output DELETED.id_edificio where id_edificio = @id_edificio;", sqlConnection);
             sqlCommand.Parameters.AddWithValue("@id_edificio", edificio.idEdificio);
-
+            
             sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+            
+            int resultado=(int)sqlCommand.ExecuteScalar();
 
             sqlConnection.Close();
 

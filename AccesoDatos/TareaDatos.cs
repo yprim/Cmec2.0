@@ -128,12 +128,12 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Delete Tarea " +
-                                               "where id_tarea = @id_tarea;", sqlConnection);
+                                               "output Deleted.id_tarea where id_tarea = @id_tarea;", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id_tarea", Tarea.idTarea);
 
             sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+           int resultado=(int)sqlCommand.ExecuteScalar();
 
             sqlConnection.Close();
 

@@ -23,7 +23,10 @@ namespace Proyecto.Catalogos.Activos
             {
                 Activo activo = (Activo)Session["activoVer"];
                 txtDescripcionActivo.Text = activo.Descripcion;
-
+                txtPlacaActivo.Text = activo.Placa.ToString();
+                txtSerieActivo.Text = activo.Serie;
+                txtModeloActivo.Text = activo.Modelo;
+                txtFechaCompraActivo.Text = activo.FechaCompra;
             }
 
         }

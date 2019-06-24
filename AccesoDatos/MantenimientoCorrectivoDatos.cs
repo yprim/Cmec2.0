@@ -79,7 +79,7 @@ namespace AccesoDatos
         }
 
         /// <summary>
-        /// Leonardo Gomez
+        /// Steven Camacho
         /// 19/06/2019
         /// Efecto: devuelve una lista con todos los mantenimientos no aprobados, precisamente esto se determina con el atributo estado cuando es 0;
         /// Requiere: -
@@ -119,6 +119,49 @@ namespace AccesoDatos
 
             return listaMantenimientos;
         }
+
+        /// <summary>
+        /// Steven Camacho
+        /// 23/06/2019
+        /// Efecto: devuelve una lista con todos los mantenimientos que si han sido aprobados, precisamente esto se determina con el atributo estado cuando es 1;
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: lista de mantenimientos aprobados
+        /// </summary>
+        /// <param name="MantenimientoCorrectivo"></param>
+        /// <returns></returns>
+        public List<MantenimientoCorrectivo> getMantenimientosAprobados()
+        {
+            List<MantenimientoCorrectivo> listaMantenimientos = new List<MantenimientoCorrectivo>();
+
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand("Select * from Mantenimiento where estado=1;", sqlConnection);
+
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                MantenimientoCorrectivo Mantenimiento = new MantenimientoCorrectivo();
+
+                Mantenimiento.Id_mantenimiento = Convert.ToInt32(reader["id_mantenimiento"].ToString());
+                Mantenimiento.Placa_activo = Convert.ToInt32(reader["placa_activo"].ToString());
+                Mantenimiento.Id_responsable = Convert.ToInt32(reader["id_responsable"].ToString());
+                Mantenimiento.Fecha = reader["fecha"].ToString();
+                Mantenimiento.Id_ubicacion = Convert.ToInt32(reader["id_ubicacion"].ToString());
+                Mantenimiento.Descripcion = reader["descripcion"].ToString();
+                Mantenimiento.Estado = reader["estado"].ToString(); ;
+
+                listaMantenimientos.Add(Mantenimiento);
+            }
+
+            sqlConnection.Close();
+
+            return listaMantenimientos;
+        }
+
         /// <summary>
         /// Steven Camacho
         /// 19/Junio/2019
@@ -290,12 +333,12 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Update Mantenimiento set estado=2" +
-                                               "where id_mantenimiento = @id_mantenimiento;", sqlConnection);
+                                               "output Deleted.id_mantenimiento where id_mantenimiento = @id_mantenimiento;", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id", Mantenimiento.Id_mantenimiento);
 
             sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+            int resultado= (int)sqlCommand.ExecuteScalar();
 
             sqlConnection.Close();
         }

@@ -58,10 +58,16 @@
             <%-- campo descripcion --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblDescripcionActivo" runat="server" Text="Descripción <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblDescripcionActivo" runat="server" Text="Equipo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox  class="form-control" ID="txtDescripcionActivo" runat="server" ></asp:TextBox>                              
+                    <asp:DropDownList ID="ddlDescripcionActivo" runat="server" CssClass="form-control">
+                        <asp:ListItem>Laptop</asp:ListItem>
+                        <asp:ListItem>CPU</asp:ListItem>
+                        <asp:ListItem>Computadora</asp:ListItem>
+                        <asp:ListItem>Impresora</asp:ListItem>
+                        <asp:ListItem>Servidor</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div id="divDescripcionActivoIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblDescripcionActivoIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>

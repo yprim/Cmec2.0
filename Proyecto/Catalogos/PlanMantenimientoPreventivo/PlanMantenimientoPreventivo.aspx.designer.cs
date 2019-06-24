@@ -67,6 +67,15 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo {
         protected global::System.Web.UI.WebControls.Button ButtonGenerarPlan;
         
         /// <summary>
+        /// Control ButtonCerrarPlan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCerrarPlan;
+        
+        /// <summary>
         /// Control txtBuscarPlaca.
         /// </summary>
         /// <remarks>

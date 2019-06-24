@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using System.Data.SqlClient;
+using System.Threading;
 
 namespace Proyecto.Catalogos.Edificios
 {
@@ -45,16 +48,19 @@ namespace Proyecto.Catalogos.Edificios
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Edificio edificio = (Edificio)Session["edificioEliminar"];
-
+            String url = Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx");
             try
             {
+                
                 edificioServicios.eliminarEdificio(edificio);
-                String url = Page.ResolveUrl("~/Catalogos/Edificios/AdministrarEdificio.aspx");
                 Response.Redirect(url);
+
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Está siendo referenciado este edificio con alguna ubicación. PROCEDA A CANCELAR!');", true);
             }
+                 
         }
 
 

@@ -51,10 +51,12 @@ namespace Proyecto.Catalogos.Ubicaciones
             {
                 int idUbicacion = ubicacionServicios.eliminarUbicacion(ubicacion);
                 String url = Page.ResolveUrl("~/Catalogos/Ubicaciones/AdministrarUbicacion.aspx");
-                Response.Redirect(url);
+                 Response.Redirect(url);
+
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Está siendo referenciado esta ubicación con alguna mantenimiento. PROCEDA A CANCELAR!');", true);
             }
         }
 

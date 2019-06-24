@@ -58,10 +58,10 @@ namespace Proyecto.Catalogos.Funcionarios
             }
             catch (Exception ex)
             {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Está siendo referenciado este funcionario con algun mantenimiento. PROCEDA A CANCELAR!');", true);
             }
         }
-
+        
 
         /// <summary>
         /// Leonardo Gomez

@@ -19,9 +19,9 @@
                 <hr />
                 <center>
                     <div id="divMensaje" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                        <asp:Label ID="lblMensaje" runat="server" Font-Size="Medium" class="label alert-danger" Text="*** Mantenimiento de tipo Preventivo ***" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblMensaje" runat="server" Font-Size="Medium" class="label alert-danger" Text="- Mantenimiento de tipo Preventivo -" ForeColor="Black"></asp:Label>
                         <hr />
-                        <asp:Label ID="lblMensaje2" runat="server" Font-Size="Small" class="label alert-danger" Text="*** Se agregan las tareas predefinidas de mantenimiento preventivo ***" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblMensaje2" runat="server" Font-Size="Small" class="label alert-danger" Text="*** Se han seleccionado automaticamente las tareas predefinidas de mantenimiento preventivo." ForeColor="Red"></asp:Label>
                     </div>
                 </center>
             </div>

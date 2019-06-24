@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -80,13 +81,12 @@ namespace Proyecto.Catalogos.Activos
             if (ViewState["responsable"] != null)
                 responsable = (String)ViewState["responsable"];
 
-            // List<MantenimientoCorrectivo> listaAprobarMantenimientos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Id_placa.ToString().Contains(placa)
-            //                                 && x.UbicacionString.ToUpper().Contains(ubicacion.ToUpper()) && x.ResponsableString.ToUpper().Contains(responsable.ToUpper()) && x.Fecha.ToShortDateString().Contains(fecha)).ToList();
+             List<MantenimientoCorrectivo> listaAprobarMantenimientos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa_activo.ToString().Contains(placa)
+                                             && x.Id_ubicacion.ToString().ToUpper().Contains(ubicacion.ToUpper()) && x.Id_responsable.ToString().ToUpper().Contains(responsable.ToUpper()) && x.Fecha.Contains(fecha)).ToList();
 
-            // Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
+             Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
 
-            // var dt = listaAprobarMantenimientos;
-            var dt = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientosFiltrada"];
+             var dt = listaAprobarMantenimientos;
 
             pgsource.DataSource = dt;
             pgsource.AllowPaging = true;

@@ -124,8 +124,7 @@ namespace AccesoDatos
         /// <param name="Ubicacion"></param>
         public int eliminarUbicacion(Ubicacion ubicacion)
         {
-            try
-            {
+        
                 SqlConnection sqlConnection = conexion.conexionCMEC();
 
                 SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion output DELETED.id_ubicacion where id_ubicacion = @id_ubicacion;", sqlConnection);
@@ -137,11 +136,6 @@ namespace AccesoDatos
                 sqlConnection.Close();
 
                 return idUbicacion;
-            }
-            catch (Exception e)
-            {
-                return -1;
-            }
         }
         #endregion
     }

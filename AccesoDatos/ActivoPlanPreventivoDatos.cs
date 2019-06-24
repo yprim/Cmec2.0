@@ -43,13 +43,82 @@ namespace AccesoDatos
         }
 
         /// <summary>
+        /// Método verifica si se da las condiciones de ser una fecha posterior al 1 de diciembre para cerrar el plan actual
+        /// Steven Camacho
+        /// 23/06/2019
+        /// </summary>
+        /// <returns></returns>
+        public bool consultaRealizarCierrePlan() {
+
+                int diaActual = DateTime.Today.Day;
+                int mesActual = DateTime.Today.Month;
+                int anioActual = DateTime.Today.Year;
+                int periodoActual = obtenerNuevoPeriodo();
+                if (anioActual ==periodoActual) {
+                    if (mesActual == 12)
+                        return true;
+                    else
+                        return false;
+                } else if (anioActual > periodoActual)
+                    return true;
+            
+                return false;
+        }//consultaRealizarCienrrePlan
+
+        /// <summary>
+        /// Metodo permite cerrar el plan automáticamente o mediante una solicitud.
+        /// </summary>
+        /// <param name="consulta"></param>
+        public int cierrePlan(bool esAutomatico) {
+            if (esAutomatico)
+            {
+                if (!consultaRealizarCierrePlan())//en caso de salir falso saldrá sin cerrar el plan.
+                {
+                    return -1;
+                }
+            }
+            SqlCommand sqlCommand = new SqlCommand("Update [plan] set finalizado=1 where id_plan= " +
+                                                    "(select top 1 id_plan from [plan] where finalizado=0 order by id_plan desc)", conexion);
+            conexion.Open();
+            sqlCommand.ExecuteScalar();
+            conexion.Close();
+                return 1;
+
+        }
+
+
+        /// <summary>
+        /// Obtiene el periodo del plan anterior para verificar que el generado sea uno mayor.
+        /// Steven Camacho
+        /// 23/06/19
+        /// </summary>
+        /// <returns></returns>
+        public int obtenerNuevoPeriodo() {
+            SqlCommand sqlcommand = new SqlCommand("select top 1 periodo from [plan] where finalizado=1 order by id_plan desc", conexion);
+            SqlDataReader reader;
+            conexion.Open();
+            reader = sqlcommand.ExecuteReader();
+            int resultado = 0;
+            if (reader.Read())
+            {
+                string periodo = reader.GetValue(0).ToString();
+                resultado = Int32.Parse(reader.GetValue(0).ToString())+1;
+            }else
+                resultado = DateTime.Today.Year;
+            conexion.Close();
+            return resultado;
+        }
+
+        /// <summary>
         /// Steven Camacho
         /// 17/06/2019
         /// Efecto: almacena en la base de datos la relación existente del plan preventivo generado junto con los activos y las fechas correspondientes.
         /// </summary>
         public void guardarListaPlan(List<ActivoPlanPreventivo> listaPlanActivos)
         {
-            SqlCommand sqlCommand = new SqlCommand("insert into [plan] (fecha_inicio, finalizado) output Inserted.id_plan VALUES (getdate(),0);", conexion);
+            SqlCommand sqlCommand = new SqlCommand("insert into [plan] (periodo, finalizado) output Inserted.id_plan VALUES (@nuevoPeriodo,0);", conexion);
+            int periodo = obtenerNuevoPeriodo();
+            sqlCommand.Parameters.AddWithValue("@nuevoPeriodo",periodo);
             conexion.Open();
             int idPlan = (int)sqlCommand.ExecuteScalar();
 
@@ -82,6 +151,7 @@ namespace AccesoDatos
                                                     "on m.id_ubicacion = u.id_ubicacion " +
                                                     "left join edificio e " +
                                                     "on e.id_edificio = u.id_edificio " +
+                                                    "where a.placa not in(select placa_activo from mantenimiento where id_ubicacion=1) " +
                                                     "order by m.fecha ,e.id_edificio,u.numero_aula", conexion);
             SqlDataReader reader;
             conexion.Open();
@@ -114,16 +184,19 @@ namespace AccesoDatos
         {
             List<ActivoPlanPreventivo> listaActivos = new List<ActivoPlanPreventivo>();
             SqlCommand sqlCommand = new SqlCommand("" +
-                "select p.placa_activo,a.descripcion,r.nombre,e.nombre,u.numero_aula,p.mes,m.fecha,m.es_correctivo " +
+                "select p.placa_activo,a.descripcion,f.nombre,e.nombre,u.numero_aula,p.mes,m.fecha,m.es_correctivo " +
                 "from Propuesta_Mantenimiento_Preventivo p " +
                 "join Activo a on a.placa=p.placa_activo and p.esta_aprovado=0 " +
                 "left join Mantenimiento m on m.placa_activo=p.placa_activo and m.id_mantenimiento= " +
                 "(select Top 1 id_mantenimiento from Mantenimiento ma " +
                 "where ma.placa_activo= p.placa_activo " +
                 "order by id_mantenimiento desc ) " +
-                "left join Responsable r on r.id=m.id_responsable " +
+                "left join Funcionario f on f.id=m.id_funcionario " +
                 "left join Ubicacion u on u.id_ubicacion=m.id_ubicacion " +
                 "left join Edificio e on e.id_edificio= u.id_edificio " +
+                "where p.placa_activo not in(select placa_activo from mantenimiento where es_correctivo=0 " +
+                "and id_plan= (select top(1) id_plan from [plan] Order By id_plan desc)) and " +
+                "p.id_plan =(select top(1) id_plan from [plan] Order By id_plan desc ) " +
                 "order by p.mes asc", conexion);
 
             SqlDataReader reader;
@@ -134,15 +207,15 @@ namespace AccesoDatos
                 ActivoPlanPreventivo activoNuevo = new ActivoPlanPreventivo();
                 activoNuevo.Placa = Int32.Parse(reader.GetValue(0).ToString());
                 activoNuevo.Equipo = reader.GetValue(1).ToString();
-                activoNuevo.Responsable = reader.GetValue(2).ToString();
+                activoNuevo.Funcionario = reader.GetValue(2).ToString();
                 activoNuevo.Edificio = reader.GetValue(3).ToString();
                 activoNuevo.Ubicacion = reader.GetValue(4).ToString();
                 activoNuevo.MesPropuesto = Int32.Parse(reader.GetValue(5).ToString());
                 string fechaMantenimiento= reader.GetValue(6).ToString();
                 if (fechaMantenimiento == "")
-                    activoNuevo.UltimoMantenimiento = "01/01/0001";
+                    activoNuevo.UltimoMantenimiento = "";
                 else
-                    activoNuevo.UltimoMantenimiento = fechaMantenimiento;
+                    activoNuevo.UltimoMantenimiento = (DateTime.Parse(fechaMantenimiento)).ToShortDateString();
                 String es_correctivo = reader.GetValue(7).ToString();
                 if (es_correctivo == "True")
                     es_correctivo = "Correctivo";

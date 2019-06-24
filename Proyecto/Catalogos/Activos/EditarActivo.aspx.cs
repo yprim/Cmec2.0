@@ -24,7 +24,7 @@ namespace Proyecto.Catalogos.Activos
             {
                 txtSerieActivo.Attributes.Add("oninput", "validarTexto(this,'serie')");
                 txtModeloActivo.Attributes.Add("oninput", "validarTexto(this,'modelo')");
-                txtDescripcionActivo.Attributes.Add("oninput", "validarTexto(this,'desc')");
+                ddlDescripcionActivo.Attributes.Add("oninput", "validarTexto(this,'desc')");
                 txtFechaActivo.Attributes.Add("oninput", "validarTexto(this,'fecha')");
 
                 //cargar campos
@@ -32,8 +32,8 @@ namespace Proyecto.Catalogos.Activos
                 textPlacaActivo.Text = activo.Placa.ToString();
                 txtSerieActivo.Text = activo.Serie;
                 txtModeloActivo.Text = activo.Modelo;
-                txtDescripcionActivo.Text = activo.Descripcion;
-                txtFechaActivo.Text = activo.FechaCompraDT.ToString("yyyy-MM-dd");
+                ddlDescripcionActivo.Text = activo.Descripcion;
+                txtFechaActivo.Text = DateTime.Parse(activo.FechaCompra).ToString("yyyy-MM-dd");
 
             }
         }
@@ -75,11 +75,11 @@ namespace Proyecto.Catalogos.Activos
             }
             #endregion
             #region validacion descripción activo
-            String descripcionActivo = txtDescripcionActivo.Text;
+            String descripcionActivo = ddlDescripcionActivo.Text;
 
             if (descripcionActivo.Trim() == "")
             {
-                txtDescripcionActivo.CssClass = "form-control alert-danger";
+                ddlDescripcionActivo.CssClass = "form-control alert-danger";
                 divDescripcionActivoIncorrecto.Style.Add("display", "block");
 
                 validados = false;
@@ -120,7 +120,7 @@ namespace Proyecto.Catalogos.Activos
                 activo.Placa = Int32.Parse(textPlacaActivo.Text);
                 activo.Serie = txtSerieActivo.Text;
                 activo.Modelo = txtModeloActivo.Text;
-                activo.Descripcion = txtDescripcionActivo.Text;
+                activo.Descripcion = ddlDescripcionActivo.Text;
                 activo.FechaCompra = txtFechaActivo.Text;
 
                 activoServicios.actualizar(activo);

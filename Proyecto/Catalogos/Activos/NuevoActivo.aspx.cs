@@ -25,7 +25,7 @@ namespace Proyecto.Catalogos.Activos
                 txtPlacaActivo.Attributes.Add("oninput", "validarTexto(this,'placa')");
                 txtSerieActivo.Attributes.Add("oninput", "validarTexto(this,'serie')");
                 txtModeloActivo.Attributes.Add("oninput", "validarTexto(this,'modelo')");
-                txtDescripcionActivo.Attributes.Add("oninput", "validarTexto(this,'desc')");
+                ddlDescripcionActivo.Attributes.Add("oninput", "validarTexto(this,'desc')");
                 txtFechaActivo.Attributes.Add("oninput", "validarTexto(this,'fecha')");
                 
                 //calendario.Visible = false;
@@ -79,11 +79,11 @@ namespace Proyecto.Catalogos.Activos
             }
             #endregion
             #region validacion descripción activo
-            String descripcionActivo = txtDescripcionActivo.Text;
+            String descripcionActivo = ddlDescripcionActivo.Text;
 
             if (descripcionActivo.Trim() == "")
             {
-                txtDescripcionActivo.CssClass = "form-control alert-danger";
+                ddlDescripcionActivo.CssClass = "form-control alert-danger";
                 divDescripcionActivoIncorrecto.Style.Add("display", "block");
 
                 validados = false;
@@ -131,7 +131,7 @@ namespace Proyecto.Catalogos.Activos
                 activo.Placa = Int32.Parse(txtPlacaActivo.Text);
                 activo.Serie = txtSerieActivo.Text;
                 activo.Modelo = txtModeloActivo.Text;
-                activo.Descripcion = txtDescripcionActivo.Text;
+                activo.Descripcion = ddlDescripcionActivo.SelectedValue;
                 activo.FechaCompra = txtFechaActivo.Text;
 
                 activoServicios.insertar(activo);

@@ -149,7 +149,6 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             else
                 divMensaje.Style.Add("display", "none");
 
-            Session["procedencia"] = "";
         }
 
         /// <summary>

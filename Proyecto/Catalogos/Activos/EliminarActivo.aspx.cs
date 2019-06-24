@@ -59,7 +59,7 @@ namespace Proyecto.Catalogos.Activos
             }
             catch (Exception ex)
             {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Ha sucedido un error al tratar de deshabilitar este activo, PROCEDA A CANCELAR!');", true);
             }
         }
 

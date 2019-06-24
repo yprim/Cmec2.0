@@ -1,27 +1,27 @@
-﻿using System;
+﻿using Entidades;
 using Servicios;
-using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
-namespace Proyecto.Catalogos.MantenimientosCorrectivos
+namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
 {
-    public partial class AdministrarMantenimientoCorrectivo : System.Web.UI.Page
+    public partial class MantenimietosAprobados : System.Web.UI.Page
     {
+
+
         #region variables globales
-        MantenimientoCorrectivoServicio mantenimientoServicios = new MantenimientoCorrectivoServicio();
+        MantenimientoCorrectivoServicio mantenimientoServicios;
         readonly PagedDataSource pgsource = new PagedDataSource();
         int primerIndex, ultimoIndex;
         private int elmentosMostrar = 10;
         #endregion
 
-        #region page load
-
+        #region pageload
         protected void Page_Load(object sender, EventArgs e)
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
@@ -31,83 +31,64 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             if (!Page.IsPostBack)
             {
-                Session["listaMantenimientosCorrectivos"] = null;
+                Session["listaAprobarMantenimientos"] = null;
 
-                MantenimientoCorrectivoServicio mantenimientoServicios = new MantenimientoCorrectivoServicio();
+                mantenimientoServicios = new MantenimientoCorrectivoServicio();
 
-                List<MantenimientoCorrectivo> listaMantenimientoCorrectivos = new List<MantenimientoCorrectivo>();
-                listaMantenimientoCorrectivos = mantenimientoServicios.getMantenimientos();
+                List<MantenimientoCorrectivo> listaMantenimientos = new List<MantenimientoCorrectivo>();
+                listaMantenimientos = mantenimientoServicios.getMantenimientosAprobados();
 
-                Session["listaMantenimientosCorrectivos"] = listaMantenimientoCorrectivos;
-                Session["listaMantenimientosCorrectivosFiltrada"] = listaMantenimientoCorrectivos;
+                Session["listaAprobarMantenimientos"] = listaMantenimientos;
+                Session["listaAprobarMantenimientosFiltrada"] = listaMantenimientos;
 
                 mostrarDatosTabla();
             }
+
         }
         #endregion
 
         #region logica
-
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
-        /// Efecto: carga los datos filtrados en la tabla de activos y realiza la paginacion correspondiente
+        /// Steven Camacho
+        /// 29/05/2019
+        /// Efecto: Metodo para llenar los datos de la tabla con los Mantenimientos que se encuentran en la base de datos
         /// Requiere: -
-        /// Modifica: los datos mostrados en pantalla
+        /// Modifica: -
         /// Devuelve: -
         /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         private void mostrarDatosTabla()
         {
-
-            List<MantenimientoCorrectivo> listaSession = (List<MantenimientoCorrectivo>)Session["listaMantenimientosCorrectivos"];
-            String id_mantenimiento = "";
+            List<MantenimientoCorrectivo> listaSession = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
+            String placa = "";
+            String responsable = "";
+            String ubicacion = "";
             String fecha = "";
             String descripcion = "";
-            String estado = "";
-            String es_correctivo = "";
-            String id_responsable = "";
-            String placa_activo = "";
-            String id_ubicacion = "";
 
+            if (ViewState["placa"] != null)
+                placa = ViewState["placa"].ToString();
 
-            if (ViewState["id_mantenimiento"] != null)
-                id_mantenimiento = ViewState["id_mantenimiento"].ToString();
+            if (ViewState["descripcion"] != null)
+                descripcion = (String)ViewState["descripcion"];
 
             if (ViewState["fecha"] != null)
                 fecha = (String)ViewState["fecha"];
 
-            if (ViewState["descripcion"] != null)
-                descripcion = (String)ViewState["descripcion"].ToString();
+            if (ViewState["ubicacion"] != null)
+                ubicacion = (String)ViewState["ubicacion"];
 
-            if (ViewState["estado"] != null)
-                 estado = (String)ViewState["estado"];
-           
-            
+            if (ViewState["responsable"] != null)
+                responsable = (String)ViewState["responsable"];
 
-            if (ViewState["id_responsable"] != null)
-                id_responsable = (String)ViewState["id_responsable"];
+            List<MantenimientoCorrectivo> listaAprobarMantenimientos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa_activo.ToString().Contains(placa)
+                                            && x.Id_ubicacion.ToString().ToUpper().Contains(ubicacion.ToUpper()) && x.Id_responsable.ToString().ToUpper().Contains(responsable.ToUpper()) && x.Fecha.Contains(fecha)).ToList();
 
-            if (ViewState["es_correctivo"] != null)
-            
-            if (ViewState["placa_activo"] != null)
-                placa_activo = (String)ViewState["placa_activo"];
+            Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
 
-            if (ViewState["id_ubicacion"] != null)
-                id_ubicacion = (String)ViewState["id_ubicacion"];
-           
-            List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)listaSession.Where( 
-               x => x.Id_mantenimiento.ToString().Contains(id_mantenimiento) 
-            && x.Fecha.ToString().Contains(fecha) 
-            && x.Descripcion.ToString().Contains(descripcion) 
-            && x.Estado.ToString().Contains(estado) 
-            && x.Id_responsable.ToString().Contains(id_responsable) 
-            && x.Es_correctivo.ToString().Contains(es_correctivo) 
-            && x.Placa_activo.ToString().Contains(placa_activo)
-            && x.Id_ubicacion.ToString().Contains(id_ubicacion)).ToList();
+            var dt = listaAprobarMantenimientos;
 
-            Session["listaMantenimientosCorrectivosFiltrada"] = listaMantenimientosCorrectivos;
-
-            var dt = listaMantenimientosCorrectivos;
             pgsource.DataSource = dt;
             pgsource.AllowPaging = true;
             //numero de items que se muestran en el Repeater
@@ -123,11 +104,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             lbPrimero.Enabled = !pgsource.IsFirstPage;
             lbUltimo.Enabled = !pgsource.IsLastPage;
 
-            rpMantenimientoCorrectivo.DataSource = pgsource;
-            rpMantenimientoCorrectivo.DataBind();
+            rpMantenimiento.DataSource = pgsource;
+            rpMantenimiento.DataBind();
 
             //metodo que realiza la paginacion
             Paginacion();
+
         }
 
         /// <summary>
@@ -173,7 +155,6 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             rptPaginacion.DataBind();
         }
 
-
         private int paginaActual
         {
             get
@@ -191,8 +172,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
+        /// Steven Camacho B
+        /// 27/05/2019
         /// Efecto: se devuelve a la primera pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Primer pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -207,8 +188,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
+        /// Steven Camacho B
+        /// 27/05/2019
         /// Efecto: se devuelve a la ultima pagina y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Ultima pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -223,8 +204,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
+        /// Steven Camacho B
+        /// 27/05/2019
         /// Efecto: se devuelve a la pagina anterior y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Anterior pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -239,8 +220,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
+        /// Steven Camacho B
+        /// 27/05/2019
         /// Efecto: se devuelve a la pagina siguiente y muestra los datos de la misma
         /// Requiere: dar clic al boton de "Siguiente pagina"
         /// Modifica: elementos mostrados en la tabla de contactos
@@ -255,8 +236,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
+        /// Steven Camacho B
+        /// 27/05/2019
         /// Efecto: actualiza la pagina actual y muestra los datos de la misma
         /// Requiere: -
         /// Modifica: elementos de la tabla
@@ -272,8 +253,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
+        /// Steven Camacho
+        /// 27/05/2019
         /// Efecto: marca el boton de la pagina seleccionada
         /// Requiere: dar clic al boton de paginacion
         /// Modifica: color del boton seleccionado
@@ -295,89 +276,27 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         #region eventos
 
         /// <summary>
-        /// 13/06/2019
-        /// Metodo que redirecciona a la pantalla para registrar un nuevo mantenimiento correctivo
-        /// Este se activa al hacer click en la botón nuevo activo
-        /// </summary>
-        protected void btnNuevo_Click(object sender, EventArgs e)
-        {
-            String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivo.aspx");
-            Response.Redirect(url);
-        }
-
-        protected void btnEditar_Click(object sender, EventArgs e)
-        {
-            int idMantenimiento = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
-
-            List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)Session["listaMantenimientosCorrectivosFiltrada"];
-
-            MantenimientoCorrectivo mantenimientoEditar = new MantenimientoCorrectivo();
-
-            foreach (MantenimientoCorrectivo mantenimiento in listaMantenimientosCorrectivos)
-            {
-                if (mantenimiento.Id_mantenimiento == idMantenimiento)
-                {
-                    mantenimientoEditar = mantenimiento;
-                    break;
-                }
-            }
-
-            Session["mantenimientoEditar"] = mantenimientoEditar;
-
-            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/EditarMantenimientoCorrectivo.aspx");
-            Response.Redirect(url);
-        }
-
-        /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
-        /// Metodo que redirecciona a la pantalla donde se elimina (inhabilita) un mantenimiento Correctivo
-        /// se activa cuando se presiona el boton de Eliminar
-        /// </summary>
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int idMantenimiento = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
-
-            List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)Session["listaMantenimientosCorrectivosFiltrada"];
-
-            MantenimientoCorrectivo mantenimientoCorrectivoEliminar = new MantenimientoCorrectivo();
-
-            foreach (MantenimientoCorrectivo mantenimiento in listaMantenimientosCorrectivos)
-            {
-                if (mantenimiento.Id_mantenimiento == idMantenimiento)
-                {
-                    mantenimientoCorrectivoEliminar = mantenimiento;
-                    break;
-                }
-            }
-
-            Session["mantenimientoCorrectivoEliminar"] = mantenimientoCorrectivoEliminar;
-
-            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/EliminarMantenimientoCorrectivo.aspx");
-            Response.Redirect(url);
-        }
-
-        /// <summary>
-        /// Leonardo Gomez
-        /// 13/06/2019
-        /// Efecto: redirrecciona a la pantalla de Ver
-        /// Requiere: dar clic al boton de "Ver"
+        /// Steven Camacho
+        /// 29/5/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un mantenimiento,
+        /// se activa cuando se presiona el boton de ver
+        /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnVer_Click(object sender, EventArgs e)
         {
-            int idMantenimiento = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
-            
-            List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)Session["listaMantenimientosCorrectivosFiltrada"];
+            int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<MantenimientoCorrectivo> listaMantenimiento = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
 
             MantenimientoCorrectivo mantenimientoVer = new MantenimientoCorrectivo();
 
-            foreach (MantenimientoCorrectivo mantenimiento in listaMantenimientosCorrectivos)
+            foreach (MantenimientoCorrectivo mantenimiento in listaMantenimiento)
             {
-                if (mantenimiento.Id_mantenimiento == idMantenimiento)
+                if (mantenimiento.Id_mantenimiento == id)
                 {
                     mantenimientoVer = mantenimiento;
                     break;
@@ -385,20 +304,25 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             }
 
             Session["mantenimientoVer"] = mantenimientoVer;
+            Session["procedencia"] = "aprobados";
 
             String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/VerMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
+
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
             paginaActual = 0;
-            ViewState["Id_mantenimiento"] = txtBuscarIdMantenimiento.Text;
-            ViewState["fecha"] = TextBuscarFecha.Text;
-            ViewState["placa_activo"] = TextBuscarPlacaActivo.Text;
+            ViewState["placa"] = txtBuscarPlaca.Text;
+            ViewState["descripcion"] = txtBuscarDescripcion.Text;
+            ViewState["responsable"] = txtBuscarResponsable.Text;
+            ViewState["ubicacion"] = txtBuscarUbicacion.Text;
+            ViewState["fecha"] = txtBuscarFecha.Text;
 
             mostrarDatosTabla();
         }
         #endregion
+
     }
 }

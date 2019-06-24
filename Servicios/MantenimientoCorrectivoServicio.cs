@@ -38,22 +38,28 @@ namespace Servicios
 
         }
 
+        //Devuelve mantenimientos que no se han aprobados.
         public List<MantenimientoCorrectivo> getMantenimientosNoAprobados()
         {
             return mantenimientoDatos.getMantenimientosNoAprobados();
         }
+        //Devuelve mantenimientos que si han sido aprobados
+        public List<MantenimientoCorrectivo> getMantenimientosAprobados()
+        {
+            return mantenimientoDatos.getMantenimientosAprobados();
+        }
 
-            /// <summary>
-            /// Leonado Gomez
-            /// 29/May/2019
-            /// Efecto: inserta en la base de datos un MantenimientoCorrectivo
-            /// Requiere: MantenimientoCorrectivo
-            /// Modifica: -
-            /// Devuelve: id del Mantenimiento insertado
-            /// </summary>
-            /// <param name="MantenimientoCorrectivo"></param>
-            /// <returns></returns>
-            public int insertarMantenimiento(MantenimientoCorrectivo Mantenimiento, List<String> Tareas)
+        /// <summary>
+        /// Leonado Gomez
+        /// 29/May/2019
+        /// Efecto: inserta en la base de datos un MantenimientoCorrectivo
+        /// Requiere: MantenimientoCorrectivo
+        /// Modifica: -
+        /// Devuelve: id del Mantenimiento insertado
+        /// </summary>
+        /// <param name="MantenimientoCorrectivo"></param>
+        /// <returns></returns>
+        public int insertarMantenimiento(MantenimientoCorrectivo Mantenimiento, List<String> Tareas)
         {
 
             return mantenimientoDatos.insertarMantenimientoCorrectivo(Mantenimiento, Tareas);

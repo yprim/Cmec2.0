@@ -44,10 +44,10 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
 
         /// <summary>
-        /// Leonardo Gomez
+        /// Steven Camacho
         /// 29/May/2019
         /// Efecto:Metodo que se activa cuando se le da click al boton cancelar 
-        /// redirecciona a la pantalla de adminstracion de mantenimientos Correctivos
+        /// redirecciona a la pantalla según el lugar de procedencia de donde se accedió a esta vista
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -58,10 +58,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         {
             String procedencia = (String)Session["procedencia"] ;
             String url = "";
-            if(procedencia!="aprobaciones")
-            url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+            if(procedencia=="aprobaciones")
+                url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
+            else if(procedencia=="aprobados")
+                url = Page.ResolveUrl("~/Catalogos/MantenimientosYaAprobados/MantenimientosAprobados.aspx");
             else
-            url = Page.ResolveUrl("~/Catalogos/AprobacionMantenimientos/AdministrarAprobacionMantenimientos.aspx");
+                url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
 

@@ -95,7 +95,7 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
 
             DateTimeFormatInfo formatoFecha = CultureInfo.CurrentCulture.DateTimeFormat;
             List<ActivoPlanPreventivo> listaPlan = (List<ActivoPlanPreventivo>)listaSession.Where(x => x.Equipo.ToUpper().Contains(descripcion.ToUpper()) && x.Placa.ToString().Contains(placa)
-                                            && x.Responsable.ToUpper().Contains(responsable.ToUpper()) && formatoFecha.GetMonthName(x.MesPropuesto).Contains(mesPropuesto)
+                                            && x.Funcionario.ToUpper().Contains(responsable.ToUpper()) && formatoFecha.GetMonthName(x.MesPropuesto).Contains(mesPropuesto)
                                             && x.Edificio.Contains(edificio) && x.Ubicacion.Contains(ubicacion)).ToList();
             Session["listaPlanFiltrada"] = listaPlan;
 
@@ -138,10 +138,13 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
             if (!planServicios.existePlanVigente()) { 
                 divMensajeSinPlan.Style.Add("display", "block");
                 ButtonGenerarPlan.Style.Add("display", "block");
+                ButtonCerrarPlan.Style.Add("display", "none");
             }
             else{
                 divMensajeSinPlan.Style.Add("display", "none");
                 ButtonGenerarPlan.Style.Add("display", "none");
+                ButtonCerrarPlan.Style.Add("display", "block");
+                planServicios.cierrePlan(true);
             }
         }
 
@@ -335,26 +338,37 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo
             enviarActivo.Placa = activoPlan.Placa;
             Session["activoMantenimiento"] = enviarActivo;
             Session["procedencia"] = "mantenimientoPreventivo";
-
             String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/NuevoMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
         /*
          * Steven Camacho B
          * 11/06/2019
-         * Metodo que redirecciona a la pantalla donde se consulta el período a generar del plan de mantenimiento preventivo
+         * Metodo que genera el plan de mantenimiento preventivo
          * se activa cuando se presiona el boton de generar plan
          */
         protected void btnGenerarPlan_Click(object sender, EventArgs e)
         {
             planServicios= new ActivoPlanPreventivoServicios();
             planServicios.generarPlanPreventivo();
-            mostrarDatosTabla();
+            Response.Redirect("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
+        }
+
+        /*
+         * Steven Camacho B
+         * 23/06/2019
+         * Metodo que cierra el plan de mantenimiento preventivo
+         * se activa cuando se presiona el boton de cerrar plan
+         */
+        protected void btnCerrarPlan_Click(object sender, EventArgs e)
+        {
+            planServicios = new ActivoPlanPreventivoServicios();
+            planServicios.cierrePlan(false);
             Response.Redirect("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
         }
 
 
-            protected void Button4_Click(object sender, EventArgs e)
+        protected void Button4_Click(object sender, EventArgs e)
         {
             paginaActual = 0;
             ViewState["placa"] = txtBuscarPlaca.Text;

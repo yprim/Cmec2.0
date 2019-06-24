@@ -35,6 +35,7 @@
                     <table class="table">
                         <tr>
                                 <td><asp:Button ID="ButtonGenerarPlan" runat="server" Text="Generar plan" OnClick="btnGenerarPlan_Click" CssClass="btn btn-primary"/></td>
+                                <td><asp:Button ID="ButtonCerrarPlan" runat="server" Text="Cerrar plan" OnClick="btnCerrarPlan_Click" CssClass="btn btn-primary"/></td>
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -50,7 +51,7 @@
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                        <asp:TextBox ID="txtBuscarResponsable" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro responsable"></asp:TextBox>
+                                        <asp:TextBox ID="txtBuscarResponsable" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro funcionario"></asp:TextBox>
                                     </div>
                                 </td>
                                 <td>
@@ -86,7 +87,7 @@
                                         <th>Mantenimiento</th>
                                         <th>Placa</th>
                                         <th>Mes propuesto</th>
-                                        <th>Responsable</th>
+                                        <th>Funcionario</th>
                                         <th>Edificio</th>
                                         <th>Ubicacion</th>
                                         <th>Ult. mantenimiento</th>
@@ -108,7 +109,7 @@
                                      <%# Eval("nombreMesPropuesto") %>
                                 </td>
                                 <td>
-                                     <%# Eval("responsable") %>
+                                     <%# Eval("funcionario") %>
                                 </td>
                                 <td>
                                      <%# Eval("edificio") %>

@@ -129,12 +129,12 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Delete Responsable " +
-                                               "where id = @id;", sqlConnection);
+                                               "output Deleted.id where id = @id;", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id", Responsable.idResponsable);
 
             sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+            int resultado= (int)sqlCommand.ExecuteScalar();
 
             sqlConnection.Close();
 

@@ -117,6 +117,7 @@
     <Content Include="Catalogos\MantenimientosCorrectivos\EditarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\EliminarMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx" />
+    <Content Include="Catalogos\MantenimientosYaAprobados\MantenimientosAprobados.aspx" />
     <Content Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx" />
     <Content Include="Catalogos\Responsables\AdministrarResponsable.aspx" />
     <Content Include="Catalogos\Responsables\EditarResponsable.aspx" />
@@ -375,6 +376,13 @@
     </Compile>
     <Compile Include="Catalogos\MantenimientosCorrectivos\NuevoMantenimientoCorrectivo.aspx.designer.cs">
       <DependentUpon>NuevoMantenimientoCorrectivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MantenimientosYaAprobados\MantenimientosAprobados.aspx.cs">
+      <DependentUpon>MantenimientosAprobados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MantenimientosYaAprobados\MantenimientosAprobados.aspx.designer.cs">
+      <DependentUpon>MantenimientosAprobados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\PlanMantenimientoPreventivo\PlanMantenimientoPreventivo.aspx.cs">
       <DependentUpon>PlanMantenimientoPreventivo.aspx</DependentUpon>

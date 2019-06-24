@@ -61,7 +61,7 @@ namespace Proyecto.Catalogos.Responsables
             catch (Exception ex)
             {
 
-                //  (this.Master as Site).Mensaje("El responsable no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Está siendo referenciado este responsable con alguna mantenimiento. PROCEDA A CANCELAR!');", true);
             }
         }
 

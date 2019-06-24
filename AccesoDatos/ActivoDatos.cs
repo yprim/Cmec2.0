@@ -54,11 +54,11 @@ namespace AccesoDatos
                 activo.Placa = Int32.Parse(reader.GetValue(0).ToString());
                 activo.Serie = reader.GetValue(1).ToString();
                 activo.Modelo = reader.GetValue(2).ToString();
-                string fecha = reader.GetValue(3).ToString();
+                String fecha = reader.GetValue(3).ToString();
                 if (fecha == "")
-                    activo.FechaCompra = "01/01/0001";
+                    activo.FechaCompra = "";
                 else
-                    activo.FechaCompra = fecha;
+                    activo.FechaCompra = (DateTime.Parse(fecha)).ToShortDateString();
                 activo.Descripcion = reader.GetValue(4).ToString();
                 activo.IsNotDeleted = Boolean.Parse(reader.GetValue(5).ToString());
                 listaActivos.Add(activo);
@@ -123,7 +123,7 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@placa", activo.Placa);
             sqlCommand.Parameters.AddWithValue("@serie", activo.Serie);
             sqlCommand.Parameters.AddWithValue("@modelo", activo.Modelo);
-            sqlCommand.Parameters.AddWithValue("@fecha_compra", activo.FechaCompra);
+            sqlCommand.Parameters.AddWithValue("@fecha_compra", DateTime.Parse(activo.FechaCompra));
             sqlCommand.Parameters.AddWithValue("@descripcion", activo.Descripcion);
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
@@ -151,7 +151,7 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@placa", activo.Placa);
             sqlCommand.Parameters.AddWithValue("@serie", activo.Serie);
             sqlCommand.Parameters.AddWithValue("@modelo", activo.Modelo);
-            sqlCommand.Parameters.AddWithValue("@fecha_compra", activo.FechaCompra);
+            sqlCommand.Parameters.AddWithValue("@fecha_compra", DateTime.Parse(activo.FechaCompra));
             sqlCommand.Parameters.AddWithValue("@descripcion", activo.Descripcion);
             conexion.Open();
             int respuesta = (int)sqlCommand.ExecuteScalar();
