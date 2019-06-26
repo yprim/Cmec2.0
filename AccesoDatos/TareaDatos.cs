@@ -38,7 +38,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("select t.* from  Tarea t order by descripcion;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(@"select t.id_tarea, t.descripcion as descr from  [Tarea] t order by descripcion;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -49,7 +49,7 @@ namespace AccesoDatos
                 Tarea Tarea = new Tarea();
 
                 Tarea.idTarea = Convert.ToInt32(reader["id_tarea"].ToString());
-                Tarea.descripcion = reader["descripcion"].ToString();
+                Tarea.descripcion = reader["descr"].ToString();
 
                 listaTareas.Add(Tarea);
             }
