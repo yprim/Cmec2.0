@@ -14,11 +14,6 @@ namespace Proyecto.Informes
         {
 
         }
-
-        [WebMethod()]
-        public static void setResolution(int width, int height)
-        {
-            
-        }
+        
     }
 }
