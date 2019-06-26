@@ -172,6 +172,7 @@
     <Content Include="Imagenes\logoUCR.png" />
     <Content Include="Imagenes\logo_LANAMME-140x140.png" />
     <Content Include="Imagenes\UCR informe.png" />
+    <Content Include="Informes\CierrePlanPreventivo.aspx" />
     <Content Include="Informes\MantenimientoGeneral.aspx" />
     <Content Include="Informes\Prueba2.aspx" />
     <Content Include="Informes\ReportePrueba.aspx" />
@@ -517,6 +518,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Informes\CierrePlanPreventivo.aspx.cs">
+      <DependentUpon>CierrePlanPreventivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CierrePlanPreventivo.aspx.designer.cs">
+      <DependentUpon>CierrePlanPreventivo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Informes\MantenimientoGeneral.aspx.cs">
       <DependentUpon>MantenimientoGeneral.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -617,6 +625,7 @@
     <Folder Include="Mantenimientos\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Informes\CierrePlanPreventivo.rdlc" />
     <EmbeddedResource Include="Informes\MantenimientoGeneralReporte.rdlc" />
     <EmbeddedResource Include="Informes\Report1.rdlc" />
     <EmbeddedResource Include="Informes\ReportePrueba.rdlc" />
