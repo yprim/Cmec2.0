@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Policy;
 
 namespace Proyecto.Catalogos.MantenimientosCorrectivos
 {
@@ -49,7 +50,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// <returns></returns>
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoEliminar"];
+            MantenimientoCorrectivo mantenimiento = (MantenimientoCorrectivo)Session["mantenimientoCorrectivoEliminar"];
 
             try
             {
@@ -60,8 +61,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             catch (Exception ex)
             {
 
-                //  (this.Master as Site).Mensaje("El tarea no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
-            }
+             }
         }
 
 

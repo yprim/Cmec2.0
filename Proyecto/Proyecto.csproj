@@ -173,6 +173,8 @@
     <Content Include="Imagenes\logo_LANAMME-140x140.png" />
     <Content Include="Imagenes\UCR informe.png" />
     <Content Include="Informes\MantenimientoGeneral.aspx" />
+    <Content Include="Informes\Prueba2.aspx" />
+    <Content Include="Informes\ReportePrueba.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\abrirfile.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -206,7 +208,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catalogos\Activos\AdministrarActivoEliminado.aspx.cs">
@@ -520,6 +524,20 @@
     <Compile Include="Informes\MantenimientoGeneral.aspx.designer.cs">
       <DependentUpon>MantenimientoGeneral.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Informes\Prueba2.aspx.cs">
+      <DependentUpon>Prueba2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\Prueba2.aspx.designer.cs">
+      <DependentUpon>Prueba2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\ReportePrueba.aspx.cs">
+      <DependentUpon>ReportePrueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\ReportePrueba.aspx.designer.cs">
+      <DependentUpon>ReportePrueba.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -600,6 +618,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Informes\MantenimientoGeneralReporte.rdlc" />
+    <EmbeddedResource Include="Informes\Report1.rdlc" />
+    <EmbeddedResource Include="Informes\ReportePrueba.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

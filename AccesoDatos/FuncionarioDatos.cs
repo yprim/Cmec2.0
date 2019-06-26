@@ -41,7 +41,7 @@ namespace AccesoDatos
 
             SqlCommand sqlCommand = new SqlCommand("Select id,usuario,nombre,apellidos,fecha_nacimiento," +
             "correo, numero_telefono1, numero_telefono2, ocupacion, habilitado from " +
-            " Funcionario where habilitado = 1 ", sqlConnection);
+            " Funcionario ", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();

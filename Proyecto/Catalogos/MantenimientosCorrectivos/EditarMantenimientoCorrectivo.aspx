@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+     <asp:ScriptManager ID="MainScriptManager" runat="server" EnableCdn="true"/>
 <div class="divRedondo">
         <div class="row">
 
@@ -27,6 +28,32 @@
             </div>
 
             <%-- campos a llenar --%>
+
+            <%-- id Mantenimiento --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
+                
+                 <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="txtIDMantenimiento" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label" hidden></asp:Label>
+                </div>
+
+            </div>
+
+            <%-- campo placa --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom:4px;">
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <button type="button" id="buttonAbrirPlacas" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirPlacas">Buscar Activos</button>
+                </div>
+                 <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="txtPlacaActivo" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div id="div1" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblPlacaIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                </div>
+            </div>
+
             <%-- campo Fecha --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
@@ -53,45 +80,51 @@
                 </div>
             </div>
 
-            <%-- campo Responsable --%>
+             <%-- campo Responsable --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblResponsableMantenimiento" runat="server" Text="Responsable <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList ID="ResponsableDDL" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
+                    <button type="button" id="buttonAbrirResponsables" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirResponsables">Buscar Responsables</button>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="TxtResponsable" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div id="divResponsableIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblResponsableIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
-            <%-- campo Placa Activo --%>
-            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa Activo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList ID="PlacaActivoDDL" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
-                </div>
-                <div id="divPlacaIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblPlacaIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
-                </div>
-            </div>
-
             <%-- campo Ubicacion --%>
-            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
+            <div class="col-md-12 col-xs-12 col-sm-12 form-group" style="margin-bottom: 4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblUbicacion" runat="server" Text="Ubicacion <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:DropDownList ID="UbicacionDDL" runat="server" CssClass="form-control">
-                    </asp:DropDownList>
+                    <button type="button" id="buttonAbrirUbicaciones" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirUbicaciones">Buscar Ubicaciones</button>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="TxtUbicacion" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div id="divUbicacionIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
                     <asp:Label ID="lblUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                </div>
+            </div>
+
+            <%-- campo Funcionario --%>
+            <div class="col-md-12 col-xs-12 col-sm-12 form-group" style="margin-bottom: 4px;">
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblFuncionario" runat="server" Text="Funcionario <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <button type="button" id="buttonAbrirFuncionarios" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirFuncionarios">Buscar Funcionarios</button>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="TxtFuncionario" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div id="div2" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblFuncionarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
@@ -100,8 +133,7 @@
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblTareas" runat="server" Text="Tareas <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-
+                <div class="col-md-6 col-xs-6 col-sm-6">
                     <asp:CheckBoxList ID="TareasDDL" RepeatColumns="2" CellSpacing="20" runat="server">
                     </asp:CheckBoxList>
                 </div>
@@ -250,13 +282,143 @@
         </div>
     </div>
 
+     <%-- Buscar ubicacion --%>
+    <div class="modal" id="abrirUbicaciones" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Ubicaciones</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="pnlUpdate" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <asp:TextBox ID="txtBuscarUbicacion" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="BuscarUbicacion_OnChanged" placeholder="Filtro de Ubicaciones"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                                <asp:DropDownList ID="UbicacionDDL" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="ButtonSeleccionarUbicacion" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="SeleccionarUbicacion_Click" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-- Buscar Placa --%>
+    <div class="modal" id="abrirPlacas" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Activos</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <asp:TextBox ID="txtBuscarPlacas" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="BuscarPlaca_OnChanged" placeholder="Filtro de Activos"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                                <asp:DropDownList ID="PlacasDDL" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="ButtonSeleccionarPlaca" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="SeleccionarPlaca_Click" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-- Buscar Responsable --%>
+    <div class="modal" id="abrirResponsables" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Responsables</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <asp:TextBox ID="txtBuscarResponsable" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="BuscarResponsable_OnChanged" placeholder="Filtro de Responsables"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                                <asp:DropDownList ID="ResponsableDDLSelect" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="ButtonSeleccionarResponsable" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="SeleccionarResponsable_Click" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-- Buscar Funcionario --%>
+    <div class="modal" id="abrirFuncionarios" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Funcionarios</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <asp:TextBox ID="TxtBuscarFuncionario" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="BuscarFuncionario_OnChanged" placeholder="Filtro de Funcionarios"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                                <asp:DropDownList ID="FuncionarioDDL" runat="server" CssClass="form-control">
+                                </asp:DropDownList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="Button1" runat="server" Text="Seleccionar" CssClass="btn btn-primary" OnClick="SeleccionarFuncionario_Click" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script type="text/javascript">
+
+</script>
 
     <style>
         #buttonModalResp, #buttonModalTarea, #buttonModalUbicacion {
             margin-top: 10px;
         }
     </style>
-
 </asp:Content>

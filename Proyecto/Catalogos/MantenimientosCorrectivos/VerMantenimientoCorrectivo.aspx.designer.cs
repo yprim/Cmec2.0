@@ -22,24 +22,6 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         protected global::System.Web.UI.WebControls.Label lblVerMantenimiento;
         
         /// <summary>
-        /// Control LabelId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelId;
-        
-        /// <summary>
-        /// Control txtId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtId;
-        
-        /// <summary>
         /// Control LabelId_placa.
         /// </summary>
         /// <remarks>
@@ -110,6 +92,24 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtUbicacion;
+        
+        /// <summary>
+        /// Control LabelFuncionario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelFuncionario;
+        
+        /// <summary>
+        /// Control txtFuncionario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtFuncionario;
         
         /// <summary>
         /// Control lblDescripcionMantenimiento.

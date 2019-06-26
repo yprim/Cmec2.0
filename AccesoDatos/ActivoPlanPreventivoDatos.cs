@@ -134,6 +134,24 @@ namespace AccesoDatos
             conexion.Close();
         }//guardarListaPlan
 
+        public void ReporteMantenimientoPreventivo()
+        {
+            SqlCommand sqlCommandCount = new SqlCommand("select count(esta_aprovado) from Propuesta_Mantenimiento_Preventivo group by esta_aprovado;", conexion);
+            conexion.Open();
+            int numeroMantenimientos = (int)sqlCommandCount.ExecuteScalar();
+            conexion.Close();
+
+            SqlCommand sqlCommandAprobados = new SqlCommand("select id_plan, placa_activo, mes from Propuesta_Mantenimiento_Preventivo where esta_aprovado=0;", conexion);
+            SqlDataReader reader;
+            conexion.Open();
+            reader = sqlCommandAprobados.ExecuteReader();
+            while (reader.Read())
+            {
+
+            }
+            conexion.Close();
+        }
+
         /// <summary>
         /// Steven Camacho
         /// 17/06/2019

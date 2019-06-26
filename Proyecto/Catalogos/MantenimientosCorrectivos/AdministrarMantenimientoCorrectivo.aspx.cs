@@ -15,6 +15,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
     {
         #region variables globales
         MantenimientoCorrectivoServicio mantenimientoServicios = new MantenimientoCorrectivoServicio();
+        ResponsableServicios responsableServicios = new ResponsableServicios();
         readonly PagedDataSource pgsource = new PagedDataSource();
         int primerIndex, ultimoIndex;
         private int elmentosMostrar = 10;
@@ -68,6 +69,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             String id_responsable = "";
             String placa_activo = "";
             String id_ubicacion = "";
+            String id_funcionario = "";
 
 
             if (ViewState["id_mantenimiento"] != null)
@@ -81,12 +83,10 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             if (ViewState["estado"] != null)
                  estado = (String)ViewState["estado"];
-           
+
+            if (ViewState["id_responsable"] != null) 
+                id_responsable = (String)ViewState["id_responsable"].ToString();
             
-
-            if (ViewState["id_responsable"] != null)
-                id_responsable = (String)ViewState["id_responsable"];
-
             if (ViewState["es_correctivo"] != null)
             
             if (ViewState["placa_activo"] != null)
@@ -94,7 +94,10 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             if (ViewState["id_ubicacion"] != null)
                 id_ubicacion = (String)ViewState["id_ubicacion"];
-           
+
+            if (ViewState["id_funcionario"] != null)
+                id_funcionario = (String)ViewState["id_funcionario"].ToString();
+
             List<MantenimientoCorrectivo> listaMantenimientosCorrectivos = (List<MantenimientoCorrectivo>)listaSession.Where( 
                x => x.Id_mantenimiento.ToString().Contains(id_mantenimiento) 
             && x.Fecha.ToString().Contains(fecha) 
@@ -103,9 +106,14 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             && x.Id_responsable.ToString().Contains(id_responsable) 
             && x.Es_correctivo.ToString().Contains(es_correctivo) 
             && x.Placa_activo.ToString().Contains(placa_activo)
-            && x.Id_ubicacion.ToString().Contains(id_ubicacion)).ToList();
+            && x.Id_ubicacion.ToString().Contains(id_ubicacion)
+            && x.Id_funcionario.ToString().Contains(id_funcionario)).ToList();
 
             Session["listaMantenimientosCorrectivosFiltrada"] = listaMantenimientosCorrectivos;
+
+            mantenimientoServicios.nombreResponsable(listaMantenimientosCorrectivos);
+            mantenimientoServicios.nombreFuncionario(listaMantenimientosCorrectivos);
+            mantenimientoServicios.nombreUbicacion(listaMantenimientosCorrectivos);
 
             var dt = listaMantenimientosCorrectivos;
             pgsource.DataSource = dt;
@@ -299,9 +307,9 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// Metodo que redirecciona a la pantalla para registrar un nuevo mantenimiento correctivo
         /// Este se activa al hacer click en la botón nuevo activo
         /// </summary>
-        protected void btnNuevo_Click(object sender, EventArgs e)
+        protected void btn_Nuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/NuevoMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }
 
@@ -396,6 +404,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             ViewState["Id_mantenimiento"] = txtBuscarIdMantenimiento.Text;
             ViewState["fecha"] = TextBuscarFecha.Text;
             ViewState["placa_activo"] = TextBuscarPlacaActivo.Text;
+            ViewState["id_ubicacion"] = TextBuscarUbicacion.Text;
 
             mostrarDatosTabla();
         }

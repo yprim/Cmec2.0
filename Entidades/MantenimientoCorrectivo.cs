@@ -18,9 +18,10 @@ namespace Entidades
         string descripcion;
         string estado;
         bool es_correctivo;
-        int id_responsable;
+        string id_responsable;
+        string id_funcionario;
         int placa_activo;
-        int id_ubicacion;
+        string id_ubicacion;
 
 
         public MantenimientoCorrectivo() {
@@ -32,8 +33,9 @@ namespace Entidades
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Estado { get => estado;  set => estado = value; }         
         public bool Es_correctivo { get { return es_correctivo; } set { es_correctivo = value; } }
-        public int Id_responsable { get => id_responsable; set => id_responsable = value; }
+        public string Id_responsable { get => id_responsable; set => id_responsable = value; }
+        public string Id_funcionario { get => id_funcionario; set => id_funcionario = value; }
         public int Placa_activo { get => placa_activo; set => placa_activo = value; }
-        public int Id_ubicacion { get => id_ubicacion; set => id_ubicacion = value; }
+        public string Id_ubicacion { get => id_ubicacion; set => id_ubicacion = value; }
     }
 }

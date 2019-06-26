@@ -46,6 +46,12 @@
                                     <asp:TextBox ID="TextBuscarPlacaActivo" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="Button4_Click" placeholder="Filtro Placa Activo"></asp:TextBox>
                                 </div>
                             </td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                    <asp:TextBox ID="TextBuscarUbicacion" runat="server" CssClass="form-control chat-input" AutoPostBack="true" OnTextChanged="Button4_Click" placeholder="Filtro Placa Ubicacion"></asp:TextBox>
+                                </div>
+                            </td>
                     </table>
                 </div>
 
@@ -57,10 +63,10 @@
                                 <thead style="text-align: center">
                                     <tr style="text-align: center" class="btn-primary">
                                         <th></th>
-                                        <th>ID</th>
                                         <th>Fecha</th>
                                         <th>ID Placa</th>
                                         <th>Responsable</th>
+                                        <th>Funcionario</th>
                                         <th>Estado</th>
                                         <th>Ubicacion</th>
                                         <th>Descripción</th>
@@ -75,7 +81,7 @@
                                     <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("id_mantenimiento") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                     <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("id_mantenimiento") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                                 </td>
-                                <td>
+                                <td style="display:none;">
                                     <%# Eval("id_mantenimiento") %>
                                 </td>
                                 <td>
@@ -86,6 +92,9 @@
                                 </td>
                                 <td>
                                     <%# Eval("id_responsable") %>
+                                </td>
+                                <td>
+                                    <%# Eval("id_funcionario") %>
                                 </td>
                                 <td>
                                     <%# Eval("estado") %>
@@ -148,7 +157,7 @@
 
                 <%-- botones --%>
                 <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-                    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Mantenimiento" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+                    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Mantenimiento Correctivo" CssClass="btn btn-primary" OnClick="btn_Nuevo_Click" />
                 </div>
                 <%-- fin botones --%>
             </div>
