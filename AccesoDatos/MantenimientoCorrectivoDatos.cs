@@ -79,6 +79,20 @@ namespace AccesoDatos
             return listaMantenimientos;
         }
 
+        public int getPlanMantenimientoActual()
+        {
+
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand("SELECT TOP (1) [id_plan] FROM [CMEC-DB].[dbo].[Plan] order by id_plan DESC", sqlConnection);
+            
+            sqlConnection.Open();
+
+            int id = (Int32)sqlCommand.ExecuteScalar();
+
+            return id;
+        }
+
         /// <summary>
         /// Steven Camacho
         /// 19/06/2019
@@ -202,6 +216,8 @@ namespace AccesoDatos
 
             return listaTareas;
         }
+
+
         /// <summary>
         /// Leonardo Gomez
         /// 29/May/2019
@@ -214,11 +230,14 @@ namespace AccesoDatos
         /// <returns></returns>
         public int insertarMantenimientoCorrectivo(MantenimientoCorrectivo Mantenimiento, List<String> Tareas)
         {
+            Mantenimiento.Plan_activo = getPlanMantenimientoActual();
+
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand(@"insert into Mantenimiento(fecha,descripcion,estado,es_correctivo,
-                                                     id_responsable,placa_activo,id_ubicacion,id_funcionario)
-                                                    values(@fecha,@descripcion,@estado,@es_correctivo,@responsable,@id_placa,@ubicacion,@id_funcionario);
+                                                     id_responsable,placa_activo,id_ubicacion,id_funcionario,id_plan)
+                                                    values(@fecha,@descripcion,@estado,@es_correctivo,@responsable,
+                                                    @id_placa,@ubicacion,@id_funcionario,@id_plan);
                                                     SELECT SCOPE_IDENTITY();", sqlConnection);
            
             sqlCommand.Parameters.AddWithValue("@fecha",DateTime.Parse(Mantenimiento.Fecha));
@@ -229,6 +248,8 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@id_placa", Mantenimiento.Placa_activo);
             sqlCommand.Parameters.AddWithValue("@ubicacion", Mantenimiento.Id_ubicacion);
             sqlCommand.Parameters.AddWithValue("@id_funcionario", Mantenimiento.Id_funcionario);
+            sqlCommand.Parameters.AddWithValue("@id_plan", Mantenimiento.Plan_activo);
+
 
             sqlConnection.Open();
             int id_mantenimiento = Convert.ToInt32(sqlCommand.ExecuteScalar());
@@ -293,19 +314,34 @@ namespace AccesoDatos
             foreach (String tarea in Tareas)
             {
 
-                SqlCommand sqlCommandTareasUpdate = new SqlCommand("Update Tarea_Mantenimiento set id_tarea=@id_tarea" +
-                    " where id_mantenimiento=@id_mantenimiento; ", sqlConnection);
+                SqlCommand sqlCommandInsertTareas = new SqlCommand("insert into Tarea_Mantenimiento(id_tarea,id_mantenimiento) " +
+                "values(@id_tarea,@id_mantenimiento); ", sqlConnection);
 
-                sqlCommandTareasUpdate.Parameters.AddWithValue("@id_mantenimiento", Mantenimiento.Id_mantenimiento);
+                sqlCommandInsertTareas.Parameters.AddWithValue("@id_mantenimiento", Mantenimiento.Id_mantenimiento);
 
                 String idTarea = tarea.ToString();
 
-                sqlCommandTareasUpdate.Parameters.AddWithValue("@id_tarea", idTarea);
+                sqlCommandInsertTareas.Parameters.AddWithValue("@id_tarea", idTarea);
 
-                sqlCommandTareasUpdate.ExecuteScalar();
+                sqlCommandInsertTareas.ExecuteScalar();
             }
             
             sqlConnection.Close();
+        }
+
+        public void eliminarTareas(int id_mantenimiento)
+        {
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommandTareasUpdate = new SqlCommand("Delete Tarea_Mantenimiento " +
+                    " where id_mantenimiento=@id_mantenimiento; ", sqlConnection);
+
+            sqlCommandTareasUpdate.Parameters.AddWithValue("@id_mantenimiento", id_mantenimiento);
+          
+            sqlCommandTareasUpdate.ExecuteScalar();
+
         }
 
         public int aprobarMantenimiento(int id) {
