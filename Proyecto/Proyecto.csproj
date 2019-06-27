@@ -175,6 +175,7 @@
     <Content Include="Informes\CierrePlanPreventivo.aspx" />
     <Content Include="Informes\MantenimientoGeneral.aspx" />
     <Content Include="Informes\Prueba2.aspx" />
+    <Content Include="Informes\ReporteAvance.aspx" />
     <Content Include="Informes\ReportePrueba.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\abrirfile.js" />
@@ -539,6 +540,13 @@
     <Compile Include="Informes\Prueba2.aspx.designer.cs">
       <DependentUpon>Prueba2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Informes\ReporteAvance.aspx.cs">
+      <DependentUpon>ReporteAvance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\ReporteAvance.aspx.designer.cs">
+      <DependentUpon>ReporteAvance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Informes\ReportePrueba.aspx.cs">
       <DependentUpon>ReportePrueba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -628,6 +636,7 @@
     <EmbeddedResource Include="Informes\CierrePlanPreventivo.rdlc" />
     <EmbeddedResource Include="Informes\MantenimientoGeneralReporte.rdlc" />
     <EmbeddedResource Include="Informes\Report1.rdlc" />
+    <EmbeddedResource Include="Informes\ReporteAvance.rdlc" />
     <EmbeddedResource Include="Informes\ReportePrueba.rdlc" />
   </ItemGroup>
   <PropertyGroup>

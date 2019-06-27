@@ -49,5 +49,36 @@ namespace AccesoDatos
 
             return reportesGenerales;
         }
+
+
+        public LinkedList<int> ReporteAvance()
+        {
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+            SqlCommand sqlCommand = new SqlCommand("select count(esta_aprovado) as aprobados from Propuesta_Mantenimiento_Preventivo group by esta_aprovado;", sqlConnection);
+
+            SqlDataReader reader;
+            LinkedList<int> reporteAvance = new LinkedList<int>();
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            int linea = 1;
+
+            while (reader.Read())
+            {
+                if (linea == 1)
+                {
+                    reporteAvance.AddLast(Convert.ToInt32(reader["aprobados"].ToString()));
+                    linea = linea + 1;
+                }
+                else
+                {
+                    reporteAvance.AddLast(Convert.ToInt32(reader["aprobados"].ToString()));
+                }
+            }
+
+            sqlConnection.Close();
+
+            return reporteAvance;
+        }
     }
 }
