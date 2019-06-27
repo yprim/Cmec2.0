@@ -49,7 +49,6 @@
     <Compile Include="FuncionarioServicios.cs" />
     <Compile Include="MantenimientoCorrectivoServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReporteAvance.cs" />
     <Compile Include="ReporteServicios.cs" />
     <Compile Include="ResponsableServicios.cs" />
     <Compile Include="TareaServicios.cs" />
