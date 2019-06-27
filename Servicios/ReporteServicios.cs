@@ -18,5 +18,10 @@ namespace Servicios
         {
             return this.reporteDatos.ReporteMantenimientos();
         }
+
+        public LinkedList<int> ReporteAvance()
+        {
+            return this.reporteDatos.ReporteAvance();
+        }
     }
 }

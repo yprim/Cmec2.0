@@ -412,6 +412,40 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             CargarResponsable();
         }
 
+        protected void btnGuardarResponsable_Click(object sender, EventArgs e)
+        {
+            Responsable responsable = new Responsable();
+            responsable.nombre = txtNombreResponsable.Text;
+            responsable.usuario = txtUsuarioResponsable.Text;
+
+            responsableServicios.insertarResponsable(responsable);
+
+            CargarResponsable();
+        }
+
+        protected void btnGuardarUbicacion_Click(object sender, EventArgs e)
+        {
+            Ubicacion ubicacion = new Ubicacion();
+            ubicacion.numeroAula = txtNumeroUbicacion.Text;
+
+            ubicacion.edificio = new Edificio();
+            ubicacion.edificio.idEdificio = Convert.ToInt32(EdificiosDDL.SelectedValue);
+
+            ubicacionServicios.insertarUbicacion(ubicacion);
+
+            CargarUbicacion();
+        }
+
+        protected void btnGuardarTarea_Click(object sender, EventArgs e)
+        {
+            Tarea tarea = new Tarea();
+            tarea.descripcion = txtDescripcionTarea.Text;
+
+            tareaServicios.insertarTarea(tarea);
+
+            CargarTarea();
+        }
+        
         protected void SeleccionarFuncionario_Click(object sender, EventArgs e)
         {
             if (!FuncionarioDDL.SelectedValue.Equals(""))
