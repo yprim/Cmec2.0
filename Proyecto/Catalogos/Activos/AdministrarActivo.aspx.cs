@@ -32,6 +32,7 @@ namespace Proyecto.Catalogos.Activos
             if (!Page.IsPostBack)
             {
                 Session["listaActivos"] = null;
+                Session["procedencia"]=null;
 
                 ActivoServicios activoServicios = new ActivoServicios();
 

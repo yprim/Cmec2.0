@@ -35,9 +35,6 @@
                 <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblPlacaActivo" runat="server" Text="Placa <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <button type="button" id="buttonAbrirPlacas" class="btn btn-default form-control" data-toggle="modal" data-target="#abrirPlacas">Buscar Activos</button>
-                </div>
                  <div class="col-md-4 col-xs-4 col-sm-4">
                     <asp:Label ID="txtPlacaActivo" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>

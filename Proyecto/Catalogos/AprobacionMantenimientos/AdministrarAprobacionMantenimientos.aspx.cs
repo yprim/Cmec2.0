@@ -84,6 +84,9 @@ namespace Proyecto.Catalogos.Activos
              List<MantenimientoCorrectivo> listaAprobarMantenimientos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa_activo.ToString().Contains(placa)
                                              && x.Id_ubicacion.ToString().ToUpper().Contains(ubicacion.ToUpper()) && x.Id_responsable.ToString().ToUpper().Contains(funcionario.ToUpper()) && x.Fecha.Contains(fecha)).ToList();
 
+            Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
+
+
             //metodos que cambian los valores id(fk) por el correspondiente nombre de la tabla que pertenece ese id.
             //Estos cambios solo son para mostrar los valores en la tabla de la vista.
             //Reciben una lista y le cambian sus datos según corresponda.
@@ -92,7 +95,6 @@ namespace Proyecto.Catalogos.Activos
             mantenimientoServicios.nombreFuncionario(listaAprobarMantenimientos);
             mantenimientoServicios.nombreUbicacion(listaAprobarMantenimientos);
 
-            Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
 
              var dt = listaAprobarMantenimientos;
 
@@ -332,7 +334,7 @@ namespace Proyecto.Catalogos.Activos
         {
             int id = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<MantenimientoCorrectivo> listaMantenimiento = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
+            List<MantenimientoCorrectivo> listaMantenimiento = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientosFiltrada"];
 
             MantenimientoCorrectivo mantenimientoVer = new MantenimientoCorrectivo();
 

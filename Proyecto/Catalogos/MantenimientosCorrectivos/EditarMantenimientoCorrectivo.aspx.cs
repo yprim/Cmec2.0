@@ -21,7 +21,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
         #endregion
 
-        #region
+        #region page load
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -29,9 +29,11 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 //cargar Campos DateTime.Parse(activo.FechaCompra).ToString("yyyy-MM-dd");
                 MantenimientoCorrectivo mantenimientoCorrectivo = (MantenimientoCorrectivo)Session["mantenimientoEditar"];
-                txtIDMantenimiento.Text = mantenimientoCorrectivo.Id_mantenimiento.ToString();
                 txtFechaMantenimiento.Text = DateTime.Parse(mantenimientoCorrectivo.Fecha).ToString("yyyy-MM-dd");
                 txtDescripcionMantenimiento.Text = mantenimientoCorrectivo.Descripcion;
+                txtPlacaActivo.Text = mantenimientoCorrectivo.Placa_activo.ToString();
+                bool es_correctivo = mantenimientoCorrectivo.Es_correctivo;
+                if (!es_correctivo) Session["procedencia"] = "mantenimientoPreventivo";
 
                 CargarUbicacion();
                 CargarPlacas();
@@ -170,13 +172,30 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             List<Tarea> tareas = new List<Tarea>();
             TareasDDL.Items.Clear();
             tareas = this.tareaServicios.getTareas();
+            String procedencia = (String)Session["procedencia"];
+            
 
-            if (tareas.Count > 0)
+                if (tareas.Count > 0)
             {
                 foreach (Tarea tarea in tareas)
                 {
-                    ListItem item = new ListItem(tarea.idTarea.ToString() + " " + tarea.descripcion, tarea.idTarea.ToString());
-                    TareasDDL.Items.Add(item);
+                    ListItem item = new ListItem(tarea.descripcion, tarea.idTarea.ToString());
+                    if (procedencia == "mantenimientoPreventivo")
+                    {
+                        TareasDDL.Items.Add(item);
+                        if (tarea.idTarea <= 6)//estas tareas se prohibe poder no agregarlas cuando es preventivo, porque son para los mantenimientos
+                        {
+                            TareasDDL.Items.FindByValue(tarea.idTarea + "").Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        if (tarea.idTarea > 6)//en caso de ser correctivo solo carga las tareas que no son de correctivos
+                        {
+                            TareasDDL.Items.Add(item);
+                        }
+                    }
+
                 }
             }
 
@@ -284,11 +303,10 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             
             MantenimientoCorrectivo mantenimiento = new MantenimientoCorrectivo();
 
-            mantenimiento.Id_mantenimiento = Convert.ToInt32(txtIDMantenimiento.Text);
             mantenimiento.Fecha = txtFechaMantenimiento.Text;
             mantenimiento.Descripcion = txtDescripcionMantenimiento.Text;
             mantenimiento.Id_responsable = txtBuscarResponsable.Text;
-            mantenimiento.Placa_activo = Convert.ToInt32(txtBuscarPlacas.Text.ToString());
+            mantenimiento.Placa_activo = Convert.ToInt32(txtPlacaActivo.Text.ToString());
             mantenimiento.Id_ubicacion = txtBuscarUbicacion.Text.ToString();
             mantenimiento.Id_funcionario = TxtBuscarFuncionario.Text;
 

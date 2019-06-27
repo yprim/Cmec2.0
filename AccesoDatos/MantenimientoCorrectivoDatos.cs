@@ -39,7 +39,8 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Select id_mantenimiento,fecha,descripcion,estado,es_correctivo,"+
-             "id_responsable, placa_activo, id_ubicacion, id_funcionario From Mantenimiento where estado = 0", sqlConnection);
+             "id_responsable, placa_activo, id_ubicacion, id_funcionario From Mantenimiento where estado = 0 " +
+             "order by id_mantenimiento desc", sqlConnection);
 
             SqlDataReader reader;
 
@@ -55,7 +56,7 @@ namespace AccesoDatos
                 Mantenimiento.Fecha = reader["fecha"].ToString();
                 Mantenimiento.Descripcion = reader["descripcion"].ToString();
                 Mantenimiento.Estado = reader["estado"].ToString();
-                Mantenimiento.Es_correctivo = true;
+                Mantenimiento.Es_correctivo =bool.Parse( reader["es_correctivo"].ToString());
                 Mantenimiento.Id_responsable = reader["id_responsable"].ToString();
                 Mantenimiento.Id_funcionario = reader["id_funcionario"].ToString();
                 Mantenimiento.Placa_activo = Convert.ToInt32(reader["placa_activo"].ToString());

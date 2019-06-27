@@ -33,6 +33,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             if (!Page.IsPostBack)
             {
                 Session["listaMantenimientosCorrectivos"] = null;
+                Session["procedencia"] = null;
 
                 MantenimientoCorrectivoServicio mantenimientoServicios = new MantenimientoCorrectivoServicio();
 
@@ -314,7 +315,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// </summary>
         protected void btn_Nuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/NuevoMantenimientoCorrectivo.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/Activos/AdministrarActivo.aspx");
             Response.Redirect(url);
         }
 
