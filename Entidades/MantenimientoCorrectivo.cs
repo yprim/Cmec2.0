@@ -22,6 +22,7 @@ namespace Entidades
         string id_funcionario;
         int placa_activo;
         string id_ubicacion;
+        int plan_activo;
 
 
         public MantenimientoCorrectivo() {
@@ -37,5 +38,6 @@ namespace Entidades
         public string Id_funcionario { get => id_funcionario; set => id_funcionario = value; }
         public int Placa_activo { get => placa_activo; set => placa_activo = value; }
         public string Id_ubicacion { get => id_ubicacion; set => id_ubicacion = value; }
+        public int Plan_activo { get => plan_activo; set => plan_activo = value; }
     }
 }
