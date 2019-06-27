@@ -174,8 +174,8 @@
     <Content Include="Imagenes\UCR informe.png" />
     <Content Include="Informes\CierrePlanPreventivo.aspx" />
     <Content Include="Informes\MantenimientoGeneral.aspx" />
+    <Content Include="Informes\MostrarReporteAvance.aspx" />
     <Content Include="Informes\Prueba2.aspx" />
-    <Content Include="Informes\ReporteAvance.aspx" />
     <Content Include="Informes\ReportePrueba.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\abrirfile.js" />
@@ -533,19 +533,19 @@
     <Compile Include="Informes\MantenimientoGeneral.aspx.designer.cs">
       <DependentUpon>MantenimientoGeneral.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Informes\MostrarReporteAvance.aspx.cs">
+      <DependentUpon>MostrarReporteAvance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MostrarReporteAvance.aspx.designer.cs">
+      <DependentUpon>MostrarReporteAvance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Informes\Prueba2.aspx.cs">
       <DependentUpon>Prueba2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Informes\Prueba2.aspx.designer.cs">
       <DependentUpon>Prueba2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Informes\ReporteAvance.aspx.cs">
-      <DependentUpon>ReporteAvance.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Informes\ReporteAvance.aspx.designer.cs">
-      <DependentUpon>ReporteAvance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Informes\ReportePrueba.aspx.cs">
       <DependentUpon>ReportePrueba.aspx</DependentUpon>

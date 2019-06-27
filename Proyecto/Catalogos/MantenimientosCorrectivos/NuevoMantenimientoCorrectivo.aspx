@@ -189,7 +189,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Nuevo Responsable</button>
+                    <asp:Button ID="GuardarResponsable" runat="server" Text="Nuevo Responsable" CssClass="btn btn-primary" OnClick="btnGuardarResponsable_Click" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -206,7 +206,9 @@
                 </div>
                 <div class="modal-body">
                     
-                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                        <ContentTemplate>
+                             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-3 col-xs-3 col-sm-3">
                     <asp:Label ID="lblEdificioUbicacion" runat="server" Text="Edificio <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
@@ -232,10 +234,14 @@
                     <asp:Label ID="lblNumeroUbicacionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div> 
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+               
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Nueva Ubicacion</button>
+                    <asp:Button ID="NuevaUbicacion" runat="server" Text="Nueva Ubicacion" CssClass="btn btn-primary" OnClick="btnGuardarUbicacion_Click" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -267,7 +273,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Nueva Tarea</button>
+                    <asp:Button ID="GuardarTarea" runat="server" Text="Nueva Tarea" CssClass="btn btn-primary" OnClick="btnGuardarTarea_Click" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>

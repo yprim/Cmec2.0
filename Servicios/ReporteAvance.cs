@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Servicios
 {
-    public class ReporteServicios
+    public class ReporteAvance
     {
         #region variables
         ReporteDatos reporteDatos = new ReporteDatos();
         #endregion
 
-        public LinkedList<ReporteGeneral> ReporteMantenimientos()
+        public LinkedList<int> reporteAvance()
         {
-            return this.reporteDatos.ReporteMantenimientos();
+            return this.reporteDatos.ReporteAvance();
         }
     }
 }
