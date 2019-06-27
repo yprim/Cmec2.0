@@ -111,6 +111,11 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
 
             Session["listaMantenimientosCorrectivosFiltrada"] = listaMantenimientosCorrectivos;
 
+            //metodos que cambian los valores id(fk) por el correspondiente nombre de la tabla que pertenece ese id.
+            //Estos cambios solo son para mostrar los valores en la tabla de la vista.
+            //Reciben una lista y le cambian sus datos según corresponda.
+            //devuelven la lista modificada, no obstante se sigue usando la lista por referencia de memoria.
+
             mantenimientoServicios.nombreResponsable(listaMantenimientosCorrectivos);
             mantenimientoServicios.nombreFuncionario(listaMantenimientosCorrectivos);
             mantenimientoServicios.nombreUbicacion(listaMantenimientosCorrectivos);

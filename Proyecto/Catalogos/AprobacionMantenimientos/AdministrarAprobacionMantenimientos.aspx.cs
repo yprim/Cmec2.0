@@ -61,7 +61,7 @@ namespace Proyecto.Catalogos.Activos
         {
             List<MantenimientoCorrectivo> listaSession = (List<MantenimientoCorrectivo>)Session["listaAprobarMantenimientos"];
             String placa = "";
-            String responsable = "";
+            String funcionario = "";
             String ubicacion = "";
             String fecha = "";
             String descripcion = "";
@@ -79,12 +79,20 @@ namespace Proyecto.Catalogos.Activos
                 ubicacion = (String)ViewState["ubicacion"];
 
             if (ViewState["responsable"] != null)
-                responsable = (String)ViewState["responsable"];
+                funcionario = (String)ViewState["responsable"];
 
              List<MantenimientoCorrectivo> listaAprobarMantenimientos = (List<MantenimientoCorrectivo>)listaSession.Where(x => x.Descripcion.ToUpper().Contains(descripcion.ToUpper()) && x.Placa_activo.ToString().Contains(placa)
-                                             && x.Id_ubicacion.ToString().ToUpper().Contains(ubicacion.ToUpper()) && x.Id_responsable.ToString().ToUpper().Contains(responsable.ToUpper()) && x.Fecha.Contains(fecha)).ToList();
+                                             && x.Id_ubicacion.ToString().ToUpper().Contains(ubicacion.ToUpper()) && x.Id_responsable.ToString().ToUpper().Contains(funcionario.ToUpper()) && x.Fecha.Contains(fecha)).ToList();
 
-             Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
+            //metodos que cambian los valores id(fk) por el correspondiente nombre de la tabla que pertenece ese id.
+            //Estos cambios solo son para mostrar los valores en la tabla de la vista.
+            //Reciben una lista y le cambian sus datos según corresponda.
+            //devuelven la lista modificada, no obstante se sigue usando la lista por referencia de memoria.
+            mantenimientoServicios.nombreResponsable(listaAprobarMantenimientos);
+            mantenimientoServicios.nombreFuncionario(listaAprobarMantenimientos);
+            mantenimientoServicios.nombreUbicacion(listaAprobarMantenimientos);
+
+            Session["listaAprobarMantenimientosFiltrada"] = listaAprobarMantenimientos;
 
              var dt = listaAprobarMantenimientos;
 
@@ -350,7 +358,7 @@ namespace Proyecto.Catalogos.Activos
             paginaActual = 0;
             ViewState["placa"] = txtBuscarPlaca.Text;
             ViewState["descripcion"] = txtBuscarDescripcion.Text;
-            ViewState["responsable"] = txtBuscarResponsable.Text;
+            ViewState["responsable"] = txtBuscarFuncionario.Text;
             ViewState["ubicacion"] = txtBuscarUbicacion.Text;
             ViewState["fecha"] = txtBuscarFecha.Text;
 

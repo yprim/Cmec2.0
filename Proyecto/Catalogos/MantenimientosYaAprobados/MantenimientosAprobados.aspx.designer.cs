@@ -76,13 +76,13 @@ namespace Proyecto.Catalogos.PlanMantenimientoPreventivo {
         protected global::System.Web.UI.WebControls.TextBox txtBuscarDescripcion;
         
         /// <summary>
-        /// Control txtBuscarResponsable.
+        /// Control txtBuscarFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarResponsable;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarFuncionario;
         
         /// <summary>
         /// Control rpMantenimiento.

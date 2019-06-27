@@ -52,7 +52,7 @@
                                 <td>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                        <asp:TextBox ID="txtBuscarResponsable" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro responsable"></asp:TextBox>
+                                        <asp:TextBox ID="txtBuscarFuncionario" runat="server" CssClass="form-control chat-input" AutoPostBack="true"  OnTextChanged="Button4_Click" placeholder="Filtro funcionario"></asp:TextBox>
                                     </div>
                                 </td>                                
                             </tr>
@@ -71,7 +71,7 @@
                                      <th>Ubicacion</th>
                                     <th>Fecha de mantenimiento</th>
                                     <th>Descripción</th>
-                                    <th>Responsable</th>
+                                    <th>Funcionario</th>
                                 </tr>
                             </thead>
                     </HeaderTemplate>
@@ -94,7 +94,7 @@
                                 <%# Eval("descripcion") %>
                             </td>
                             <td>
-                                <%# Eval("id_responsable") %>
+                                <%# Eval("id_funcionario") %>
                             </td>
                         </tr>
 
