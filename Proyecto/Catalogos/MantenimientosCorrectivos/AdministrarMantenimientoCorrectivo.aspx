@@ -66,8 +66,9 @@
                                         <th>Fecha</th>
                                         <th>ID Placa</th>
                                         <th>Responsable</th>
+                                        <th>Usuario UTI</th>
                                         <th>Funcionario</th>
-                                        <th>Estado</th>
+                                        <th>Tipo de Mantenimiento</th>
                                         <th>Ubicacion</th>
                                         <th>Descripción</th>
                                     </tr>
@@ -94,10 +95,13 @@
                                     <%# Eval("id_responsable") %>
                                 </td>
                                 <td>
+                                    <%# Eval("usuario_uti") %>
+                                </td>
+                                <td>
                                     <%# Eval("id_funcionario") %>
                                 </td>
                                 <td>
-                                    <%# Eval("estado") %>
+                                    <%# Eval("tipo_Mantenimiento") %>
                                 </td>
                                 <td>
                                     <%# Eval("id_ubicacion") %>

@@ -18,11 +18,13 @@ namespace Entidades
         string descripcion;
         string estado;
         bool es_correctivo;
+        string tipo_Mantenimiento;
         string id_responsable;
         string id_funcionario;
         int placa_activo;
         string id_ubicacion;
         int plan_activo;
+        string usuario_uti;
 
 
         public MantenimientoCorrectivo() {
@@ -39,5 +41,7 @@ namespace Entidades
         public int Placa_activo { get => placa_activo; set => placa_activo = value; }
         public string Id_ubicacion { get => id_ubicacion; set => id_ubicacion = value; }
         public int Plan_activo { get => plan_activo; set => plan_activo = value; }
+        public string Tipo_Mantenimiento { get => tipo_Mantenimiento; set => tipo_Mantenimiento = value; }
+        public string Usuario_uti { get => usuario_uti; set => usuario_uti = value; }
     }
 }

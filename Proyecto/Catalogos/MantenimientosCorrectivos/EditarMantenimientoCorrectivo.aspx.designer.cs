@@ -58,6 +58,15 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         protected global::System.Web.UI.WebControls.Label lblMensaje2;
         
         /// <summary>
+        /// Control txtIdMantenimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtIdMantenimiento;
+        
+        /// <summary>
         /// Control lblPlacaActivo.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,24 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDescripcionMantenimientoIncorrecto;
+        
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// Control txtUsuarioUTI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtUsuarioUTI;
         
         /// <summary>
         /// Control lblResponsableMantenimiento.

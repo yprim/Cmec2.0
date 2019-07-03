@@ -67,6 +67,15 @@
                     <asp:Label ID="lblDescripcionMantenimientoIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
+            <%-- campo Usuario UTI --%>
+            <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="Label1" runat="server" Text="Usuario UTI <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:Label ID="txtUsuarioUTI" runat="server" Text="" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+            </div>
 
             <%-- campo Responsable --%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="margin-bottom: 4px;">
@@ -83,8 +92,7 @@
                     <asp:Label ID="lblResponsableIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
-
-
+            
             <%-- campo Ubicacion --%>
             <div class="col-md-12 col-xs-12 col-sm-12 form-group" style="margin-bottom: 4px;">
                 <div class="col-md-2 col-xs-2 col-sm-2">

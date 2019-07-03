@@ -71,8 +71,9 @@ namespace Proyecto
             //string strError = string.Empty;
 
             //estos son los datos que deben de llenar para realizar el login, el rol 2 es de administrador
-            string nombreCompleto = "nombre usuario";
-            string userName = "nusuario";
+                //TODO : Corregir siguiente linea por nombreCompleto correcto.
+            string nombreCompleto = txtUsuario.Text;
+            string userName = txtUsuario.Text;
             rol = 2;
 
             //foreach (string key in System.Configuration.ConfigurationManager.AppSettings.Keys)

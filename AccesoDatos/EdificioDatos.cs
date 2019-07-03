@@ -37,7 +37,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("select id_edificio, nombre from  Edificio;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select id_edificio, nombre from  Edificio where id_edificio !=1006 ;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();

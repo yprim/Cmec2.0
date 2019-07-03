@@ -37,7 +37,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("select id_ubicacion, numero_aula, id_edificio from Ubicacion;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select id_ubicacion, numero_aula, id_edificio from Ubicacion Order by id_ubicacion desc;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -127,15 +127,15 @@ namespace AccesoDatos
         
                 SqlConnection sqlConnection = conexion.conexionCMEC();
 
-                SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion output DELETED.id_ubicacion where id_ubicacion = @id_ubicacion;", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("delete from Ubicacion  where id_ubicacion = @id_ubicacion;", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@id_ubicacion", ubicacion.idUbicacion);
 
                 sqlConnection.Open();
-                int idUbicacion = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                sqlCommand.ExecuteScalar();
 
                 sqlConnection.Close();
 
-                return idUbicacion;
+                return 999;
         }
         #endregion
     }

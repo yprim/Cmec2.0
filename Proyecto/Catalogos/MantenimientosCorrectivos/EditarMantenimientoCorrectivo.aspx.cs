@@ -32,6 +32,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 txtFechaMantenimiento.Text = DateTime.Parse(mantenimientoCorrectivo.Fecha).ToString("yyyy-MM-dd");
                 txtDescripcionMantenimiento.Text = mantenimientoCorrectivo.Descripcion;
                 txtPlacaActivo.Text = mantenimientoCorrectivo.Placa_activo.ToString();
+                txtIdMantenimiento.Text = mantenimientoCorrectivo.Id_mantenimiento.ToString();
+                txtUsuarioUTI.Text = Session["nombreCompleto"].ToString();
                 bool es_correctivo = mantenimientoCorrectivo.Es_correctivo;
                 if (!es_correctivo) Session["procedencia"] = "mantenimientoPreventivo";
 
@@ -42,11 +44,21 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 CargarEdificios();
                 CargarFuncionario();
                 accionesMantenimientoPreventivo();
+                CheckTareasCargadas(mantenimientoCorrectivo.Id_mantenimiento);
             }
         }
         #endregion
 
         #region logica
+
+        private void CheckTareasCargadas(int id) {
+            List<Tarea> listaTareas = mantenimientoServicios.getTareasMantenimientos(id);
+            foreach (Tarea tarea in listaTareas)
+            {
+                TareasDDL.Items.FindByValue(tarea.idTarea + "").Selected = true;
+            }
+            
+        }
         private void CargarUbicacion()
         {
             string nombreUbicacion = "";
@@ -171,7 +183,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         {
             List<Tarea> tareas = new List<Tarea>();
             TareasDDL.Items.Clear();
-            tareas = this.tareaServicios.getTareas();
+            tareas = this.tareaServicios.getTareasIncluyePreventivas();
             String procedencia = (String)Session["procedencia"];
             
 
@@ -303,47 +315,52 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             
             MantenimientoCorrectivo mantenimiento = new MantenimientoCorrectivo();
 
+            mantenimiento.Id_mantenimiento = Int32.Parse(txtIdMantenimiento.Text);
             mantenimiento.Fecha = txtFechaMantenimiento.Text;
             mantenimiento.Descripcion = txtDescripcionMantenimiento.Text;
             mantenimiento.Id_responsable = txtBuscarResponsable.Text;
             mantenimiento.Placa_activo = Convert.ToInt32(txtPlacaActivo.Text.ToString());
             mantenimiento.Id_ubicacion = txtBuscarUbicacion.Text.ToString();
             mantenimiento.Id_funcionario = TxtBuscarFuncionario.Text;
+            mantenimiento.Usuario_uti = Session["nombreCompleto"].ToString();
 
             List<String> listaTareas = new List<String>();
 
-                string selectedItems = String.Join(",",
-                 TareasDDL.Items.OfType<ListItem>().Where(r => r.Selected)
-                .Select(r => r.Value));
+            string selectedItems = String.Join(",",
+                TareasDDL.Items.OfType<ListItem>().Where(r => r.Selected)
+            .Select(r => r.Value));
 
-                String[] lista = selectedItems.Split(',');
+            String[] lista = selectedItems.Split(',');
+            int tamanioLista = lista.Length;
+            int inicio = 1;
+            if (tamanioLista > 1)
+                inicio = 0;
 
-                for (int c = 0; c <= lista.Length - 1; ++c)
-                {
-                    listaTareas.Add(lista[c]);
-                }
-
-                String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
-
-                // ResponsableServicios.(responsable);
-
-                //Verificación que se hace para determinar si es preventivo o correctivo, así mismo determinar el valor y redirección
-                //según corresponda.
-                String procedencia = (String)Session["procedencia"];
-
-                if (procedencia == "mantenimientoPreventivo")
-                {
-                    //VERIFICAR QUE SE GUARDE EL ATRIBUTO ES_CORRECTIVO=0 AL SE DE TIPO PREVENTIVO
-                    url = Page.ResolveUrl("~/Catalogos/PlanMantenimientoPreventivo/PlanMantenimientoPreventivo.aspx");
-                mantenimiento.Es_correctivo = false;
+            for (int c=inicio ; c <= lista.Length - 1; c++)
+            {
+                listaTareas.Add(lista[c]);
             }
-                else
-                {
-                    url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
-                mantenimiento.Es_correctivo = true;
+
+            String url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
+
+            // ResponsableServicios.(responsable);
+
+            //Verificación que se hace para determinar si es preventivo o correctivo, así mismo determinar el valor y redirección
+            //según corresponda.
+            String procedencia = (String)Session["procedencia"];
+
+            if (procedencia == "mantenimientoPreventivo")
+            {
+                //VERIFICAR QUE SE GUARDE EL ATRIBUTO ES_CORRECTIVO=0 AL SE DE TIPO PREVENTIVO
+            mantenimiento.Es_correctivo = false;
+            }
+            else
+            {
+                    
+            mantenimiento.Es_correctivo = true;
             }
             mantenimientoServicios.actualizarMantenimiento(mantenimiento, listaTareas);
-
+            url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
             
         }
@@ -361,11 +378,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String procedencia = (String)Session["procedencia"];
             String url = "";
-            if (procedencia == "mantenimientoPreventivo")
-                url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
-            else
                 url = Page.ResolveUrl("~/Catalogos/MantenimientosCorrectivos/AdministrarMantenimientoCorrectivo.aspx");
             Response.Redirect(url);
         }

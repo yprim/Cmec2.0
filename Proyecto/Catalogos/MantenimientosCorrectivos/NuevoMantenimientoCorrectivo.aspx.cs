@@ -29,7 +29,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 //txtNumeroUbicacion.Attributes.Add("oninput", "validarTexto(this)");
                 txtFechaMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
                 txtDescripcionMantenimiento.Attributes.Add("oninput", "validarTexto(this)");
-
+                txtUsuarioUTI.Text = Session["nombreCompleto"].ToString();
                 if (Session["activoMantenimiento"] != null)
                 {
                     Activo activoMantenimiento = (Activo)Session["activoMantenimiento"];
@@ -158,7 +158,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         {
             List<Tarea> tareas = new List<Tarea>();
             TareasDDL.Items.Clear();
-            tareas = this.tareaServicios.getTareas();
+            tareas = this.tareaServicios.getTareasIncluyePreventivas();
             String procedencia = (String)Session["procedencia"];
             if (tareas.Count > 0)
             {
@@ -306,7 +306,8 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 mantenimiento.Placa_activo = Convert.ToInt32(txtPlacaActivo.Text.ToString());
                 mantenimiento.Id_ubicacion = txtBuscarUbicacion.Text.ToString();
                 mantenimiento.Id_funcionario = TxtBuscarFuncionario.Text;
-                
+                mantenimiento.Usuario_uti= Session["nombreCompleto"].ToString();
+
 
                 List<String> listaTareas = new List<String>();
 
@@ -315,8 +316,12 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
                 .Select(r => r.Value));
 
                 String[] lista = selectedItems.Split(',');
+                int tamanioLista = lista.Length;
+                int inicio = 1;
+                if (tamanioLista > 1)
+                    inicio = 0;
 
-                for (int c = 0; c <= lista.Length - 1; ++c)
+                for (int c = inicio; c <= lista.Length - 1; c++)
                 {
                     listaTareas.Add(lista[c]);
                 }  

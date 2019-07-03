@@ -38,7 +38,44 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand(@"select t.id_tarea, t.descripcion as descr from  [Tarea] t order by descripcion;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(@"select t.id_tarea, t.descripcion as descr from  [Tarea] t  where id_tarea >6  order by id_tarea desc;", sqlConnection);
+
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Tarea Tarea = new Tarea();
+
+                Tarea.idTarea = Convert.ToInt32(reader["id_tarea"].ToString());
+                Tarea.descripcion = reader["descr"].ToString();
+
+                listaTareas.Add(Tarea);
+            }
+
+            sqlConnection.Close();
+
+            return listaTareas;
+        }
+        /// <summary>
+        /// Priscilla Mena
+        /// 5/6/2019
+        /// Efecto: devuelve una lista con todas las tareas incluso las preventivas solo para mostrar
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: lista de tareas
+        /// </summary>
+        /// <param name="Tarea"></param>
+        /// <returns></returns>
+        public List<Tarea> getTareasIncluyePreventivas()
+        {
+
+            List<Tarea> listaTareas = new List<Tarea>();
+
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand(@"select t.id_tarea, t.descripcion as descr from  [Tarea] t   order by id_tarea desc;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -128,12 +165,12 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand("Delete Tarea " +
-                                               "output Deleted.id_tarea where id_tarea = @id_tarea;", sqlConnection);
+                                               " where id_tarea = @id_tarea;", sqlConnection);
 
             sqlCommand.Parameters.AddWithValue("@id_tarea", Tarea.idTarea);
 
             sqlConnection.Open();
-           int resultado=(int)sqlCommand.ExecuteScalar();
+           sqlCommand.ExecuteScalar();
 
             sqlConnection.Close();
 

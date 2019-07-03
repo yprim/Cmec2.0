@@ -37,6 +37,22 @@ namespace Servicios
 
             return tareaDatos.getTareas();
         }
+        /// <summary>
+        /// Priscilla Mena
+        /// 5/6/2019
+        /// Efecto: devuelve una lista con todas las tareas
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: lista de tareas
+        /// </summary>
+        /// <param name="Tarea"></param>
+        /// <returns></returns>
+        public List<Tarea> getTareasIncluyePreventivas()
+        {
+
+
+            return tareaDatos.getTareasIncluyePreventivas();
+        }
 
         /// <summary>
         /// Priscilla Mena
