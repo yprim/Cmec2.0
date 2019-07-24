@@ -92,7 +92,7 @@ namespace Proyecto.Catalogos.Activos
             //Reciben una lista y le cambian sus datos según corresponda.
             //devuelven la lista modificada, no obstante se sigue usando la lista por referencia de memoria.
             mantenimientoServicios.nombreResponsable(listaAprobarMantenimientos);
-            mantenimientoServicios.nombreFuncionario(listaAprobarMantenimientos);
+        //    mantenimientoServicios.nombreFuncionario(listaAprobarMantenimientos);
             mantenimientoServicios.nombreUbicacion(listaAprobarMantenimientos);
 
 

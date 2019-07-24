@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AccesoDatos;
 using Entidades;
-using AccesoDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 namespace Servicios
 {
     /// <summary>
-    /// Leonardo Gomez
-    ///5/9/2019
-    ///Clase para administrar los servicios de la entidad Funcionario
+    /// Priscilla Mena Monge
+    /// 24/7/2019
+    /// Clase para administrar los servicios de la entidad de Funcionario
     /// </summary>
     public class FuncionarioServicios
     {
-
         #region variables
         FuncionarioDatos funcionarioDatos = new FuncionarioDatos();
         #endregion
@@ -23,8 +22,8 @@ namespace Servicios
         #region servicios
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 5/9/2019
+        /// Priscilla Mena Monge
+        /// 24/7/2019
         /// Efecto: devuelve una lista con todas los Funcionarios
         /// Requiere: -
         /// Modifica: -
@@ -38,8 +37,8 @@ namespace Servicios
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 5/9/2019
+        /// Priscilla Mena Monge
+        /// 24/7/2019
         /// Efecto: inserta en la base de datos un Funcionario
         /// Requiere: Funcionario
         /// Modifica: -
@@ -53,8 +52,8 @@ namespace Servicios
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 5/9/2019
+        /// Priscilla Mena Monge
+        /// 24/7/2019
         /// Efecto: actualiza un Funcionario
         /// Requiere: Funcionario a modificar
         /// Modifica: Funcionario
@@ -68,8 +67,8 @@ namespace Servicios
         }
 
         /// <summary>
-        /// Leonardo Gomez
-        /// 5/9/2019
+        /// Priscilla Mena Monge
+        /// 24/7/2019
         /// Efecto: Elimina un Funcionario de  la base de datos
         /// Requiere: Funcionario
         /// Modifica: -
@@ -82,7 +81,6 @@ namespace Servicios
 
         }
         #endregion
+
     }
-
 }
-

@@ -18,7 +18,7 @@ namespace Servicios
         #region variables
         MantenimientoCorrectivoDatos mantenimientoDatos = new MantenimientoCorrectivoDatos();
         ResponsableServicios responsableServicios = new ResponsableServicios();
-        FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
+        //FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
         UbicacionServicios ubicacionServicios = new UbicacionServicios();
         #endregion
 
@@ -86,28 +86,28 @@ namespace Servicios
             return mantenimientos;
         }
 
-            public List<MantenimientoCorrectivo> nombreFuncionario(List<MantenimientoCorrectivo> mantenimientos)
-            {
+        //    public List<MantenimientoCorrectivo> nombreFuncionario(List<MantenimientoCorrectivo> mantenimientos)
+        //    {
 
-                List<Funcionario> funcionarios = funcionarioServicios.getFuncionarios();
+        //        List<Funcionario> funcionarios = funcionarioServicios.getFuncionarios();
 
-                foreach (MantenimientoCorrectivo mantenimiento in mantenimientos)
-                {
-                    int id_funcionario = Convert.ToInt32(mantenimiento.Id_funcionario);
+        //        foreach (MantenimientoCorrectivo mantenimiento in mantenimientos)
+        //        {
+        //            int id_funcionario = Convert.ToInt32(mantenimiento.Id_funcionario);
 
-                    foreach (Funcionario funcionario in funcionarios)
-                    {
-                        if (funcionario.Id == id_funcionario)
-                        {
-                            mantenimiento.Id_funcionario = funcionario.Nombre+" "+funcionario.Apellidos;
+        //            foreach (Funcionario funcionario in funcionarios)
+        //            {
+        //                if (funcionario.Id == id_funcionario)
+        //                {
+        //                    mantenimiento.Id_funcionario = funcionario.Nombre+" "+funcionario.Apellidos;
 
-                        }
-                    }
+        //                }
+        //            }
 
-                }
+        //        }
 
-                return mantenimientos;
-        }
+        //        return mantenimientos;
+        //}
 
         public MantenimientoCorrectivo cambiarPorNombres(MantenimientoCorrectivo mantenimiento)
         {

@@ -97,6 +97,7 @@
     <Content Include="Catalogos\Activos\EditarActivo.aspx" />
     <Content Include="Catalogos\Activos\EliminarActivo.aspx" />
     <Content Include="Catalogos\Activos\NuevoActivo.aspx" />
+    <Content Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\AprobacionMantenimientos\AdministrarAprobacionMantenimientos.aspx" />
     <Content Include="Catalogos\Activos\RestaurarActivo.aspx" />
@@ -106,11 +107,6 @@
     <Content Include="Catalogos\Edificios\EliminarEdificio.aspx" />
     <Content Include="Catalogos\Edificios\NuevoEdificio.aspx" />
     <Content Include="Catalogos\Edificios\VerEdificio.aspx" />
-    <Content Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx" />
-    <Content Include="Catalogos\Funcionarios\EditarFuncionario.aspx" />
-    <Content Include="Catalogos\Funcionarios\EliminarFuncionario.aspx" />
-    <Content Include="Catalogos\Funcionarios\NuevoFuncionario.aspx" />
-    <Content Include="Catalogos\Funcionarios\VerFuncionario.aspx" />
     <Content Include="Catalogos\Activos\AdministrarActivo.aspx" />
     <Content Include="Catalogos\AprobacionMantenimientos\AprobarMantenimiento.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\AdministrarMantenimientoCorrectivo.aspx" />
@@ -241,6 +237,13 @@
     <Compile Include="Catalogos\Activos\NuevoActivo.aspx.designer.cs">
       <DependentUpon>NuevoActivo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.cs">
+      <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.designer.cs">
+      <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx.cs">
       <DependentUpon>VerMantenimientoCorrectivo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -303,41 +306,6 @@
     </Compile>
     <Compile Include="Catalogos\Edificios\VerEdificio.aspx.designer.cs">
       <DependentUpon>VerEdificio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.cs">
-      <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.designer.cs">
-      <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\EditarFuncionario.aspx.cs">
-      <DependentUpon>EditarFuncionario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\EditarFuncionario.aspx.designer.cs">
-      <DependentUpon>EditarFuncionario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.cs">
-      <DependentUpon>EliminarFuncionario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.designer.cs">
-      <DependentUpon>EliminarFuncionario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\NuevoFuncionario.aspx.cs">
-      <DependentUpon>NuevoFuncionario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\NuevoFuncionario.aspx.designer.cs">
-      <DependentUpon>NuevoFuncionario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.cs">
-      <DependentUpon>VerFuncionario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.designer.cs">
-      <DependentUpon>VerFuncionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Activos\AdministrarActivo.aspx.cs">
       <DependentUpon>AdministrarActivo.aspx</DependentUpon>
@@ -613,9 +581,7 @@
       <Name>Servicios</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mantenimientos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Informes\CierrePlanPreventivo.rdlc" />
     <EmbeddedResource Include="Informes\MantenimientoGeneralReporte.rdlc" />

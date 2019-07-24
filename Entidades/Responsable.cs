@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-   public class Responsable
+    /// <summary>
+    /// Priscilla Mena
+    /// 05/05/2019
+    /// clase para administrar la entidad de Responsable
+    /// </summary>
+    public class Responsable
     {
         public int idResponsable { get; set; }
         public String nombre { get; set; }

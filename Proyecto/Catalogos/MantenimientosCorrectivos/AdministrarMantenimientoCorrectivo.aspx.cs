@@ -118,7 +118,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             //devuelven la lista modificada, no obstante se sigue usando la lista por referencia de memoria.
 
             mantenimientoServicios.nombreResponsable(listaMantenimientosCorrectivos);
-            mantenimientoServicios.nombreFuncionario(listaMantenimientosCorrectivos);
+//mantenimientoServicios.nombreFuncionario(listaMantenimientosCorrectivos);
             mantenimientoServicios.nombreUbicacion(listaMantenimientosCorrectivos);
 
             var dt = listaMantenimientosCorrectivos;

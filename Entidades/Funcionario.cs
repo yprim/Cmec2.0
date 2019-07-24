@@ -8,34 +8,17 @@ namespace Entidades
 {
     public class Funcionario
     {
-        int id;
-        string usuario;
-        string nombre;
-        string apellidos;
-        DateTime fecha_nacimiento;
-        string correo;
-        string numero_telefono1;
-        string numero_telefono2;
-        string ocupacion;
-        int habilitado;
+        public int id { get; set; }
+        public String usuario { get; set; }
+        public String nombre { get; set; }
+        public String apellidos { get; set; }
+        public DateTime fecha_nacimiento { get; set; }
+        public String correo { get; set; }
+        public String numero_telefono1 { get; set; }
+        public String numero_telefono2 { get; set; }
+        public String ocupacion { get; set; }
+        public int habilitado { get; set; }
 
-        public Funcionario()
-        {
-
-        }
-
-        public int Id { get => id; set => id = value; }
-        public string Usuario { get => usuario; set => usuario = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellidos { get => apellidos; set => apellidos = value; }
-        public string Fecha_Nacimiento { get => fecha_nacimiento.ToShortDateString(); set => fecha_nacimiento = DateTime.Parse(value); }
-        public string Correo { get => correo; set => correo = value; }
-        public string Numero_Telefono1 { get => numero_telefono1; set => numero_telefono1 = value; }
-        public string Numero_Telefono2 { get => numero_telefono2; set => numero_telefono2 = value; }
-        public string Ocupacion { get => ocupacion; set => ocupacion = value; }
-        public int Habilitado { get; set; }
 
     }
-
 }
-

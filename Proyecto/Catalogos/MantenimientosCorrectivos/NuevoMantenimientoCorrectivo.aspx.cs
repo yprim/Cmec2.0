@@ -18,7 +18,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
         ResponsableServicios responsableServicios = new ResponsableServicios();
         UbicacionServicios ubicacionServicios = new UbicacionServicios();
         EdificioServicios edificioServicios = new EdificioServicios();
-        FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
+       FuncionarioServicios funcionarioServicios = new FuncionarioServicios();
         #endregion
 
         #region page load
@@ -131,7 +131,7 @@ namespace Proyecto.Catalogos.MantenimientosCorrectivos
             {
                 foreach (Funcionario funcionario in funcionarios)
                 {
-                    ListItem item = new ListItem(funcionario.Nombre +" "+ funcionario.Apellidos, funcionario.Id.ToString());
+                    ListItem item = new ListItem(funcionario.nombre + " " + funcionario.apellidos, funcionario.id.ToString());
                     FuncionarioDDL.Items.Add(item);
                 }
             }
