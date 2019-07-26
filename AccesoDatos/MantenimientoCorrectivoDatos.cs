@@ -255,7 +255,7 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@responsable", Mantenimiento.Id_responsable);
             sqlCommand.Parameters.AddWithValue("@id_placa", Mantenimiento.Placa_activo);
             sqlCommand.Parameters.AddWithValue("@ubicacion", Mantenimiento.Id_ubicacion);
-            sqlCommand.Parameters.AddWithValue("@id_funcionario", 1008);
+            sqlCommand.Parameters.AddWithValue("@id_funcionario", Mantenimiento.Id_funcionario);
             sqlCommand.Parameters.AddWithValue("@id_plan", Mantenimiento.Plan_activo);
             sqlCommand.Parameters.AddWithValue("@usuario_uti", Mantenimiento.Usuario_uti);
 
@@ -313,7 +313,7 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@responsable", Mantenimiento.Id_responsable);
             sqlCommand.Parameters.AddWithValue("@fecha", DateTime.Parse(Mantenimiento.Fecha));
             sqlCommand.Parameters.AddWithValue("@ubicacion", Mantenimiento.Id_ubicacion);
-            sqlCommand.Parameters.AddWithValue("@funcionario", 1008);
+            sqlCommand.Parameters.AddWithValue("@funcionario", Mantenimiento.Id_funcionario);
             sqlCommand.Parameters.AddWithValue("@descripcion", Mantenimiento.Descripcion);
             sqlCommand.Parameters.AddWithValue("@estado", 0);
             sqlCommand.Parameters.AddWithValue("@correctivo", Mantenimiento.Es_correctivo);

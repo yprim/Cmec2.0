@@ -10,141 +10,159 @@
 namespace Proyecto.Catalogos.Funcionarios {
     
     
-    public partial class AdministrarFuncionario {
+    public partial class VerFuncionario {
         
         /// <summary>
-        /// Control MainScriptManager.
+        /// Control lblCedFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager MainScriptManager;
+        protected global::System.Web.UI.WebControls.Label lblCedFuncionario;
         
         /// <summary>
-        /// Control pnlUpdate.
+        /// Control txtCedFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel pnlUpdate;
+        protected global::System.Web.UI.WebControls.Label txtCedFuncionario;
         
         /// <summary>
-        /// Control lblAdministrarFuncionario.
+        /// Control lblNombreFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdministrarFuncionario;
+        protected global::System.Web.UI.WebControls.Label lblNombreFuncionario;
         
         /// <summary>
-        /// Control txtBuscarUsuario.
+        /// Control txtNombreFuncionario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarUsuario;
+        protected global::System.Web.UI.WebControls.Label txtNombreFuncionario;
         
         /// <summary>
-        /// Control txtBuscarNombre.
+        /// Control lblApellidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarNombre;
+        protected global::System.Web.UI.WebControls.Label lblApellidos;
         
         /// <summary>
-        /// Control txtBuscarApellidos.
+        /// Control txtApellidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarApellidos;
+        protected global::System.Web.UI.WebControls.Label txtApellidos;
         
         /// <summary>
-        /// Control txtBuscarCorreo.
+        /// Control lblCorreo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarCorreo;
+        protected global::System.Web.UI.WebControls.Label lblCorreo;
         
         /// <summary>
-        /// Control rpFuncionario.
+        /// Control txtCorreo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpFuncionario;
+        protected global::System.Web.UI.WebControls.Label txtCorreo;
         
         /// <summary>
-        /// Control lbPrimero.
+        /// Control lblFechaNacimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbPrimero;
+        protected global::System.Web.UI.WebControls.Label lblFechaNacimiento;
         
         /// <summary>
-        /// Control lbAnterior.
+        /// Control txtFechaNacimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbAnterior;
+        protected global::System.Web.UI.WebControls.Label txtFechaNacimiento;
         
         /// <summary>
-        /// Control rptPaginacion.
+        /// Control lblNumeroTelefonoUno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList rptPaginacion;
+        protected global::System.Web.UI.WebControls.Label lblNumeroTelefonoUno;
         
         /// <summary>
-        /// Control lbSiguiente.
+        /// Control txtNumeroTelefonoUno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbSiguiente;
+        protected global::System.Web.UI.WebControls.Label txtNumeroTelefonoUno;
         
         /// <summary>
-        /// Control lbUltimo.
+        /// Control lblNumeroTelefonoDos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbUltimo;
+        protected global::System.Web.UI.WebControls.Label lblNumeroTelefonoDos;
         
         /// <summary>
-        /// Control lblpagina.
+        /// Control txtNumeroTelefonoDos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpagina;
+        protected global::System.Web.UI.WebControls.Label txtNumeroTelefonoDos;
         
         /// <summary>
-        /// Control btnNuevo.
+        /// Control lblOcupacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
+        protected global::System.Web.UI.WebControls.Label lblOcupacion;
+        
+        /// <summary>
+        /// Control txtOcupacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtOcupacion;
+        
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

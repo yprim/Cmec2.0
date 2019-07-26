@@ -38,7 +38,7 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand(@"Select id,usuario,nombre,apellidos,fecha_nacimiento,correo,
-                numero_telefono1, numero_telefono2, ocupacion, habilitado from Funcionario ", sqlConnection);
+                numero_telefono1, numero_telefono2, ocupacion, habilitado from Funcionario where habilitado=1 ", sqlConnection);
             SqlDataReader reader;
             sqlConnection.Open();
             reader = sqlCommand.ExecuteReader();
@@ -78,7 +78,7 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
             SqlCommand sqlCommand = new SqlCommand(@"insert into Funcionario 
-                values(@usuario,@nombre,@apellidos,@fecha_nacimiento,@correo,@numero_telefono1,@numero_telefono2,@ocupacion,1);
+                values(@nombre,@usuario,@apellidos,@fecha_nacimiento,@correo,@numero_telefono1,@numero_telefono2,@ocupacion,1);
                                                         SELECT SCOPE_IDENTITY(); "
                 , sqlConnection);
 
@@ -115,8 +115,9 @@ namespace AccesoDatos
 
             SqlCommand sqlCommand = new SqlCommand(@"update Funcionario set usuario=@usuario, nombre=@nombre,
                     apellidos=@apellidos, fecha_nacimiento=@fecha_nacimiento, correo=@correo,
-                    numero_telefono1=@numero_telefono1, numero_telefono2=@numero_telefono2, ocupacion=@ocupacion where usuario=@usuario", sqlConnection);
+                    numero_telefono1=@numero_telefono1, numero_telefono2=@numero_telefono2, ocupacion=@ocupacion where id=@idUsuario", sqlConnection);
 
+            sqlCommand.Parameters.AddWithValue("@idUsuario", funcionario.id);
             sqlCommand.Parameters.AddWithValue("@usuario", funcionario.usuario);
             sqlCommand.Parameters.AddWithValue("@nombre", funcionario.nombre);
             sqlCommand.Parameters.AddWithValue("@apellidos", funcionario.apellidos);
@@ -146,12 +147,13 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand("Update Funcionario set habilitado = 0 where usuario=@usuario", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(@"Update Funcionario set habilitado = 0 where usuario=@usuario and id not in( select id_funcionario from Mantenimiento)", sqlConnection);
+
 
             sqlCommand.Parameters.AddWithValue("@usuario", funcionario.usuario);
 
             sqlConnection.Open();
-            int resultado = (int)sqlCommand.ExecuteScalar();
+            sqlCommand.ExecuteReader();
 
             sqlConnection.Close();
 

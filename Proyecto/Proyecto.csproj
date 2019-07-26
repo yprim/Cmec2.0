@@ -98,6 +98,9 @@
     <Content Include="Catalogos\Activos\EliminarActivo.aspx" />
     <Content Include="Catalogos\Activos\NuevoActivo.aspx" />
     <Content Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\EliminarFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\NuevoFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\VerFuncionario.aspx" />
     <Content Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx" />
     <Content Include="Catalogos\AprobacionMantenimientos\AdministrarAprobacionMantenimientos.aspx" />
     <Content Include="Catalogos\Activos\RestaurarActivo.aspx" />
@@ -243,6 +246,27 @@
     </Compile>
     <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.designer.cs">
       <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.cs">
+      <DependentUpon>EliminarFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.designer.cs">
+      <DependentUpon>EliminarFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\NuevoFuncionario.aspx.cs">
+      <DependentUpon>NuevoFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\NuevoFuncionario.aspx.designer.cs">
+      <DependentUpon>NuevoFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.cs">
+      <DependentUpon>VerFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\VerFuncionario.aspx.designer.cs">
+      <DependentUpon>VerFuncionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\MantenimientosCorrectivos\VerMantenimientoCorrectivo.aspx.cs">
       <DependentUpon>VerMantenimientoCorrectivo.aspx</DependentUpon>
