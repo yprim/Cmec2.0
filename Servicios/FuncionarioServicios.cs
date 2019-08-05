@@ -80,6 +80,24 @@ namespace Servicios
             funcionarioDatos.eliminarFuncionario(funcionario);
 
         }
+
+        /// <summary>
+        /// Priscilla Mena Monge
+        /// 24/7/2019
+        /// Efecto: Determina si se puede eliminar un Funcionario de  la base de datos, esto porque no está asociado a algún mantenimiento
+        /// Requiere: Funcionario
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="Funcionario"></param>
+        public Boolean sePuedeEliminar(Funcionario funcionario)
+        {
+            return funcionarioDatos.sePuedeEliminar(funcionario);
+
+        }
+
+       
+
         #endregion
 
     }

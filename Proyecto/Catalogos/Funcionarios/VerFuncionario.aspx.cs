@@ -52,15 +52,14 @@ namespace Proyecto.Catalogos.Funcionarios
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Funcionario funcionario = (Funcionario)Session["funcionarioVer"];
-            String url;
-            if (funcionario.habilitado == 1)
-            {
-                url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
+             String url;
+             url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
 
 
                 Response.Redirect(url);
-            }
+        
+
+       
         }
 
         #endregion

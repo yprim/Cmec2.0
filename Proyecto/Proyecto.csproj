@@ -98,6 +98,7 @@
     <Content Include="Catalogos\Activos\EliminarActivo.aspx" />
     <Content Include="Catalogos\Activos\NuevoActivo.aspx" />
     <Content Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx" />
+    <Content Include="Catalogos\Funcionarios\EditarFuncionario.aspx" />
     <Content Include="Catalogos\Funcionarios\EliminarFuncionario.aspx" />
     <Content Include="Catalogos\Funcionarios\NuevoFuncionario.aspx" />
     <Content Include="Catalogos\Funcionarios\VerFuncionario.aspx" />
@@ -246,6 +247,13 @@
     </Compile>
     <Compile Include="Catalogos\Funcionarios\AdministrarFuncionario.aspx.designer.cs">
       <DependentUpon>AdministrarFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EditarFuncionario.aspx.cs">
+      <DependentUpon>EditarFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Funcionarios\EditarFuncionario.aspx.designer.cs">
+      <DependentUpon>EditarFuncionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\Funcionarios\EliminarFuncionario.aspx.cs">
       <DependentUpon>EliminarFuncionario.aspx</DependentUpon>

@@ -147,7 +147,7 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionCMEC();
 
-            SqlCommand sqlCommand = new SqlCommand(@"Update Funcionario set habilitado = 0 where usuario=@usuario and id not in( select id_funcionario from Mantenimiento)", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(@"Update Funcionario set habilitado = 0 where usuario=@usuario and id not in( select id_funcionario from Mantenimiento);", sqlConnection);
 
 
             sqlCommand.Parameters.AddWithValue("@usuario", funcionario.usuario);
@@ -160,6 +160,33 @@ namespace AccesoDatos
         }
         #endregion
 
+        /// <summary>
+        /// Priscilla Mena Monge
+        /// 24/7/2019
+        /// Efecto: Determina si se puede eliminar un Funcionario de  la base de datos, esto porque no está asociado a algún mantenimiento
+        /// Requiere: Funcionario
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="Funcionario"></param>
+        public Boolean sePuedeEliminar(Funcionario funcionario)
+        {
+            SqlConnection sqlConnection = conexion.conexionCMEC();
+
+            SqlCommand sqlCommand = new SqlCommand(@"Select id,usuario,nombre,apellidos,fecha_nacimiento,correo,
+                numero_telefono1, numero_telefono2, ocupacion, habilitado from Funcionario
+                where usuario=@usuario and habilitado=1 and id not in( select id_funcionario from Mantenimiento);", sqlConnection);
+
+            sqlCommand.Parameters.AddWithValue("@usuario", funcionario.usuario);
+
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+            if (reader.Read()) return true;
+                sqlConnection.Close();
+
+            return false;
+        }
 
     }
 }

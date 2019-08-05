@@ -49,6 +49,7 @@
     <Compile Include="ContactoDatos.cs" />
     <Compile Include="EdificioDatos.cs" />
     <Compile Include="FuncionarioDatos.cs" />
+    <Compile Include="InformesDatos.cs" />
     <Compile Include="MantenimientoCorrectivoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReporteDatos.cs" />

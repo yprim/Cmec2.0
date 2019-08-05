@@ -50,17 +50,21 @@ namespace Proyecto.Catalogos.Funcionarios
         {
             Funcionario funcionario = (Funcionario)Session["funcionarioEliminar"];
 
-            //try
-            //{
-                funcionarioServicios.eliminarFuncionario(funcionario);
-                String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
-                Response.Redirect(url);
-            //}
-            //catch (Exception ex)
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Está siendo referenciado este funcionario con algun mantenimiento. PROCEDA A CANCELAR!');", true);
-            //}
-        }
+          
+                if (funcionarioServicios.sePuedeEliminar(funcionario))
+                {
+                    funcionarioServicios.eliminarFuncionario(funcionario);
+                    String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
+                    Response.Redirect(url);
+                }
+                else
+                {
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('No se puede eliminar!. Este funcionario está asignado a algun mantenimiento. PROCEDA A CANCELAR!');", true);
+                }
+        
+           
+    }
 
 
         /// <summary>
