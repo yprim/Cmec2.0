@@ -21,6 +21,18 @@ namespace Proyecto.Catalogos.Funcionarios
         {
             if (!IsPostBack)
             {
+               
+                    Funcionario funcionario = (Funcionario)Session["funcionarioEditar"];
+                txtUsuarioFuncionario.Text = funcionario.usuario;
+                    txtNombreFuncionario.Text = funcionario.nombre;
+                txtApellidosFuncionario.Text = funcionario.apellidos;
+                txtCorreoFuncionario.Text = funcionario.correo;
+                txtFechaNacimientoFuncionario.Text = funcionario.fecha_nacimiento.ToString();
+                txtNumeroTelefonoUnoFuncionario.Text = funcionario.numero_telefono1;
+                txtNumeroTelefonoDosFuncionario.Text = funcionario.numero_telefono2;
+                txtOcupacionFuncionario.Text = funcionario.ocupacion;
+
+                
                 txtNombreFuncionario.Attributes.Add("oninput", "validarTexto(this,'nombre')");
                 txtApellidosFuncionario.Attributes.Add("oninput", "validarTexto(this,'apellidos')");
                 txtUsuarioFuncionario.Attributes.Add("oninput", "validarTexto(this,'usuario')");
@@ -159,7 +171,7 @@ namespace Proyecto.Catalogos.Funcionarios
             //se validan los campos antes de guardar los datos en la base de datos
             if (validarCampos())
             {
-                Funcionario funcionario = new Funcionario();
+                Funcionario funcionario = (Funcionario)Session["funcionarioEditar"];
                 funcionario.nombre = txtNombreFuncionario.Text;
                 funcionario.apellidos = txtApellidosFuncionario.Text;
                 funcionario.usuario = txtUsuarioFuncionario.Text;
@@ -169,7 +181,7 @@ namespace Proyecto.Catalogos.Funcionarios
                 funcionario.ocupacion = txtOcupacionFuncionario.Text;
                 funcionario.fecha_nacimiento = Convert.ToDateTime(txtFechaNacimientoFuncionario.Text);
 
-                funcionarioServicios.insertarFuncionario(funcionario);
+                funcionarioServicios.actualizarFuncionario(funcionario);
 
                 String url = Page.ResolveUrl("~/Catalogos/Funcionarios/AdministrarFuncionario.aspx");
                 Response.Redirect(url);
