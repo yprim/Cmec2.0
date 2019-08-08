@@ -940,8 +940,8 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.56125in</Top>
-            <Left>5.92583in</Left>
+            <Top>1.07167in</Top>
+            <Left>6.10291in</Left>
             <Height>4.23958in</Height>
             <Width>5.63542in</Width>
             <ZIndex>2</ZIndex>
@@ -1674,7 +1674,7 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>4.95708in</Height>
+        <Height>5.31125in</Height>
         <Style />
       </Body>
       <Width>11.73833in</Width>

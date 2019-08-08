@@ -175,6 +175,7 @@
     <Content Include="Informes\CierrePlanPreventivo.aspx" />
     <Content Include="Informes\MantenimientoGeneral.aspx" />
     <Content Include="Informes\MostrarReporteAvance.aspx" />
+    <Content Include="Informes\WebForm1.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\abrirfile.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -538,6 +539,13 @@
     <Compile Include="Informes\MostrarReporteAvance.aspx.designer.cs">
       <DependentUpon>MostrarReporteAvance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Informes\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -617,6 +625,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Informes\CierrePlanPreventivo.rdlc" />
     <EmbeddedResource Include="Informes\MantenimientoGeneralReporte.rdlc" />
+    <EmbeddedResource Include="Informes\Report1.rdlc" />
     <EmbeddedResource Include="Informes\ReporteAvance.rdlc" />
   </ItemGroup>
   <PropertyGroup>
